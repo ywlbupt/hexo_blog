@@ -37,11 +37,11 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
-filename_case: 0
+filename_case: 0 #创建文章的时候, 转换文件名，1代表小写；2代表大写；默认为0
 render_drafts: false
 post_asset_folder: false
 relative_link: false
