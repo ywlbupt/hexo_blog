@@ -101,7 +101,7 @@ social_icons:
 # in theme directory(source/images): /images/avatar.jpg
 # in site  directory(source/uploads): /uploads/avatar.jpg
 # default : /images/default_avatar.jpg
-avatar : /images/site/lufy-avatar.jpg
+avatar : images/site/lufy-avatar.jpg
 #avatar:
 
 
@@ -170,7 +170,7 @@ mathjax:
 
 
 # Swiftype Search API Key
-#swiftype_key:
+swiftype_key: 9sxzYL8c22JzKQggu6Si
 
 # Baidu Analytics ID
 #baidu_analytics:

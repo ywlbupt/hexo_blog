@@ -1,4 +1,4 @@
-title: My first post
+title: Hexo-Begin-install
 date: 2016-01-10 12:45:13
 categories: code
 tags: Hexo
