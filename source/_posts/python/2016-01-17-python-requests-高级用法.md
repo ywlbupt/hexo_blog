@@ -82,6 +82,33 @@ Requests首先在HTTP头部检测是否存在指定的编码方式，如果不�
 在这种情况下， RFC 2616 指定默认字符集 必须是 `ISO-8859-1` 。Requests遵从这一规范。  
 **如果你需要一种不同的编码方式，你可以手动设置 Response.encoding 属性，或使用原始的 Response.content** 。
 
+## 代理
+如果需要使用代理，你可以通过为任意请求方法提供 proxies 参数来配置单个请求:
+```
+    import requests
+    
+    proxies = {
+      "http": "http://10.10.1.10:3128",
+      "https": "http://10.10.1.10:1080",
+    }
+requests.get("http://example.org", proxies=proxies)
+```
+
+你也可以通过环境变量 `HTTP_PROXY` 和 `HTTPS_PROXY` 来配置代理。
+```
+    $ export HTTP_PROXY="http://10.10.1.10:3128"
+    $ export HTTPS_PROXY="http://10.10.1.10:1080"
+    $ python
+    >>> import requests
+    >>> requests.get("http://example.org")
+```
+若你的代理需要使用HTTP Basic Auth，可以使用 `http://user:password@host/` 语法:
+```
+    proxies = {
+        "http": "http://user:pass@10.10.1.10:3128/",
+    }
+```
+
 ## HTTP动词
 
 Requests提供了几乎所有HTTP动词的功能：GET，OPTIONS， HEAD，POST，PUT，PATCH和DELETE。 以下内容为使用Requests中的这些动词以及Github API提供了详细示例。
