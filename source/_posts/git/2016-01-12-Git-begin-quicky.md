@@ -1,4 +1,4 @@
-title: git快速开始
+itle: git快速开始
 date: 2016-01-12 00:49:16
 tags: git
 description: Create a new reposiitory on th command line
