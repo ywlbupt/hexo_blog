@@ -180,3 +180,34 @@ http://pypi.python.org/pypi/pip/
         lxml-3.5.0-cp35-none-win_amd64.whl
     cp后面是Python的版本号，27表示2.7，amd64表示64位系统，根据你的Python版本选择下载。
 3. 进入.whl所在的文件夹，执行命令即可完成安装`pip install 带后缀的完整文件名`
+
+### matplotlib安装
+
+参考链接 ： 
+1. [官方文档](http://matplotlib.org/users/installing.html)
+
+** Build requirements **
+These are external packages which you will need to install before installing matplotlib.
+
+If you are installing dependencies with a package manager on Linux, you may need to install the development packages (look for a "-de"” postf) in addition to the librari themselves
+
+
+#### Building on Linux
+It is easiest to use your system package manager to install the dependencies.
+
+If you are on Debian/Ubuntu, you can get all the dependencies required to build matplotlib with:
+
+    sudo apt-get build-dep python-matplotlib
+
+This does not build matplotlib, but it does get the install the build dependencies, which will make building from source easier.
+
+然后使用pip install matplotlib即可
+
+#### backend 
+I had the same issue, and installing matplotlib using easy_install instead of pip did not solve it. In the end, I found out that the problem was simply that matplotlib could not find any backend for plotting.
+
+I solved it by doing the following (I am using Debian wheezy):
+
+    pip uninstall matplotlib
+    sudo apt-get install tcl-dev tk-dev
+    pip install matplotlib
