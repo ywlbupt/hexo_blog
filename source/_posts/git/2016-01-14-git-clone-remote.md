@@ -3,7 +3,7 @@ date: 2016-01-14 15:11:16
 tags: git
 description: 
 ---
-clone 某特定分支
+## clone 某特定分支
 
     git clone -b <branch> <remote_repo>
 
@@ -24,3 +24,9 @@ git clone只能clone远程库的master分支，无法clone所有分支，解决�
 6. `git checkout -b dev origin/dev`，作用是checkout远程的dev分支，在本地起名为dev分支，并切换到本地的dev分支
 7. `git checkout -b release origin/release`，作用参见上一步解释
 8. `git checkout dev`，切换回dev分支，并开始开发。
+
+## git fetch 远程仓库至本地，并重新命名
+
+    git fetch origin master:tmp
+    git diff tmp 
+    git merge tmp
