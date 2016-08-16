@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Wlin的随记 #站点名，站点左上角
-subtitle: 为明天的机遇而努力 #副标题
-description:        #给搜索引擎看的，对站点的描述
+title: WiZero     # 站点名，站点左上角
+subtitle: '阅读，思考，实践，不忘初心'  # 副标题
+description:        # 给搜索引擎看的，对站点的描述
 author: Wlin
 
-language: zh-Hans
+language: zh-CN
 # language: en
 # language: zh-Hans
 # language: fr-FR
@@ -24,14 +24,12 @@ timezone:
 url: http://ywlbupt.github.com/hexo_blog
 root: /hexo_blog/
 permalink: :year/:month/:day/:title/
-permalink_defaults:
-
-# Directory
+permalink_defaults: # Directory
 source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
-category_dir: categories
+category_dir: categoriessite.data.
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -72,12 +70,10 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-# theme: landscape
-# theme: next
-theme: jacman
-# theme: yeele
-stylus:
-    compress: true
+#theme: landscape
+#theme: next
+#theme: yeele
+theme: light-ch
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
