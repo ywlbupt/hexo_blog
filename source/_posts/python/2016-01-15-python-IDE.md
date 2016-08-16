@@ -1,7 +1,7 @@
 title: python-IDE
 date: 2016-01-15 00:57:52
 tags: python
-category: python
+category: [python,test,Third category]
 description: python开发环境
 ---
 
