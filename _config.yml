@@ -5,6 +5,7 @@
 # Site
 title: WiZero     # 站点名，站点左上角
 subtitle: '阅读，思考，实践，不忘初心'  # 副标题
+subtitle-2: '桃李不言，下自成蹊'  # 副标题
 description:        # 给搜索引擎看的，对站点的描述
 author: Wlin
 
