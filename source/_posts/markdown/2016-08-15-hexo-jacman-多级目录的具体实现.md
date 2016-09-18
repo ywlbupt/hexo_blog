@@ -1,10 +1,9 @@
-title: hexo-jacman-多级目录的具体实现.md
+title: hexo-jacman-多级目录的具体实现
 date: 2016-08-15 23:18:21
+category: [Markdown,Hexo]
 tags: [hexo]
-category: [markdown,hexo]
 description:
 ---
-
 [toc]
 
 ## 问题
@@ -86,9 +85,7 @@ Hexo基本主题模板自带的分类显示都是一级的，如何显示多级?
         margin-bottom 8px
     ```
 
-
 ## Hexo的`category`的语法
-
 在`front-matter`中，`yaml`格式如下所示：
 ```
 title: python-返回函数
@@ -96,6 +93,10 @@ date: 2016-01-16 10:31:49
 tags: python
 category: [First,second,Third]
 ```
+
+### 测试子目录
+
+nothing
 
 ## 实现的效果如下所示：  
 

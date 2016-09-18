@@ -24,30 +24,32 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://ywlbupt.github.com/hexo_blog
 root: /hexo_blog/
-permalink: :year/:month/:day/:title/
-permalink_defaults: # Directory
+permalink: :year/:month/:day/:title/ # 文章永久链接的格式
+permalink_defaults: 
+
+# Directory
 source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
-category_dir: categoriessite.data.
+category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: # 跳过指定文件的渲染，可通过glob表达式来匹配路径
 
 # Writing
 new_post_name: :year-:month-:day-:title.md # File name of new posts
-default_layout: post
+default_layout: post 
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0 #创建文章的时候, 转换文件名，1代表小写；2代表大写；默认为0
-render_drafts: false
-post_asset_folder: false
+render_drafts: false  # 是否显示草稿
+post_asset_folder: false # 是否启用资源块文件夹，img的处理
 relative_link: false
-future: true
-highlight:
+future: true # 显示未来的文章
+highlight: # 代码块设置
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: true
   tab_replace:
 

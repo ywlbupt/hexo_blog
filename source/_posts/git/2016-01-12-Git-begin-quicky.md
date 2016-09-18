@@ -1,11 +1,12 @@
-itle: git快速开始
+title: git快速开始
 date: 2016-01-12 00:49:16
 tags: git
 description: Create a new reposiitory on th command line
 ---
 
-## Create a new reposiitory on th command line
+[toc]
 
+## Create a new reposiitory on th command line
 
 1. create a new repository on the command line  
 ```

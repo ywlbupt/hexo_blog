@@ -1,8 +1,7 @@
 title: python-loging调试监控
 date: 2016-01-21 23:55:37
-category: python
-tags: 
-    - python
+category: [Python,Python_Basic]
+tags: python
 description: 
 ---
 ## 概述
@@ -16,6 +15,8 @@ description:
 日志级别大小关系为：CRITICAL > ERROR > WARNING > INFO > DEBUG > NOTSET，当然也可以自己定义日志级别
 
 等几个级别，当我们指定`level=INFO`时，`logging.debug`就不起作用了。同理，指定`level=WARNING`后，debug和info就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。
+
+<!-- more -->
 
 ### logging 参数
 logging.basicConfig函数各参数:
