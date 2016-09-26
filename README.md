@@ -16,6 +16,9 @@ TODO:
 
 1. 页面内的跳转，锚处不要放在与标题一栏，放在挨着标题的下一行。
 2. [Toc]，目录的创建，挨着yaml下一行放置。
+3. categories的目录均采用首字母大写的方式
+4. post内，文章内的title中目录采用小写的方式（专有名字除外），目录与标题用空格隔开
+    * category-category UltiSnips
 
 ## Hexo Usage
 

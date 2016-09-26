@@ -1,6 +1,5 @@
-title: "【vim】【Plugin】Ultisnips的写法"
+title: "vim-plugin~Ultisnips的写法"
 date: 2016-09-16 16:41:49
-LastUpdate: 2016-09-16 16:41:49
 category: [Vim, Plugin]
 tags: 
     - vim

@@ -76,7 +76,7 @@ pagination_dir: page
 #theme: landscape
 #theme: next
 #theme: yeele
-theme: light-ch
+theme: light_cn
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
