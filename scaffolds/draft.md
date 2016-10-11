@@ -1,3 +1,6 @@
 title: {{ title }}
-tags:
----
+date : {{ date }}
+category : 
+tags :
+description :
+-------

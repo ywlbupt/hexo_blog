@@ -6,6 +6,15 @@ description:
 ---
 [Toc]
 
+### vimscript function-lists
+
+* confirm({msg} [, {choices} [, {default} [, {type}]]])
+  confirm() 提供用户一个对话框，从中可以作出选择。返回选择的序号。第一个选择为 1。
+  ```
+    confirm("Save changes?", "&Yes\n&No\n&Cancel")
+  ```
+
+
 ### vimscript中执行bash命令
 
 > from vimscript plugin "vim-hexo.vim"
@@ -19,13 +28,7 @@ function! s:Runcmd()
 endfunction
 ```
 
-### vimscript function-lists
-
-* confirm({msg} [, {choices} [, {default} [, {type}]]])
-  confirm() 提供用户一个对话框，从中可以作出选择。返回选择的序号。第一个选择为 1。
-  ```
-    confirm("Save changes?", "&Yes\n&No\n&Cancel")
-  ```
+### vimscript 自动补全 complete()
 * complete({startcol}, {matches})
   设置插入模式补全的匹配。此例并不很有用，但可以说明功能。注意这里返回空串，以免插入零。
 	```vim

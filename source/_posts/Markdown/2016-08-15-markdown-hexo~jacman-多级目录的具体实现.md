@@ -1,7 +1,9 @@
 title: hexo-jacman-多级目录的具体实现
 date: 2016-08-15 23:18:21
 category: [Markdown,Hexo]
-tags: [hexo]
+tags: 
+  - hexo
+  - jacman
 description:
 ---
 [toc]
@@ -49,7 +51,7 @@ Hexo基本主题模板自带的分类显示都是一级的，如何显示多级?
     ```
 3. 修改样式文件
    在主题文件夹下找到`source/css/_partial/aside.styl`(jacman)文件，其他主题也可能是`source/css/_partial/sidebar.styl`
-    ```html
+    ```css
     //categories
     .category-block>ul>li
       border-bottom 1px solid #ccc
@@ -83,11 +85,13 @@ Hexo基本主题模板自带的分类显示都是一级的，如何显示多级?
       .category-list-child
         border-top 1px dashed #ccc
         margin-bottom 8px
-    ```
+      ``` 
 
 ## Hexo的`category`的语法
+
 在`front-matter`中，`yaml`格式如下所示：
-```
+
+```yaml
 title: python-返回函数
 date: 2016-01-16 10:31:49
 tags: python
