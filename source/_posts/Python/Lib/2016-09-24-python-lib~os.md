@@ -38,7 +38,19 @@ os负责程序与操作系统的交互，sys负责程序与python解释器的交
 ### os.path 路径操作
 
 * `os.sep` 返回当前系统的路径分隔符，Unix下为`/`
-* `os.path.isfile()` 判断path是否为文件
+* `os.path.isfile(path)` 判断path是否为文件
 * `os.path.exists(path)` 判断path是否存在
 * `os.path.join(path, *paths)` 连接路径，会自动加上系统路径分隔符 `os.sep`
 * `os.path.relpath(path[, start])` 返回path相对与start的相对路径
+
+
+* `os.path.expandvars(path)`解析环境变量，linux下支持`$HOME`, `${HOME}`形式，Windows下额外支持`%HOME%`形式
+  ```python
+  $ s.path.expandvars("$HOME/hexo")
+  >> '/home/ywl/hexo'
+  ```
+* `os.path.normcase(path)`
+  * 对于Windows路径，可将斜号替换为反斜号返回
+  * 对于Unix or Mac OS X ，返回 `path`  Unchanged
+* `os.path.normpath(path)`
+  * 可格式化`path`字符串，如将`a/./b`转换为`a/b`等等

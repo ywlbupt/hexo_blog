@@ -50,7 +50,7 @@ future: true # 显示未来的文章
 highlight: # 代码块设置
   enable: true
   line_number: false
-  auto_detect: true
+  auto_detect: false
   tab_replace:
 
 # Category & Tag

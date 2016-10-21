@@ -42,6 +42,10 @@ endfunction
   endfunc
 	```
 
+### vimscript 伪变量
+
+
+
 ### 参考手册
 1. 插入模式补全 -> `ins-completion`
 2. 文件搜索 -> `file-searching`
@@ -61,3 +65,5 @@ endfunction
   ```vim
   strpart(string, strridx(string, "/") + 1)
   ```
+
+
