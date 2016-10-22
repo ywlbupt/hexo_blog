@@ -3,7 +3,7 @@ date: 2016-10-19 17:51:00
 category: [Python, Basic]
 tags:
 description:
----
+----
 [Toc]
  
 1. [Pythondoc  regex](https://docs.python.org/3/howto/regex.html)

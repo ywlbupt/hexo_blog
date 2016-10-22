@@ -6,7 +6,7 @@ tags:
   - python
   - wrapper
 description: 使用python做一个ssh的马甲，方便快速的传输文件，如果能包含剪贴板就更好了
----
+----
 [Toc]
 
 

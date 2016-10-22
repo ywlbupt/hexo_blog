@@ -4,7 +4,7 @@ category: [Ubuntu, IDE_Config]
 tags:
   - deb
 description:
----
+----
 [Toc]
 
 ### deb软件包的安装

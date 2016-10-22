@@ -4,7 +4,7 @@ category: [Ubuntu, Cmd]
 tags:
   - tmux
 description: Ubuntu下多终端的应用
----
+----
 [Toc]
 
 ## 【tmux】多终端操作
@@ -90,7 +90,7 @@ By default, tmux uses `<c-b>`
 通过窗口列表切换窗口`<c-b> w`
 
 窗口的数字可在bash状态栏的左下角查看，`*`号所在的窗口即为当前激活窗口
-![](./images/ubuntu-cmd-tmux-1.jpg)
+![](/hexo_blog/images/ubuntu-cmd-tmux-1.jpg)
 
 * 查看会话信息`tmux ls`，
   其中，0和newsession 表示会话窗口名字，3表示该会话有3个窗口

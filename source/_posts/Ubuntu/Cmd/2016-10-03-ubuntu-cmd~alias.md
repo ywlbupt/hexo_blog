@@ -3,7 +3,7 @@ date: 2016-10-03 23:09:47
 category: [Ubuntu, Cmd]
 tags:
 description:
----
+----
 [Toc]
 
 ## Alias in ubuntu 

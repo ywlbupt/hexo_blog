@@ -7,7 +7,7 @@ tags:
   - javascript
   - ejs引擎
 description:
----
+----
 [Toc]
 
 ### function root_for(path)

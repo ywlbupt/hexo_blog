@@ -4,7 +4,7 @@ category: [Python, Lib]
 tags:
   - vim
 description:
----
+----
 [Toc]
 
 参考文档：
@@ -15,7 +15,7 @@ description:
 ### Windows下，Gvim支持Python的配置
 
 在Gvim下，执行命令`:version | grep python`
-![pic alt](./images/python-vim-versioninfo.png)
+![pic alt](/hexo_blog/images/python-vim-versioninfo.png)
 
 里面有`+python/dyn +python3/dyn`，说明其本身是支持python的
  
@@ -33,8 +33,8 @@ description:
   * 在确认安装的python版本与`pythonxx.dll`对应之后，`pythonxx.dll`通常情况下放在`"C:\Windows\SysWOW64"`路径下（而不是`system32`目录下），需要将该路径添加到环境变量**PATH**中。
 2. 【公司电脑在这步骤下还是不行，Gvim中执行`:echo has("python3")`OK，但是最后调用时出现错误 】
 3. PS:更换了Vim-64Bit之后，调用python35.DLL，安装了Anaconda3 64bit后，能够成功调用了！
-  ![](./images/python-vim-1.png)
-  ![](./images/python-vim-2.png)
+  ![](/hexo_blog/images/python-vim-1.png)
+  ![](/hexo_blog/images/python-vim-2.png)
   * 调用`py print("Hello")`，会报错
     `Sorry, this command is disabled, the Python's site module could not be loaded`  
     查找了一下，貌似是说这是python2.7.11版本的Bug，回退成python2.7.10就OK了。具体不再细究，说不定以后就修复了。

@@ -3,7 +3,7 @@ date: 2016-10-03 23:12:14
 category: [Vim, Plugin]
 tags:
 description:
----
+----
 [Toc]
 
 ## 【fugitive】git Wrapper in vim

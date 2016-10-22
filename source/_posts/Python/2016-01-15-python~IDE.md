@@ -3,7 +3,7 @@ date: 2016-01-15 00:57:52
 tags: python
 category: [Python,Python_Basic]
 description: python开发环境
----
+----
 
 
 ### pyenv管理不同的版本

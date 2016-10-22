@@ -2,7 +2,7 @@ title: python-common-issue
 date: 2016-01-16 00:54:11
 tags: python
 description: python常见问题与方法
----
+----
 
 ### python调用cmd命令
 

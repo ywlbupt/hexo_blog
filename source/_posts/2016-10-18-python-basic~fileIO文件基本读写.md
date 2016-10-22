@@ -4,7 +4,7 @@ category: [Python, Basic]
 tags:
   - codecs
 description:
----
+----
 [Toc]
 
 # 【python】【file】文件的读写基本操作

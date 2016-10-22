@@ -5,7 +5,7 @@ tags:
   - hexo
   - jacman
 description:
----
+----
 [toc]
 
 ## 问题
@@ -104,7 +104,7 @@ nothing
 
 ## 实现的效果如下所示：  
 
-![多级目录效果图](images/markdown/hexo-multi-catalog-display.jpg)
+![多级目录效果图](/hexo_blog/images/markdown/hexo-multi-catalog-display.jpg)
 
 ## 参考链接：
 
