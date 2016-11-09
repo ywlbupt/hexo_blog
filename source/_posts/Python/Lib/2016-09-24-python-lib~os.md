@@ -24,7 +24,6 @@ os负责程序与操作系统的交互，sys负责程序与python解释器的交
   - _Avaliable : Unix, Windows_
 * `os.walk(top, ...)` 递归遍历path路径下的文件
   - 返回一个三元数组，[(root ,dirs, files),...] 其中，`dirs`和`files`为list
-* `os.path.split(name)`  分割文件名与目录（事实上，如果你完全使用目录，它也会将最后一个目录作为文件名而分离，同时它不会判断文件或目录是否存在）
 
 #### New in python 3
 
@@ -42,6 +41,7 @@ os负责程序与操作系统的交互，sys负责程序与python解释器的交
 * `os.path.exists(path)` 判断path是否存在
 * `os.path.join(path, *paths)` 连接路径，会自动加上系统路径分隔符 `os.sep`
 * `os.path.relpath(path[, start])` 返回path相对与start的相对路径
+* `os.path.split(name)`  分割文件名与目录（事实上，如果你完全使用目录，它也会将最后一个目录作为文件名而分离，同时它不会判断文件或目录是否存在）
 
 
 * `os.path.expandvars(path)`解析环境变量，linux下支持`$HOME`, `${HOME}`形式，Windows下额外支持`%HOME%`形式

@@ -15,8 +15,9 @@ description:
 #### reload
 
 **共存**
-* **python3** 中，使用 `imp.reload(module)` : Reload a previously imported module. 
-  * 替代python2中的reload()函数
+*   **python3** 中，使用 `imp.reload(module)` : Reload a previously imported module. 
+    *   替代python2中的reload()函数
+    *   `from imp import reload`
 
 
 #### exception
