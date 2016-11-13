@@ -1,6 +1,6 @@
 title: ubuntu-IDE_Config~软件管理
 date: 2016-10-03 23:19:34
-category: [Ubuntu, IDE_Config]
+category: [Ubuntu, IDE]
 tags:
   - deb
 description:

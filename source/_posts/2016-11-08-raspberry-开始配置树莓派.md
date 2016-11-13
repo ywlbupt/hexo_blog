@@ -49,8 +49,7 @@ $ ssh pi@<ip address>
 
 ## 软件更新`sudo apt-get install update`
 
-google一下，修改软件源，不然更新太慢了。
-
+google一下，修改软件源，不然更新太慢了。 
 
 ## 安装`Tmux`
 
@@ -62,4 +61,20 @@ $ sudo apt-get install tmux
 
 然后将`~/.tmux.conf`(该文件从`Vim_ywl`git库中找)里面的内容拷贝到Raspberry相应的文件中。(拷贝前，可以先安装xclip，利用系统剪贴板方便操作)
 
+## 安装中文输入法-谷歌
 
+```bash
+$ sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin
+```
+安装完毕，重启即可
+
+重启后，需打开`fcitx`配置界面，将Google pinyin添加到输入法选项中。
+
+## 安装Vim
+
+安装`Ctags`
+```bash
+$ sudo apt-get install exuberant-ctags
+```
+
+配置github的ssh登录，克隆`Vim_ywl`库

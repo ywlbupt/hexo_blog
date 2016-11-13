@@ -171,12 +171,14 @@ Bash脚本启动
 
 在`~/.bashrc`中建立别名规则
 ```
-alias tmux = "THEM=screen-256color-bce tmux"
+alias tmux="THEM=screen-256color-bce tmux"
 ```
 
 在`~/.tmux.conf`中，设置默认终端类型
-```
+```bash
 set -g default-terminal "xterm"
+# 或者
+set -g default-terminal "screen-256color"
 ```
 
 在bash 中，执行以下命令让别名生效

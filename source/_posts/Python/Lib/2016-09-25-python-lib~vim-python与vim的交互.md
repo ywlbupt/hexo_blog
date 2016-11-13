@@ -12,6 +12,26 @@ description:
 2. Vim中使用命令行`:h python`——使用手册
 3. [如何使用 PYTHON 编写 VIM 插件: VIM 的 PYTHON 接口 – 入门篇](http://xwsoul.com/posts/857)
 
+### Linux 下，Vim源码安装支持python
+
+Vim 中，执行命令 `:version | grep python`查看是否支持python的调用 
+
+参考[Raspberry Pi 打造 vim + Python 的最佳实践](http://pandara.xyz/2016/06/06/raspberrypi_vim_python/)
+
+1. 先将默认源安装的vim 删除
+```bash
+sudo apt-get remove vim vim-runtime gvim
+```
+    *   如果在ubuntu 12.04，可能还需要remove 
+        ```
+        sudo apt-get remove vim-tiny vim-common vim-gui-common vim-nox
+        ```
+2. 安装`vim-nox`版本，亲测在树莓派上可支持python2(`:echo has("python")`)
+```
+sudo apt-get install vim-nox
+```
+3. 如果想源码安装vim，参考YCM的文档，[Building Vim from source](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
+
 ### Windows下，Gvim支持Python的配置
 
 在Gvim下，执行命令`:version | grep python`
