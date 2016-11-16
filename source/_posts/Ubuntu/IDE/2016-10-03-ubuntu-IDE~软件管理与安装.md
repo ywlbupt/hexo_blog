@@ -7,7 +7,27 @@ description:
 ----
 [Toc]
 
+### 源码安装，以vim 为例
+
+If you want to be able to easily uninstall vim use checkinstall.
+
+```bash
+sudo apt-get install checkinstall
+cd ~/vim
+sudo checkinstall
+```
+Otherwise, you can use make to install.
+
+```bash
+cd ~/vim
+sudo make install
+```
+
+通过checkinstall安装的软件，可以通过`dpkg -r packagename`来删除软件
+
 ### deb软件包的安装
+
+针对本地软件包，不解决依赖关系 
 
 * deb 是 ubuntu 、debian 的格式。
 * rpm 是 redhat 、fedora 、suse 的格式
@@ -23,7 +43,12 @@ You need to use `dpkg` package manager from shell/command prompt.
 
 
 ```bash
-sudo dpkg -i package.deb
+sudo dpkg -i packagename.deb
+```
+
+使用dpkg安装的软件包，，可以通过
+```bash
+sudo dpkg -r packagename
 ```
 
 ### PPA 安装

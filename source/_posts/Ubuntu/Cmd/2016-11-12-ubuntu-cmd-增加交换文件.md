@@ -43,6 +43,12 @@ pi@raspberrypi:~ $ echo vm.swappiness = 10 | sudo tee -a /etc/sysctl.conf
 vm.swappiness = 10
 ```
 
+以上操作，在系统重启后，swap文件的大小又会变回原大小，我们可以在/etc/fstab里增加下面的配置，使其重启后，我们刚刚的配置仍然有效。
+
+``` bash
+/swapfile             swap                    swap    defaults        0 0
+```
+
 Note: 为了避免出现意外的情况，如下所示使用swapoff命令关闭它，仅在需要使用时，使用步骤5所示的swapon命令，重新启用交换文件。
 
 ```bash
