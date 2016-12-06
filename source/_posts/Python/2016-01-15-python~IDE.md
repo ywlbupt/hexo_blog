@@ -34,23 +34,44 @@ description: python开发环境
     anaconda3-2.0.1 # 支持Python 3.3和3.4
 其中形如 x.x.x 这样的只有版本号的为Python官方版本，其他的形如 xxxxx-x.x.x 这种既有名称又有版本后的属于“衍生版”或发行版。
 
+
 #### 安装Python的依赖包
 
 如果我们确定要安装python3.4.3的话，接下来我们就可以安装python了，但是再安装之前，我们必须要安装python所需要的依赖包，这个必须要安装，安装会失败的：
 
-    sudo apt-get install libc6-dev gcc
-    sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm
-
+``` bash
+sudo apt-get install libc6-dev gcc
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm
+```
 
 上面的依赖包搞定之后，我们就可以安装python了：
 
-    pyenv install 3.4.3 -v
+``` bash
+pyenv install 3.4.3 -v
+```
 
 该命令会从github上下载python的源代码，并解压到/tmp目录下，然后在/tmp中执行编译工作。若依赖包没有安装，则会出现编译错误，需要在安装依赖包滞后重新执行该命令。
 
 安装完成之后，需要使用如下命令对数据库进行更新：
 
     pyenv rehash
+
+#### 安装本地下载好的Python安装包
+
+到官网把安装包单独下载好，比如我讲下载好的包 `Python-3.5.1.tar.xz`
+
+放到 `~/Downloads` 目录下，然后指定build缓存目录后，再运行install命令
+``` bash
+export PYTHON_BUILD_CACHE_PATH=~/Downloads
+pyenv install 3.5.1
+pyenv rehash
+```
+
+> 注，另一种说法
+> 如果网络不太好，用 pyenv 下载会比较慢，可以先执行该命令，
+> 然后到 ~/.pyenv/cache 目录下查看要下载的文件的文件名，
+> 然后自己到官方网站下载，并将文件放在 ~/.pyenv/cache 目录下。
+> pyenv 会检查文件的完整性，若确认无误，则不会再重新下载。
 
 #### 查看当前已经安装的python版本
 

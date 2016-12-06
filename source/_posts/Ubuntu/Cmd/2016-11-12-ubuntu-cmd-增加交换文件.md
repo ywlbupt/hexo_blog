@@ -1,4 +1,4 @@
-title: ubuntu-cmd~增加交换文件
+title: ubuntu-cmd~增加交换文件swap
 date: 2016-11-12 00:29:53
 category: [Ubuntu, Cmd]
 tags:

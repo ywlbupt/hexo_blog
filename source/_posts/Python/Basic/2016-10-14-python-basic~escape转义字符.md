@@ -1,4 +1,4 @@
-title: python-basic~escape转义
+title: python-basic~escape转义字符的处理
 date: 2016-10-14 16:50:42
 category: [Python, Basic]
 tags:
@@ -34,10 +34,63 @@ re 模块获得传入的 \\ 将其解释为正则表达式，按照正则表达�
 
 ```python
 s = "e:\test test.txt"
-# Python 3
+
 print(s.encode("unicode_escape"))
-# Python 2
+# Python 3 , s 为unicode,string类型
+# output : b'e:\\test test.txt'
+>>> repr(s)
+# output : "'e:\\test test.txt'"
+
 print(s.encode("string_escape"))
+# Python 2 , s 为utf-8 类型
+```
+
+### escape() 与 unescape()
+
+有一种简单粗暴可行的方式
+``` bash
+>>> a = "ab\\ncd"
+>>> eval('"'+a+'"')
+'ab\ncd'
+>>> print(eval('"'+a+'"'))
+ab
+cd
+```
+
+其他可参考python code文件 `lib_y.py`
+
+### str()与repr()的区别
+
+* repr()
+    Return a string containing a printable representation of an object. 
+    This is the same value yielded by conversions (reverse quotes)
+
+举例说明：
+``` bash
+>>> s = "ab\\ncd"
+>>> print(s)
+# output: ab\ncd
+>>> str(a)
+# output: 'ab\\ncd'
+>>> repr(a)
+# output "'ab\\\\ncd'"
+# ps: here print(repr(a)) == str(a)
+# ps: here eval(repr(a)) == str(a)
+```
+str()函数 ，它会把值转换为合理形式的字符串，以例用户可以理解；
+
+repr()函数，它会创建一个字符串，它以合法的python表达式的形式来表示值。
+
+请看下面例子
+``` python
+>>> print str("hello,world!")
+hello,world!
+>>> print str(10000L)
+
+>>> print repr("hello,world!")
+'hello,world!'
+>>> print repr(10000L)
+10000L
 ```
 
 ### 参考文档

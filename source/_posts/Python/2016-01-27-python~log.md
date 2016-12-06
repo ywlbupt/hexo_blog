@@ -38,6 +38,8 @@ logging.basicConfig函数各参数:
 * level: 设置日志级别，默认为logging.WARNING
 * stream: 指定将日志的输出流，可以指定输出到sys.stderr,sys.stdout或者文件，默认输出到sys.stderr，当stream和filename同时指定时，stream被忽略
 
+### logging输出到不同地方
+
 logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。
 
 ``` python
@@ -70,18 +72,18 @@ logging的另一个好处是通过简单的配置，一条语句可以同时输�
     logger2.error('The five boxing wizards jump quickly.')
 ```
 以上程序运行结果，
-```
-    # 输出到控制台：
-    root        : INFO     Jackdaws love my big sphinx of quartz.
-    myapp.area1 : INFO     How quickly daft jumping zebras vex.
-    myapp.area2 : WARNING  Jail zesty vixen who grabbed pay from quack.
-    myapp.area2 : ERROR    The five boxing wizards jump quickly.
-    # 输出到myapp.log，多了DEBUG的信息输出
-    01-27 22:55 root         INFO     Jackdaws love my big sphinx of quartz.
-    01-27 22:55 myapp.area1  DEBUG    Quick zephyrs blow, vexing daft Jim.
-    01-27 22:55 myapp.area1  INFO     How quickly daft jumping zebras vex.
-    01-27 22:55 myapp.area2  WARNING  Jail zesty vixen who grabbed pay from quack.
-    01-27 22:55 myapp.area2  ERROR    The five boxing wizards jump quickly.
+``` bash
+# 输出到控制台：
+root        : INFO     Jackdaws love my big sphinx of quartz.
+myapp.area1 : INFO     How quickly daft jumping zebras vex.
+myapp.area2 : WARNING  Jail zesty vixen who grabbed pay from quack.
+myapp.area2 : ERROR    The five boxing wizards jump quickly.
+# 输出到myapp.log，多了DEBUG的信息输出
+01-27 22:55 root         INFO     Jackdaws love my big sphinx of quartz.
+01-27 22:55 myapp.area1  DEBUG    Quick zephyrs blow, vexing daft Jim.
+01-27 22:55 myapp.area1  INFO     How quickly daft jumping zebras vex.
+01-27 22:55 myapp.area2  WARNING  Jail zesty vixen who grabbed pay from quack.
+01-27 22:55 myapp.area2  ERROR    The five boxing wizards jump quickly.
 ```
 
 ### logging handle 方式
@@ -153,28 +155,28 @@ logging.handlers.HTTPHandler: 通过"GET"或"POST"远程输出到HTTP服务器
     datefmt=
 ```
 上例3：
-```
-    import logging
-    import logging.config
+``` python
+import logging
+import logging.config
 
-    logging.config.fileConfig("logger.conf")
-    logger = logging.getLogger("example01")
+logging.config.fileConfig("logger.conf")
+logger = logging.getLogger("example01")
 
-    logger.debug('This is debug message')
-    logger.info('This is info message')
-    logger.warning('This is warning message')
+logger.debug('This is debug message')
+logger.info('This is info message')
+logger.warning('This is warning message')
 ```
 上例4：
-```
-    import logging
-    import logging.config
+``` python
+import logging
+import logging.config
 
-    logging.config.fileConfig("logger.conf")
-    logger = logging.getLogger("example02")
+logging.config.fileConfig("logger.conf")
+logger = logging.getLogger("example02")
 
-    logger.debug('This is debug message')
-    logger.info('This is info message')
-    logger.warning('This is warning message')
+logger.debug('This is debug message')
+logger.info('This is info message')
+logger.warning('This is warning message')
 ```
 
 ## Reference Link
