@@ -29,7 +29,7 @@ sudo fdisk -l
 * 一个硬盘主分区至少有1个，最多4个，扩展分区可以没有，最多1个
 * 且主分区+扩展分区总共不能超过4个。逻辑分区可以有若干个
 * 分出主分区后，其余的部分可以分成扩展分区，一般是剩下的部分全部分成扩展分区，
-  也可以不全分，剩下的部分就浪费了。 
+  也可以不全分，剩下的部分就浪费了。
 * 扩展分区不能直接使用，必须分成若干逻辑分区。所有的逻辑分区都是扩展分区的一份
     * 逻辑分区的号码从5开始
 
@@ -153,3 +153,8 @@ sudo gizp -dc /mnt/psda1/xxx.img.gz | sudo dd of=/dev/sda
 e2fsck -f /dev/sdd2
 resize2fs /dev/sdd2
 ```
+
+### 终极备份还原
+
+https://item.congci.com/-/content/shu-mei-pai-raspberry-pi-sd-ka-xitong-jingxiang-beifen-haiyuan
+http://www.tyrantek.com/archives/508/

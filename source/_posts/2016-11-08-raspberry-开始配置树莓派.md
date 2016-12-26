@@ -1,6 +1,5 @@
 title: raspberry~开始配置树莓派
-date: 2016-11-08 22:43:40
-category: [Raspberry]
+date: 2016-11-08 22:43:category: [Raspberry]
 tags:
 description:
 ---
@@ -25,7 +24,7 @@ description:
 基本思路是：
 1.  下对应板子的系统，
     鉴于raspberry Pi官方的系统资源比较多，就选择直接安装它。不捣鼓其他的版本了
-2.  在Windows下，下载刷镜像的软件win32disk 
+2.  在Windows下，下载刷镜像的软件win32disk
 3.  然后一顿傻瓜操作。。。
 
 过几天，我把上回购买的树莓派1 B+拿出来按同样的思路捣鼓一下，变废为宝。
@@ -115,7 +114,7 @@ grep pi /etc/passwd /etc/group /etc/shadow
 
 ## 软件更新`sudo apt-get install update`
 
-google一下，修改软件源，不然更新太慢了。 
+google一下，修改软件源，不然更新太慢了。
 
 
 
