@@ -25,6 +25,8 @@ PYTHON很多好看的作图库，但是都是基于`matplotlib`进行开发封�
 
 #### 参考资源
 
+* [python开源代理池-七夜](http://www.cnblogs.com/qiyeboy/p/5693128.html)
+
 * [xlzd杂谈-很好的爬虫专栏](http://xlzd.me/tag/crawler/1/)
 * [Python入门网络爬虫之精华版-lining0806](https://github.com/lining0806/PythonSpiderNotes)
 * [拥有属于自己的Python爬虫框架--练习编写多线程、协程爬虫框架！](https://zhuanlan.zhihu.com/p/24469566)
