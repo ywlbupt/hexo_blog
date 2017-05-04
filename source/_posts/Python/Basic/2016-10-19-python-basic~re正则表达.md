@@ -130,15 +130,41 @@ config = note_sep.split("h1\nh2\nh3\n---\n###beging\n")
 * 当repl是一个方法时，这个方法应当只接受一个参数（Match对象），并返回一个字符串用于替换（返回的字符串中不能再引用分组）。
 * count用于指定最多替换次数，不指定时全部替换。 
 
-* 官网例子，将两个横杆替换成一个横杆，一个横杠替换成空格
-  ```python
-  >>> def dashrepl(matchobj):
-  ...     if matchobj.group(0) == '-': return ' '
-  ...     else: return '-'
-  >>> re.sub('-{1,2}', dashrepl, 'pro----gram-files')
-  'pro--gram files'
-  ```
+*   官网例子，将两个横杆替换成一个横杆，一个横杠替换成空格
+    ```python
+    >>> def dashrepl(matchobj):
+    ...     if matchobj.group(0) == '-': return ' '
+    ...     else: return '-'
+    >>> re.sub('-{1,2}', dashrepl, 'pro----gram-files')
+    'pro--gram files'
+    ```
+*   带参数的回调函数
+    ```python
+    # 替换时考虑大小写的同步替换
+    text = 'UPPER PYTHON, lower python, Mixed Python'
 
+    def matchcase(word):
+        def replace(m):
+            text = m.group(0)
+            if text.isupper():
+                return word.upper()
+            elif text.islower():
+                return word.lower()
+            elif text[0].isupper():
+                return word.capitalize()
+            else:
+                return word
+        return replace
+    sub_text = re.sub("python", matchcase("sneak"), text, flags=re.IGNORECASE)
+    print(sub_text)
+    # UPPER SNEAK, lower sneak, Mixed Sneak 
+    ```
+#### re.subn() 
+
+与`re.sub()`干一样的活，返回替换后的字符串与替换的数量的元组
+
+### Tips
+1.  
 ```python
 import re
  
@@ -156,11 +182,6 @@ print p.sub(func, s)
 # say i, world hello!
 # I Say, Hello World!
 ```
-
-
-#### re.subn() 
-
-与`re.sub()`干一样的活，返回替换后的字符串与替换的数量的元组
 
 ## 附录
  
