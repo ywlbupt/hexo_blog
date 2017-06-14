@@ -1,4 +1,4 @@
-title: git常见问题
+title: Git~常见问题
 date: 2016-01-15 00:05:09
 tags: git
 description: git常见问题的解决方法

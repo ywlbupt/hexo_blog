@@ -98,6 +98,19 @@ $ dmesg | grep -n --color=auto 'eth'
 # 同上,把关键字所在行的前两行和后三行也一起显示出来
 $ dmesg | grep -n -A3 -B2 --color=auto 'eth'
 ```
+##### 查找多个关键词
+
+1. 或操作
+``` bash
+grep -E '123|abc' filename  // 找出文件（filename）中包含123或者包含abc的行
+egrep '123|abc' filename    // 用egrep同样可以实现
+awk '/123|abc/' filename   // awk 的实现方式
+```
+
+2. 与操作
+``` bash
+grep pattern1 files | grep pattern2 //显示既匹配 pattern1 又匹配 pattern2 的行
+```
 
 #### 目录递归查找 ####
 

@@ -1,4 +1,4 @@
-title: ubuntu-pi-局域网与远程登录git配置
+title: ubuntu-raspberry~局域网与远程登录git配置
 date: 2017-05-02 22:36:22
 category:
 tags:
@@ -32,4 +32,6 @@ git remote add pi ssh://git@lopb3:34570/home/git/Vim_ywl.git
 #### 如果是在外网配置
 
 参考公司电脑，通过putty登录，花生壳等等
-
+```
+git remote add pi ssh://git@ywlbupt.nat123.net:15842/home/git/Vim_ywl.git
+```

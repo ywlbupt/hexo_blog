@@ -22,7 +22,7 @@ py 2.2 后继承 object 的目的是使这个类成为 new style class,
 
 在3.x里object已经做为所有东西的基类了
 
-![img python object and type](./images/python/python-object-type.png  "opt title")
+![img python object and type](/hexo_blog/images/python/python-object-type.png)
  
 * 在Python 3.0中，用户定义的类对象是名为type的对象的实例，type本身是一个类
 * 在Python 2.6中，
@@ -285,5 +285,4 @@ bacon Apple
 每一个类的对象共用一个PyTypeObject对象（所以用的指针）。
 
 在python中只要有引用计数（一个long的整型），指向PyTypeObject的指针就可以成为类。
-
 

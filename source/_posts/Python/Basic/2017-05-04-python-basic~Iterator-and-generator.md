@@ -1,6 +1,6 @@
-title: python-basic-Iterator_and_generator
+title: python-basic~Iterator_and_generator迭代器与生成器
 date: 2017-05-04 08:56:11
-category: [Iterator]
+category: [Iterator, Generator]
 tags:
 description:
 ---

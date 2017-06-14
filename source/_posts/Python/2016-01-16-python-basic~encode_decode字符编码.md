@@ -1,4 +1,4 @@
-title: python-字符编码
+title: python-basic~encode_decode字符编码
 date: 2016-01-16 12:26:38
 tags: python
 description:

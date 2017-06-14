@@ -1,4 +1,4 @@
-title: raspberry~开始配置树莓派
+title: ubuntu-raspberry~开始配置树莓派
 date: 2016-11-08 22:43:25
 category: [Raspberry]
 tags:

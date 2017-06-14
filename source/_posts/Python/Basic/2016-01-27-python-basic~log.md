@@ -1,4 +1,4 @@
-title: python-loging调试监控
+title: python-basic~loging调试监控
 date: 2016-01-21 23:55:37
 category: [Python,Python_Basic]
 tags: python

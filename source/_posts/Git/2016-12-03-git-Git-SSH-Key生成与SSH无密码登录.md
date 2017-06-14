@@ -1,4 +1,4 @@
-title: git~Git_SSH_Key生成与SSH无密码登录
+title: Git~Git_SSH_Key生成与SSH无密码登录
 date: 2016-12-03 11:00:19
 category: [Git]
 tags:

@@ -1,4 +1,4 @@
-title: vimscript-常用技巧
+title: vim~vimscript-常用技巧
 date: 2016-09-20 22:50:59
 categories: [Vim]
 tags:

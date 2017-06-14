@@ -1,4 +1,4 @@
-title: python-common-issue
+title: python~common-issue常见问题
 date: 2016-01-16 00:54:11
 category: [Python]
 tags: 
@@ -71,3 +71,11 @@ for comment in comments:
   e = re.match(r'<i>([^<]*)</i>', comment.string).group(1)
     print(e)
 ```
+
+### python中版本号的判断
+
+```
+import sys
+print(sys.version_info)
+```
+

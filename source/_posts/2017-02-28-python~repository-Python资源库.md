@@ -1,4 +1,4 @@
-title: Coders-repository
+title: python~repository-Python资源库
 date: 2017-02-28 07:43:36
 category:
 tags:
@@ -16,6 +16,8 @@ description:
 3. [PEP 8 -- Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/)
 
 ### 分类库
+
+[知乎，python资源库-哪些Python库让你相见恨晚？](https://www.zhihu.com/question/24590883)
 
 #### 数据可视化
 

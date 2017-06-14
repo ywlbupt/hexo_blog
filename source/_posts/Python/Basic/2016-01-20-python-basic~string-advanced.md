@@ -1,4 +1,4 @@
-title: python-字符串的进阶
+title: python-basic~string-字符串的进阶
 date: 2016-01-20 09:21:05
 tags: python
 ----

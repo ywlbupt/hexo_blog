@@ -1,4 +1,4 @@
-title: python-http
+title: python-lib~http(urlib)基础用法
 date: 2016-01-16 16:18:05
 tags: python
 description:

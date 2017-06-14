@@ -1,4 +1,4 @@
-title: hexo-jacman-多级目录的具体实现
+title: hexo~jacman-多级目录的具体实现
 date: 2016-08-15 23:18:21
 category: [Markdown,Hexo]
 tags: 
