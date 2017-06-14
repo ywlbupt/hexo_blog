@@ -14,6 +14,7 @@ description:
 参考链接
 * [grep-查找字符串-GNU官方指导](https://www.gnu.org/software/grep/manual/grep.html)
 * [find-查找文件-GNU官方指导](https://www.gnu.org/software/findutils/manual/html_mono/find.html)
+* [官方GNUWIN32下载地址-sourceforge](https://sourceforge.net/projects/gnuwin32/files/)
 * `$ man grep`
 
 ### Command Line ###

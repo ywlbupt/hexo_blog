@@ -79,3 +79,7 @@ import sys
 print(sys.version_info)
 ```
 
+### Python的依赖安装requirements.txt
+
+
+
