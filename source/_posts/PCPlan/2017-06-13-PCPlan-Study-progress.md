@@ -6,6 +6,10 @@ description:
 ---
 [Toc]
 
+## 2017-06-15
+
+
+
 ## 2017-06-14
 
 在XM处理IP代理爬虫池ing，然后就之前遗留的坑一顿猛填
@@ -31,3 +35,10 @@ description:
 ### 爬虫的代理池
 
 1. [Python爬虫代理IP池实现方法-flask,python](https://github.com/jhao104/proxy_pool)
+
+### ToBeUnderstand
+
+1. [ ] python类属性的延迟计算，类装饰器的原理
+2. [ ] import sys; reload(sys)作用？
+3. [ ] python 2/3 包的相对导入，以及import，from的区别
+4. [ ] attempted relative import beyond top-level packag
