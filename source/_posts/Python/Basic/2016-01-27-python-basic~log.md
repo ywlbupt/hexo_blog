@@ -179,5 +179,31 @@ logger.info('This is info message')
 logger.warning('This is warning message')
 ```
 
+## Lib
+
+### logging.getLogger(name=None)
+
+* return a logger with the specified name
+* 如果name为None，则返回root logger
+* Multiple calls to getLogger() with the same name will always return a reference to the same Logger object
+  name 相同，返回的是同一个logger object
+* 在modual内，推荐使用`logging.getLogger(__name__)`，在命名空间中，`__name__`返回modual name
+* given a logger with a name of `foo`, loggers with names of `foo.bar`, `foo.bar.baz`, and `foo.bam` are all descendants of `foo`
+  Logger name 本身也同python package包一样，具有层次
+
+### Handler object
+
+先定义handler(FileHandler, StreamHandler)，然后通过logger.addHandler()将Handle加进去
+
+### logging.Formatter
+
+logging.Formatter模块定义打印格式
+
+* 通过 Handler.setFormatter(formatter)加入handler中
+* 也可通过`logging.basicConfig`加入basic config中，作用域为`root logger`
+
+* class logging.Formatter(fmt=None, datefmt=None, style='%')
+    If no fmt is specified, '%(message)s' is used. If no datefmt is specified, the ISO8601 date format is used.
+
 ## Reference Link
 1. [调试-廖雪峰](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431915578556ad30ab3933ae4e82a03ee2e9a4f70871000)
