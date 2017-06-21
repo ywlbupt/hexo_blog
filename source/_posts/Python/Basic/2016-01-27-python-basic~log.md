@@ -58,7 +58,7 @@ logging的另一个好处是通过简单的配置，一条语句可以同时输�
     # 设置日志打印格式，%(name)-12s 表示12个字符空间，左对齐；%(lineno)3d 表示3个字符空间，右对齐
     formatter = logging.Formatter('%(name)-12s[line:%(lineno)3d]:%(levelname)-8s %(message)s')
     console.setFormatter(formatter)
-    # 将定义好的console日志handler添加到root logger
+    # 将定义好的console日志handler添加到root logger，getLogger("")返回root Logger
     logging.getLogger('').addHandler(console)
     
     logging.info('Jackdaws love my big sphinx of quartz.')
