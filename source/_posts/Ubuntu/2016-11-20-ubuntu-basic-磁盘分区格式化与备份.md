@@ -43,6 +43,25 @@ sudo fdisk -l
 
 一块磁盘的空间大小计算方式为：这块磁盘的总的磁头数量（Heads）*512bytes（因为每个磁头数量为512字节）
 
+#### 查看实际空间大小
+
+```
+df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+udev            1.9G  4.0K  1.9G   1% /dev
+tmpfs           387M  1.3M  385M   1% /run
+/dev/sda5        46G   23G   21G  54% /
+none            4.0K     0  4.0K   0% /sys/fs/cgroup
+none            5.0M     0  5.0M   0% /run/lock
+none            1.9G   88M  1.9G   5% /run/shm
+none            100M   40K  100M   1% /run/user
+/dev/sdd1        63M   21M   43M  33% /media/ywl/boot
+/dev/sdd2        29G  6.0G   22G  22% /media/ywl/402bfe3d-37db-48a7-a515-31edccf953df
+/dev/sdb1       157G   91G   66G  59% /media/ywl/8A1086D11086C3A3
+
+```
+
 ### Example
 
 如下图，存在一个主分区`sda1`，一个拓展分区Extend`sda2`，以及一个逻辑分区`sda5`
@@ -153,6 +172,9 @@ sudo gizp -dc /mnt/psda1/xxx.img.gz | sudo dd of=/dev/sda
 e2fsck -f /dev/sdd2
 resize2fs /dev/sdd2
 ```
+#### 通过 PI 实现
+
+在启动树莓派时，执行raspi-config ->Expand Filesystem 即可扩展未使用的空间
 
 ### 终极备份还原
 
