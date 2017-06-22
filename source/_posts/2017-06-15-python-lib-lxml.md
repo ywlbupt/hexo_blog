@@ -1,10 +1,19 @@
-title: python-lib~lxml解析HTML xpath
+title: python-lib~lxml解析HTML,xpath
 date: 2017-06-15 15:12:17
 category:
 tags:
 description:
 ---
 [Toc]
+
+## xpath
+
+### 参考文档
+
+1. [W3Schools XPath Tutorial](http://www.w3schools.com/xsl/xpath_intro.asp)
+2. [XML Path Language (XPath) Recommemdation](https://www.w3.org/TR/xpath/)
+3. [XPath Tutorial - with interactive examples.](http://www.zvon.org/comp/r/tut-XPath_1.html)
+
 
 ## python-lxml解析xpath
 

@@ -18,92 +18,9 @@ description:
 
 **概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能。**
 
-## 类装饰器
+1. 函数装饰器可以用来管理函数调用与函数对象。
+2. 类装饰器可以用来管理类实例和类对象。
 
-1. [Python编写类装饰器](http://blog.csdn.net/gavin_john/article/details/50923988)
-
-### 类装饰器实现类实例的管理
-
-由于类装饰器可以**拦截实例创建调用，所以它们可以用来管理一个类的所有实例**，或者扩展这些实例的接口。
-下面的类装饰器实现了传统的单体编码模式，即最多只有一个类的一个实例存在。
-
-``` python
-instances = {} # 全局变量，管理实例
-def getInstance(aClass, *args):
-    if aClass not in instances:
-        instances[aClass] = aClass(*args)
-    return instances[aClass]     #每一个类只能存在一个实例
-
-def singleton(aClass):
-    def onCall(*args):
-        return getInstance(aClass,*args)
-    return onCall
-```
-
-为了使用它，装饰用来强化单体模型的类：
-``` python
-@singleton        # Person = singleton(Person)
-class Person:
-    def __init__(self,name,hours,rate):
-        self.name = name
-        self.hours = hours
-        self.rate = rate
-    def pay(self):
-        return self.hours * self.rate
- 
-@singleton        # Spam = singleton(Spam)
-class Spam:
-    def __init__(self,val):
-        self.attr = val
-
-bob = Person('Bob',40,10)
-print(bob.name,bob.pay())
-
-sue = Person('Sue',50,20)
-print(sue.name,sue.pay())
-
-X = Spam(42)
-Y = Spam(99)
-print(X.attr,Y.attr)
-```
-
-现在，当`Person`或`Spam`类稍后用来创建一个实例的时候，
-装饰器提供的包装逻辑层把实例构建调用指向了onCall，
-它反过来调用getInstance，以针对每个类管理并分享一个单个实例，而不管进行了多少次构建调用。
-
-程序输出如下：
-``` bash
-Bob 400
-Bob 400
-42 42
-```
-
-在这里，我们使用全局的字典`instances`来保存实例，还有一个更好的解决方案就是
-
-使用Python3中的`nonlocal`关键字，它可以为每个类提供一个封闭的作用域，如下：
-
-``` python
-def singleton(aClass):
-    instance = None
-    def onCall(*args):
-        nonlocal instance
-        if instance == None:
-            instance = aClass(*args)
-        return instance
-    return onCall
-```
-
-当然，我们也可以用类来编写这个装饰器——如下代码对每个类使用一个实例，而不是使用一个封闭作用域或全局表：
-``` python
-class singleton:
-    def __init__(self,aClass):
-        self.aClass = aClass
-        self.instance = None
-    def __call__(self,*args):
-        if self.instance == None:
-            self.instance = self.aClass(*args)
-        return self.instance
-```
 
 ## From Zhihu
 
@@ -237,28 +154,9 @@ foo()
 
 当我们使用`@use_logging(level="warn")`调用的时候，Python能够发现这一层的封装，并把参数传递到装饰器的环境中。
 
-### 类装饰器
+### 函数装饰器装饰类方法 method decorator
 
-再来看看类装饰器，相比函数装饰器，类装饰器具有灵活度大、高内聚、封装性等优点。使用类装饰器还可以依靠类内部的`__call__`方法，当使用 @ 形式将装饰器附加到函数上时，就会调用此方法。
-
-``` python
-class Foo(object):
-	def __init__(self, func):
-		self._func = func
-
-	def __call__(self):
-		print ('class decorator runing')
-		self._func()
-		print ('class decorator ending')
-
-@Foo
-def bar():
-	print ('bar')
-
-bar()
-```
-
-#### 装饰类方法 method decorator
+装饰类方法，本质上与函数装饰器一致
 
 ``` python
 def method_friendly_decorator(method_to_decorate):
@@ -349,7 +247,158 @@ m.sayYourAge()
 #{}
 #I am 28, what did you think?
 ```
-#### functools.wraps
+
+### 装饰器的顺序
+``` Python
+@a
+@b
+@c
+def f ():
+```
+等效于
+``` python
+f = a(b(c(f)))
+```
+
+## 类装饰器
+
+### 类装饰器装饰函数
+1. [Python编写类装饰器](http://blog.csdn.net/gavin_john/article/details/50923988)
+
+再来看看类装饰器，相比函数装饰器，类装饰器具有灵活度大、高内聚、封装性等优点。
+
+使用类装饰器还可以依靠类内部的`__call__`方法，
+
+1. 当使用`@`形式将装饰器附加到函数定义上时，就会调用类装饰器的`__init__`方法初始化，
+2. 每一次对该函数的调用，都会调用类的`__call__`方法。
+
+``` python
+class Foo(object):
+	def __init__(self, func):
+		self._func = func
+        print("class init")
+
+	def __call__(self):
+		print ('class decorator runing')
+		self._func()
+		print ('class decorator ending')
+
+@Foo
+def bar():
+	print ('bar')
+
+bar()
+```
+output
+```
+class init
+class decorator runing
+bar
+class decorator ending
+```
+如果将上面代码中的`bar()`注释掉，输出结果只剩下一个`class init`
+
+### 类装饰器装饰类
+
+在语法上，假设装饰器返回一个可调用对象的单参数的函数，类装饰器语法
+```
+@decorator
+class C:
+    ...
+
+x= C(99)
+```
+等同于下面语法
+```
+x=decorator(C)(99)
+```
+直接效果就是，随后**每次一次调用类名创建一个实例**，会触发装饰器返回可调用对象，而不是调用最初的类本身
+
+### 类装饰器实现类实例的管理
+
+由于类装饰器可以**拦截实例创建调用，所以它们可以用来管理一个类的所有实例**，或者扩展这些实例的接口。
+下面的类装饰器实现了传统的单体编码模式，即最多只有一个类的一个实例存在。
+
+``` python
+instances = {} # 全局变量，管理实例
+def getInstance(aClass, *args):
+    if aClass not in instances:
+        instances[aClass] = aClass(*args)
+    return instances[aClass]     #每一个类只能存在一个实例
+
+def singleton(aClass):
+    def onCall(*args):
+        return getInstance(aClass,*args)
+    return onCall
+```
+
+为了使用它，装饰用来强化单体模型的类：
+``` python
+@singleton        # Person = singleton(Person)
+class Person:
+    def __init__(self,name,hours,rate):
+        self.name = name
+        self.hours = hours
+        self.rate = rate
+    def pay(self):
+        return self.hours * self.rate
+ 
+@singleton        # Spam = singleton(Spam)
+class Spam:
+    def __init__(self,val):
+        self.attr = val
+
+bob = Person('Bob',40,10)
+print(bob.name,bob.pay())
+
+sue = Person('Sue',50,20)
+print(sue.name,sue.pay())
+
+X = Spam(42)
+Y = Spam(99)
+print(X.attr,Y.attr)
+```
+
+现在，当`Person`或`Spam`类稍后用来创建一个实例的时候，
+装饰器提供的包装逻辑层把实例构建调用指向了onCall，
+它反过来调用getInstance，以针对每个类管理并分享一个单个实例，而不管进行了多少次构建调用。
+
+程序输出如下：
+``` bash
+Bob 400
+Bob 400
+42 42
+```
+
+在这里，我们使用全局的字典`instances`来保存实例，还有一个更好的解决方案就是
+
+使用Python3中的`nonlocal`关键字，它可以为每个类提供一个封闭的作用域，如下：
+
+``` python
+def singleton(aClass):
+    instance = None
+    def onCall(*args):
+        nonlocal instance
+        if instance == None:
+            instance = aClass(*args)
+        return instance
+    return onCall
+```
+
+当然，我们也可以用类来编写这个装饰器——如下代码对每个类使用一个实例，而不是使用一个封闭作用域或全局表：
+``` python
+class singleton:
+    def __init__(self,aClass):
+        self.aClass = aClass
+        self.instance = None
+    def __call__(self,*args):
+        if self.instance == None:
+            self.instance = self.aClass(*args)
+        return self.instance
+```
+
+
+### functools.wraps
 
 使用装饰器极大地复用了代码，但是他有一个缺点就是原函数的元信息不见了，比如函数的`docstring、__name__、参数列表`，先看例子：
 
@@ -407,20 +456,6 @@ print f.__name__  # prints 'f'
 print f.__doc__   # prints 'does some math'
 ```
 
-### 内置装饰器 @staticmathod、@classmethod、@property
-
-### 装饰器的顺序
-``` Python
-@a
-@b
-@c
-def f ():
-```
-等效于
-``` python
-f = a(b(c(f)))
-```
-
 ## how can the decorator be useful
 
 使用decorator打log，timer是个不错的选择
@@ -449,7 +484,6 @@ def logging(func):
         print("{0} {1} {2}".format(func.__name__, args, kwargs))
         return res
     return wrapper
-
 
 def counter(func):
     """

@@ -22,76 +22,85 @@ description:
 例如，有一个文件1.txt，他的内容是两个数字，使用逗号隔开。形如“2,4”（不包括外侧双引号，下同）。我要写一个程序readandadd.py，读取硬盘上的1.txt文件，然后把这个文件的内容打印到屏幕上。
 
 不规范的写法一：
+```python
+f= open('1.txt','r')
+b = f.read().split(',')
+f.close()
+print int(b[0])+int(b[1])
+```
 
+不规范写法二：
+``` python
+def A():
     f= open('1.txt','r')
     b = f.read().split(',')
     f.close()
     print int(b[0])+int(b[1])
-不规范写法二：
-
-    def A():
-        f= open('1.txt','r')
-        b = f.read().split(',')
-        f.close()
-        print int(b[0])+int(b[1])
-    A()
+A()
+```
 比较规范的写法：
+``` python
+def read(filename):
+    f= open(filename,'r')
+    info = f.read()
+    f.close()
+    return info
 
-    def read(filename):
-        f= open(filename,'r')
-        info = f.read()
-        f.close()
-        return info
+def getnum(info):
+    twonum = info.split(',')
+    return twonum
 
-    def getnum(info):
-        twonum = info.split(',')
-        return twonum
+def addnum(twonum):
+    return int(twonum[0])+int(twonum[1])
 
-    def addnum(twonum):
-        return int(twonum[0])+int(twonum[1])
+if __name__ == '__main__':
+        info = read('1.txt')
+        twonum = getnum(info)
+        result = addnum(twonum)
+        print result
+```
 
-    if __name__ == '__main__':
-            info = read('1.txt')
-            twonum = getnum(info)
-            result = addnum(twonum)
-            print result
 这样写的好处是，如果想测试读文件的功能，就只需要测试read()函数，如果想测试把两个数分开的功能，就只需要测试getnum()函数。而相反，在不规范写法二中，虽然只想测试两个数字相加的功能，可是却不得不首先打开文件并读取文件然后把数字分开。
 
 继续回到比较规范的写法当中，我相信很多人写完read()函数以后，肯定会输入如下代码：
+```python
+def read(filename):
+    f= open(filename,'r')
+    info = f.read()
+    f.close()
+    return info
 
-    def read(filename):
-        f= open(filename,'r')
-        info = f.read()
-        f.close()
-        return info
+print read('1.txt')
+```
 
-    print read('1.txt')
 然后运行程序，发现正常打印出'2,3'以后，再开始写getnum()函数。写完getnum以后，测试getnum()函数没问题以后再开始写然后测试addnum()函数。最后测试整个程序的功能。
 
 其实这个过程，已经就是在做单元测试了。然而这样操作的弊端是什么？如果整体程序已经写好了，之前做测试点代码也就删除了。那么如果突然把程序做了修改。例如1.txt里面数字的分隔从1个逗号变成了空格，或者变成了3个数字，那必然要修改getnum()，但是又如何测试修改的部分呢？还要把不相干的代码给注释掉。不仅麻烦，而且容易出错。
 
 现在，把测试的代码单独独立出来。会有什么效果呢？尝试创建一个test.py程序，代码如下：
+```python
+import readandadd
 
-    import readandadd
+def testread():
+    print 'read:',readandadd.read('1.txt')
 
-    def testread():
-        print 'read:',readandadd.read('1.txt')
+def testgetnum():
+    print 'getnum:',readandadd.getnum('2,3')
 
-    def testgetnum():
-        print 'getnum:',readandadd.getnum('2,3')
+def testaddnum():
+    print 'addnum:',readandadd.addnum([2,3])
 
-    def testaddnum():
-        print 'addnum:',readandadd.addnum([2,3])
-
-    if __name__ == '__main__':
-        testread()
-        testgetnum()
-        testaddnum()
+if __name__ == '__main__':
+    testread()
+    testgetnum()
+    testaddnum()
+```
 运行test.py以后输出结果如下：
-
-    read: 2,3
-    getnum: ['2', '3']
-    addnum: 5
+```python
+read: 2,3
+getnum: ['2', '3']
+addnum: 5
+```
 每一个函数的输出结果一目了然，而且在修改了readandadd.py的函数以后，重新运行test.py就可以知道输出结果有没有符合预期。
 
 当然，这里这个例子非常的简单，因此可以人工通过观察test.py的输出结果来确定是否符合预期，那对于大量的函数的测试，难道也要让肉眼来看吗？当然不是。于是，下一篇文章将会介绍Python的单元测试`unittest`。
@@ -102,20 +111,23 @@ description:
 
 当然你可以使用if判断
 
-    if 输出结果 == 预期结果:
+```python
+if 输出结果 == 预期结果:
+    return True
+else:
+    print u'不相等'
+```
+这个时候，你发现，程序有几个函数，后三行就要重复几次，本着代码简洁的原则，你把这个判断的过程写到一个函数中：
+```python
+def isequal(output,right_output):
+    if output == right_output:
         return True
     else:
         print u'不相等'
-这个时候，你发现，程序有几个函数，后三行就要重复几次，本着代码简洁的原则，你把这个判断的过程写到一个函数中：
-
-    def isequal(output,right_output):
-        if output == right_output:
-            return True
-        else:
-            print u'不相等'
+```
 那么恭喜你，你步入正规了，然而，这一切已经有人为你做好了。欢迎unittest模块出场。
 
-unittest supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework. The unittest module provides classes that make it easy to support these qualities for a set of tests.
+>> unittest supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework. The unittest module provides classes that make it easy to support these qualities for a set of tests.
 
 Python的官方文档这样写到，unittest支持自动化测试，测试的安装分享和关闭代码……
 
@@ -125,108 +137,128 @@ Python的官方文档这样写到，unittest支持自动化测试，测试的安
 
 先创建utest.py文件，输入以下代码并运行：
 
-    #-*-coding:utf-8-*-
-    import unittest
-    import readandadd
+```python
+#-*-coding:utf-8-*-
+import unittest
+import readandadd
 
-    class basictest(unittest.TestCase): #类名可以随便取
-        def testread(self): #每个函数都要以test开头
-            output = readandadd.read('1.txt')
-            self.assertEqual(output,'2,3')
+class basictest(unittest.TestCase): #类名可以随便取
+    def testread(self): #每个函数都要以test开头
+        output = readandadd.read('1.txt')
+        self.assertEqual(output,'2,3')
 
-        def testgetnum(self):
-            output = readandadd.getnum('2,3')
-            self.assertEqual(output,['2', '3'])
+    def testgetnum(self):
+        output = readandadd.getnum('2,3')
+        self.assertEqual(output,['2', '3'])
 
-        def testaddnum(self):
-            output = readandadd.addnum([2,3])
-            self.assertEqual(output,5)
+    def testaddnum(self):
+        output = readandadd.addnum([2,3])
+        self.assertEqual(output,5)
 
-    if __name__ == '__main__':
-        unittest.main()
+if __name__ == '__main__':
+    unittest.main()
+```
 运行结果如下：
 
-    ...
-    ----------------------------------------------------------------------
-    Ran 3 tests in 0.001s
+```python
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
 
-    OK
+OK
+```
 你也许会说，就一个ok，什么都没有啊。那我先把testread()函数下面的
+```python
+self.assertEqual(output,'2,3')
+```
 
-    self.assertEqual(output,'2,3')
 改为
+```python
+self.assertEqual(output,'2,4')
+```
 
-    self.assertEqual(output,'2,4')
 在运行utest.py看看输出结果如何：
 
-    ..F
-    ======================================================================
-    FAIL: testread (__main__.basictest)
-    ----------------------------------------------------------------------
-    Traceback (most recent call last):
-      File "E:/mystuff/unitest/utest.py", line 8, in testread
-        self.assertEqual(output,'2,4')
-    AssertionError: '2,3' != '2,4'
+```python
+..F
+======================================================================
+FAIL: testread (__main__.basictest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+    File "E:/mystuff/unitest/utest.py", line 8, in testread
+    self.assertEqual(output,'2,4')
+AssertionError: '2,3' != '2,4'
 
-    ----------------------------------------------------------------------
-    Ran 3 tests in 0.000s
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
 
-    FAILED (failures=1)
+FAILED (failures=1)
+```
+
 这里准确的找出了错误的位置和错误的具体内容。注意看最上面，有个
 
     ..F
 猜测它可能是标示错误的位置。保持testread的错误不改，再把testgetnum()函数中的以下内容
 
-    self.assertEqual(output,['2', '3'])
-改为
+```python
+self.assertEqual(output,['2', '3'])
+```
 
-    self.assertEqual(output,['2', '6'])
+改为
+```python
+self.assertEqual(output,['2', '6'])
+```
 再运行utest.py程序，输出结果如下：
 
-    .FF
-    ======================================================================
-    FAIL: testgetnum (__main__.basictest)
-    ----------------------------------------------------------------------
-    Traceback (most recent call last):
-      File "E:/mystuff/unitest/utest.py", line 12, in testgetnum
-        self.assertEqual(output,['2', '6'])
-    AssertionError: Lists differ: ['2', '3'] != ['2', '6']
-
-    First differing element 1:
-    3
-    6
-
-    - ['2', '3']
-    ?        ^
-
-    + ['2', '6']
-    ?        ^
-
-
-    ======================================================================
-    FAIL: testread (__main__.basictest)
-    ----------------------------------------------------------------------
-    Traceback (most recent call last):
-      File "E:/mystuff/unitest/utest.py", line 8, in testread
-        self.assertEqual(output,'2,4')
-    AssertionError: '2,3' != '2,4'
-
-    ----------------------------------------------------------------------
-    Ran 3 tests in 0.001s
-
-    FAILED (failures=2)
-可以看出，这里分别把两个错误显示了出来。并且第一行变成了
-
+```python
 .FF
+======================================================================
+FAIL: testgetnum (__main__.basictest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+    File "E:/mystuff/unitest/utest.py", line 12, in testgetnum
+    self.assertEqual(output,['2', '6'])
+AssertionError: Lists differ: ['2', '3'] != ['2', '6']
+
+First differing element 1:
+3
+6
+
+- ['2', '3']
+?        ^
+
++ ['2', '6']
+?        ^
+
+
+======================================================================
+FAIL: testread (__main__.basictest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+    File "E:/mystuff/unitest/utest.py", line 8, in testread
+    self.assertEqual(output,'2,4')
+AssertionError: '2,3' != '2,4'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=2)
+```
+可以看出，这里分别把两个错误显示了出来。并且第一行变成了
+```python
+.FF
+```
 所以，第一行的内容应该从右往左读，它标明错误函数在所有函数的相对位置。
 
 现在再把testread()和testgetnum()改回去，再看看全部正确的输出：
 
-    ...
-    ----------------------------------------------------------------------
-    Ran 3 tests in 0.000s
+```python
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
 
-    OK
+OK
+```
 印证了那句话，没有消息就是最好的消息。
 
 这篇文章介绍了单元测试模块unittest的assertEqual的基本用法
