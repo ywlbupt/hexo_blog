@@ -154,6 +154,8 @@ foo()
 
 当我们使用`@use_logging(level="warn")`调用的时候，Python能够发现这一层的封装，并把参数传递到装饰器的环境中。
 
+另：
+
 ### 函数装饰器装饰类方法 method decorator
 
 装饰类方法，本质上与函数装饰器一致
