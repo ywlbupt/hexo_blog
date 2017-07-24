@@ -10,7 +10,7 @@ description:
 
 买的是树莓派3 B，自带WiFi，蓝牙
 
-## 刷系统
+### 刷系统
 
 1. [官方quick start, noobs](https://www.raspberrypi.org/learning/software-guide/quickstart/)
     * `noobs` offline and network install
@@ -30,7 +30,7 @@ description:
 
 过几天，我把上回购买的树莓派1 B+拿出来按同样的思路捣鼓一下，变废为宝。
 
-## 启用root账户
+### 启用root账户
 
 树莓派使用的linux是debian系统，所以树莓派启用root和debian是相同的。
 
@@ -55,7 +55,7 @@ sudo passwd --unlock root
 当从root用户切换到pi用户后，我们再次使用`su passwd root`来修改密码，会报错
 
 
-## SSH 登录
+### SSH 登录
 
 对于树莓派3，默认开启SSH服务。（如果树莓派1不开启，就接上显示屏打开配置）
 
@@ -99,7 +99,7 @@ $ ssh pi@<ip address>
 ```
 用户名为`pi`，密码默认为`raspberry`
 
-## 修改树莓派hostname
+### 修改树莓派hostname
 
 1.  修改主机名，`sudo vim /etc/hostname`
     修改成想要的主机名字
@@ -107,20 +107,20 @@ $ ssh pi@<ip address>
     替换原先所有的主机名
 3.  重启设备，生效
 
-## 查看用户与用户组信息
+### 查看用户与用户组信息
 
 ``` bash
 grep pi /etc/passwd /etc/group /etc/shadow
 ```
 
-## 软件更新`sudo apt-get install update`
+### 软件更新`sudo apt-get install update`
 
 google一下，修改软件源，不然更新太慢了。
 
 
 
 
-## 安装`Tmux`
+### 安装`Tmux`
 
 试过未更新软件包，直接安装`tmux`，会提示找不到包`tmux`
 
@@ -130,7 +130,7 @@ $ sudo apt-get install tmux
 
 然后将`~/.tmux.conf`(该文件从`Vim_ywl`git库中找)里面的内容拷贝到Raspberry相应的文件中。(拷贝前，可以先安装xclip，利用系统剪贴板方便操作)
 
-## 安装中文输入法-谷歌
+### 安装中文输入法-谷歌
 
 ```bash
 $ sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin
@@ -139,7 +139,7 @@ $ sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-s
 
 重启后，需打开`fcitx`配置界面，将Google pinyin添加到输入法选项中。
 
-## 安装Vim
+### 安装Vim
 
 安装`Ctags`
 ```bash

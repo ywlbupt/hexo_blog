@@ -157,7 +157,7 @@ fdisk，mkfs格式化SD卡后，同样使用 `dd` 系统还原
 
 将gzip压缩的文件还原到SD中，(可在PC，Ubuntu下操作）
 ``` bash
-sudo gizp -dc /mnt/psda1/xxx.img.gz | sudo dd of=/dev/sda
+sudo gzip -dc /mnt/psda1/xxx.img.gz | sudo dd of=/dev/sda
 ```
 
 ### 动态调整分区大小
