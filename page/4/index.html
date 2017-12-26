@@ -79,119 +79,6 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#刷系统"><span class="toc-number">1.</span> <span class="toc-text">刷系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用root账户"><span class="toc-number">2.</span> <span class="toc-text">启用root账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-登录"><span class="toc-number">3.</span> <span class="toc-text">SSH 登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改树莓派hostname"><span class="toc-number">4.</span> <span class="toc-text">修改树莓派hostname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户与用户组信息"><span class="toc-number">5.</span> <span class="toc-text">查看用户与用户组信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件更新sudo-apt-get-install-update"><span class="toc-number">6.</span> <span class="toc-text">软件更新sudo apt-get install update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Tmux"><span class="toc-number">7.</span> <span class="toc-text">安装Tmux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装中文输入法-谷歌"><span class="toc-number">8.</span> <span class="toc-text">安装中文输入法-谷歌</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Vim"><span class="toc-number">9.</span> <span class="toc-text">安装Vim</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-11-08T14:43:25.000Z"><a href="/hexo_blog/2016/11/08/Ubuntu-2016-11-08-ubuntu-raspberry-开始配置树莓派/">2016-11-08</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/11/08/Ubuntu-2016-11-08-ubuntu-raspberry-开始配置树莓派/">ubuntu-raspberry~开始配置树莓派</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#刷系统"><span class="toc-number">1.</span> <span class="toc-text">刷系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用root账户"><span class="toc-number">2.</span> <span class="toc-text">启用root账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-登录"><span class="toc-number">3.</span> <span class="toc-text">SSH 登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改树莓派hostname"><span class="toc-number">4.</span> <span class="toc-text">修改树莓派hostname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户与用户组信息"><span class="toc-number">5.</span> <span class="toc-text">查看用户与用户组信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件更新sudo-apt-get-install-update"><span class="toc-number">6.</span> <span class="toc-text">软件更新sudo apt-get install update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Tmux"><span class="toc-number">7.</span> <span class="toc-text">安装Tmux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装中文输入法-谷歌"><span class="toc-number">8.</span> <span class="toc-text">安装中文输入法-谷歌</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Vim"><span class="toc-number">9.</span> <span class="toc-text">安装Vim</span></a></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<ul>
-<li><a href="http://elinux.org/RPi_Easy_SD_Card_Setup" target="_blank" rel="external">比较权威的官方指导</a></li>
-</ul>
-<p>买的是树莓派3 B，自带WiFi，蓝牙</p>
-<h3 id="刷系统"><a href="#刷系统" class="headerlink" title="刷系统"></a>刷系统</h3><ol>
-<li><a href="https://www.raspberrypi.org/learning/software-guide/quickstart/" target="_blank" rel="external">官方quick start, noobs</a><ul>
-<li><code>noobs</code> offline and network install</li>
-<li><code>etcher.io</code> 烧写image文件</li>
-<li><code>formatter</code> 格式化SD卡</li>
-</ul>
-</li>
-</ol>
-<p>为了避免无畏的工作，我直接购买了系统卡，以便快速上手。</p>
-<p>在公司简单尝试了下刷系统，如果是在Windows下，其实还挺简单的。</p>
-<p>基本思路是：</p>
-<ol>
-<li>下对应板子的系统，<br>鉴于raspberry Pi官方的系统资源比较多，就选择直接安装它。不捣鼓其他的版本了</li>
-<li>在Windows下，下载刷镜像的软件win32disk</li>
-<li>然后一顿傻瓜操作。。。</li>
-</ol>
-<p>过几天，我把上回购买的树莓派1 B+拿出来按同样的思路捣鼓一下，变废为宝。</p>
-<h3 id="启用root账户"><a href="#启用root账户" class="headerlink" title="启用root账户"></a>启用root账户</h3><p>树莓派使用的linux是debian系统，所以树莓派启用root和debian是相同的。</p>
-<p>debian里root账户默认没有密码，但账户锁定。</p>
-<p>当需要root权限时，由默认账户经由sudo执行，Raspberry pi 系统中的Raspbian</p>
-<p><strong>默认用户是pi 密码为raspberry</strong></p>
-<p>重新开启root账号，可由pi用户登录后，在命令行下执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
-<p>执行此命令后系统会提示输入两遍的root密码，输入你想设的密码即可，然后在执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo passwd --unlock root</div></pre></td></tr></table></figure>
-<p>这样就可以解锁root账户了。</p>
-<p>当从root用户切换到pi用户后，我们再次使用<code>su passwd root</code>来修改密码，会报错</p>
-<h3 id="SSH-登录"><a href="#SSH-登录" class="headerlink" title="SSH 登录"></a>SSH 登录</h3><p>对于树莓派3，默认开启SSH服务。（如果树莓派1不开启，就接上显示屏打开配置）</p>
-<p>如果没有显示屏，从另一个角度，可以采用端口扫描的方法，扫出树莓派的IP地址。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 排除192.168.99.1这个路由器地址，查看哪个端口的port 22是Open状态</span></div><div class="line">$ nmap <span class="_">-s</span>P 192.168.99.100-254</div></pre></td></tr></table></figure>
-<p>示例输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Starting Nmap 6.40 ( http://nmap.org ) at 2016-11-28 23:46 CST</div><div class="line">Nmap scan report <span class="keyword">for</span> MI5sPlus-xiaomishouj.lan (192.168.99.103)</div><div class="line">Host is up (0.091s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> chuangmi-plug-m1_miio45324900.lan (192.168.99.105)</div><div class="line">Host is up (0.049s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> zhimi-airpurifier-m1_miio12912092.lan (192.168.99.107)</div><div class="line">Host is up (0.11s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> 192.168.99.137</div><div class="line">Host is up (0.00057s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> raspberrypi.lan (192.168.99.144)</div><div class="line">Host is up (0.00022s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> MI5s-xiaomishouji.lan (192.168.99.153)</div><div class="line">Host is up (0.24s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> ywl-ThinkPad-E420.lan (192.168.99.210)</div><div class="line">Host is up (0.00012s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> ESP_C37984.lan (192.168.99.216)</div><div class="line">Host is up (0.058s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> zhimi-airpurifier-m1_miio12647059.lan (192.168.99.224)</div><div class="line">Host is up (0.052s latency).</div><div class="line">Nmap <span class="keyword">done</span>: 155 IP addresses (9 hosts up) scanned <span class="keyword">in</span> 19.43 seconds</div></pre></td></tr></table></figure></p>
-<p>或者：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ nmap -v <span class="_">-s</span>T 192.168.99.100-254</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh pi@&lt;ip address&gt;</div></pre></td></tr></table></figure>
-<p>用户名为<code>pi</code>，密码默认为<code>raspberry</code></p>
-<h3 id="修改树莓派hostname"><a href="#修改树莓派hostname" class="headerlink" title="修改树莓派hostname"></a>修改树莓派hostname</h3><ol>
-<li>修改主机名，<code>sudo vim /etc/hostname</code><br>修改成想要的主机名字</li>
-<li>修改hosts文件，<code>sudo vim /etc/hosts</code><br>替换原先所有的主机名</li>
-<li>重启设备，生效</li>
-</ol>
-<h3 id="查看用户与用户组信息"><a href="#查看用户与用户组信息" class="headerlink" title="查看用户与用户组信息"></a>查看用户与用户组信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">grep pi /etc/passwd /etc/group /etc/shadow</div></pre></td></tr></table></figure>
-<h3 id="软件更新sudo-apt-get-install-update"><a href="#软件更新sudo-apt-get-install-update" class="headerlink" title="软件更新sudo apt-get install update"></a>软件更新<code>sudo apt-get install update</code></h3><p>google一下，修改软件源，不然更新太慢了。</p>
-<h3 id="安装Tmux"><a href="#安装Tmux" class="headerlink" title="安装Tmux"></a>安装<code>Tmux</code></h3><p>试过未更新软件包，直接安装<code>tmux</code>，会提示找不到包<code>tmux</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install tmux</div></pre></td></tr></table></figure>
-<p>然后将<code>~/.tmux.conf</code>(该文件从<code>Vim_ywl</code>git库中找)里面的内容拷贝到Raspberry相应的文件中。(拷贝前，可以先安装xclip，利用系统剪贴板方便操作)</p>
-<h3 id="安装中文输入法-谷歌"><a href="#安装中文输入法-谷歌" class="headerlink" title="安装中文输入法-谷歌"></a>安装中文输入法-谷歌</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</div></pre></td></tr></table></figure>
-<p>安装完毕，重启即可</p>
-<p>重启后，需打开<code>fcitx</code>配置界面，将Google pinyin添加到输入法选项中。</p>
-<h3 id="安装Vim"><a href="#安装Vim" class="headerlink" title="安装Vim"></a>安装Vim</h3><p>安装<code>Ctags</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install exuberant-ctags</div></pre></td></tr></table></figure></p>
-<p>配置github的ssh登录，克隆<code>Vim_ywl</code>库</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主机发现"><span class="toc-number">2.</span> <span class="toc-text">主机发现</span></a></li></ol>
 </div>
 
@@ -1037,6 +924,86 @@ const.COMPANY = &quot;IBM&quot;</code>！<code>上面的代码中常量一旦赋
 
 
     	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接字符串"><span class="toc-number">1.</span> <span class="toc-text">连接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readline-from-a-string"><span class="toc-number">2.</span> <span class="toc-text">readline() from a string</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1：StringIO"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：StringIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2：string-split-‘-n’"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：string.split(‘\n’)</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-19T03:42:51.000Z"><a href="/hexo_blog/2016/10/19/Python-Basic-2016-10-19-python-basic-string/">2016-10-19</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/19/Python-Basic-2016-10-19-python-basic-string/">python-basic~string</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接字符串"><span class="toc-number">1.</span> <span class="toc-text">连接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readline-from-a-string"><span class="toc-number">2.</span> <span class="toc-text">readline() from a string</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1：StringIO"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：StringIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2：string-split-‘-n’"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：string.split(‘\n’)</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><ol>
+<li><code>stra + strb</code></li>
+<li><code>stra,strb</code> ： 用空格连接两个字符串</li>
+<li><code>%</code> : <code>&#39;name is %s, %s&#39; % (stra, strb)</code>  多用于字符串的格式化</li>
+<li><code>&#39;,&#39;.join([stra, strb])</code> : 示例，使用<code>,</code>连接字符串列表</li>
+</ol>
+<h3 id="readline-from-a-string"><a href="#readline-from-a-string" class="headerlink" title="readline() from a string"></a>readline() from a string</h3><p>【参考链接】</p>
+<ol>
+<li><a href="http://stackoverflow.com/questions/7472839/python-readline-from-a-string" target="_blank" rel="external">Python readline() from a string - stackflow</a></li>
+</ol>
+<h4 id="方法1：StringIO"><a href="#方法1：StringIO" class="headerlink" title="方法1：StringIO"></a>方法1：<code>StringIO</code></h4><ul>
+<li><p>Python 2<br>You can use <code>StringIO</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; msg = <span class="string">"Bob Smith\nJane Doe\nJane,\nPlease order more widgets\nThanks,\nBob\n"</span></div><div class="line">&gt;&gt;&gt; msg</div><div class="line"><span class="string">'Bob Smith\nJane Doe\nJane,\nPlease order more widgets\nThanks,\nBob\n'</span></div><div class="line">&gt;&gt;&gt; import StringIO</div><div class="line">&gt;&gt;&gt; buf = StringIO.StringIO(msg)</div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Bob Smith\n'</span></div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Jane Doe\n'</span></div></pre></td></tr></table></figure>
+<p>Be sure to use cStringIO if performance is important.</p>
+</li>
+<li><p>Python 3<br>You can use <code>io.StringIO</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; import io</div><div class="line">&gt;&gt;&gt; buf = io.StringIO(msg)</div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Bob Smith\n'</span></div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Jane Doe\n'</span></div><div class="line">&gt;&gt;&gt; len(buf.read())</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="方法2：string-split-‘-n’"><a href="#方法2：string-split-‘-n’" class="headerlink" title="方法2：string.split(‘\n’)"></a>方法2：string.split(‘\n’)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; foo = <span class="string">"ABC\nDEF\nGHI\nJKL"</span></div><div class="line">&gt;&gt;&gt; foo.split(<span class="string">"\n"</span>, 1)</div><div class="line">[<span class="string">'ABC'</span>, <span class="string">'DEF\nGHI\nJKL'</span>]</div><div class="line">&gt;&gt;&gt; foo.split(<span class="string">"\n"</span>, 2)</div><div class="line">[<span class="string">'ABC'</span>, <span class="string">'DEF'</span>, <span class="string">'GHI\nJKL'</span>]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
  
 <nav id="pagination">
   
@@ -1075,7 +1042,7 @@ const.COMPANY = &quot;IBM&quot;</code>！<code>上面的代码中常量一旦赋
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
 	
   
 	
@@ -1168,7 +1135,7 @@ const.COMPANY = &quot;IBM&quot;</code>！<code>上面的代码中常量一旦赋
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -1183,7 +1150,7 @@ const.COMPANY = &quot;IBM&quot;</code>！<code>上面的代码中常量一旦赋
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 

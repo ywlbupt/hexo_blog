@@ -79,86 +79,6 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接字符串"><span class="toc-number">1.</span> <span class="toc-text">连接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readline-from-a-string"><span class="toc-number">2.</span> <span class="toc-text">readline() from a string</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1：StringIO"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：StringIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2：string-split-‘-n’"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：string.split(‘\n’)</span></a></li></ol></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-10-19T03:42:51.000Z"><a href="/hexo_blog/2016/10/19/Python-Basic-2016-10-19-python-basic-string/">2016-10-19</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/10/19/Python-Basic-2016-10-19-python-basic-string/">python-basic~string</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接字符串"><span class="toc-number">1.</span> <span class="toc-text">连接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readline-from-a-string"><span class="toc-number">2.</span> <span class="toc-text">readline() from a string</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1：StringIO"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：StringIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2：string-split-‘-n’"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：string.split(‘\n’)</span></a></li></ol></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><ol>
-<li><code>stra + strb</code></li>
-<li><code>stra,strb</code> ： 用空格连接两个字符串</li>
-<li><code>%</code> : <code>&#39;name is %s, %s&#39; % (stra, strb)</code>  多用于字符串的格式化</li>
-<li><code>&#39;,&#39;.join([stra, strb])</code> : 示例，使用<code>,</code>连接字符串列表</li>
-</ol>
-<h3 id="readline-from-a-string"><a href="#readline-from-a-string" class="headerlink" title="readline() from a string"></a>readline() from a string</h3><p>【参考链接】</p>
-<ol>
-<li><a href="http://stackoverflow.com/questions/7472839/python-readline-from-a-string" target="_blank" rel="external">Python readline() from a string - stackflow</a></li>
-</ol>
-<h4 id="方法1：StringIO"><a href="#方法1：StringIO" class="headerlink" title="方法1：StringIO"></a>方法1：<code>StringIO</code></h4><ul>
-<li><p>Python 2<br>You can use <code>StringIO</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; msg = <span class="string">"Bob Smith\nJane Doe\nJane,\nPlease order more widgets\nThanks,\nBob\n"</span></div><div class="line">&gt;&gt;&gt; msg</div><div class="line"><span class="string">'Bob Smith\nJane Doe\nJane,\nPlease order more widgets\nThanks,\nBob\n'</span></div><div class="line">&gt;&gt;&gt; import StringIO</div><div class="line">&gt;&gt;&gt; buf = StringIO.StringIO(msg)</div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Bob Smith\n'</span></div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Jane Doe\n'</span></div></pre></td></tr></table></figure>
-<p>Be sure to use cStringIO if performance is important.</p>
-</li>
-<li><p>Python 3<br>You can use <code>io.StringIO</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; import io</div><div class="line">&gt;&gt;&gt; buf = io.StringIO(msg)</div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Bob Smith\n'</span></div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Jane Doe\n'</span></div><div class="line">&gt;&gt;&gt; len(buf.read())</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="方法2：string-split-‘-n’"><a href="#方法2：string-split-‘-n’" class="headerlink" title="方法2：string.split(‘\n’)"></a>方法2：string.split(‘\n’)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; foo = <span class="string">"ABC\nDEF\nGHI\nJKL"</span></div><div class="line">&gt;&gt;&gt; foo.split(<span class="string">"\n"</span>, 1)</div><div class="line">[<span class="string">'ABC'</span>, <span class="string">'DEF\nGHI\nJKL'</span>]</div><div class="line">&gt;&gt;&gt; foo.split(<span class="string">"\n"</span>, 2)</div><div class="line">[<span class="string">'ABC'</span>, <span class="string">'DEF'</span>, <span class="string">'GHI\nJKL'</span>]</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
 <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【python】【file】文件的读写基本操作"><span class="toc-number">1.</span> <span class="toc-text">【python】【file】文件的读写基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#【读写模式】字符创直接读取"><span class="toc-number">1.0.1.</span> <span class="toc-text">【读写模式】字符创直接读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【编码模式】：二进制模式-文本模式"><span class="toc-number">1.0.2.</span> <span class="toc-text">【编码模式】：二进制模式/文本模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-open-amp-write-amp-read"><span class="toc-number">1.1.</span> <span class="toc-text">File open() & ｗrite() & read()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#open-获取一个文件对象；"><span class="toc-number">1.1.1.</span> <span class="toc-text">open(), 获取一个文件对象；</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python对不同平台换行符的处理"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">python对不同平台换行符的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python打开文件的编码方式"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">python打开文件的编码方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-seek-方法移动文件指针"><span class="toc-number">1.1.2.</span> <span class="toc-text">f.seek()方法移动文件指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-write-方法写入文件"><span class="toc-number">1.1.3.</span> <span class="toc-text">f.write()方法写入文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改特定行"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">修改特定行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-read-方法"><span class="toc-number">1.1.4.</span> <span class="toc-text">f.read()方法</span></a></li></ol></li></ol></li></ol>
 </div>
 
@@ -883,6 +803,73 @@
 
 
     	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#function-root-for-path"><span class="toc-number">1.</span> <span class="toc-text">function root_for(path)</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-02T07:08:06.000Z"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-jacman-script/">2016-10-02</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-jacman-script/">markdown-hexo~jacman-script</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#function-root-for-path"><span class="toc-number">1.</span> <span class="toc-text">function root_for(path)</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h3 id="function-root-for-path"><a href="#function-root-for-path" class="headerlink" title="function root_for(path)"></a>function root_for(path)</h3><p>如果path为空，赋值根目录符号<code>/</code><br>判断path是否为包含root的完整路径，<br>如果是，返回path<br>如果否，判断path的首字符是否为根目录符号<code>/</code>，再与root拼接(前提：root结尾为路径符号<code>/</code>)</p>
+<p>Locate：<code>theme/jacman/_partial/header.ejs</code><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">root_for</span>(<span class="params">path</span>)</span>&#123;</div><div class="line">    path = path || <span class="string">'/'</span></div><div class="line">    <span class="keyword">var</span> root = config.root;</div><div class="line">    <span class="keyword">if</span> (path.substring(<span class="number">0</span>, root.length) !== root)&#123;</div><div class="line">    <span class="keyword">if</span> (path.substring(<span class="number">0</span>, <span class="number">1</span>) === <span class="string">'/'</span>)&#123;</div><div class="line">      path = root.substring(<span class="number">0</span>, root.length - <span class="number">1</span>) + path;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      path = root + path;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> path;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Javascript语言</li>
+<li>path为theme中定义的menu (List Item)，且视为字符串</li>
+<li>path.substring(0,{num}),从0的位置截取{num}个字符，返回{num}个字符组成的字符串</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
  
 <nav id="pagination">
   
@@ -921,7 +908,7 @@
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
 	
   
 	
@@ -1014,7 +1001,7 @@
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -1029,7 +1016,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 

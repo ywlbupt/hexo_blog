@@ -79,73 +79,6 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#function-root-for-path"><span class="toc-number">1.</span> <span class="toc-text">function root_for(path)</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-10-02T07:08:06.000Z"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-jacman-script/">2016-10-02</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-jacman-script/">markdown-hexo~jacman-script</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#function-root-for-path"><span class="toc-number">1.</span> <span class="toc-text">function root_for(path)</span></a></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<h3 id="function-root-for-path"><a href="#function-root-for-path" class="headerlink" title="function root_for(path)"></a>function root_for(path)</h3><p>如果path为空，赋值根目录符号<code>/</code><br>判断path是否为包含root的完整路径，<br>如果是，返回path<br>如果否，判断path的首字符是否为根目录符号<code>/</code>，再与root拼接(前提：root结尾为路径符号<code>/</code>)</p>
-<p>Locate：<code>theme/jacman/_partial/header.ejs</code><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">root_for</span>(<span class="params">path</span>)</span>&#123;</div><div class="line">    path = path || <span class="string">'/'</span></div><div class="line">    <span class="keyword">var</span> root = config.root;</div><div class="line">    <span class="keyword">if</span> (path.substring(<span class="number">0</span>, root.length) !== root)&#123;</div><div class="line">    <span class="keyword">if</span> (path.substring(<span class="number">0</span>, <span class="number">1</span>) === <span class="string">'/'</span>)&#123;</div><div class="line">      path = root.substring(<span class="number">0</span>, root.length - <span class="number">1</span>) + path;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      path = root + path;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> path;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>Javascript语言</li>
-<li>path为theme中定义的menu (List Item)，且视为字符串</li>
-<li>path.substring(0,{num}),从0的位置截取{num}个字符，返回{num}个字符组成的字符串</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
 <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#知乎-小碘"><span class="toc-number">1.</span> <span class="toc-text">知乎-小碘</span></a></li></ol>
 </div>
 
@@ -1039,6 +972,116 @@ snip.p:
 
 
     	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一"><span class="toc-number">1.</span> <span class="toc-text">(一)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二"><span class="toc-number">2.</span> <span class="toc-text">(二)</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-01-21T15:55:37.000Z"><a href="/hexo_blog/2016/01/21/Python-Basic-2016-01-21-python-basic-unittest单元测试-zt/">2016-01-21</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/01/21/Python-Basic-2016-01-21-python-basic-unittest单元测试-zt/">python-basic~unittest单元测试-zt</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一"><span class="toc-number">1.</span> <span class="toc-text">(一)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二"><span class="toc-number">2.</span> <span class="toc-text">(二)</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>转载：<a href="http://kingname.info/2015/03/04/pythonunittest1/" target="_blank" rel="external">Python的单元测试（一）</a><br>转载：<a href="http://kingname.info/2015/03/04/pythonunittest2/" target="_blank" rel="external">Python的单元测试（二）</a></p>
+<h3 id="一"><a href="#一" class="headerlink" title="(一)"></a>(一)</h3><p>测试驱动的软件开发方式可以强迫程序员在开发程序的时候使程序的函数之间实现高内聚，低耦合。这样的方式可以降低函数之间的依赖性，方便后续的修改，增加功能和维护。</p>
+<p>说一个函数高内聚，就是指这个函数专注于实现单一的任务，不会做除了生产这个任务以外的其他事情。可以想象一个人，他把自己关在一个小房子里面生产东西，只留两扇窗户，他需要什么材料，你就从小窗户给他送进去（参数），他做好了东西，就给你从另一个窗户里面送出来（return），他不会说，我要生产一个轮子，但是我首先需要一个女人进来，他不会说，这是计划的一部分。</p>
+<p>说几个函数是低耦合的，就是指他们的依赖性小。他们就像是葫芦娃，每个都有自己独特的能力，可以自己单干，在关键的时候还可以合体，变成小金刚。他们就像积木一样，各有各的功能，需要使用的时候直接组合在一起就可以了。</p>
+<p>使用测试驱动开发，每一个测试只测试一个功能，这样就可以迫使函数把自己独立出来，尽量减少和其他函数的依赖。</p>
+<p>例如，有一个文件1.txt，他的内容是两个数字，使用逗号隔开。形如“2,4”（不包括外侧双引号，下同）。我要写一个程序readandadd.py，读取硬盘上的1.txt文件，然后把这个文件的内容打印到屏幕上。</p>
+<p>不规范的写法一：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">f= open(<span class="string">'1.txt'</span>,<span class="string">'r'</span>)</div><div class="line">b = f.read().split(<span class="string">','</span>)</div><div class="line">f.close()</div><div class="line"><span class="keyword">print</span> int(b[<span class="number">0</span>])+int(b[<span class="number">1</span>])</div></pre></td></tr></table></figure></p>
+<p>不规范写法二：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">A</span><span class="params">()</span>:</span></div><div class="line">    f= open(<span class="string">'1.txt'</span>,<span class="string">'r'</span>)</div><div class="line">    b = f.read().split(<span class="string">','</span>)</div><div class="line">    f.close()</div><div class="line">    <span class="keyword">print</span> int(b[<span class="number">0</span>])+int(b[<span class="number">1</span>])</div><div class="line">A()</div></pre></td></tr></table></figure></p>
+<p>比较规范的写法：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(filename)</span>:</span></div><div class="line">    f= open(filename,<span class="string">'r'</span>)</div><div class="line">    info = f.read()</div><div class="line">    f.close()</div><div class="line">    <span class="keyword">return</span> info</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getnum</span><span class="params">(info)</span>:</span></div><div class="line">    twonum = info.split(<span class="string">','</span>)</div><div class="line">    <span class="keyword">return</span> twonum</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addnum</span><span class="params">(twonum)</span>:</span></div><div class="line">    <span class="keyword">return</span> int(twonum[<span class="number">0</span>])+int(twonum[<span class="number">1</span>])</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">        info = read(<span class="string">'1.txt'</span>)</div><div class="line">        twonum = getnum(info)</div><div class="line">        result = addnum(twonum)</div><div class="line">        <span class="keyword">print</span> result</div></pre></td></tr></table></figure></p>
+<p>这样写的好处是，如果想测试读文件的功能，就只需要测试read()函数，如果想测试把两个数分开的功能，就只需要测试getnum()函数。而相反，在不规范写法二中，虽然只想测试两个数字相加的功能，可是却不得不首先打开文件并读取文件然后把数字分开。</p>
+<p>继续回到比较规范的写法当中，我相信很多人写完read()函数以后，肯定会输入如下代码：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(filename)</span>:</span></div><div class="line">    f= open(filename,<span class="string">'r'</span>)</div><div class="line">    info = f.read()</div><div class="line">    f.close()</div><div class="line">    <span class="keyword">return</span> info</div><div class="line"></div><div class="line"><span class="keyword">print</span> read(<span class="string">'1.txt'</span>)</div></pre></td></tr></table></figure></p>
+<p>然后运行程序，发现正常打印出’2,3’以后，再开始写getnum()函数。写完getnum以后，测试getnum()函数没问题以后再开始写然后测试addnum()函数。最后测试整个程序的功能。</p>
+<p>其实这个过程，已经就是在做单元测试了。然而这样操作的弊端是什么？如果整体程序已经写好了，之前做测试点代码也就删除了。那么如果突然把程序做了修改。例如1.txt里面数字的分隔从1个逗号变成了空格，或者变成了3个数字，那必然要修改getnum()，但是又如何测试修改的部分呢？还要把不相干的代码给注释掉。不仅麻烦，而且容易出错。</p>
+<p>现在，把测试的代码单独独立出来。会有什么效果呢？尝试创建一个test.py程序，代码如下：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> readandadd</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">testread</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'read:'</span>,readandadd.read(<span class="string">'1.txt'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">testgetnum</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'getnum:'</span>,readandadd.getnum(<span class="string">'2,3'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">testaddnum</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'addnum:'</span>,readandadd.addnum([<span class="number">2</span>,<span class="number">3</span>])</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    testread()</div><div class="line">    testgetnum()</div><div class="line">    testaddnum()</div></pre></td></tr></table></figure></p>
+<p>运行test.py以后输出结果如下：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">read: <span class="number">2</span>,<span class="number">3</span></div><div class="line">getnum: [<span class="string">'2'</span>, <span class="string">'3'</span>]</div><div class="line">addnum: <span class="number">5</span></div></pre></td></tr></table></figure></p>
+<p>每一个函数的输出结果一目了然，而且在修改了readandadd.py的函数以后，重新运行test.py就可以知道输出结果有没有符合预期。</p>
+<p>当然，这里这个例子非常的简单，因此可以人工通过观察test.py的输出结果来确定是否符合预期，那对于大量的函数的测试，难道也要让肉眼来看吗？当然不是。于是，下一篇文章将会介绍Python的单元测试<code>unittest</code>。</p>
+<h3 id="二"><a href="#二" class="headerlink" title="(二)"></a>(二)</h3><p>在这个例子中，只有三个函数，于是可以把每个函数的输出结果打印到屏幕上，再用肉眼去看结果是否符合预期。然而假设有一个程序，有二十个类，每个类又有几十个函数，有些函数的输出结果还多达几十行，在这种情况下，肉眼如何看得出？</p>
+<p>当然你可以使用if判断</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> 输出结果 == 预期结果:</div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">u'不相等'</span></div></pre></td></tr></table></figure>
+<p>这个时候，你发现，程序有几个函数，后三行就要重复几次，本着代码简洁的原则，你把这个判断的过程写到一个函数中：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">isequal</span><span class="params">(output,right_output)</span>:</span></div><div class="line">    <span class="keyword">if</span> output == right_output:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">u'不相等'</span></div></pre></td></tr></table></figure></p>
+<p>那么恭喜你，你步入正规了，然而，这一切已经有人为你做好了。欢迎unittest模块出场。</p>
+<blockquote>
+<blockquote>
+<p>unittest supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework. The unittest module provides classes that make it easy to support these qualities for a set of tests.</p>
+</blockquote>
+</blockquote>
+<p>Python的官方文档这样写到，unittest支持自动化测试，测试的安装分享和关闭代码……</p>
+<p>一句话说来，就是，unittest很好用。</p>
+<p>还是用上一次的readandadd.py来演示unittest的基本用法,首先介绍unittest的一个函数，assertEqual(first,second),这个函数的作用是检查变量first的值与second的值是否相等，如果不相等就抛出错误。</p>
+<p>先创建utest.py文件，输入以下代码并运行：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#-*-coding:utf-8-*-</span></div><div class="line"><span class="keyword">import</span> unittest</div><div class="line"><span class="keyword">import</span> readandadd</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">basictest</span><span class="params">(unittest.TestCase)</span>:</span> <span class="comment">#类名可以随便取</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testread</span><span class="params">(self)</span>:</span> <span class="comment">#每个函数都要以test开头</span></div><div class="line">        output = readandadd.read(<span class="string">'1.txt'</span>)</div><div class="line">        self.assertEqual(output,<span class="string">'2,3'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testgetnum</span><span class="params">(self)</span>:</span></div><div class="line">        output = readandadd.getnum(<span class="string">'2,3'</span>)</div><div class="line">        self.assertEqual(output,[<span class="string">'2'</span>, <span class="string">'3'</span>])</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testaddnum</span><span class="params">(self)</span>:</span></div><div class="line">        output = readandadd.addnum([<span class="number">2</span>,<span class="number">3</span>])</div><div class="line">        self.assertEqual(output,<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    unittest.main()</div></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">...</div><div class="line">----------------------------------------------------------------------</div><div class="line">Ran <span class="number">3</span> tests <span class="keyword">in</span> <span class="number">0.001</span>s</div><div class="line"></div><div class="line">OK</div></pre></td></tr></table></figure>
+<p>你也许会说，就一个ok，什么都没有啊。那我先把testread()函数下面的<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">self.assertEqual(output,<span class="string">'2,3'</span>)</div></pre></td></tr></table></figure></p>
+<p>改为<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">self.assertEqual(output,<span class="string">'2,4'</span>)</div></pre></td></tr></table></figure></p>
+<p>在运行utest.py看看输出结果如何：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">..F</div><div class="line">======================================================================</div><div class="line">FAIL: testread (__main__.basictest)</div><div class="line">----------------------------------------------------------------------</div><div class="line">Traceback (most recent call last):</div><div class="line">    File <span class="string">"E:/mystuff/unitest/utest.py"</span>, line <span class="number">8</span>, <span class="keyword">in</span> testread</div><div class="line">    self.assertEqual(output,<span class="string">'2,4'</span>)</div><div class="line">AssertionError: <span class="string">'2,3'</span> != <span class="string">'2,4'</span></div><div class="line"></div><div class="line">----------------------------------------------------------------------</div><div class="line">Ran <span class="number">3</span> tests <span class="keyword">in</span> <span class="number">0.000</span>s</div><div class="line"></div><div class="line">FAILED (failures=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>这里准确的找出了错误的位置和错误的具体内容。注意看最上面，有个</p>
+<pre><code>..F
+</code></pre><p>猜测它可能是标示错误的位置。保持testread的错误不改，再把testgetnum()函数中的以下内容</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">self.assertEqual(output,[<span class="string">'2'</span>, <span class="string">'3'</span>])</div></pre></td></tr></table></figure>
+<p>改为<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">self.assertEqual(output,[<span class="string">'2'</span>, <span class="string">'6'</span>])</div></pre></td></tr></table></figure></p>
+<p>再运行utest.py程序，输出结果如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">.FF</div><div class="line">======================================================================</div><div class="line">FAIL: testgetnum (__main__.basictest)</div><div class="line">----------------------------------------------------------------------</div><div class="line">Traceback (most recent call last):</div><div class="line">    File "E:/mystuff/unitest/utest.py", line 12, in testgetnum</div><div class="line">    self.assertEqual(output,['2', '6'])</div><div class="line">AssertionError: Lists differ: ['2', '3'] != ['2', '6']</div><div class="line"></div><div class="line">First differing element 1:</div><div class="line">3</div><div class="line">6</div><div class="line"></div><div class="line">- ['2', '3']</div><div class="line">?        ^</div><div class="line"></div><div class="line">+ ['2', '6']</div><div class="line">?        ^</div><div class="line"></div><div class="line"></div><div class="line">======================================================================</div><div class="line">FAIL: testread (__main__.basictest)</div><div class="line">----------------------------------------------------------------------</div><div class="line">Traceback (most recent call last):</div><div class="line">    File "E:/mystuff/unitest/utest.py", line 8, in testread</div><div class="line">    self.assertEqual(output,'2,4')</div><div class="line">AssertionError: '2,3' != '2,4'</div><div class="line"></div><div class="line">----------------------------------------------------------------------</div><div class="line">Ran 3 tests in 0.001s</div><div class="line"></div><div class="line">FAILED (failures=2)</div></pre></td></tr></table></figure>
+<p>可以看出，这里分别把两个错误显示了出来。并且第一行变成了<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">.FF</div></pre></td></tr></table></figure></p>
+<p>所以，第一行的内容应该从右往左读，它标明错误函数在所有函数的相对位置。</p>
+<p>现在再把testread()和testgetnum()改回去，再看看全部正确的输出：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">...</div><div class="line">----------------------------------------------------------------------</div><div class="line">Ran <span class="number">3</span> tests <span class="keyword">in</span> <span class="number">0.000</span>s</div><div class="line"></div><div class="line">OK</div></pre></td></tr></table></figure>
+<p>印证了那句话，没有消息就是最好的消息。</p>
+<p>这篇文章介绍了单元测试模块unittest的assertEqual的基本用法</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
  
 <nav id="pagination">
   
@@ -1077,7 +1120,7 @@ snip.p:
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
 	
   
 	
@@ -1170,7 +1213,7 @@ snip.p:
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -1185,7 +1228,7 @@ snip.p:
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 
