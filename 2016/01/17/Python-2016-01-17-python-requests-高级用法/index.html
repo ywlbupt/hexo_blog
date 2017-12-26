@@ -1,0 +1,419 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-requests-高级用法 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="会话对象 Session会话对象让你能够跨请求保持某些参数。它也会在同一个Session实例发出的所有请求之间保持cookies。
+会话对象具有主要的Requests API的所有方法。
+我们来跨请求保持一些cookies:
+s = requests.Session()s.get(&amp;apos;htt">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python-requests-高级用法"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#会话对象-Session"><span class="toc-number">1.</span> <span class="toc-text">会话对象 Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保持活动状态（持久连接）"><span class="toc-number">2.</span> <span class="toc-text">保持活动状态（持久连接）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求与响应对象-header"><span class="toc-number">3.</span> <span class="toc-text">请求与响应对象 header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#响应内容的编码方式"><span class="toc-number">4.</span> <span class="toc-text">响应内容的编码方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理"><span class="toc-number">5.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP动词"><span class="toc-number">6.</span> <span class="toc-text">HTTP动词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">7.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-01-17T07:41:37.000Z"><a href="/hexo_blog/2016/01/17/Python-2016-01-17-python-requests-高级用法/">2016-01-17</a></time>
+        
+  
+    <h1 class="title">python-requests-高级用法</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#会话对象-Session"><span class="toc-number">1.</span> <span class="toc-text">会话对象 Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保持活动状态（持久连接）"><span class="toc-number">2.</span> <span class="toc-text">保持活动状态（持久连接）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求与响应对象-header"><span class="toc-number">3.</span> <span class="toc-text">请求与响应对象 header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#响应内容的编码方式"><span class="toc-number">4.</span> <span class="toc-text">响应内容的编码方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理"><span class="toc-number">5.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP动词"><span class="toc-number">6.</span> <span class="toc-text">HTTP动词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">7.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <h2 id="会话对象-Session"><a href="#会话对象-Session" class="headerlink" title="会话对象 Session"></a>会话对象 Session</h2><p>会话对象让你能够跨请求保持某些参数。它也<strong>会在同一个Session实例发出的所有请求之间保持cookies</strong>。</p>
+<p>会话对象具有主要的Requests API的所有方法。</p>
+<p>我们来跨请求保持一些cookies:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">s = requests.Session()</div><div class="line"></div><div class="line">s.get(&apos;http://httpbin.org/cookies/set/sessioncookie/123456789&apos;)</div><div class="line">r = s.get(&quot;http://httpbin.org/cookies&quot;)</div><div class="line"></div><div class="line">print(r.text)</div><div class="line"># &apos;&#123;&quot;cookies&quot;: &#123;&quot;sessioncookie&quot;: &quot;123456789&quot;&#125;&#125;&apos;</div></pre></td></tr></table></figure>
+<p>会话也可用来为请求方法提供缺省数据。这是通过为会话对象的属性提供数据来实现的:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">s = requests.Session()</div><div class="line">s.auth = (&apos;user&apos;, &apos;pass&apos;)</div><div class="line">s.headers.update(&#123;&apos;x-test&apos;: &apos;true&apos;&#125;)</div><div class="line"></div><div class="line"># both &apos;x-test&apos; and &apos;x-test2&apos; are sent</div><div class="line">s.get(&apos;http://httpbin.org/headers&apos;, headers=&#123;&apos;x-test2&apos;: &apos;true&apos;&#125;)</div></pre></td></tr></table></figure>
+<p>任何你传递给请求方法的字典都会与已设置会话层数据合并。方法层的参数覆盖会话的参数。</p>
+<p>从字典参数中移除一个值<br>有时你会想省略字典参数中一些会话层的键。要做到这一点，你只需简单地在方法层参数中将那个键的值设置为 None ，那个键就会被自动省略掉。</p>
+<p>包含在一个会话中的所有数据你都可以直接使用。</p>
+<h2 id="保持活动状态（持久连接）"><a href="#保持活动状态（持久连接）" class="headerlink" title="保持活动状态（持久连接）"></a>保持活动状态（持久连接）</h2><p>归功于<code>urllib3</code>，同一会话内的持久连接是完全自动处理的！同一会话内你发出的任何请求都会自动复用恰当的连接！</p>
+<p>注意：只有所有的响应体数据被读取完毕连接才会被释放为连接池；所以确保将 stream 设置为 False 或读取 Response 对象的 content 属性。</p>
+<h2 id="请求与响应对象-header"><a href="#请求与响应对象-header" class="headerlink" title="请求与响应对象 header"></a>请求与响应对象 header</h2><p>任何时候调用<code>requests.*()</code>你都在做两件主要的事情。其一，你在构建一个 Request 对象， 该对象将被发送到某个服务器请求或查询一些资源。其二，一旦 requests 得到一个从 服务器返回的响应就会产生一个 Response 对象。该响应对象包含服务器返回的所有信息， 也包含你原来创建的 Request 对象。如下是一个简单的请求，从Wikipedia的服务器得到 一些非常重要的信息:</p>
+<pre><code>&gt;&gt;&gt; r = requests.get(&apos;http://en.wikipedia.org/wiki/Monty_Python&apos;)
+</code></pre><p>如果想访问服务器返回给我们的响应头部信息，可以这样做:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r.headers</div><div class="line">&#123;&apos;content-length&apos;: &apos;56170&apos;, &apos;x-content-type-options&apos;: &apos;nosniff&apos;, &apos;x-cache&apos;:</div><div class="line">&apos;HIT from cp1006.eqiad.wmnet, MISS from cp1010.eqiad.wmnet&apos;, &apos;content-encoding&apos;:</div><div class="line">&apos;gzip&apos;, &apos;age&apos;: &apos;3080&apos;, &apos;content-language&apos;: &apos;en&apos;, &apos;vary&apos;: &apos;Accept-Encoding,Cookie&apos;,</div><div class="line">&apos;server&apos;: &apos;Apache&apos;, &apos;last-modified&apos;: &apos;Wed, 13 Jun 2012 01:33:50 GMT&apos;,</div><div class="line">&apos;connection&apos;: &apos;close&apos;, &apos;cache-control&apos;: &apos;private, s-maxage=0, max-age=0,</div><div class="line">must-revalidate&apos;, &apos;date&apos;: &apos;Thu, 14 Jun 2012 12:59:39 GMT&apos;, &apos;content-type&apos;:</div><div class="line">&apos;text/html; charset=UTF-8&apos;, &apos;x-cache-lookup&apos;: &apos;HIT from cp1006.eqiad.wmnet:3128,</div><div class="line">MISS from cp1010.eqiad.wmnet:80&apos;&#125;</div></pre></td></tr></table></figure>
+<p>然而，如果想得到发送到服务器的请求的头部，我们可以简单地访问该请求，然后是该请求的头部:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r.request.headers</div><div class="line">&#123;&apos;Accept-Encoding&apos;: &apos;identity, deflate, compress, gzip&apos;,</div><div class="line">&apos;Accept&apos;: &apos;*/*&apos;, &apos;User-Agent&apos;: &apos;python-requests/0.13.1&apos;&#125;</div></pre></td></tr></table></figure>
+<h2 id="响应内容的编码方式"><a href="#响应内容的编码方式" class="headerlink" title="响应内容的编码方式"></a>响应内容的编码方式</h2><p>当你收到一个响应时，Requests会猜测响应的编码方式，<strong>用于在你调用 Response.text 方法时对响应进行解码</strong>。</p>
+<p>Requests首先在HTTP头部检测是否存在指定的编码方式，如果不存在，则会使用 charade 来尝试猜测编码方式。</p>
+<p>只有当HTTP头部不存在明确指定的字符集，并且 Content-Type 头部字段包含 text 值之时， Requests才不去猜测编码方式。</p>
+<p>在这种情况下， RFC 2616 指定默认字符集 必须是 <code>ISO-8859-1</code> 。Requests遵从这一规范。<br><strong>如果你需要一种不同的编码方式，你可以手动设置 Response.encoding 属性，或使用原始的 Response.content</strong> 。</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>如果需要使用代理，你可以通过为任意请求方法提供 proxies 参数来配置单个请求:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    import requests</div><div class="line">    </div><div class="line">    proxies = &#123;</div><div class="line">      &quot;http&quot;: &quot;http://10.10.1.10:3128&quot;,</div><div class="line">      &quot;https&quot;: &quot;http://10.10.1.10:1080&quot;,</div><div class="line">    &#125;</div><div class="line">requests.get(&quot;http://example.org&quot;, proxies=proxies)</div></pre></td></tr></table></figure></p>
+<p>你也可以通过环境变量 <code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code> 来配置代理。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ export HTTP_PROXY=&quot;http://10.10.1.10:3128&quot;</div><div class="line">$ export HTTPS_PROXY=&quot;http://10.10.1.10:1080&quot;</div><div class="line">$ python</div><div class="line">&gt;&gt;&gt; import requests</div><div class="line">&gt;&gt;&gt; requests.get(&quot;http://example.org&quot;)</div></pre></td></tr></table></figure></p>
+<p>若你的代理需要使用HTTP Basic Auth，可以使用 <code>http://user:password@host/</code> 语法:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">proxies = &#123;</div><div class="line">    &quot;http&quot;: &quot;http://user:pass@10.10.1.10:3128/&quot;,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h2><p>Requests提供了几乎所有HTTP动词的功能：GET，OPTIONS， HEAD，POST，PUT，PATCH和DELETE。 以下内容为使用Requests中的这些动词以及Github API提供了详细示例。</p>
+<p>我将从最常使用的动词GET开始。HTTP GET是一个幂等的方法，从给定的URL返回一个资源。因而， 当你试图从一个web位置获取数据之时，你应该使用这个动词。<strong>一个使用示例是尝试从Github上获取关于一个特定commit的信息</strong>。</p>
+<p>假设我们想获取Requests的commit a050faf 的信息。我们可以 这样去做:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; import requests</div><div class="line">&gt;&gt;&gt; r = requests.get(&apos;https://api.github.com/repos/kennethreitz/requests/git/commits/a050faf084662f3a352dd1a941f2c7c9f886d4ad&apos;)</div></pre></td></tr></table></figure></p>
+<p>我们应该确认Github是否正确响应。如果正确响应，我们想弄清响应内容是什么类型的。像这样去做:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; if (r.status_code == requests.codes.ok):</div><div class="line">...     print r.headers[&apos;content-type&apos;]</div><div class="line">...</div><div class="line">application/json; charset=utf-8</div></pre></td></tr></table></figure></p>
+<p>可见，<strong>GitHub返回了JSON数据</strong>，非常好，这样就可以使用 <code>r.json</code> 方法把这个返回的数据解析成Python对象。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; commit_data = r.json()</div><div class="line">&gt;&gt;&gt; print commit_data.keys()</div><div class="line">[u&apos;committer&apos;, u&apos;author&apos;, u&apos;url&apos;, u&apos;tree&apos;, u&apos;sha&apos;, u&apos;parents&apos;, u&apos;message&apos;]</div><div class="line">&gt;&gt;&gt; print commit_data[u&apos;committer&apos;]</div><div class="line">&#123;u&apos;date&apos;: u&apos;2012-05-10T11:10:50-07:00&apos;, u&apos;email&apos;: u&apos;me@kennethreitz.com&apos;, u&apos;name&apos;: u&apos;Kenneth Reitz&apos;&#125;</div><div class="line">&gt;&gt;&gt; print commit_data[u&apos;message&apos;]</div><div class="line">makin&apos; history</div></pre></td></tr></table></figure></p>
+<p>到目前为止，一切都非常简单。嗯，我们来研究一下GitHub的API。我们可以去看看文档， 但如果使用Requests来研究也许会更有意思一点。我们可以借助Requests的OPTIONS动词来看看我们刚使用过的url 支持哪些HTTP方法。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; verbs = requests.options(r.url)</div><div class="line">&gt;&gt;&gt; verbs.status_code</div><div class="line">500</div></pre></td></tr></table></figure></p>
+<p>额，这是怎么回事？毫无帮助嘛！原来GitHub，与许多API提供方一样，实际上并未实现OPTIONS方法。 这是一个恼人的疏忽，但没关系，那我们可以使用枯燥的文档。然而，<strong>如果GitHub正确实现了OPTIONS， 那么服务器应该在响应头中返回允许用户使用的HTTP方法</strong>，例如<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; verbs = requests.options(&apos;http://a-good-website.com/api/cats&apos;)</div><div class="line">&gt;&gt;&gt; print verbs.headers[&apos;allow&apos;]</div><div class="line">GET,HEAD,POST,OPTIONS</div></pre></td></tr></table></figure></p>
+<p>转而去查看文档，我们看到对于提交信息，另一个允许的方法是POST，它会创建一个新的提交。<br>由于我们正在使用Requests代码库，我们应尽可能避免对它发送笨拙的POST。作为替代，我们来 玩玩GitHub的Issue特性。</p>
+<p>本篇文档是回应Issue #482而添加的。鉴于该问题已经存在，我们就以它为例。先获取它。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.get(&apos;https://api.github.com/repos/kennethreitz/requests/issues/482&apos;)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">200</div><div class="line">&gt;&gt;&gt; issue = json.loads(r.text)</div><div class="line">&gt;&gt;&gt; print issue[u&apos;title&apos;]</div><div class="line">Feature any http verb in docs</div><div class="line">&gt;&gt;&gt; print issue[u&apos;comments&apos;]</div><div class="line">3</div></pre></td></tr></table></figure></p>
+<p>Cool，有3个评论。我们来看一下最后一个评论。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.get(r.url + u&apos;/comments&apos;)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">200</div><div class="line">&gt;&gt;&gt; comments = r.json()</div><div class="line">&gt;&gt;&gt; print comments[0].keys()</div><div class="line">[u&apos;body&apos;, u&apos;url&apos;, u&apos;created_at&apos;, u&apos;updated_at&apos;, u&apos;user&apos;, u&apos;id&apos;]</div><div class="line">&gt;&gt;&gt; print comments[2][u&apos;body&apos;]</div><div class="line">Probably in the &quot;advanced&quot; section</div></pre></td></tr></table></figure></p>
+<p>嗯，那看起来似乎是个愚蠢之处。我们发表个评论来告诉这个评论者他自己的愚蠢。那么，这个评论者是谁呢？<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; print comments[2][u&apos;user&apos;][u&apos;login&apos;]</div><div class="line">kennethreitz</div></pre></td></tr></table></figure></p>
+<p>好，我们来告诉这个叫肯尼思的家伙，这个例子应该放在快速上手指南中。根据GitHub API文档， 其方法是POST到该话题。我们来试试看。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; body = json.dumps(&#123;u&quot;body&quot;: u&quot;Sounds great! I&apos;ll get right on it!&quot;&#125;)</div><div class="line">&gt;&gt;&gt; url = u&quot;https://api.github.com/repos/kennethreitz/requests/issues/482/comments&quot;</div><div class="line">&gt;&gt;&gt; r = requests.post(url=url, data=body)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">404</div></pre></td></tr></table></figure></p>
+<p>额，这有点古怪哈。可能我们需要验证身份。那就有点纠结了，对吧？不对。Requests简化了多种身份验证形式的使用， 包括非常常见的Basic Auth。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; from requests.auth import HTTPBasicAuth</div><div class="line">&gt;&gt;&gt; auth = HTTPBasicAuth(&apos;fake@example.com&apos;, &apos;not_a_real_password&apos;)</div><div class="line">&gt;&gt;&gt; r = requests.post(url=url, data=body, auth=auth)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">201</div><div class="line">&gt;&gt;&gt; content = r.json()</div><div class="line">&gt;&gt;&gt; print(content[u&apos;body&apos;])</div><div class="line">Sounds great! I&apos;ll get right on it.</div></pre></td></tr></table></figure></p>
+<p>精彩！噢，不！我原本是想说等我一会，因为我得去喂一下我的猫。如果我能够编辑这条评论那就好了！ 幸运的是，GitHub允许我们使用另一个HTTP动词，PATCH，来编辑评论。我们来试试。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; print(content[u&quot;id&quot;])</div><div class="line">5804413</div><div class="line">&gt;&gt;&gt; body = json.dumps(&#123;u&quot;body&quot;: u&quot;Sounds great! I&apos;ll get right on it once I feed my cat.&quot;&#125;)</div><div class="line">&gt;&gt;&gt; url = u&quot;https://api.github.com/repos/kennethreitz/requests/issues/comments/5804413&quot;</div><div class="line">&gt;&gt;&gt; r = requests.patch(url=url, data=body, auth=auth)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">200</div></pre></td></tr></table></figure></p>
+<p>非常好。现在，我们来折磨一下这个叫肯尼思的家伙，我决定要让他急得团团转，也不告诉他是我在捣蛋。 这意味着我想删除这条评论。GitHub允许我们使用完全名副其实的DELETE方法来删除评论。我们来清除该评论。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.delete(url=url, auth=auth)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">204</div><div class="line">&gt;&gt;&gt; r.headers[&apos;status&apos;]</div><div class="line">&apos;204 No Content&apos;</div></pre></td></tr></table></figure></p>
+<p>很好。不见了。最后一件我想知道的事情是我已经使用了多少限额（ratelimit）。查查看，GitHub在响应头部发送这个信息， 因此不必下载整个网页，我将使用一个HEAD请求来获取响应头。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.head(url=url, auth=auth)</div><div class="line">&gt;&gt;&gt; print r.headers</div><div class="line">...</div><div class="line">&apos;x-ratelimit-remaining&apos;: &apos;4995&apos;</div><div class="line">&apos;x-ratelimit-limit&apos;: &apos;5000&apos;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>很好。是时候写个Python程序以各种刺激的方式滥用GitHub的API，还可以使用4995次呢。</p>
+<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><ol>
+<li><a href="http://docs.python-requests.org/zh_CN/latest/user/advanced.html#advanced" target="_blank" rel="external">高级用法-官方文档</a></li>
+<li><a href="http://docs.python-requests.org/zh_CN/latest/api.html#sessionapi" target="_blank" rel="external">会话API文档</a></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/python/">python</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2016 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

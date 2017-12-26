@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-loging调试监控 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="概述允许你指定记录信息的级别，有
+
+debug
+info
+warning
+error
+
+日志级别大小关系为：CRITICAL &amp;gt; ERROR &amp;gt; WARNING &amp;gt; INFO &amp;gt; DEBUG &amp;gt; NOTSET，当然也可以自己定义日志级别
+等几个级别，当我们指定level=INFO时，logging.debug就不起作用了。同理，指定level=WARNING后，debug和info就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python-loging调试监控"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-参数"><span class="toc-number">1.1.</span> <span class="toc-text">logging 参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-handle-方式"><span class="toc-number">1.2.</span> <span class="toc-text">logging handle 方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-config模块"><span class="toc-number">1.3.</span> <span class="toc-text">logging.config模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">2.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-01-21T15:55:37.000Z"><a href="/hexo_blog/2016/01/21/Python-2016-01-27-python-log/">2016-01-21</a></time>
+        
+  
+    <h1 class="title">python-loging调试监控</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-参数"><span class="toc-number">1.1.</span> <span class="toc-text">logging 参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-handle-方式"><span class="toc-number">1.2.</span> <span class="toc-text">logging handle 方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-config模块"><span class="toc-number">1.3.</span> <span class="toc-text">logging.config模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">2.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>允许你指定记录信息的级别，有</p>
+<ul>
+<li>debug</li>
+<li>info</li>
+<li>warning</li>
+<li>error</li>
+</ul>
+<p>日志级别大小关系为：CRITICAL &gt; ERROR &gt; WARNING &gt; INFO &gt; DEBUG &gt; NOTSET，当然也可以自己定义日志级别</p>
+<p>等几个级别，当我们指定<code>level=INFO</code>时，<code>logging.debug</code>就不起作用了。同理，指定<code>level=WARNING</code>后，debug和info就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。</p>
+<a id="more"></a>
+<h3 id="logging-参数"><a href="#logging-参数" class="headerlink" title="logging 参数"></a>logging 参数</h3><p>logging.basicConfig函数各参数:</p>
+<ul>
+<li>filename: 指定日志文件名</li>
+<li>filemode: 和file函数意义相同，指定日志文件的打开模式，’w’或’a’</li>
+<li>format: 指定输出的格式和内容，format可以输出很多有用信息，如上例所示:<ul>
+<li>%(levelno)s: 打印日志级别的数值</li>
+<li>%(levelname)s: 打印日志级别名称</li>
+<li>%(pathname)s: 打印当前执行程序的路径，其实就是sys.argv[0]</li>
+<li>%(filename)s: 打印当前执行程序名</li>
+<li>%(funcName)s: 打印日志的当前函数</li>
+<li>%(lineno)d: 打印日志的当前行号</li>
+<li>%(asctime)s: 打印日志的时间</li>
+<li>%(thread)d: 打印线程ID</li>
+<li>%(threadName)s: 打印线程名称</li>
+<li>%(process)d: 打印进程ID</li>
+<li>%(message)s: 打印日志信息</li>
+</ul>
+</li>
+<li>datefmt: 指定时间格式，同time.strftime()</li>
+<li>level: 设置日志级别，默认为logging.WARNING</li>
+<li>stream: 指定将日志的输出流，可以指定输出到sys.stderr,sys.stdout或者文件，默认输出到sys.stderr，当stream和filename同时指定时，stream被忽略</li>
+</ul>
+<p>logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> logging</div><div class="line"></div><div class="line"><span class="comment"># 配置日志信息</span></div><div class="line">logging.basicConfig(level=logging.DEBUG,</div><div class="line">format=<span class="string">'%(asctime)s %(name)-12s %(levelname)-8s %(message)s'</span>,</div><div class="line">datefmt=<span class="string">'%m-%d %H:%M'</span>,</div><div class="line">filename=<span class="string">'myapp.log'</span>,</div><div class="line">filemode=<span class="string">'w'</span>)</div><div class="line"><span class="comment"># 定义一个Handler打印INFO及以上级别的日志到sys.stderr</span></div><div class="line">console = logging.StreamHandler()</div><div class="line">console.setLevel(logging.INFO)</div><div class="line"><span class="comment"># 设置日志打印格式，%(name)-12s 表示12个字符空间，左对齐；%(lineno)3d 表示3个字符空间，右对齐</span></div><div class="line">formatter = logging.Formatter(<span class="string">'%(name)-12s[line:%(lineno)3d]:%(levelname)-8s %(message)s'</span>)</div><div class="line">console.setFormatter(formatter)</div><div class="line"><span class="comment"># 将定义好的console日志handler添加到root logger</span></div><div class="line">logging.getLogger(<span class="string">''</span>).addHandler(console)</div><div class="line"></div><div class="line">logging.info(<span class="string">'Jackdaws love my big sphinx of quartz.'</span>)</div><div class="line"></div><div class="line">logger1 = logging.getLogger(<span class="string">'myapp.area1'</span>)</div><div class="line">logger2 = logging.getLogger(<span class="string">'myapp.area2'</span>)</div><div class="line"></div><div class="line">logger1.debug(<span class="string">'Quick zephyrs blow, vexing daft Jim.'</span>)</div><div class="line">logger1.info(<span class="string">'How quickly daft jumping zebras vex.'</span>)</div><div class="line">logger2.warning(<span class="string">'Jail zesty vixen who grabbed pay from quack.'</span>)</div><div class="line">logger2.error(<span class="string">'The five boxing wizards jump quickly.'</span>)</div></pre></td></tr></table></figure>
+<p>以上程序运行结果，<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># 输出到控制台：</div><div class="line">root        : INFO     Jackdaws love my big sphinx of quartz.</div><div class="line">myapp.area1 : INFO     How quickly daft jumping zebras vex.</div><div class="line">myapp.area2 : WARNING  Jail zesty vixen who grabbed pay from quack.</div><div class="line">myapp.area2 : ERROR    The five boxing wizards jump quickly.</div><div class="line"># 输出到myapp.log，多了DEBUG的信息输出</div><div class="line">01-27 22:55 root         INFO     Jackdaws love my big sphinx of quartz.</div><div class="line">01-27 22:55 myapp.area1  DEBUG    Quick zephyrs blow, vexing daft Jim.</div><div class="line">01-27 22:55 myapp.area1  INFO     How quickly daft jumping zebras vex.</div><div class="line">01-27 22:55 myapp.area2  WARNING  Jail zesty vixen who grabbed pay from quack.</div><div class="line">01-27 22:55 myapp.area2  ERROR    The five boxing wizards jump quickly.</div></pre></td></tr></table></figure></p>
+<h3 id="logging-handle-方式"><a href="#logging-handle-方式" class="headerlink" title="logging handle 方式"></a>logging handle 方式</h3><p>从上例和本例可以看出，logging有一个日志处理的主对象，其它处理方式都是通过addHandler添加进去的。<br>logging的几种handle方式如下：</p>
+<p>logging.StreamHandler: 日志输出到流，可以是sys.stderr、sys.stdout或者文件<br>logging.FileHandler: 日志输出到文件<br>日志回滚方式，实际使用时用RotatingFileHandler和TimedRotatingFileHandler<br>logging.handlers.BaseRotatingHandler<br>logging.handlers.RotatingFileHandler<br>logging.handlers.TimedRotatingFileHandler<br>logging.handlers.SocketHandler: 远程输出日志到TCP/IP sockets<br>logging.handlers.DatagramHandler:  远程输出日志到UDP sockets<br>logging.handlers.SMTPHandler:  远程输出日志到邮件地址<br>logging.handlers.SysLogHandler: 日志输出到syslog<br>logging.handlers.NTEventLogHandler: 远程输出日志到Windows NT/2000/XP的事件日志<br>logging.handlers.MemoryHandler: 日志输出到内存中的制定buffer<br>logging.handlers.HTTPHandler: 通过”GET”或”POST”远程输出到HTTP服务器</p>
+<p>由于StreamHandler和FileHandler是常用的日志处理方式，所以直接包含在logging模块中，而其他方式则包含在logging.handlers模块中</p>
+<h3 id="logging-config模块"><a href="#logging-config模块" class="headerlink" title="logging.config模块"></a>logging.config模块</h3><p>通过logging.config模块配置日志</p>
+<p>#logger.conf(文件名)</p>
+<p>###############################################<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[loggers]</div><div class="line">keys=root,example01,example02</div><div class="line">[logger_root]</div><div class="line">level=DEBUG</div><div class="line">handlers=hand01,hand02</div><div class="line">[logger_example01]</div><div class="line">handlers=hand01,hand02</div><div class="line">qualname=example01</div><div class="line">propagate=0</div><div class="line">[logger_example02]</div><div class="line">handlers=hand01,hand03</div><div class="line">qualname=example02</div><div class="line">propagate=0</div><div class="line">###############################################</div><div class="line">[handlers]</div><div class="line">keys=hand01,hand02,hand03</div><div class="line">[handler_hand01]</div><div class="line">class=StreamHandler</div><div class="line">level=INFO</div><div class="line">formatter=form02</div><div class="line">args=(sys.stderr,)</div><div class="line">[handler_hand02]</div><div class="line">class=FileHandler</div><div class="line">level=DEBUG</div><div class="line">formatter=form01</div><div class="line">args=(&apos;myapp.log&apos;, &apos;a&apos;)</div><div class="line">[handler_hand03]</div><div class="line">class=handlers.RotatingFileHandler</div><div class="line">level=INFO</div><div class="line">formatter=form02</div><div class="line">args=(&apos;myapp.log&apos;, &apos;a&apos;, 10*1024*1024, 5)</div><div class="line">###############################################</div><div class="line">[formatters]</div><div class="line">keys=form01,form02</div><div class="line">[formatter_form01]</div><div class="line">format=%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s</div><div class="line">datefmt=%a, %d %b %Y %H:%M:%S</div><div class="line">[formatter_form02]</div><div class="line">format=%(name)-12s: %(levelname)-8s %(message)s</div><div class="line">datefmt=</div></pre></td></tr></table></figure></p>
+<p>上例3：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">import logging</div><div class="line">import logging.config</div><div class="line"></div><div class="line">logging.config.fileConfig(&quot;logger.conf&quot;)</div><div class="line">logger = logging.getLogger(&quot;example01&quot;)</div><div class="line"></div><div class="line">logger.debug(&apos;This is debug message&apos;)</div><div class="line">logger.info(&apos;This is info message&apos;)</div><div class="line">logger.warning(&apos;This is warning message&apos;)</div></pre></td></tr></table></figure></p>
+<p>上例4：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">import logging</div><div class="line">import logging.config</div><div class="line"></div><div class="line">logging.config.fileConfig(&quot;logger.conf&quot;)</div><div class="line">logger = logging.getLogger(&quot;example02&quot;)</div><div class="line"></div><div class="line">logger.debug(&apos;This is debug message&apos;)</div><div class="line">logger.info(&apos;This is info message&apos;)</div><div class="line">logger.warning(&apos;This is warning message&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><ol>
+<li><a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431915578556ad30ab3933ae4e82a03ee2e9a4f70871000" target="_blank" rel="external">调试-廖雪峰</a></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Python/">Python</a>, <a href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/python/">python</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2016 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

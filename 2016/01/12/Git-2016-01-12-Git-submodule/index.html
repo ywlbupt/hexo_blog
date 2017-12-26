@@ -1,0 +1,532 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>zt-Git子模块的维护 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="git submodule的建立于维护">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="zt-Git子模块的维护"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Submodules-Adding-Using-Removing-Updating"><span class="toc-number">1.</span> <span class="toc-text">Git Submodules: Adding, Using, Removing, Updating</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adding-Submodules-to-a-Git-Repository"><span class="toc-number">1.1.</span> <span class="toc-text">Adding Submodules to a Git Repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Submodules"><span class="toc-number">1.2.</span> <span class="toc-text">Using Submodules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Removing-Submodules"><span class="toc-number">1.3.</span> <span class="toc-text">Removing Submodules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-Submodules"><span class="toc-number">1.4.</span> <span class="toc-text">Updating Submodules</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">2.</span> <span class="toc-text">参考链接</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-01-11T17:01:01.000Z"><a href="/hexo_blog/2016/01/12/Git-2016-01-12-Git-submodule/">2016-01-12</a></time>
+        
+  
+    <h1 class="title">zt-Git子模块的维护</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Submodules-Adding-Using-Removing-Updating"><span class="toc-number">1.</span> <span class="toc-text">Git Submodules: Adding, Using, Removing, Updating</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adding-Submodules-to-a-Git-Repository"><span class="toc-number">1.1.</span> <span class="toc-text">Adding Submodules to a Git Repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Submodules"><span class="toc-number">1.2.</span> <span class="toc-text">Using Submodules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Removing-Submodules"><span class="toc-number">1.3.</span> <span class="toc-text">Removing Submodules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-Submodules"><span class="toc-number">1.4.</span> <span class="toc-text">Updating Submodules</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">2.</span> <span class="toc-text">参考链接</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <h2 id="Git-Submodules-Adding-Using-Removing-Updating"><a href="#Git-Submodules-Adding-Using-Removing-Updating" class="headerlink" title="Git Submodules: Adding, Using, Removing, Updating"></a>Git Submodules: Adding, Using, Removing, Updating</h2><h3 id="Adding-Submodules-to-a-Git-Repository"><a href="#Adding-Submodules-to-a-Git-Repository" class="headerlink" title="Adding Submodules to a Git Repository"></a>Adding Submodules to a Git Repository</h3><p>Fortunately, adding a submodule to a git repository is actually quite simple. For example, if I’m in the repository working directory of a new theme called SampleTheme and need to add the billboard repository to the path lib/billboard, I can do so with the following command:</p>
+<pre><code>[user@office SampleTheme]$ git submodule add git@mygithost:billboard lib/billboard
+Initialized empty Git repository in ~/git_dev/SampleTheme/lib/billboard/.git/
+remote: Counting objects: 1006, done.
+remote: Compressing objects: 100% (978/978), done.
+remote: Total 1006 (delta 631), reused 0 (delta 0)
+Receiving objects: 100% (1006/1006), 408.22 KiB, done.
+Resolving deltas: 100% (631/631), done.
+There are three main parts to this command:
+</code></pre><ul>
+<li><code>git submodule add</code> – This simply tells Git that we are adding a submodule. This syntax will always remain the same.</li>
+<li><code>git@mygithost:billboard</code> – This is the external repository that is to be added as a submodule. The exact syntax will vary depending on the setup of the Git repository you are connecting to. You need to ensure that you have the ability to clone the given repository.</li>
+<li><p><code>lib/billboard</code> – This is the path where the submodule repository will be added to the main repository.<br>Let’s check to see how the repository is doing.</p>
+<pre><code>[user@office SampleTheme]$ git status
+# On branch master
+# Changes to be committed:
+#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+#
+#       new file:   .gitmodules
+#       new file:   lib/billboard
+#
+</code></pre></li>
+</ul>
+<p>Notice how the supplied path was created and added to the changes to be committed. In addition, a new file called .gitmodules was created. This new file contains the details we supplied about the new submodule. Out of curiosity, let’s check out the contents of that new file:</p>
+<pre><code>[user@office SampleTheme]$ cat .gitmodules
+[submodule &quot;lib/billboard&quot;]
+path = lib/billboard
+url = git@mygithost:billboard
+</code></pre><p>Being able to modify this file later will come in handy later.</p>
+<p>All that is left to do now is to commit the changes and then push the commit to a remote system if necessary.</p>
+<h3 id="Using-Submodules"><a href="#Using-Submodules" class="headerlink" title="Using Submodules"></a>Using Submodules</h3><p>Having submodules in a repository is great and all, but if I look in my repository, all I have is an empty folder rather than the actual contents of the submodule’s repository. In order to fill in the submodule’s path with the files from the external repository, you must first initialize the submodules and then update them.</p>
+<blockquote>
+<p>  Note: This has changed in newer versions of Git. Now the submodule’s repository will be cloned with master checked out. If that repository also has submodules, then your submodule’s submodules will have to be populated by following the steps below from within your project’s submodule directory (confusing yet?).</p>
+<p>  For instance, if you are working in project called phone-app, add a submodule called graphics-lib, and graphics-lib has a submodule called renderer, when you add graphics-lib to phone-app, the phone-app/graphics-lib directory will be populated as a cloned repo but the phone-app/graphics-lib/renderer directory will be empty. To populate phone-app/graphics-lib/renderer, first change directories to phone-app/graphics-lib and follow the instructions below.</p>
+</blockquote>
+<p>First, we need to initialize the submodule(s). We can do that with the following command:</p>
+<pre><code>[user@office SampleTheme]$ git submodule init
+Submodule &apos;lib/billboard&apos; (git@mygithost:billboard) registered for path &apos;lib/billboard&apos;
+</code></pre><p>Then we need to run the update in order to pull down the files.</p>
+<pre><code>[user@office SampleTheme]$ git submodule update
+Initialized empty Git repository in ~/git_dev/SampleTheme/lib/billboard/.git/
+remote: Counting objects: 26, done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 26 (delta 5), reused 0 (delta 0)
+Receiving objects: 100% (26/26), 17.37 KiB, done.
+Resolving deltas: 100% (5/5), done.
+Submodule path &apos;lib/billboard&apos;: checked out &apos;1c407cb2315z0847facb57d79d680f88ca004332&apos;
+Looking in the lib/billboard directory now shows a nice listing of the needed files.
+</code></pre><h3 id="Removing-Submodules"><a href="#Removing-Submodules" class="headerlink" title="Removing Submodules"></a>Removing Submodules</h3><p>What happens if we need to remove a submodule? Maybe I made a mistake. It could also be that the design of the project has changed, and the submodules need to change with it. No problem, I’ll simply run<code>“git submodule rm [submodule path]</code> and everything will be great, right?</p>
+<pre><code>[user@office SampleTheme]$ git submodule rm lib/billboard
+error: pathspec &apos;rm&apos; did not match any file(s) known to git.
+Did you forget to &apos;git add&apos;?
+ b8ff8f68eb56938b9b4bf993619218fa848c5848 lib/billboard (1.2.25)
+</code></pre><p>Unfortunately, this is wrong. Git does not have a built in way to remove submodules. Hopefully this will be resolved in the future, because we now have to do submodule removal manually.</p>
+<p>Sticking with the example, we’ll remove the<code>lib/billboar</code>d module from SampleTheme. All the instructions will be run from the working directory of the SampleTheme repository. In order, we need to do the following:</p>
+<ol>
+<li><p>Remove the submodule’s entry in the <code>.gitmodules</code> file .Since lib/billboard is the only submodule in the SampleTheme repository, we can simply remove the file entirely by running <code>git rm lib/billboard</code>.If <code>lib/billboard</code> isn’t the only submodule, the .gitmodules file will have to be modified by hand. Open it up in vi, or your favorite text editory, and remove the three lines relevant to the submodule being removed. In this case, these lines will be removed:</p>
+<pre><code>[submodule “lib/billboard”]
+path = lib/billboard
+url = git@mygithost:billboard
+</code></pre></li>
+<li><p>Remove the submodule’s entry in the .git/config. This step isn’t strictly necessary, but it does keep your config file tidy and will help prevent problems in the future.The submodule’s entry in .git/config will only be present if you’ve run “git submodule init” on the repository. If you haven’t, you can skip this step.In this example, the following lines will be removed:</p>
+<pre><code>[submodule “billboard”]
+url = git@mygithost:billboard
+</code></pre></li>
+<li><p>Remove the path created for the submodule. This one is easy. Simply run <code>git rm –cached[plugin path]</code>. In this example, I will run <code>git rm –cached lib/billboar</code>“.As I’ve seen noted elsewhere, do not put a trailing slash as the command will fail. For example, if I run <code>git rm –cached lib/billboard</code>“, I get an error” “fatal: pathspec <code>lib/billboard/</code> did not match any files”.</p>
+<pre><code>[user@office SampleTheme]$ git rm --cached lib/billboard
+rm &apos;lib/billboard&apos;
+</code></pre></li>
+</ol>
+<h3 id="Updating-Submodules"><a href="#Updating-Submodules" class="headerlink" title="Updating Submodules"></a>Updating Submodules</h3><p>There is an aspect about submodules that some may not realize when first working with Git submodules. When you add the submodule, the most recent commit of the submodule is stored in the main repository’s index. That means that as the code in the submodule’s repository updates, the same code will still be pulled on the repositories relying on the submodule.</p>
+<p>This makes a lot of sense when you consider how your code will have been tested and verified (or at least should be) against a specific version of the submodule code, but the main repository’s code may not work well with new submodule updates before the changes are tested.</p>
+<p>Unfortunately, like removing submodules, Git does not make it clear how to update a submodule to a later commit. Fortunately though, it’s not that tough.</p>
+<ol>
+<li><p>Initialize the repository’s submodules by running “git submodule init” followed by “git submodule update“.</p>
+<pre><code>[user@office SampleTheme]$ git submodule init
+Submodule &apos;lib/billboard&apos; (git@mygithost:billboard) registered for path &apos;lib/billboard&apos;
+[user@office SampleTheme]$ git submodule update
+Initialized empty Git repository in ~/git_dev/SampleTheme/lib/billboard/.git/
+remote: Counting objects: 26, done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 26 (delta 5), reused 0 (delta 0)
+Receiving objects: 100% (26/26), 17.37 KiB, done.
+Resolving deltas: 100% (5/5), done.
+Submodule path &apos;lib/billboard&apos;: checked out &apos;1c407cb2315z0847facb57d79d680f88ca004332&apos;
+</code></pre></li>
+<li><p>Change into the submodule’s directory. In this example, “cd lib/billboard“.</p>
+<pre><code>[user@office SampleTheme]$ cd lib/billboard
+[user@office SampleTheme/lib/billboard]$ 
+</code></pre></li>
+<li><p>The submodule repositories added by “git submodule update” are “headless”. This means that they aren’t on a current branch.To fix this, we simply need to switch to a branch. In this example, that would be the master branch. We switch with the following command: “git checkout master“.</p>
+<pre><code>[user@office SampleTheme/lib/billboard]$ git status
+# Not currently on any branch.
+nothing to commit (working directory clean)
+[user@office SampleTheme/lib/billboard]$ git checkout master
+Previous HEAD position was b8ff8f6... re-ordering
+Switched to branch &apos;master&apos;
+Your branch is behind &apos;origin/master&apos; by 8 commits, and can be fast-forwarded.
+[user@office SampleTheme/lib/billboard]$ git status
+# On branch master
+# Your branch is behind &apos;origin/master&apos; by 8 commits, and can be fast-forwarded.
+#
+nothing to commit (working directory clean)
+</code></pre></li>
+<li><p>Next, we simply need to update the repository to ensure that we have the latest updates. We can do that with a pull: <code>git pul</code>.</p>
+<pre><code>[user@office SampleTheme/lib/billboard]$ git pull
+remote: Counting objects: 31, done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 24 (delta 15), reused 0 (delta 0)
+Unpacking objects: 100% (24/24), done.
+From mygithost:billboard
+   b8ff8f6..5cab93f  master     -&gt; origin/master
+ * [new tag]         1.2.28     -&gt; 1.2.28
+From mygithost:billboard
+ * [new tag]         1.2.26     -&gt; 1.2.26
+ * [new tag]         1.2.27     -&gt; 1.2.27
+Updating c547e0d..5cab93f
+Fast-forward
+ billboard.php                           |  109 ++++++++++++++-
+ classes/view_gettingstarted.php         |  107 ++++++++++++++
+ classes/view_gettingstarted_content.php |   38 +++++
+ css/admin.css                           |   26 ++++
+ history.txt                             |   22 +++-
+ js/admin.js                             |   17 +++
+ lib/updater/get.php                     |   94 +++++++-----
+ lib/updater/history.txt                 |    9 ++
+ lib/updater/updater.php                 |  241 ++++++++++++++++++-------------
+ 9 files changed, 519 insertions(+), 144 deletions(-)
+ create mode 100644 classes/view_gettingstarted.php
+ create mode 100644 classes/view_gettingstarted_content.php
+ create mode 100644 css/admin.css
+ create mode 100644 js/admin.js
+ create mode 100644 lib/updater/history.txt
+</code></pre></li>
+<li><p>Now switch back to the root working directory of the repository. In our example, we are two directories in, so we run <code>cd ../..</code>.</p>
+<pre><code>[user@office SampleTheme/lib/billboard]$ cd ../..
+[user@office SampleTheme]$ 
+</code></pre></li>
+<li><p>Everything is now ready to be commit and pushed back in (if there is a remote repository to push to that is). If you run “git status“, you’ll notice that the path to the submodule is listed as modified. This is what you should expect to see. Simply add the path to be commit and do a commit. When you do the commit, the index will update the commit string for the submodule.</p>
+<pre><code>[user@office SampleTheme]$ git status
+# On branch master
+# Changed but not updated:
+#   (use &quot;git add ...&quot; to update what will be committed)
+#   (use &quot;git checkout -- ...&quot; to discard changes in working directory)
+#
+#    modified:   lib/billboard (new commits)
+#
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+[user@office SampleTheme]$ git add lib/billboard
+[user@office SampleTheme]$ git status
+# On branch master
+# Changes to be committed:
+#   (use &quot;git reset HEAD ...&quot; to unstage)
+#
+#    modified:   lib/billboard
+#
+</code></pre></li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://chrisjean.com/git-submodules-adding-using-removing-and-updating/" target="_blank" rel="external">Git Submodules: Adding, Using, Removing, Updating</a></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/git/">git</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2016 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

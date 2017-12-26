@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-字符编码 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="基本介绍-python3的字符串编码在 Python 2 中，字符串分为 ASCII 码表示（‘some text’）和 Unicode 表示（u‘Unicode 字符串’），默认为 ASCII 码。
+不过在 Python 3 中，默认就是万能的 Unicode 码了，所以字符串前面不用加字母 u ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python-字符编码"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本介绍-python3的字符串编码"><span class="toc-number">1.</span> <span class="toc-text">基本介绍-python3的字符串编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python3-中字符串编码的转换"><span class="toc-number">1.1.</span> <span class="toc-text">python3 中字符串编码的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python2-x-中的字符串编码转换"><span class="toc-number">1.2.</span> <span class="toc-text">python2.x 中的字符串编码转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isinstance-判断"><span class="toc-number">1.3.</span> <span class="toc-text">isinstance 判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取系统默认编码"><span class="toc-number">1.4.</span> <span class="toc-text">获取系统默认编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单字节的处理"><span class="toc-number">1.5.</span> <span class="toc-text">单字节的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#codecs-模块简介"><span class="toc-number">2.</span> <span class="toc-text">codecs 模块简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python2-读写文件"><span class="toc-number">2.1.</span> <span class="toc-text">python2 读写文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与编码相关的方法"><span class="toc-number">3.</span> <span class="toc-text">与编码相关的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-Link"><span class="toc-number">4.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-01-16T04:26:38.000Z"><a href="/hexo_blog/2016/01/16/Python-2016-01-16-python-字符编码/">2016-01-16</a></time>
+        
+  
+    <h1 class="title">python-字符编码</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本介绍-python3的字符串编码"><span class="toc-number">1.</span> <span class="toc-text">基本介绍-python3的字符串编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python3-中字符串编码的转换"><span class="toc-number">1.1.</span> <span class="toc-text">python3 中字符串编码的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python2-x-中的字符串编码转换"><span class="toc-number">1.2.</span> <span class="toc-text">python2.x 中的字符串编码转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isinstance-判断"><span class="toc-number">1.3.</span> <span class="toc-text">isinstance 判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取系统默认编码"><span class="toc-number">1.4.</span> <span class="toc-text">获取系统默认编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单字节的处理"><span class="toc-number">1.5.</span> <span class="toc-text">单字节的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#codecs-模块简介"><span class="toc-number">2.</span> <span class="toc-text">codecs 模块简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python2-读写文件"><span class="toc-number">2.1.</span> <span class="toc-text">python2 读写文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与编码相关的方法"><span class="toc-number">3.</span> <span class="toc-text">与编码相关的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-Link"><span class="toc-number">4.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <h3 id="基本介绍-python3的字符串编码"><a href="#基本介绍-python3的字符串编码" class="headerlink" title="基本介绍-python3的字符串编码"></a>基本介绍-python3的字符串编码</h3><p>在 Python 2 中，字符串分为 ASCII 码表示（‘some text’）和 Unicode 表示（u‘Unicode 字符串’），默认为 ASCII 码。</p>
+<p>不过在 Python 3 中，默认就是万能的 Unicode 码了，所以字符串前面不用加字母 u 也可以写 Unicode 了，当然这不是重点，重点是不会有各种 ASCII 和 Unicode 转换和混用带来的错误了。</p>
+<p>另外， <strong>Python 3 中增加了一种 bytes 对象</strong>（b‘\xb6\xfe\xbd\xf8\xd6\xc6\xca\xfd\xbe\xdd’），专门用来表示编码后的（二进制）数据，所以现在对字符串的编码就是从 str 到 bytes 的转换，反之亦然</p>
+<ul>
+<li>bytes(<em>pytho3新增对象</em>)<ul>
+<li>在网络上传输</li>
+<li>保存到磁盘</li>
+<li>python: bytes类型以 b 前缀打头。</li>
+</ul>
+</li>
+<li>Unicode<ul>
+<li>计算机内存</li>
+<li>python3 str: 以unicode保存</li>
+<li>python2 str: str类型需以 u 前缀打头表示unicode类型</li>
+</ul>
+</li>
+<li>utf-8,ascii,gbk,etc…<ul>
+<li>保存到硬盘，传输</li>
+<li>python3源代码: 默认假定.py源代码以utf-8保存，<code># -*- coding: utf-8 -*-</code>告诉python解释器，按照<code>utf-8</code>读取源代码 </li>
+</ul>
+</li>
+</ul>
+<h4 id="python3-中字符串编码的转换"><a href="#python3-中字符串编码的转换" class="headerlink" title="python3 中字符串编码的转换"></a>python3 中字符串编码的转换</h4><p>在Python3中，每個字串都是Unicode，不使用內部编码表現，而使用str实例作為代表。如果想将字串转为指定的编码，可以使用<code>encode()</code>方法取得一個bytes实例，如果有個bytes实例，也可以使用<code>decode()</code>方法指定编码取得str实例：</p>
+<pre><code>&gt;&gt;&gt; &apos;元&apos;.encode(&apos;big5&apos;)
+b&apos;\xa4\xb8&apos;
+&gt;&gt;&gt; &apos;元&apos;.encode(&apos;utf-8&apos;)
+b&apos;\xe5\x85\x83&apos;
+&gt;&gt;&gt; &apos;元&apos;.encode(&apos;big5&apos;).decode(&apos;big5&apos;)
+&apos;元&apos;
+</code></pre><p><img src="images/python/string-encoding-python3.jpg" alt=""></p>
+<p><em>python3的<code>print</code>函数只支持<code>unicode</code>的str，貌似没有对bytes的解码功能，所以对对不能解码的bytes不能正确输出。</em></p>
+<h4 id="python2-x-中的字符串编码转换"><a href="#python2-x-中的字符串编码转换" class="headerlink" title="python2.x 中的字符串编码转换"></a>python2.x 中的字符串编码转换</h4><p><strong>在编码转换时通常需要以unicode作为中间编码</strong><br>先将其他编码的字符串解码(decode)成unicode，再从unicode编码(encode)成另一种编码</p>
+<ol>
+<li>decode的作用是将其他编码的字符串转换成unicode编码</li>
+<li>encode的作用是将unicode编码转换成其他编码的字符串</li>
+</ol>
+<p>比如从文件读入utf-8编码格式的字符串s，</p>
+<pre><code>s.decode(&quot;utf-8&quot;, &quot;ignore&quot;).encode(&quot;gbk&quot;, &quot;ignore&quot;) # 先由utf-8转为unicode，再由unicode转为gbk，ignore表示忽略非法字符
+
+&gt;&gt;&gt; b&apos;ABC&apos;.decode(&apos;ascii&apos;)
+&apos;ABC&apos;
+&gt;&gt;&gt; b&apos;\xe4\xb8\xad\xe6\x96\x87&apos;.decode(&apos;utf-8&apos;)
+&apos;中文&apos;
+</code></pre><h4 id="isinstance-判断"><a href="#isinstance-判断" class="headerlink" title="isinstance 判断"></a>isinstance 判断</h4><pre><code>def TestisStrOrUnicdeOrString():
+  bs = b&apos;Hello&apos;
+  ustr = &apos;abc&apos;
+  print (isinstance(bs, str))  #False
+  print (isinstance(bs,bytes)) #True
+  print (isinstance(ustr,str)) #True
+  print (isinstance(ustr, bytes)) #False
+  print (isinstance(bs,(bytes,str))) #True
+</code></pre><h4 id="获取系统默认编码"><a href="#获取系统默认编码" class="headerlink" title="获取系统默认编码"></a>获取系统默认编码</h4><p>Python3中默认是UTF-8，我们通过以下代码：</p>
+<pre><code>import sys
+sys.getdefaultencoding()
+# &apos;uft-8&apos;
+</code></pre><h4 id="单字节的处理"><a href="#单字节的处理" class="headerlink" title="单字节的处理"></a>单字节的处理</h4><ol>
+<li><p>ord():<code>ord(&#39;A&#39;) == 65</code></p>
+</li>
+<li><p>chr():<code>chr(65) == &#39;A&#39;</code></p>
+</li>
+</ol>
+<h3 id="codecs-模块简介"><a href="#codecs-模块简介" class="headerlink" title="codecs 模块简介"></a>codecs 模块简介</h3><p>codecs是encoders和decoders的缩写。</p>
+<p>codecs模块为我们解决的字符编码的处理提供了lookup方法，它接受一个字符编码名称的参数，并返回指定字符编码对应的codecs.CodecInfo 对象，该对象包含了 encoder、decoder、StreamReader和StreamWriter的函数对象和类对象的引用。为了简化对lookup方法的调用， codecs还提供了getencoder(encoding)、getdecoder(encoding)、getreader(encoding)和 getwriter(encoding)方法；进一步，简化对特定字符编码的StreamReader、StreamWriter和 StreamReaderWriter的访问，codecs更直接地提供了open方法，通过encoding参数传递字符编码名称，即可获得对 encoder和decoder的双向服务。</p>
+<p>这个模块的强大之处在于它提供了流的方式来处理字符串编码，当处理的数据很多时，这种方式很有用。<br>你可以使用IncrementalEncoder和IncrementalDecoder，但是强烈建议使用StreamReader和StreamWriter，因为使用它们会大大简化你的代码。</p>
+<p>例如，有一个test.txt的文件，它的编码为gbk，现在我需要将它的编码转换为utf8，可以编写如下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#coding:utf8</span></div><div class="line"><span class="keyword">import</span> codecs</div><div class="line"><span class="comment"># 打开文件 如果此处用codecs.open()方法打开文件，就不用创建reader和writer </span></div><div class="line">fin = open(<span class="string">'test.txt'</span>, <span class="string">'r'</span>) </div><div class="line">fout = open(<span class="string">'utf8.txt'</span>, <span class="string">'w'</span>) </div><div class="line"><span class="comment"># 获取 StreamReader </span></div><div class="line">reader = codecs.getreader(<span class="string">'gbk'</span>)(fin) </div><div class="line"><span class="comment"># 获取 StreamWriter </span></div><div class="line">writer = codecs.getwriter(<span class="string">'utf8'</span>)(fout) </div><div class="line">din = reader.read(<span class="number">10</span>) </div><div class="line"><span class="keyword">while</span> din: </div><div class="line">    writer.write(din) </div><div class="line">    din = reader.read(<span class="number">10</span>)</div></pre></td></tr></table></figure>
+<p><em>用codecs提供的open方法来指定打开的文件的语言编码，它会在读取的时候自动转换为内部unicode</em></p>
+<h4 id="python2-读写文件"><a href="#python2-读写文件" class="headerlink" title="python2 读写文件"></a>python2 读写文件</h4><p>内置的open()方法打开文件时，read()读取的是str，读取后需要使用正确的编码格式进行decode()。write()写入时，如果参数是unicode，则需要使用你希望写入的编码进行encode()，如果是其他编码格式的str，则需要先用该str的编码进行decode()，转成unicode后再使用写入的编码进行encode()。如果直接将unicode作为参数传入write()方法，Python将先使用源代码文件声明的字符编码进行编码然后写入。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># coding: UTF-8</div><div class="line"> </div><div class="line">f = open(&apos;test.txt&apos;)</div><div class="line">s = f.read()</div><div class="line">f.close()</div><div class="line">print type(s) # &lt;type &apos;str&apos;&gt;</div><div class="line"># 已知是GBK编码，解码成unicode</div><div class="line">u = s.decode(&apos;GBK&apos;)</div><div class="line"> </div><div class="line">f = open(&apos;test.txt&apos;, &apos;w&apos;)</div><div class="line"># 编码成UTF-8编码的str</div><div class="line">s = u.encode(&apos;UTF-8&apos;)</div><div class="line">f.write(s)</div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>另外，模块codecs提供了一个open()方法，可以指定一个编码打开文件，使用这个方法打开的文件读取返回的将是unicode。写入时，如果参数是unicode，则使用open()时指定的编码进行编码后写入；如果是str，则先根据源代码文件声明的字符编码，解码成unicode后再进行前述操作。相对内置的open()来说，这个方法比较不容易在编码上出现问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># coding: GBK</div><div class="line">import codecs</div><div class="line"> </div><div class="line">f = codecs.open(&apos;test.txt&apos;, encoding=&apos;UTF-8&apos;)</div><div class="line">u = f.read()</div><div class="line">f.close()</div><div class="line">print type(u) # &lt;type &apos;unicode&apos;&gt;</div><div class="line"> </div><div class="line">f = codecs.open(&apos;test.txt&apos;, &apos;a&apos;, encoding=&apos;UTF-8&apos;)</div><div class="line"># 写入unicode</div><div class="line">f.write(u)</div><div class="line"> </div><div class="line"># 写入str，自动进行解码编码操作</div><div class="line"># GBK编码的str</div><div class="line">s = &apos;汉&apos;</div><div class="line">print repr(s) # &apos;\xba\xba&apos;</div><div class="line"># 这里会先将GBK编码的str解码为unicode再编码为UTF-8写入</div><div class="line">f.write(s) </div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<h3 id="与编码相关的方法"><a href="#与编码相关的方法" class="headerlink" title="与编码相关的方法"></a>与编码相关的方法</h3><p>sys/locale模块中提供了一些获取当前环境下的默认编码的方法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># coding:gbk</div><div class="line"> </div><div class="line">import sys</div><div class="line">import locale</div><div class="line"> </div><div class="line">def p(f):</div><div class="line">    print &apos;%s.%s(): %s&apos; % (f.__module__, f.__name__, f())</div><div class="line"> </div><div class="line"># 返回当前系统所使用的默认字符编码</div><div class="line">p(sys.getdefaultencoding)</div><div class="line"> </div><div class="line"># 返回用于转换Unicode文件名至系统文件名所使用的编码</div><div class="line">p(sys.getfilesystemencoding)</div><div class="line"> </div><div class="line"># 获取默认的区域设置并返回元祖(语言, 编码)</div><div class="line">p(locale.getdefaultlocale)</div><div class="line"> </div><div class="line"># 返回用户设定的文本数据编码</div><div class="line"># 文档提到this function only returns a guess</div><div class="line">p(locale.getpreferredencoding)</div><div class="line"> </div><div class="line"># \xba\xba是&apos;汉&apos;的GBK编码</div><div class="line"># mbcs是不推荐使用的编码，这里仅作测试表明为什么不应该用</div><div class="line">print r&quot;&apos;\xba\xba&apos;.decode(&apos;mbcs&apos;):&quot;, repr(&apos;\xba\xba&apos;.decode(&apos;mbcs&apos;))</div><div class="line"> </div><div class="line">#在笔者的Windows上的结果(区域设置为中文(简体, 中国))</div><div class="line">#sys.getdefaultencoding(): gbk</div><div class="line">#sys.getfilesystemencoding(): mbcs</div><div class="line">#locale.getdefaultlocale(): (&apos;zh_CN&apos;, &apos;cp936&apos;)</div><div class="line">#locale.getpreferredencoding(): cp936</div><div class="line">#&apos;\xba\xba&apos;.decode(&apos;mbcs&apos;): u&apos;\u6c49&apos;</div></pre></td></tr></table></figure>
+<h3 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h3><ol>
+<li><a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431664106267f12e9bef7ee14cf6a8776a479bdec9b9000" target="_blank" rel="external">字符串和编码-廖雪峰</a></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/python/">python</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2016 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+
