@@ -1,0 +1,490 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ubuntu-raspberry~开始配置树莓派 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="[Toc]
+
+比较权威的官方指导
+
+买的是树莓派3 B，自带WiFi，蓝牙
+刷系统
+官方quick start, noobs
+noobs offline and network install
+etcher.io 烧写image文件
+formatter 格式化SD卡
+
+
+
+为了避免无畏的工作，我直接">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="ubuntu-raspberry~开始配置树莓派"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#刷系统"><span class="toc-number">1.</span> <span class="toc-text">刷系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用root账户"><span class="toc-number">2.</span> <span class="toc-text">启用root账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-登录"><span class="toc-number">3.</span> <span class="toc-text">SSH 登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改树莓派hostname"><span class="toc-number">4.</span> <span class="toc-text">修改树莓派hostname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户与用户组信息"><span class="toc-number">5.</span> <span class="toc-text">查看用户与用户组信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件更新sudo-apt-get-install-update"><span class="toc-number">6.</span> <span class="toc-text">软件更新sudo apt-get install update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Tmux"><span class="toc-number">7.</span> <span class="toc-text">安装Tmux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装中文输入法-谷歌"><span class="toc-number">8.</span> <span class="toc-text">安装中文输入法-谷歌</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Vim"><span class="toc-number">9.</span> <span class="toc-text">安装Vim</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-11-08T14:43:25.000Z"><a href="/hexo_blog/2016/11/08/Ubuntu-2016-11-08-ubuntu-raspberry-开始配置树莓派/">2016-11-08</a></time>
+        
+  
+    <h1 class="title">ubuntu-raspberry~开始配置树莓派</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#刷系统"><span class="toc-number">1.</span> <span class="toc-text">刷系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用root账户"><span class="toc-number">2.</span> <span class="toc-text">启用root账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-登录"><span class="toc-number">3.</span> <span class="toc-text">SSH 登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改树莓派hostname"><span class="toc-number">4.</span> <span class="toc-text">修改树莓派hostname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户与用户组信息"><span class="toc-number">5.</span> <span class="toc-text">查看用户与用户组信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件更新sudo-apt-get-install-update"><span class="toc-number">6.</span> <span class="toc-text">软件更新sudo apt-get install update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Tmux"><span class="toc-number">7.</span> <span class="toc-text">安装Tmux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装中文输入法-谷歌"><span class="toc-number">8.</span> <span class="toc-text">安装中文输入法-谷歌</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Vim"><span class="toc-number">9.</span> <span class="toc-text">安装Vim</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<ul>
+<li><a href="http://elinux.org/RPi_Easy_SD_Card_Setup" target="_blank" rel="external">比较权威的官方指导</a></li>
+</ul>
+<p>买的是树莓派3 B，自带WiFi，蓝牙</p>
+<h3 id="刷系统"><a href="#刷系统" class="headerlink" title="刷系统"></a>刷系统</h3><ol>
+<li><a href="https://www.raspberrypi.org/learning/software-guide/quickstart/" target="_blank" rel="external">官方quick start, noobs</a><ul>
+<li><code>noobs</code> offline and network install</li>
+<li><code>etcher.io</code> 烧写image文件</li>
+<li><code>formatter</code> 格式化SD卡</li>
+</ul>
+</li>
+</ol>
+<p>为了避免无畏的工作，我直接购买了系统卡，以便快速上手。</p>
+<p>在公司简单尝试了下刷系统，如果是在Windows下，其实还挺简单的。</p>
+<p>基本思路是：</p>
+<ol>
+<li>下对应板子的系统，<br>鉴于raspberry Pi官方的系统资源比较多，就选择直接安装它。不捣鼓其他的版本了</li>
+<li>在Windows下，下载刷镜像的软件win32disk</li>
+<li>然后一顿傻瓜操作。。。</li>
+</ol>
+<p>过几天，我把上回购买的树莓派1 B+拿出来按同样的思路捣鼓一下，变废为宝。</p>
+<h3 id="启用root账户"><a href="#启用root账户" class="headerlink" title="启用root账户"></a>启用root账户</h3><p>树莓派使用的linux是debian系统，所以树莓派启用root和debian是相同的。</p>
+<p>debian里root账户默认没有密码，但账户锁定。</p>
+<p>当需要root权限时，由默认账户经由sudo执行，Raspberry pi 系统中的Raspbian</p>
+<p><strong>默认用户是pi 密码为raspberry</strong></p>
+<p>重新开启root账号，可由pi用户登录后，在命令行下执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
+<p>执行此命令后系统会提示输入两遍的root密码，输入你想设的密码即可，然后在执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo passwd --unlock root</div></pre></td></tr></table></figure>
+<p>这样就可以解锁root账户了。</p>
+<p>当从root用户切换到pi用户后，我们再次使用<code>su passwd root</code>来修改密码，会报错</p>
+<h3 id="SSH-登录"><a href="#SSH-登录" class="headerlink" title="SSH 登录"></a>SSH 登录</h3><p>对于树莓派3，默认开启SSH服务。（如果树莓派1不开启，就接上显示屏打开配置）</p>
+<p>如果没有显示屏，从另一个角度，可以采用端口扫描的方法，扫出树莓派的IP地址。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 排除192.168.99.1这个路由器地址，查看哪个端口的port 22是Open状态</span></div><div class="line">$ nmap <span class="_">-s</span>P 192.168.99.100-254</div></pre></td></tr></table></figure>
+<p>示例输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Starting Nmap 6.40 ( http://nmap.org ) at 2016-11-28 23:46 CST</div><div class="line">Nmap scan report <span class="keyword">for</span> MI5sPlus-xiaomishouj.lan (192.168.99.103)</div><div class="line">Host is up (0.091s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> chuangmi-plug-m1_miio45324900.lan (192.168.99.105)</div><div class="line">Host is up (0.049s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> zhimi-airpurifier-m1_miio12912092.lan (192.168.99.107)</div><div class="line">Host is up (0.11s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> 192.168.99.137</div><div class="line">Host is up (0.00057s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> raspberrypi.lan (192.168.99.144)</div><div class="line">Host is up (0.00022s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> MI5s-xiaomishouji.lan (192.168.99.153)</div><div class="line">Host is up (0.24s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> ywl-ThinkPad-E420.lan (192.168.99.210)</div><div class="line">Host is up (0.00012s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> ESP_C37984.lan (192.168.99.216)</div><div class="line">Host is up (0.058s latency).</div><div class="line">Nmap scan report <span class="keyword">for</span> zhimi-airpurifier-m1_miio12647059.lan (192.168.99.224)</div><div class="line">Host is up (0.052s latency).</div><div class="line">Nmap <span class="keyword">done</span>: 155 IP addresses (9 hosts up) scanned <span class="keyword">in</span> 19.43 seconds</div></pre></td></tr></table></figure></p>
+<p>或者：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ nmap -v <span class="_">-s</span>T 192.168.99.100-254</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh pi@&lt;ip address&gt;</div></pre></td></tr></table></figure>
+<p>用户名为<code>pi</code>，密码默认为<code>raspberry</code></p>
+<h3 id="修改树莓派hostname"><a href="#修改树莓派hostname" class="headerlink" title="修改树莓派hostname"></a>修改树莓派hostname</h3><ol>
+<li>修改主机名，<code>sudo vim /etc/hostname</code><br>修改成想要的主机名字</li>
+<li>修改hosts文件，<code>sudo vim /etc/hosts</code><br>替换原先所有的主机名</li>
+<li>重启设备，生效</li>
+</ol>
+<h3 id="查看用户与用户组信息"><a href="#查看用户与用户组信息" class="headerlink" title="查看用户与用户组信息"></a>查看用户与用户组信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">grep pi /etc/passwd /etc/group /etc/shadow</div></pre></td></tr></table></figure>
+<h3 id="软件更新sudo-apt-get-install-update"><a href="#软件更新sudo-apt-get-install-update" class="headerlink" title="软件更新sudo apt-get install update"></a>软件更新<code>sudo apt-get install update</code></h3><p>google一下，修改软件源，不然更新太慢了。</p>
+<h3 id="安装Tmux"><a href="#安装Tmux" class="headerlink" title="安装Tmux"></a>安装<code>Tmux</code></h3><p>试过未更新软件包，直接安装<code>tmux</code>，会提示找不到包<code>tmux</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install tmux</div></pre></td></tr></table></figure>
+<p>然后将<code>~/.tmux.conf</code>(该文件从<code>Vim_ywl</code>git库中找)里面的内容拷贝到Raspberry相应的文件中。(拷贝前，可以先安装xclip，利用系统剪贴板方便操作)</p>
+<h3 id="安装中文输入法-谷歌"><a href="#安装中文输入法-谷歌" class="headerlink" title="安装中文输入法-谷歌"></a>安装中文输入法-谷歌</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</div></pre></td></tr></table></figure>
+<p>安装完毕，重启即可</p>
+<p>重启后，需打开<code>fcitx</code>配置界面，将Google pinyin添加到输入法选项中。</p>
+<h3 id="安装Vim"><a href="#安装Vim" class="headerlink" title="安装Vim"></a>安装Vim</h3><p>安装<code>Ctags</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install exuberant-ctags</div></pre></td></tr></table></figure></p>
+<p>配置github的ssh登录，克隆<code>Vim_ywl</code>库</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Raspberry/">Raspberry</a>
+  </div>
+
+        
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

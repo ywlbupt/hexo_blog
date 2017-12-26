@@ -11,11 +11,10 @@
 
 grep-查找字符串-GNU官方指导
 find-查找文件-GNU官方指导
+官方GNUWIN32下载地址-sourceforge
 $ man grep
 
-Command Line$ grep options pattern input_file_names
-Matching options
-">
+Command Line$ grep options pattern input_f">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -88,7 +87,7 @@ Matching options
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> post </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#查找多个关键词"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">查找多个关键词</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
 </div>
 
       
@@ -117,7 +116,7 @@ Matching options
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> post </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#查找多个关键词"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">查找多个关键词</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
 </div>
 
                   
@@ -128,6 +127,7 @@ Matching options
 <ul>
 <li><a href="https://www.gnu.org/software/grep/manual/grep.html" target="_blank" rel="external">grep-查找字符串-GNU官方指导</a></li>
 <li><a href="https://www.gnu.org/software/findutils/manual/html_mono/find.html" target="_blank" rel="external">find-查找文件-GNU官方指导</a></li>
+<li><a href="https://sourceforge.net/projects/gnuwin32/files/" target="_blank" rel="external">官方GNUWIN32下载地址-sourceforge</a></li>
 <li><code>$ man grep</code></li>
 </ul>
 <h3 id="Command-Line"><a href="#Command-Line" class="headerlink" title="Command Line"></a>Command Line</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ grep options pattern input_file_names</div></pre></td></tr></table></figure>
@@ -180,6 +180,14 @@ Matching options
 <li><code>$</code>：指匹配的字符串在行尾，</li>
 </ul>
 <h3 id="Exmaple"><a href="#Exmaple" class="headerlink" title="Exmaple"></a>Exmaple</h3><h4 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 将/etc/passwd，有出现 root 的行取出</span></div><div class="line">$ grep root /etc/passwd</div><div class="line"><span class="comment"># 或</span></div><div class="line">$ cat /etc/passwd | grep root</div><div class="line"><span class="comment"># 同时显示行号</span></div><div class="line">$ grep -n root /etc/passwd</div><div class="line"><span class="comment"># 将/etc/passwd，将没有出现 root 和nologin的行取出来</span></div><div class="line">$ grep -v root /etc/passwd | grep -v nologin</div><div class="line"><span class="comment"># 用 dmesg 列出核心信息，再以 grep 找出内含 eth 那行,要将捉到的关键字显色，且加上行号来表示：</span></div><div class="line">$ dmesg | grep -n --color=auto <span class="string">'eth'</span></div><div class="line"><span class="comment"># 同上,把关键字所在行的前两行和后三行也一起显示出来</span></div><div class="line">$ dmesg | grep -n -A3 -B2 --color=auto <span class="string">'eth'</span></div></pre></td></tr></table></figure>
+<h5 id="查找多个关键词"><a href="#查找多个关键词" class="headerlink" title="查找多个关键词"></a>查找多个关键词</h5><ol>
+<li><p>或操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">grep -E <span class="string">'123|abc'</span> filename  // 找出文件（filename）中包含123或者包含abc的行</div><div class="line">egrep <span class="string">'123|abc'</span> filename    // 用egrep同样可以实现</div><div class="line">awk <span class="string">'/123|abc/'</span> filename   // awk 的实现方式</div></pre></td></tr></table></figure>
+</li>
+<li><p>与操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">grep pattern1 files | grep pattern2 //显示既匹配 pattern1 又匹配 pattern2 的行</div></pre></td></tr></table></figure>
+</li>
+</ol>
 <h4 id="目录递归查找"><a href="#目录递归查找" class="headerlink" title="目录递归查找"></a>目录递归查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ grep <span class="string">'energywise'</span> *           <span class="comment">#在当前目录搜索带'energywise'行的文件</span></div><div class="line">$ grep -r <span class="string">'energywise'</span> *        <span class="comment">#在当前目录及其子目录下搜索'energywise'行的文件</span></div><div class="line">$ grep <span class="_">-l</span> -r <span class="string">'energywis'</span> *     <span class="comment">#在当前目录及其子目录下搜索'energywise'行的文件，但是不显示匹配的行，只显示匹配的文件</span></div></pre></td></tr></table></figure>
 <h4 id="正则表达式查找"><a href="#正则表达式查找" class="headerlink" title="正则表达式查找"></a>正则表达式查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 查找 test 或 taste 这两个单字</span></div><div class="line">$ grep -n <span class="string">'t[ae]st'</span> regular_express.txt</div><div class="line"><span class="comment"># 反向查找,查找有 oo 的行，但 oo 前面不能有 g</span></div><div class="line">$ grep -n <span class="string">'[^g]oo'</span> regular_express.txt</div><div class="line">$ grep -n <span class="string">'[^a-z]oo'</span> regular_express.txt <span class="comment"># 非小写字母开头的字符串oo</span></div><div class="line">$ grep -n <span class="string">'^[a-z]'</span> regular_express.txt <span class="comment"># 小写字符为行首的行</span></div><div class="line">$ grep -n <span class="string">'^the'</span> regular_express.txt</div><div class="line">$ grep -n <span class="string">'^$'</span> regular_express.txt <span class="comment"># 找出空白行 </span></div><div class="line">$ grep -n <span class="string">'go\&#123;2,5\&#125;g'</span> regular_express.txt <span class="comment"># 找到g和g中间有2个到5个o的行,因&#123;&#125;在shell中有特殊意义,需转义</span></div></pre></td></tr></table></figure>
 <ul>
@@ -249,19 +257,31 @@ Matching options
   <h3 class="title" id="categories">分类</h3>
 <!--   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
 	
   
 	
-		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
 	
   
 	
@@ -269,11 +289,15 @@ Matching options
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
      
   
 	
@@ -281,28 +305,64 @@ Matching options
 	
   
 	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
 		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
 	
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
 	
   
 	
 		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
 	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -317,7 +377,7 @@ Matching options
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 
@@ -330,7 +390,7 @@ Matching options
   <footer id="footer"><div class="footer-content inner">
   <div class="alignleft">
   
-    &copy; 2016 Wlin
+    &copy; 2017 Wlin
     
   </div>
   <div class="alignright">

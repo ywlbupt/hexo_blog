@@ -1,0 +1,536 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-basic~fileIO文件基本读写操作 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="[Toc]
+【python】【file】文件的读写基本操作【读写模式】字符创直接读取
+‘r’ open for reading (default) (只读模式)
+‘r+’  ‘r+’ opens the file for both reading and writing. (可读可写)
+‘w’ open for writing, truncating the file first (只写模式，若文件存在，则会覆盖前文件)
+‘w+’ open for writing and reading, truncating the file first 
+‘x’ open for exclusive creation, failing if the file already exists (如果文件存在，打开失败，抛出Error)
+‘a’ open for writing, appending to the end of the file if it exists(若文件存在，则将新行加在文件的末尾)
+
+【编码模式】：二进制模式/文本模式
+‘b’ binary mode
+‘t’ text mode (default)
+‘+’ open a disk file for updating (reading and writing)
+‘U’ universal newlines mode (deprecated, 不赞成)
+For binary read-write access, 
+the mode ‘w+b’ opens and truncates the file to 0 bytes. 
+‘r+b’ opens the file without truncation.
+
+
+
+File open() &amp;amp; ｗrite() &amp;amp; read()with open(&#39;./file_example.txt&#39;,&#39;a&#39;) as f :    f.write(&quot;hello world!\r&quot;)with open(&#39;./file_example.txt&#39;,&#39;r&#39;) as f :    print(f.read())">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python-basic~fileIO文件基本读写操作"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【python】【file】文件的读写基本操作"><span class="toc-number">1.</span> <span class="toc-text">【python】【file】文件的读写基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#【读写模式】字符创直接读取"><span class="toc-number">1.0.1.</span> <span class="toc-text">【读写模式】字符创直接读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【编码模式】：二进制模式-文本模式"><span class="toc-number">1.0.2.</span> <span class="toc-text">【编码模式】：二进制模式/文本模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-open-amp-write-amp-read"><span class="toc-number">1.1.</span> <span class="toc-text">File open() & ｗrite() & read()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#open-获取一个文件对象；"><span class="toc-number">1.1.1.</span> <span class="toc-text">open(), 获取一个文件对象；</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python对不同平台换行符的处理"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">python对不同平台换行符的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python打开文件的编码方式"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">python打开文件的编码方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-seek-方法移动文件指针"><span class="toc-number">1.1.2.</span> <span class="toc-text">f.seek()方法移动文件指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-write-方法写入文件"><span class="toc-number">1.1.3.</span> <span class="toc-text">f.write()方法写入文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改特定行"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">修改特定行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-read-方法"><span class="toc-number">1.1.4.</span> <span class="toc-text">f.read()方法</span></a></li></ol></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-18T00:34:17.000Z"><a href="/hexo_blog/2016/10/18/Python-Basic-2016-10-18-python-basic-fileIO文件基本读写/">2016-10-18</a></time>
+        
+  
+    <h1 class="title">python-basic~fileIO文件基本读写操作</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【python】【file】文件的读写基本操作"><span class="toc-number">1.</span> <span class="toc-text">【python】【file】文件的读写基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#【读写模式】字符创直接读取"><span class="toc-number">1.0.1.</span> <span class="toc-text">【读写模式】字符创直接读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【编码模式】：二进制模式-文本模式"><span class="toc-number">1.0.2.</span> <span class="toc-text">【编码模式】：二进制模式/文本模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-open-amp-write-amp-read"><span class="toc-number">1.1.</span> <span class="toc-text">File open() & ｗrite() & read()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#open-获取一个文件对象；"><span class="toc-number">1.1.1.</span> <span class="toc-text">open(), 获取一个文件对象；</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python对不同平台换行符的处理"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">python对不同平台换行符的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python打开文件的编码方式"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">python打开文件的编码方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-seek-方法移动文件指针"><span class="toc-number">1.1.2.</span> <span class="toc-text">f.seek()方法移动文件指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-write-方法写入文件"><span class="toc-number">1.1.3.</span> <span class="toc-text">f.write()方法写入文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改特定行"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">修改特定行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-read-方法"><span class="toc-number">1.1.4.</span> <span class="toc-text">f.read()方法</span></a></li></ol></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h1 id="【python】【file】文件的读写基本操作"><a href="#【python】【file】文件的读写基本操作" class="headerlink" title="【python】【file】文件的读写基本操作"></a>【python】【file】文件的读写基本操作</h1><h3 id="【读写模式】字符创直接读取"><a href="#【读写模式】字符创直接读取" class="headerlink" title="【读写模式】字符创直接读取"></a>【读写模式】字符创直接读取</h3><ul>
+<li>‘r’ open for reading (<strong>default</strong>) (只读模式)</li>
+<li>‘r+’  ‘r+’ opens the file for both reading and writing. (可读可写)</li>
+<li>‘w’ open for writing, truncating the file first (只写模式，若文件存在，则会覆盖前文件)</li>
+<li>‘w+’ open for writing and reading, truncating the file first </li>
+<li>‘x’ open for exclusive creation, failing if the file already exists (如果文件存在，打开失败，抛出Error)</li>
+<li>‘a’ open for writing, appending to the end of the file if it exists(若文件存在，则将新行加在文件的末尾)</li>
+</ul>
+<h3 id="【编码模式】：二进制模式-文本模式"><a href="#【编码模式】：二进制模式-文本模式" class="headerlink" title="【编码模式】：二进制模式/文本模式"></a>【编码模式】：二进制模式/文本模式</h3><ul>
+<li>‘b’ binary mode</li>
+<li>‘t’ text mode (default)</li>
+<li>‘+’ open a disk file for updating (reading and writing)</li>
+<li>‘U’ universal newlines mode (deprecated, 不赞成)</li>
+<li>For binary read-write access, <ul>
+<li>the mode ‘w+b’ opens and truncates the file to 0 bytes. </li>
+<li>‘r+b’ opens the file without truncation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="File-open-amp-write-amp-read"><a href="#File-open-amp-write-amp-read" class="headerlink" title="File open() &amp; ｗrite() &amp; read()"></a>File open() &amp; ｗrite() &amp; read()</h2><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'./file_example.txt'</span>,<span class="string">'a'</span>) <span class="keyword">as</span> f :</div><div class="line">    f.write(<span class="string">"hello world!\r"</span>)</div><div class="line"><span class="keyword">with</span> open(<span class="string">'./file_example.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f :</div><div class="line">    print(f.read())</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="open-获取一个文件对象；"><a href="#open-获取一个文件对象；" class="headerlink" title="open(), 获取一个文件对象；"></a>open(), 获取一个文件对象；</h3><p>  打开了文件之后，处理完我们需要的操作之后，最后一部是调用f.close()来关闭文件<br>  如果文件不存在，将抛出 IOError 的异常，此时可能不会调用 f.close()来释放资源<br>  可以使用 try…finally来保证，或者是with…as 语句来自动调用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">'./file_example.txt'</span>, <span class="string">'r'</span>)</div><div class="line">    print(f.read())</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">if</span> f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure>
+<p>或者是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">with open(&apos;./file_example.txt&apos;,&apos;r&apos;) as f :</div><div class="line">    print (f.read())</div></pre></td></tr></table></figure>
+<h4 id="python对不同平台换行符的处理"><a href="#python对不同平台换行符的处理" class="headerlink" title="python对不同平台换行符的处理"></a>python对不同平台换行符的处理</h4><blockquote>
+<p>In text mode (mode argument ‘t’), the default when reading is to convert platform-specific line endings (<code>\n</code> on Unix, <code>\r\n</code> on Windows) to just <code>\n</code>.<br>When writing in text mode, the default is to convert occurrences of <code>\n</code> back to platform-specific line endings.</p>
+</blockquote>
+<h4 id="python打开文件的编码方式"><a href="#python打开文件的编码方式" class="headerlink" title="python打开文件的编码方式"></a>python打开文件的编码方式</h4><p>在text模式下，如果没有指定编码方式（specified encoding），则默认采用 平台的编码来解码（platform-dependent encoding）<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">with</span> open (<span class="string">"./temp.txt"</span>,<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> fd :</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<h4 id="codecs-open"><a href="#codecs-open" class="headerlink" title="codecs.open()"></a>codecs.open()</h4><p>考虑到<strong>共存</strong>问题，可以使用<code>codecs</code>库来兼容</p>
+<ul>
+<li><p>对于<strong>python 2</strong> </p>
+<ul>
+<li><p>使用<code>open()</code>打开文件会有一些问题，open打开文件只能写入<code>str</code>类型，不管字符串是什么编码方式的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">fr = open(<span class="string">"test.txt"</span>, <span class="string">'a'</span>)</div><div class="line">line1=<span class="string">"我爱祖国"</span></div><div class="line">fr.write(line1)</div></pre></td></tr></table></figure>
+<p>这样是完全可以的，因为 line1 在python2中是字符串类型。</p>
+</li>
+<li><p>但有时我们会遇到写入文件时编码不统一的情况(utf-8, gbk)，一般会转换成unicode，此时写入文件就有问题了：  </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">line2=<span class="string">u"我爱祖国"</span></div><div class="line">fr.write()</div></pre></td></tr></table></figure>
+<p>会报错，抛出<code>UnicodeEncodeError</code>的错误</p>
+</li>
+<li>对于上面的错误，可以采用先将<code>line2</code>编码成str类型，过程如下：<br><code>input(utf-8) -&gt; decode -&gt; unicode -&gt; encode -&gt; output(gbk)</code></li>
+<li><p>代替这个繁琐的操作的方法是采用<code>codecs.open()</code>，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span>  codecs </div><div class="line">fw = codecs.open(<span class="string">'test.txt'</span>, <span class="string">'a'</span>, encoding = <span class="string">'utf-8'</span>)</div><div class="line">fw.write(line2)  <span class="comment"># line2为unicode类型</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>这种方法可以指定一个编码打开文件，使用这个方法打开的文件读取返回的将是unicode。写入时，如果参数 是unicode，则使用open()时指定的编码进行编码后写入；<br>如果是str，则先根据源代码文件声明的字符编码，解码成unicode后再进行前述操作。<br>相对内置的open()来说，这个方法比较不容易在编码上出现问题。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="f-seek-方法移动文件指针"><a href="#f-seek-方法移动文件指针" class="headerlink" title="f.seek()方法移动文件指针"></a>f.seek()方法移动文件指针</h3><ul>
+<li><code>f.seek(0)</code>指针指向文件起始位置</li>
+</ul>
+<h3 id="f-write-方法写入文件"><a href="#f-write-方法写入文件" class="headerlink" title="f.write()方法写入文件"></a>f.write()方法写入文件</h3><ul>
+<li>f.write() 写入后不换行，下次写入接着写</li>
+<li>f.writeline() 写入后换行，下次会写在下一行</li>
+</ul>
+<p>可以反复调用write()来写入文件，但是务必要调用f.close()来关闭文件。</p>
+<p>当我们写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用close()方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用close()的后果是数据可能只写了一部分到磁盘，剩下的丢失了。</p>
+<p>所以，还是用with语句来得保险：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'./file_example.txt'</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f :</div><div class="line">    f.write(<span class="string">"hello world!"</span>)</div></pre></td></tr></table></figure>
+<h4 id="修改特定行"><a href="#修改特定行" class="headerlink" title="修改特定行"></a>修改特定行</h4><p>参考文档：</p>
+<ol>
+<li><a href="https://www.zhihu.com/question/27028777" target="_blank" rel="external">知乎-使用mmap模块读取大文件</a></li>
+</ol>
+<p>Python编辑文件的时候本身并不具备修改文件的功能，我们只能采用读取文件内容，然后再写入文件。</p>
+<ul>
+<li>对于小文件，可以全部读出后再覆盖写入，以<code>r+</code>模式<code>open()</code></li>
+<li>对于大文件，可新建一个文件，<ul>
+<li>一边 <code>f.readline()</code> </li>
+<li>一边修改<code>line.replace(&quot;old_text&quot;, &quot;new_text&quot;)</code></li>
+<li>并<code>f.writeline()</code>写入</li>
+</ul>
+</li>
+</ul>
+<p>TODO</p>
+<h3 id="f-read-方法"><a href="#f-read-方法" class="headerlink" title="f.read()方法"></a>f.read()方法</h3><ul>
+<li>f.read()可以一次性读取文件的内容</li>
+<li>f.read(size) 方法，每次最多读取 size 个字节的内容</li>
+<li>f.readlines() : 如果是配置文件，使用 f.readlines()会更加方便.<ul>
+<li>一次性读取整个文件，返回行的列表</li>
+</ul>
+</li>
+<li>f.readline() : 每次读取一行，适用于较大的文件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">    print(line.rstrip()) <span class="comment"># 去掉末尾的 '\n'</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Python/">Python</a>, <a href="/hexo_blog/categories/Python/Basic/">Basic</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/codecs/">codecs</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

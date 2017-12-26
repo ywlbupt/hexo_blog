@@ -1,0 +1,478 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-basic~python定制类及类属性 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="[Toc]
+基本类属性
+__class__: 类名字，类函数内部可由此调用自身类属性 self.__class__.property
+__name__: 类名，外部调用，一般通过实例访问属性
+在测试单文档中，通常会有这么一个语句 if __name__ == &amp;quot;__main__&amp;quot;">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python-basic~python定制类及类属性"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本类属性"><span class="toc-number">1.</span> <span class="toc-text">基本类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基础重载方法"><span class="toc-number">2.</span> <span class="toc-text">基础重载方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符重载"><span class="toc-number">3.</span> <span class="toc-text">运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TBD"><span class="toc-number">4.</span> <span class="toc-text">TBD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成器-iterator"><span class="toc-number">5.</span> <span class="toc-text">生成器 iterator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#像list-dict一样工作"><span class="toc-number">5.1.</span> <span class="toc-text">像list,dict一样工作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性＠property"><span class="toc-number">6.</span> <span class="toc-text">属性＠property</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getattr-动态调用类方法与属性"><span class="toc-number">7.</span> <span class="toc-text">getattr 动态调用类方法与属性</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-21T06:19:53.000Z"><a href="/hexo_blog/2016/10/21/Python-Basic-2016-10-21-python-basic-python内置类属性/">2016-10-21</a></time>
+        
+  
+    <h1 class="title">python-basic~python定制类及类属性</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本类属性"><span class="toc-number">1.</span> <span class="toc-text">基本类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基础重载方法"><span class="toc-number">2.</span> <span class="toc-text">基础重载方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符重载"><span class="toc-number">3.</span> <span class="toc-text">运算符重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TBD"><span class="toc-number">4.</span> <span class="toc-text">TBD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成器-iterator"><span class="toc-number">5.</span> <span class="toc-text">生成器 iterator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#像list-dict一样工作"><span class="toc-number">5.1.</span> <span class="toc-text">像list,dict一样工作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性＠property"><span class="toc-number">6.</span> <span class="toc-text">属性＠property</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getattr-动态调用类方法与属性"><span class="toc-number">7.</span> <span class="toc-text">getattr 动态调用类方法与属性</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h3 id="基本类属性"><a href="#基本类属性" class="headerlink" title="基本类属性"></a>基本类属性</h3><ul>
+<li><code>__class__</code>: 类名字，类函数内部可由此调用<strong>自身类属性</strong> <code>self.__class__.property</code></li>
+<li><code>__name__</code>: 类名，外部调用，一般通过实例访问属性<ul>
+<li>在测试单文档中，通常会有这么一个语句 <code>if __name__ == &quot;__main__&quot;:</code><ul>
+<li>如果是直接运行该文档，则 <code>__name__= &quot;__main__&quot;</code></li>
+<li>如果是从其他文件如<code>HelloPython.py</code>中<code>import</code>该模块，<br>则<code>__name__ = &quot;HelloPython&quot;</code><br><code>__module__</code>: 类定义所在的模块（类的全名是<code>__main__.className</code>，如果类位于一个导入模块mymod中，那么<code>className.__module__</code> 等于 mymod）<br><strong>dict</strong> : 类的属性（包含一个字典，由类的数据属性组成）<br><strong>doc</strong> :类的文档字符串<br><strong>bases</strong> : 类的所有父类构成元素（包含了一个由所有父类组成的元组）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="基础重载方法"><a href="#基础重载方法" class="headerlink" title="基础重载方法"></a>基础重载方法</h3><p>基础重载方法<br>下表列出了一些通用的功能，你可以在自己的类重写：<br>序号  方法, 描述 &amp; 简单的调用</p>
+<ul>
+<li><code>__init__ ( self [,args...] )</code> 构造函数<br>简单的调用方法: <code>obj = className(args)</code></li>
+<li><code>__del__( self )</code> 析构方法, 删除一个对象<br>简单的调用方法 : <code>dell obj</code></li>
+<li><code>__repr__( self )</code> 转化为供解释器读取的形式<br>简单的调用方法 : <code>repr(obj)</code></li>
+<li><code>__str__( self )</code> 用于将值转化为适于人阅读的形式<br>简单的调用方法 : <code>str(obj)</code><br>也可以通过<code>print(object)</code>打印</li>
+<li><code>__cmp__ ( self, x )</code> 对象比较<br>简单的调用方法 : <code>cmp(obj, x)</code></li>
+<li><code>__len__(self)</code>返回个数</li>
+</ul>
+<h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><ul>
+<li><code>__add__(self, other)</code></li>
+</ul>
+<h3 id="TBD"><a href="#TBD" class="headerlink" title="TBD"></a>TBD</h3><p><code>__import__</code></p>
+<p><code>__setattr__</code></p>
+<h3 id="生成器-iterator"><a href="#生成器-iterator" class="headerlink" title="生成器 iterator"></a>生成器 iterator</h3><ul>
+<li><code>__iter__</code> 和 <code>__next__</code></li>
+</ul>
+<h4 id="像list-dict一样工作"><a href="#像list-dict一样工作" class="headerlink" title="像list,dict一样工作"></a>像list,dict一样工作</h4><ul>
+<li><p><code>__getitem__</code>, </p>
+<ul>
+<li><code>isinstance(n, slice)</code> 切片处理判断<ul>
+<li>把<code>slice</code>也当做一个对象处理</li>
+<li><code>start = n.start</code> ,<code>stop = n.stop</code> </li>
+</ul>
+</li>
+<li>对负数进行处理判断</li>
+</ul>
+</li>
+<li><p><code>__setitem__</code>方法，把对象视为<code>list dict</code>来对集合赋值</p>
+</li>
+<li><code>__delitem__</code>方法，删除某元素</li>
+</ul>
+<h3 id="属性＠property"><a href="#属性＠property" class="headerlink" title="属性＠property"></a>属性＠property</h3><p>装饰器（decorator）可以给函数动态加上功能</p>
+<p>对于类的方法，装饰器一样起作用。Python内置的@property装饰器就是负责把一个方法变成属性调用<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line"><span class="meta">    @property</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self._score</div><div class="line"></div><div class="line"><span class="meta">    @score.setter</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self, value)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, int):</div><div class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'score must be an integer!'</span>)</div><div class="line">        <span class="keyword">if</span> value &lt; <span class="number">0</span> <span class="keyword">or</span> value &gt; <span class="number">100</span>:</div><div class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'score must between 0 ~ 100!'</span>)</div><div class="line">        self._score = value</div></pre></td></tr></table></figure></p>
+<p>把一个方法<code>score()</code>变成属性，只需要加上<code>@property</code>便可。可以在方法中添加参数检查等</p>
+<p>此时，<code>@property</code>又创建了另一个装饰器<code>@score.setter</code>，负责把一个setter()方法<br>变成属性赋值，于是可以如下应用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; s = Student()</div><div class="line">&gt;&gt;&gt; s.score = 60 <span class="comment"># OK，实际转化为s.set_score(60)</span></div><div class="line">&gt;&gt;&gt; s.score <span class="comment"># OK，实际转化为s.get_score()</span></div><div class="line">60</div><div class="line">&gt;&gt;&gt; s.score = 9999</div><div class="line">Traceback (most recent call last):</div><div class="line">  ...</div><div class="line">ValueError: score must between 0 ~ 100!</div></pre></td></tr></table></figure>
+<p>注意到这个神奇的<code>@property</code>，我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。</p>
+<p><strong>还可以定义只读属性，只定义getter方法，不定义setter方法就是一个只读属性</strong></p>
+<h3 id="getattr-动态调用类方法与属性"><a href="#getattr-动态调用类方法与属性" class="headerlink" title="getattr 动态调用类方法与属性"></a><strong>getattr</strong> 动态调用类方法与属性</h3>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Python/">Python</a>, <a href="/hexo_blog/categories/Python/Basic/">Basic</a>
+  </div>
+
+        
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

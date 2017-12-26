@@ -79,7 +79,7 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python的yaml解析"><span class="toc-number">1.</span> <span class="toc-text">python的yaml解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#yaml-load"><span class="toc-number">1.1.</span> <span class="toc-text">yaml.load()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yaml-dump"><span class="toc-number">1.2.</span> <span class="toc-text">yaml.dump()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-2-And-python-3-Supporting"><span class="toc-number">1.3.</span> <span class="toc-text">python 2 And python 3 Supporting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考链接"><span class="toc-number">1.4.</span> <span class="toc-text">参考链接</span></a></li></ol></li></ol>
+
 </div>
 
       
@@ -92,10 +92,10 @@
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-09-21T14:23:53.000Z"><a href="/hexo_blog/2016/09/21/Python-Lib-2016-09-21-python-lib-yaml-python解析yaml文件/">2016-09-21</a></time>
+        <time datetime="2017-05-04T00:56:11.000Z"><a href="/hexo_blog/2017/05/04/Python-Basic-2017-05-04-python-basic-Iterator-and-generator/">2017-05-04</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/09/21/Python-Lib-2016-09-21-python-lib-yaml-python解析yaml文件/">python-yaml~python解析yaml文件</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2017/05/04/Python-Basic-2017-05-04-python-basic-Iterator-and-generator/">python-basic~Iterator_and_generator迭代器与生成器</a></h1>
   
 
     </header>
@@ -108,275 +108,29 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python的yaml解析"><span class="toc-number">1.</span> <span class="toc-text">python的yaml解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#yaml-load"><span class="toc-number">1.1.</span> <span class="toc-text">yaml.load()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yaml-dump"><span class="toc-number">1.2.</span> <span class="toc-text">yaml.dump()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-2-And-python-3-Supporting"><span class="toc-number">1.3.</span> <span class="toc-text">python 2 And python 3 Supporting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考链接"><span class="toc-number">1.4.</span> <span class="toc-text">参考链接</span></a></li></ol></li></ol>
+
 </div>
 
                   
 
                   -->
         <p>[Toc]</p>
-<h3 id="python的yaml解析"><a href="#python的yaml解析" class="headerlink" title="python的yaml解析"></a>python的yaml解析</h3><ul>
-<li>Library : <code>pyyaml</code></li>
-<li>安装 : <code>pip install pyyaml</code></li>
-</ul>
-<h4 id="yaml-load"><a href="#yaml-load" class="headerlink" title="yaml.load()"></a>yaml.load()</h4><h4 id="yaml-dump"><a href="#yaml-dump" class="headerlink" title="yaml.dump()"></a>yaml.dump()</h4><h4 id="python-2-And-python-3-Supporting"><a href="#python-2-And-python-3-Supporting" class="headerlink" title="python 2 And python 3 Supporting"></a>python 2 And python 3 Supporting</h4><blockquote>
-<p>In Python 2:</p>
+<p>Python中关于迭代有两个概念，第一个是Iterable，第二个是Iterator，</p>
 <ul>
-<li>str objects are converted into !!str, !!python/str or !binary nodes depending on whether the object is an ASCII, UTF-8 or binary string.</li>
-<li>unicode objects are converted into !!python/unicode or !!str nodes depending on whether the object is an ASCII string or not.</li>
-<li>yaml.dump(data) produces the document as a UTF-8 encoded str object.</li>
-<li>yaml.dump(data, encoding=(‘utf-8’|’utf-16-be’|’utf-16-le’)) produces a str object in the specified encoding.</li>
-<li>yaml.dump(data, encoding=None) produces a unicode object.</li>
+<li>凡是可作用于for循环的对象都是Iterable类型；</li>
+<li>凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列；</li>
+<li>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</li>
+<li>Python的for循环本质上就是通过不断调用next()函数实现的</li>
 </ul>
-<p>In Python 3:</p>
-<ul>
-<li>str objects are converted to !!str nodes.</li>
-<li>bytes objects are converted to !!binary nodes.</li>
-<li>For compatibility reasons, !!python/str and !python/unicode tags are still supported and the corresponding nodes are converted to str objects.</li>
-<li>yaml.dump(data) produces the document as a str object.</li>
-<li>yaml.dump(data, encoding=(‘utf-8’|’utf-16-be’|’utf-16-le’)) produces a bytes object in the specified encoding.</li>
-</ul>
-</blockquote>
-<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="http://pyyaml.org/wiki/PyYAMLDocumentation" target="_blank" rel="external">官方链接</a></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vimscript-function-lists"><span class="toc-number">1.</span> <span class="toc-text">vimscript function-lists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vimscript中执行bash命令"><span class="toc-number">2.</span> <span class="toc-text">vimscript中执行bash命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vimscript-自动补全-complete"><span class="toc-number">3.</span> <span class="toc-text">vimscript 自动补全 complete()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考手册"><span class="toc-number">4.</span> <span class="toc-text">参考手册</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-09-20T14:50:59.000Z"><a href="/hexo_blog/2016/09/20/Vim-2016-09-20-vim-vimscript-常用技巧/">2016-09-20</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/09/20/Vim-2016-09-20-vim-vimscript-常用技巧/">vimscript-常用技巧</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vimscript-function-lists"><span class="toc-number">1.</span> <span class="toc-text">vimscript function-lists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vimscript中执行bash命令"><span class="toc-number">2.</span> <span class="toc-text">vimscript中执行bash命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vimscript-自动补全-complete"><span class="toc-number">3.</span> <span class="toc-text">vimscript 自动补全 complete()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考手册"><span class="toc-number">4.</span> <span class="toc-text">参考手册</span></a></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<h3 id="vimscript-function-lists"><a href="#vimscript-function-lists" class="headerlink" title="vimscript function-lists"></a>vimscript function-lists</h3><ul>
-<li>confirm({msg} [, {choices} [, {default} [, {type}]]])<br>confirm() 提供用户一个对话框，从中可以作出选择。返回选择的序号。第一个选择为 1。<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">confirm(&quot;Save changes?&quot;, &quot;&amp;Yes\n&amp;No\n&amp;Cancel&quot;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="vimscript中执行bash命令"><a href="#vimscript中执行bash命令" class="headerlink" title="vimscript中执行bash命令"></a>vimscript中执行bash命令</h3><blockquote>
-<p>from vimscript plugin “vim-hexo.vim”<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="comment">" Run command that build new blog</span></div><div class="line"><span class="function"><span class="keyword">function</span>! <span class="title">s</span>:<span class="title">Runcmd</span><span class="params">()</span></span></div><div class="line">    <span class="comment">" 启动 Bash , -c</span></div><div class="line">    <span class="comment">" 启动完Bash后从后面的字符串中读取命令并执行，然后退出，各命令以分号隔开</span></div><div class="line">    <span class="keyword">let</span> <span class="variable">s:cmd</span> = <span class="string">"!bash -c 'cd "</span> . <span class="variable">g:hexo_blogpath</span> . <span class="string">"; hexo n \'"</span>. <span class="variable">s:title</span> .<span class="string">"\' | cut -f3- -dt\'"</span></div><div class="line">    <span class="keyword">execute</span> <span class="variable">s:cmd</span></div><div class="line"><span class="keyword">endfunction</span></div></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="vimscript-自动补全-complete"><a href="#vimscript-自动补全-complete" class="headerlink" title="vimscript 自动补全 complete()"></a>vimscript 自动补全 complete()</h3><ul>
-<li>complete({startcol}, {matches})<br>设置插入模式补全的匹配。此例并不很有用，但可以说明功能。注意这里返回空串，以免插入零。  <figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">inoremap</span> <span class="symbol">&lt;F5&gt;</span> <span class="symbol">&lt;C-R&gt;</span>=ListMonths()<span class="symbol">&lt;CR&gt;</span></div><div class="line"></div><div class="line">func! ListMonths()</div><div class="line">  <span class="keyword">call</span> <span class="built_in">complete</span>(<span class="keyword">col</span>(<span class="string">'.'</span>), [<span class="string">'January'</span>, <span class="string">'February'</span>, <span class="string">'March'</span>,</div><div class="line">  \ <span class="string">'April'</span>, <span class="string">'May'</span>, <span class="string">'June'</span>, <span class="string">'July'</span>, <span class="string">'August'</span>, <span class="string">'September'</span>,</div><div class="line">  \ <span class="string">'October'</span>, <span class="string">'November'</span>, <span class="string">'December'</span>])</div><div class="line">  <span class="keyword">return</span> <span class="string">''</span></div><div class="line">endfunc</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="参考手册"><a href="#参考手册" class="headerlink" title="参考手册"></a>参考手册</h3><ol>
-<li>插入模式补全 -&gt; <code>ins-completion</code></li>
-<li>文件搜索 -&gt; <code>file-searching</code><ul>
-<li>包含统配符<code>**</code>, <code>*</code>等的使用</li>
-</ul>
-</li>
-<li>用户定义补全 -&gt; compl-function<br>命令补全可以由用户通过 ‘completefunc’ 选项自定义一个函数来完成。</li>
-<li><code>:h function-list</code> 查看内置函数列表</li>
-<li><p>globpath()<br>可以用 “**” 项目来搜索目录树。例如，寻找在 ‘runtimepath’ 和它之下所有目录里的 “README.txt” 文件: &gt;</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">echo</span> <span class="built_in">globpath</span>(&amp;rtp, <span class="string">"**/README.txt"</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>命令行的自动补全<code>h command-completion-customlist</code></p>
-<ul>
-<li>示例：<code>com! -nargs=+ -complete=customlist,FindFileNameComplete F call FindArgFilter(&lt;f-args&gt;)</code><a href="https://github.com/stegtmeyer/find-complete/blob/master/plugin/find-complete.vim" target="_blank" rel="external">github</a></li>
-</ul>
-</li>
-<li><p><code>strridx</code>返回字符串<code>string</code>中，最后一次出现<code>/</code>的位置的后一位，<code>strpart</code>用于截取字符串</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="built_in">strpart</span>(<span class="built_in">string</span>, <span class="built_in">strridx</span>(<span class="built_in">string</span>, <span class="string">"/"</span>) + <span class="number">1</span>)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本格式"><span class="toc-number">2.</span> <span class="toc-text">基本格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Visual的用法"><span class="toc-number">2.1.</span> <span class="toc-text">Visual的用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入时间的数写法-vimscript"><span class="toc-number">2.2.</span> <span class="toc-text">插入时间的数写法-vimscript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python-脚本"><span class="toc-number">2.3.</span> <span class="toc-text">Python 脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录－python对象snip的方法列表"><span class="toc-number">3.</span> <span class="toc-text">附录－python对象snip的方法列表</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-09-16T08:41:49.000Z"><a href="/hexo_blog/2016/09/16/Vim-Plugin-2016-09-16-vim-Plugin-Ultisnips的写法/">2016-09-16</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/09/16/Vim-Plugin-2016-09-16-vim-Plugin-Ultisnips的写法/">vim-plugin~Ultisnips的写法</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本格式"><span class="toc-number">2.</span> <span class="toc-text">基本格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Visual的用法"><span class="toc-number">2.1.</span> <span class="toc-text">Visual的用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入时间的数写法-vimscript"><span class="toc-number">2.2.</span> <span class="toc-text">插入时间的数写法-vimscript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python-脚本"><span class="toc-number">2.3.</span> <span class="toc-text">Python 脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录－python对象snip的方法列表"><span class="toc-number">3.</span> <span class="toc-text">附录－python对象snip的方法列表</span></a></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
-<li><a href="https://github.com/SirVer/ultisnips/tree/master/doc/examples" target="_blank" rel="external">Author Sirver 给出的例子</a></li>
-</ol>
-<h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><p>开始部分的格式如下：<br>The start line takes the followning format:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">snippet tab_trigger [ &quot;description&quot; [ options ] ]</div><div class="line">snippet &quot;tab_trigger&quot; [ &quot;description&quot; [ options ] ]</div></pre></td></tr></table></figure></p>
-<p>其中，<code>description</code>和<code>option</code>可选<br><code>tab_trigger</code>带引号的写法可嵌入空格</p>
-<p>【option】  </p>
-<ul>
-<li><code>b</code> : Beginning of a line<br> 只有<code>tab_trigger</code>处于行首式出发<code>snippet</code></li>
-<li><code>i</code> : the snippet can be triggered in the middle of a word.</li>
-<li><code>w</code> : 作为一个单独的词时触发， 例如<code>date</code></li>
-<li><code>r</code> : 正则表达式拓展，python regular expression，正则表达式的pattern 需要用引号包起来。</li>
-</ul>
-<p><code>endsnippet</code>表示snippets 的结束</p>
-<p>基本格式：<br>${0} 代表 tab 最终停留的位置， </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">snippet &lt;tigger&gt; &quot;注解&quot; &lt;flag&gt;</div><div class="line">$&#123;1:name&#125;</div><div class="line">$&#123;1/(\w+).*/$&#123;1&#125;/&#125;</div><div class="line">endsnippet</div></pre></td></tr></table></figure>
-<p>支持直接使用<code>shell script</code>，也可以通过<code>!v</code>嵌入<code>vimscript</code>或者<code>!p</code>嵌入<code>python</code></p>
-<h4 id="Visual的用法"><a href="#Visual的用法" class="headerlink" title="Visual的用法"></a>Visual的用法</h4><ol>
-<li><p>The ${VISUAL} placeholder can contain default text to use when the snippet<br>has been triggered when not in Visual mode. The syntax is: &gt;<br><code>${VISUAL:default text}</code></p>
-</li>
-<li><p>The ${VISUAL} placeholder can also define a transformation<br>(see |UltiSnips-transformations|). The syntax is: &gt;<br><code>${VISUAL:default/search/replace/option}.</code></p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">snippet t</div><div class="line">&lt;tag&gt;$&#123;VISUAL:inside text/should/is/g&#125;&lt;/tag&gt;</div><div class="line">endsnippet</div></pre></td></tr></table></figure>
-<p>Start with this line of text: &gt; <code>this should be cool</code></p>
-<p>Position the cursor on the word <code>&quot;should&quot;</code>, then press the key sequence: </p>
+<p>协议规定Iterable的<strong>iter</strong>方法会返回一个Iterator, Iterator的<strong>next</strong>方法（Python 2里是next）会返回下一个迭代对象，如果迭代结束则抛出StopIteration异常。</p>
+<p>所以有下面例子，<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fib</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a = <span class="number">0</span></div><div class="line">        self.b = <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a , self.b = self.b , self.a + self.b</div><div class="line">        <span class="keyword">return</span> self.a</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self</div></pre></td></tr></table></figure></p>
 <ol>
-<li>viw (visual mode -&gt; select inner word). </li>
-<li>Then press <tab>, type “t” and press <tab> again. </tab></tab></li>
+<li><code>__iter()__</code>函数只有一句话，就是<code>return self</code>，<code>__iter()__</code>首先返回一个迭代器Iterator。</li>
+<li>通过调用<code>__iter()__</code>返回的迭代器的<code>__next()__</code>方法，返回下一个迭代对象</li>
 </ol>
-<p>The result is: &gt; <code>this &lt;tag&gt;is&lt;/tag&gt; be cool</code></p>
-<p>If you expand this snippet while not in Visual mode<br>(e.g., in Insert mode type <code>t&lt;Tab&gt;</code>), you will get: &gt;<br>   <code>&lt;tag&gt;inside text&lt;/tag&gt;</code></p>
-<h4 id="插入时间的数写法-vimscript"><a href="#插入时间的数写法-vimscript" class="headerlink" title="插入时间的数写法-vimscript"></a>插入时间的数写法-vimscript</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 使用shell script</span></div><div class="line">LastUpdate : `date +%Y-%m-%d\ %H:%M`</div><div class="line"><span class="comment"># 使用`vimscript`</span></div><div class="line">LastUpdate : `!v strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>)`</div></pre></td></tr></table></figure>
-<h4 id="Python-脚本"><a href="#Python-脚本" class="headerlink" title="Python 脚本"></a>Python 脚本</h4><p>通过<code>global !p</code>直接嵌入<code>python</code>脚本</p>
-<p>python中的特殊变量<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">fn      - The current filename</div><div class="line">path    - The complete path to the current file</div><div class="line">t       - The values of the placeholders, t[1] is the text of $&#123;1&#125;, etc.</div><div class="line">snip    - UltiSnips.TextObjects.SnippetUtil object instance. Has methods</div><div class="line">            that simplify indentation handling.</div><div class="line">context - Result of context condition. See |UltiSnips-context-snippets|.</div></pre></td></tr></table></figure></p>
-<p>关于snip实例，方法见<a href="#snip">snip</a></p>
-<h3 id="附录－python对象snip的方法列表"><a href="#附录－python对象snip的方法列表" class="headerlink" title="附录－python对象snip的方法列表"></a>附录－python对象snip的方法列表</h3><p><em><span id="snip">snip</span></em></p>
-<p>参考UltiSnips的Help文档</p>
-<p>The ‘snip’ object provides the following methods: &gt;</p>
-<pre><code>snip.mkline(line=&quot;&quot;, indent=None):
-    Returns a line ready to be appended to the result. If indent
-    is None, then mkline prepends spaces and/or tabs appropriate to the
-    current &apos;tabstop&apos; and &apos;expandtab&apos; variables.
+<p>许多对象比如list、dict，是可以重复遍历的，甚至可以同时并发地进行遍历，通过<strong>iter</strong>每次返回一个独立的迭代器，就可以保证不同的迭代过程不会互相影响。而生成器表达式之类的结果往往是一次性的，不可以重复遍历，所以直接返回一个Iterator就好。让Iterator也实现Iterable的兼容就可以很灵活地选择返回哪一种。</p>
+<p>重复遍历</p>
 
-snip.shift(amount=1):
-    Shifts the default indentation level used by mkline right by the
-    number of spaces defined by &apos;shiftwidth&apos;, &apos;amount&apos; times.
-
-snip.unshift(amount=1):
-    Shifts the default indentation level used by mkline left by the
-    number of spaces defined by &apos;shiftwidth&apos;, &apos;amount&apos; times.
-
-snip.reset_indent():
-    Resets the indentation level to its initial value.
-
-snip.opt(var, default):
-    Checks if the Vim variable &apos;var&apos; has been set. If so, it returns the
-    variable&apos;s value; otherwise, it returns the value of &apos;default&apos;.
-</code></pre><p>The ‘snip’ object provides some properties as well: &gt;</p>
-<pre><code>snip.rv:
-    &apos;rv&apos; is the return value, the text that will replace the python block
-    in the snippet definition. It is initialized to the empty string. This
-    deprecates the &apos;res&apos; variable.
-
-snip.c:
-    The text currently in the python block&apos;s position within the snippet.
-    It is set to empty string as soon as interpolation is completed. Thus
-    you can check if snip.c is != &quot;&quot; to make sure that the interpolation
-    is only done once. This deprecates the &quot;cur&quot; variable.
-
-snip.v:
-     Data related to the ${VISUAL} placeholder. The property has two
-     attributes:
-         snip.v.mode   (&apos;v&apos;, &apos;V&apos;, &apos;^V&apos;, see |visual-mode| )
-         snip.v.text   The text that was selected.
-
-snip.fn:
-    The current filename.
-
-snip.basename:
-    The current filename with the extension removed.
-
-snip.ft:
-    The current filetype.
-
-snip.p:
-    Last selected placeholder. Will contain placeholder object with
-    following properties:
-</code></pre>
       
     </div>
     <footer>
@@ -400,7 +154,7 @@ snip.p:
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现"><span class="toc-number">2.1.</span> <span class="toc-text">具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试子目录"><span class="toc-number">2.2.</span> <span class="toc-text">测试子目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现的效果如下所示："><span class="toc-number">3.</span> <span class="toc-text">实现的效果如下所示：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接："><span class="toc-number">4.</span> <span class="toc-text">参考链接：</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#局域网"><span class="toc-number">1.</span> <span class="toc-text">局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如果是在局域网配置"><span class="toc-number">1.1.</span> <span class="toc-text">如果是在局域网配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果是在外网配置"><span class="toc-number">1.2.</span> <span class="toc-text">如果是在外网配置</span></a></li></ol></li></ol>
 </div>
 
       
@@ -413,330 +167,122 @@ snip.p:
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-08-15T15:18:21.000Z"><a href="/hexo_blog/2016/08/15/Markdown-2016-08-15-markdown-hexo-jacman-多级目录的具体实现/">2016-08-15</a></time>
+        <time datetime="2017-05-02T14:36:22.000Z"><a href="/hexo_blog/2017/05/02/Ubuntu-2017-05-02-ubuntu-raspberry-局域网与远程登录git配置/">2017-05-02</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/08/15/Markdown-2016-08-15-markdown-hexo-jacman-多级目录的具体实现/">hexo-jacman-多级目录的具体实现</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2017/05/02/Ubuntu-2017-05-02-ubuntu-raspberry-局域网与远程登录git配置/">ubuntu-raspberry~局域网与远程登录git配置</a></h1>
   
 
     </header>
 
     <div class="entry">
       
-        <p>[toc]</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>Hexo基本主题模板自带的分类显示都是一级的，如何显示多级?</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>参考了seay的<a href="https://segmentfault.com/a/1190000004359502">Hexo主题实现多级分类显示</a>，Git clone了jacman的主题，基本上能够照搬Seay的实现方式，方法如下:</p>
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#局域网"><span class="toc-number">1.</span> <span class="toc-text">局域网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如果是在局域网配置"><span class="toc-number">1.1.</span> <span class="toc-text">如果是在局域网配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果是在外网配置"><span class="toc-number">1.2.</span> <span class="toc-text">如果是在外网配置</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<p>###远程操作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ git remote -v                   #查看远程版本库信息</div><div class="line">$ git remote show &lt;remote&gt;        #查看指定远程版本库信息</div><div class="line">$ git remote add &lt;remote&gt; &lt;url&gt;   #添加远程版本库</div><div class="line">$ git fetch &lt;remote&gt;              #从远程库获取代码</div><div class="line">$ git pull &lt;remote&gt; &lt;branch&gt;      #下载代码及快速合并</div><div class="line">$ git push &lt;remote&gt; &lt;branch&gt;      #上传代码及快速合并</div><div class="line">$ git push &lt;remote&gt; :&lt;branch/tag-name&gt;  #删除远程分支或标签</div><div class="line">$ git push --tags                       #上传所有标签</div><div class="line">$ git push origin experimental:experiment-by-bob  # 如果这个分支在远程仓库里对应不同的名称（如:experiment-by-bob）,可以这么做：</div></pre></td></tr></table></figure>
+<h3 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h3><h4 id="如果是在局域网配置"><a href="#如果是在局域网配置" class="headerlink" title="如果是在局域网配置"></a>如果是在局域网配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git remote add pi ssh://git@lopb3:34570/home/git/Vim_ywl.git</div></pre></td></tr></table></figure>
+<ul>
+<li><code>lopb3</code>为pi在局域网中的IP地址，已经写在hosts中</li>
+<li><code>34570</code>为PI的SSH端口，直接使用22端口会在某些场合下有问题，这个配置在PI中实现</li>
+</ul>
+<h4 id="如果是在外网配置"><a href="#如果是在外网配置" class="headerlink" title="如果是在外网配置"></a>如果是在外网配置</h4><p>参考公司电脑，通过putty登录，花生壳等等<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git remote add pi ssh://git@ywlbupt.nat123.net:15842/home/git/Vim_ywl.git</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python"><span class="toc-number">1.</span> <span class="toc-text">python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类库"><span class="toc-number">1.1.</span> <span class="toc-text">分类库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据可视化"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据可视化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫Spider"><span class="toc-number">1.2.</span> <span class="toc-text">爬虫Spider</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资源"><span class="toc-number">1.2.1.</span> <span class="toc-text">参考资源</span></a></li></ol></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2017-02-27T23:43:36.000Z"><a href="/hexo_blog/2017/02/28/python~repository-Python资源库/">2017-02-28</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2017/02/28/python~repository-Python资源库/">python~repository-Python资源库</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python"><span class="toc-number">1.</span> <span class="toc-text">python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类库"><span class="toc-number">1.1.</span> <span class="toc-text">分类库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据可视化"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据可视化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫Spider"><span class="toc-number">1.2.</span> <span class="toc-text">爬虫Spider</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资源"><span class="toc-number">1.2.1.</span> <span class="toc-text">参考资源</span></a></li></ol></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<p>码农的资源库</p>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><ul>
+<li>Bible </li>
+</ul>
 <ol>
-<li>利用Hexo 3 更新的<code>list_categories([categories], [options])</code><strong>辅助函数</strong>生成分类列表;</li>
-<li>利用css实现样式.</li>
+<li><a href="https://docs.python.org/3/library" target="_blank" rel="external">The Python Standard Library</a></li>
+<li><a href="https://docs.python.org/3.5/howto/index.html" target="_blank" rel="external">Python 3.x HOWTOs</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8 – Style Guide for Python Code</a></li>
 </ol>
-<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/hexo_blog/2016/08/15/Markdown-2016-08-15-markdown-hexo-jacman-多级目录的具体实现/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一"><span class="toc-number">1.</span> <span class="toc-text">(一)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二"><span class="toc-number">2.</span> <span class="toc-text">(二)</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-01-21T15:55:37.000Z"><a href="/hexo_blog/2016/01/21/Python-2016-01-21-zt-python-unittest/">2016-01-21</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/01/21/Python-2016-01-21-zt-python-unittest/">zt-python-unittest</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一"><span class="toc-number">1.</span> <span class="toc-text">(一)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二"><span class="toc-number">2.</span> <span class="toc-text">(二)</span></a></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>转载：<a href="http://kingname.info/2015/03/04/pythonunittest1/" target="_blank" rel="external">Python的单元测试（一）</a><br>转载：<a href="http://kingname.info/2015/03/04/pythonunittest2/" target="_blank" rel="external">Python的单元测试（二）</a></p>
-<h3 id="一"><a href="#一" class="headerlink" title="(一)"></a>(一)</h3><p>测试驱动的软件开发方式可以强迫程序员在开发程序的时候使程序的函数之间实现高内聚，低耦合。这样的方式可以降低函数之间的依赖性，方便后续的修改，增加功能和维护。</p>
-<p>说一个函数高内聚，就是指这个函数专注于实现单一的任务，不会做除了生产这个任务以外的其他事情。可以想象一个人，他把自己关在一个小房子里面生产东西，只留两扇窗户，他需要什么材料，你就从小窗户给他送进去（参数），他做好了东西，就给你从另一个窗户里面送出来（return），他不会说，我要生产一个轮子，但是我首先需要一个女人进来，他不会说，这是计划的一部分。</p>
-<p>说几个函数是低耦合的，就是指他们的依赖性小。他们就像是葫芦娃，每个都有自己独特的能力，可以自己单干，在关键的时候还可以合体，变成小金刚。他们就像积木一样，各有各的功能，需要使用的时候直接组合在一起就可以了。</p>
-<p>使用测试驱动开发，每一个测试只测试一个功能，这样就可以迫使函数把自己独立出来，尽量减少和其他函数的依赖。</p>
-<p>例如，有一个文件1.txt，他的内容是两个数字，使用逗号隔开。形如“2,4”（不包括外侧双引号，下同）。我要写一个程序readandadd.py，读取硬盘上的1.txt文件，然后把这个文件的内容打印到屏幕上。</p>
-<p>不规范的写法一：</p>
-<pre><code>f= open(&apos;1.txt&apos;,&apos;r&apos;)
-b = f.read().split(&apos;,&apos;)
-f.close()
-print int(b[0])+int(b[1])
-</code></pre><p>不规范写法二：</p>
-<pre><code>def A():
-    f= open(&apos;1.txt&apos;,&apos;r&apos;)
-    b = f.read().split(&apos;,&apos;)
-    f.close()
-    print int(b[0])+int(b[1])
-A()
-</code></pre><p>比较规范的写法：</p>
-<pre><code>def read(filename):
-    f= open(filename,&apos;r&apos;)
-    info = f.read()
-    f.close()
-    return info
-
-def getnum(info):
-    twonum = info.split(&apos;,&apos;)
-    return twonum
-
-def addnum(twonum):
-    return int(twonum[0])+int(twonum[1])
-
-if __name__ == &apos;__main__&apos;:
-        info = read(&apos;1.txt&apos;)
-        twonum = getnum(info)
-        result = addnum(twonum)
-        print result
-</code></pre><p>这样写的好处是，如果想测试读文件的功能，就只需要测试read()函数，如果想测试把两个数分开的功能，就只需要测试getnum()函数。而相反，在不规范写法二中，虽然只想测试两个数字相加的功能，可是却不得不首先打开文件并读取文件然后把数字分开。</p>
-<p>继续回到比较规范的写法当中，我相信很多人写完read()函数以后，肯定会输入如下代码：</p>
-<pre><code>def read(filename):
-    f= open(filename,&apos;r&apos;)
-    info = f.read()
-    f.close()
-    return info
-
-print read(&apos;1.txt&apos;)
-</code></pre><p>然后运行程序，发现正常打印出’2,3’以后，再开始写getnum()函数。写完getnum以后，测试getnum()函数没问题以后再开始写然后测试addnum()函数。最后测试整个程序的功能。</p>
-<p>其实这个过程，已经就是在做单元测试了。然而这样操作的弊端是什么？如果整体程序已经写好了，之前做测试点代码也就删除了。那么如果突然把程序做了修改。例如1.txt里面数字的分隔从1个逗号变成了空格，或者变成了3个数字，那必然要修改getnum()，但是又如何测试修改的部分呢？还要把不相干的代码给注释掉。不仅麻烦，而且容易出错。</p>
-<p>现在，把测试的代码单独独立出来。会有什么效果呢？尝试创建一个test.py程序，代码如下：</p>
-<pre><code>import readandadd
-
-def testread():
-    print &apos;read:&apos;,readandadd.read(&apos;1.txt&apos;)
-
-def testgetnum():
-    print &apos;getnum:&apos;,readandadd.getnum(&apos;2,3&apos;)
-
-def testaddnum():
-    print &apos;addnum:&apos;,readandadd.addnum([2,3])
-
-if __name__ == &apos;__main__&apos;:
-    testread()
-    testgetnum()
-    testaddnum()
-</code></pre><p>运行test.py以后输出结果如下：</p>
-<pre><code>read: 2,3
-getnum: [&apos;2&apos;, &apos;3&apos;]
-addnum: 5
-</code></pre><p>每一个函数的输出结果一目了然，而且在修改了readandadd.py的函数以后，重新运行test.py就可以知道输出结果有没有符合预期。</p>
-<p>当然，这里这个例子非常的简单，因此可以人工通过观察test.py的输出结果来确定是否符合预期，那对于大量的函数的测试，难道也要让肉眼来看吗？当然不是。于是，下一篇文章将会介绍Python的单元测试<code>unittest</code>。</p>
-<h3 id="二"><a href="#二" class="headerlink" title="(二)"></a>(二)</h3><p>在这个例子中，只有三个函数，于是可以把每个函数的输出结果打印到屏幕上，再用肉眼去看结果是否符合预期。然而假设有一个程序，有二十个类，每个类又有几十个函数，有些函数的输出结果还多达几十行，在这种情况下，肉眼如何看得出？</p>
-<p>当然你可以使用if判断</p>
-<pre><code>if 输出结果 == 预期结果:
-    return True
-else:
-    print u&apos;不相等&apos;
-</code></pre><p>这个时候，你发现，程序有几个函数，后三行就要重复几次，本着代码简洁的原则，你把这个判断的过程写到一个函数中：</p>
-<pre><code>def isequal(output,right_output):
-    if output == right_output:
-        return True
-    else:
-        print u&apos;不相等&apos;
-</code></pre><p>那么恭喜你，你步入正规了，然而，这一切已经有人为你做好了。欢迎unittest模块出场。</p>
-<p>unittest supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework. The unittest module provides classes that make it easy to support these qualities for a set of tests.</p>
-<p>Python的官方文档这样写到，unittest支持自动化测试，测试的安装分享和关闭代码……</p>
-<p>一句话说来，就是，unittest很好用。</p>
-<p>还是用上一次的readandadd.py来演示unittest的基本用法,首先介绍unittest的一个函数，assertEqual(first,second),这个函数的作用是检查变量first的值与second的值是否相等，如果不相等就抛出错误。</p>
-<p>先创建utest.py文件，输入以下代码并运行：</p>
-<pre><code>#-*-coding:utf-8-*-
-import unittest
-import readandadd
-
-class basictest(unittest.TestCase): #类名可以随便取
-    def testread(self): #每个函数都要以test开头
-        output = readandadd.read(&apos;1.txt&apos;)
-        self.assertEqual(output,&apos;2,3&apos;)
-
-    def testgetnum(self):
-        output = readandadd.getnum(&apos;2,3&apos;)
-        self.assertEqual(output,[&apos;2&apos;, &apos;3&apos;])
-
-    def testaddnum(self):
-        output = readandadd.addnum([2,3])
-        self.assertEqual(output,5)
-
-if __name__ == &apos;__main__&apos;:
-    unittest.main()
-</code></pre><p>运行结果如下：</p>
-<pre><code>...
-----------------------------------------------------------------------
-Ran 3 tests in 0.001s
-
-OK
-</code></pre><p>你也许会说，就一个ok，什么都没有啊。那我先把testread()函数下面的</p>
-<pre><code>self.assertEqual(output,&apos;2,3&apos;)
-</code></pre><p>改为</p>
-<pre><code>self.assertEqual(output,&apos;2,4&apos;)
-</code></pre><p>在运行utest.py看看输出结果如何：</p>
-<pre><code>..F
-======================================================================
-FAIL: testread (__main__.basictest)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File &quot;E:/mystuff/unitest/utest.py&quot;, line 8, in testread
-    self.assertEqual(output,&apos;2,4&apos;)
-AssertionError: &apos;2,3&apos; != &apos;2,4&apos;
-
-----------------------------------------------------------------------
-Ran 3 tests in 0.000s
-
-FAILED (failures=1)
-</code></pre><p>这里准确的找出了错误的位置和错误的具体内容。注意看最上面，有个</p>
-<pre><code>..F
-</code></pre><p>猜测它可能是标示错误的位置。保持testread的错误不改，再把testgetnum()函数中的以下内容</p>
-<pre><code>self.assertEqual(output,[&apos;2&apos;, &apos;3&apos;])
-</code></pre><p>改为</p>
-<pre><code>self.assertEqual(output,[&apos;2&apos;, &apos;6&apos;])
-</code></pre><p>再运行utest.py程序，输出结果如下：</p>
-<pre><code>.FF
-======================================================================
-FAIL: testgetnum (__main__.basictest)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File &quot;E:/mystuff/unitest/utest.py&quot;, line 12, in testgetnum
-    self.assertEqual(output,[&apos;2&apos;, &apos;6&apos;])
-AssertionError: Lists differ: [&apos;2&apos;, &apos;3&apos;] != [&apos;2&apos;, &apos;6&apos;]
-
-First differing element 1:
-3
-6
-
-- [&apos;2&apos;, &apos;3&apos;]
-?        ^
-
-+ [&apos;2&apos;, &apos;6&apos;]
-?        ^
-
-
-======================================================================
-FAIL: testread (__main__.basictest)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File &quot;E:/mystuff/unitest/utest.py&quot;, line 8, in testread
-    self.assertEqual(output,&apos;2,4&apos;)
-AssertionError: &apos;2,3&apos; != &apos;2,4&apos;
-
-----------------------------------------------------------------------
-Ran 3 tests in 0.001s
-
-FAILED (failures=2)
-</code></pre><p>可以看出，这里分别把两个错误显示了出来。并且第一行变成了</p>
-<p>.FF<br>所以，第一行的内容应该从右往左读，它标明错误函数在所有函数的相对位置。</p>
-<p>现在再把testread()和testgetnum()改回去，再看看全部正确的输出：</p>
-<pre><code>...
-----------------------------------------------------------------------
-Ran 3 tests in 0.000s
-
-OK
-</code></pre><p>印证了那句话，没有消息就是最好的消息。</p>
-<p>这篇文章介绍了单元测试模块unittest的assertEqual的基本用法</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-参数"><span class="toc-number">1.1.</span> <span class="toc-text">logging 参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-handle-方式"><span class="toc-number">1.2.</span> <span class="toc-text">logging handle 方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logging-config模块"><span class="toc-number">1.3.</span> <span class="toc-text">logging.config模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">2.</span> <span class="toc-text">Reference Link</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-01-21T15:55:37.000Z"><a href="/hexo_blog/2016/01/21/Python-2016-01-27-python-log/">2016-01-21</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/01/21/Python-2016-01-27-python-log/">python-loging调试监控</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>允许你指定记录信息的级别，有</p>
-<ul>
-<li>debug</li>
-<li>info</li>
-<li>warning</li>
-<li>error</li>
+<h3 id="分类库"><a href="#分类库" class="headerlink" title="分类库"></a>分类库</h3><p><a href="https://www.zhihu.com/question/24590883" target="_blank" rel="external">知乎，python资源库-哪些Python库让你相见恨晚？</a></p>
+<h4 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h4><p>PYTHON很多好看的作图库，但是都是基于<code>matplotlib</code>进行开发封装的！</p>
+<h3 id="爬虫Spider"><a href="#爬虫Spider" class="headerlink" title="爬虫Spider"></a>爬虫Spider</h3><h4 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h4><ul>
+<li><p><a href="http://www.cnblogs.com/qiyeboy/p/5693128.html" target="_blank" rel="external">python开源代理池-七夜</a></p>
+</li>
+<li><p><a href="http://xlzd.me/tag/crawler/1/" target="_blank" rel="external">xlzd杂谈-很好的爬虫专栏</a></p>
+</li>
+<li><a href="https://github.com/lining0806/PythonSpiderNotes" target="_blank" rel="external">Python入门网络爬虫之精华版-lining0806</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24469566" target="_blank" rel="external">拥有属于自己的Python爬虫框架–练习编写多线程、协程爬虫框架！</a></li>
+<li>Selenium, PhantomJS，用Python模拟JS行为，让一切反爬虫机制都变成纸老虎</li>
 </ul>
-<p>日志级别大小关系为：CRITICAL &gt; ERROR &gt; WARNING &gt; INFO &gt; DEBUG &gt; NOTSET，当然也可以自己定义日志级别</p>
-<p>等几个级别，当我们指定<code>level=INFO</code>时，<code>logging.debug</code>就不起作用了。同理，指定<code>level=WARNING</code>后，debug和info就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。</p>
+
       
     </div>
     <footer>
       
-        
-          <div class="alignleft">
-            <a href="/hexo_blog/2016/01/21/Python-2016-01-27-python-log/#more" class="more-link">Read More</a>
-          </div>
         
         
       
@@ -756,7 +302,7 @@ OK
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#微博登录"><span class="toc-number">1.</span> <span class="toc-text">微博登录</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">1.</span> <span class="toc-text">参考文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super"><span class="toc-number">2.</span> <span class="toc-text">super()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于super-cls-inst"><span class="toc-number">3.</span> <span class="toc-text">关于super(cls , inst)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MRO-Method-Resolution-Order"><span class="toc-number">4.</span> <span class="toc-text">MRO - Method Resolution Order</span></a></li></ol>
 </div>
 
       
@@ -769,10 +315,10 @@ OK
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-01-21T01:31:27.000Z"><a href="/hexo_blog/2016/01/21/Python-2016-01-21-python-spider/">2016-01-21</a></time>
+        <time datetime="2016-12-11T08:04:11.000Z"><a href="/hexo_blog/2016/12/11/Python-Basic-2016-12-11-python-basic-深入理解python-super/">2016-12-11</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/01/21/Python-2016-01-21-python-spider/">python-spider爬虫记录</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2016/12/11/Python-Basic-2016-12-11-python-basic-深入理解python-super/">python-basic~深入理解python-super</a></h1>
   
 
     </header>
@@ -785,17 +331,31 @@ OK
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#微博登录"><span class="toc-number">1.</span> <span class="toc-text">微博登录</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">1.</span> <span class="toc-text">参考文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super"><span class="toc-number">2.</span> <span class="toc-text">super()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于super-cls-inst"><span class="toc-number">3.</span> <span class="toc-text">关于super(cls , inst)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MRO-Method-Resolution-Order"><span class="toc-number">4.</span> <span class="toc-text">MRO - Method Resolution Order</span></a></li></ol>
 </div>
 
                   
 
                   -->
-        <h3 id="微博登录"><a href="#微博登录" class="headerlink" title="微博登录"></a>微博登录</h3><ol>
-<li>密码加密SHA1,RSA?</li>
-<li>用户名采用base64加密</li>
+        <p>[Toc]</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ol>
+<li><a href="https://laike9m.com/blog/li-jie-python-super,70/" target="_blank" rel="external">理解python super</a></li>
+<li><a href="https://rhettinger.wordpress.com/2011/05/26/super-considered-super/" target="_blank" rel="external">Python’s super() considered super!–Raymond Hettinger</a></li>
+<li><a href="https://www.python.org/download/releases/2.3/mro/" target="_blank" rel="external">MRO 官方文档</a></li>
 </ol>
-
+<h3 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h3><p>子类里访问父类的同名属性，而又不想直接引用父类的名字，因为说不定什么时候会去修改它，所以数据还是只保留一份的好。</p>
+<p>还有更好的理由不去使用父类名字，详情参考文档[2]</p>
+<p>在python 3.x中，可使用<code>super()</code>引用MRO中的下一个类（非父类）<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">m</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">'A'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">m</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">'B'</span>)</div><div class="line">    <span class="comment"># super(B, self).m() # python 2.x中super需要参数</span></div><div class="line">    super().m()</div><div class="line"></div><div class="line">B().m()</div></pre></td></tr></table></figure></p>
+<h3 id="关于super-cls-inst"><a href="#关于super-cls-inst" class="headerlink" title="关于super(cls , inst)"></a>关于super(cls , inst)</h3><p>super并不是指的父类，而是MRO的下一个类<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">super</span><span class="params">(cls, inst)</span>:</span></div><div class="line">    mro =  inst.__class__.mro </div><div class="line">    <span class="keyword">return</span> mro[mro.index[cls]+<span class="number">1</span>]</div></pre></td></tr></table></figure></p>
+<p>两个参数 cls 和 inst 分别做了两件事： </p>
+<ol>
+<li>inst 负责生成 MRO 的 list </li>
+<li>通过 cls 定位当前 MRO 中的 index, 并返回 mro[index + 1] </li>
+</ol>
+<p>MRO 代表着类继承的顺序</p>
+<p><strong>在文档[2]中指出，如果你要用 super，那么最佳实践就是一串类全都用 super，每个类的方法提取自己要用的那个参数。</strong></p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; class A():</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; class B():</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; class C(A, B):</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; C.__mro__</div><div class="line">(&lt;class '__main__.C'&gt;, &lt;class '__main__.A'&gt;, &lt;class '__main__.B'&gt;, &lt;class 'object'&gt;)</div><div class="line"></div><div class="line"># C继承自A，所以这里A的位置不能在C的前面，报错</div><div class="line">&gt;&gt;&gt; class D(A,C):</div><div class="line">...     pass</div><div class="line">...</div><div class="line">Traceback (most recent call last):</div><div class="line">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</div><div class="line">TypeError: Cannot create a consistent method resolution</div><div class="line">order (MRO) for bases A, C</div><div class="line"></div><div class="line">&gt;&gt;&gt; class D(C,A):</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; D.__mro__</div><div class="line">(&lt;class '__main__.D'&gt;, &lt;class '__main__.C'&gt;, &lt;class '__main__.A'&gt;, &lt;class '__main__.B'&gt;, &lt;class 'object'&gt;)</div><div class="line"></div><div class="line"></div><div class="line">&gt;&gt;&gt; class D(C,B):</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; D.__mro__</div><div class="line">(&lt;class '__main__.D'&gt;, &lt;class '__main__.C'&gt;, &lt;class '__main__.A'&gt;, &lt;class '__main__.B'&gt;, &lt;class 'object'&gt;)</div></pre></td></tr></table></figure>
+<h3 id="MRO-Method-Resolution-Order"><a href="#MRO-Method-Resolution-Order" class="headerlink" title="MRO - Method Resolution Order"></a>MRO - Method Resolution Order</h3>
       
     </div>
     <footer>
@@ -819,7 +379,7 @@ OK
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-格式化-format-输出字符串-详解-及-代码"><span class="toc-number">1.</span> <span class="toc-text">Python - 格式化(format())输出字符串 详解 及 代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">2.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中的type与object"><span class="toc-number">1.</span> <span class="toc-text">python中的type与object</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python中为什么要继承object类"><span class="toc-number">1.1.</span> <span class="toc-text">Python中为什么要继承object类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-x与Python-2-x中的新式类"><span class="toc-number">1.1.1.</span> <span class="toc-text">python 3.x与Python 2.x中的新式类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-2-x-中的传统类"><span class="toc-number">1.1.2.</span> <span class="toc-text">python 2.x 中的传统类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-3-x与Python-2-x新式类的继续深入"><span class="toc-number">1.2.</span> <span class="toc-text">Python 3.x与Python 2.x新式类的继续深入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编写元类定制type"><span class="toc-number">1.2.1.</span> <span class="toc-text">编写元类定制type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个什么也不干的元类"><span class="toc-number">1.2.2.</span> <span class="toc-text">一个什么也不干的元类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个什么也不干的工厂函数（元函数？）"><span class="toc-number">1.2.3.</span> <span class="toc-text">一个什么也不干的工厂函数（元函数？）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元类-gt-类对象的定制构建和初始化"><span class="toc-number">1.2.4.</span> <span class="toc-text">元类->类对象的定制构建和初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元类的属性不会被类实例继承"><span class="toc-number">1.2.5.</span> <span class="toc-text">元类的属性不会被类实例继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于元类的扩展，扩展类行为类方法"><span class="toc-number">1.2.6.</span> <span class="toc-text">基于元类的扩展，扩展类行为类方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-C-源码"><span class="toc-number">1.3.</span> <span class="toc-text">python C 源码</span></a></li></ol></li></ol>
 </div>
 
       
@@ -832,10 +392,10 @@ OK
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-01-20T01:21:05.000Z"><a href="/hexo_blog/2016/01/20/Python-2016-01-20-python-string-advanced/">2016-01-20</a></time>
+        <time datetime="2016-12-10T09:37:34.000Z"><a href="/hexo_blog/2016/12/10/Python-Basic-2016-12-10-python-basic-Python中的type类型与object类/">2016-12-10</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/01/20/Python-2016-01-20-python-string-advanced/">python-字符串的进阶</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2016/12/10/Python-Basic-2016-12-10-python-basic-Python中的type类型与object类/">python-basic~Python中的type与object</a></h1>
   
 
     </header>
@@ -848,136 +408,95 @@ OK
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-格式化-format-输出字符串-详解-及-代码"><span class="toc-number">1.</span> <span class="toc-text">Python - 格式化(format())输出字符串 详解 及 代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">2.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中的type与object"><span class="toc-number">1.</span> <span class="toc-text">python中的type与object</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python中为什么要继承object类"><span class="toc-number">1.1.</span> <span class="toc-text">Python中为什么要继承object类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-x与Python-2-x中的新式类"><span class="toc-number">1.1.1.</span> <span class="toc-text">python 3.x与Python 2.x中的新式类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-2-x-中的传统类"><span class="toc-number">1.1.2.</span> <span class="toc-text">python 2.x 中的传统类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-3-x与Python-2-x新式类的继续深入"><span class="toc-number">1.2.</span> <span class="toc-text">Python 3.x与Python 2.x新式类的继续深入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编写元类定制type"><span class="toc-number">1.2.1.</span> <span class="toc-text">编写元类定制type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个什么也不干的元类"><span class="toc-number">1.2.2.</span> <span class="toc-text">一个什么也不干的元类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个什么也不干的工厂函数（元函数？）"><span class="toc-number">1.2.3.</span> <span class="toc-text">一个什么也不干的工厂函数（元函数？）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元类-gt-类对象的定制构建和初始化"><span class="toc-number">1.2.4.</span> <span class="toc-text">元类->类对象的定制构建和初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元类的属性不会被类实例继承"><span class="toc-number">1.2.5.</span> <span class="toc-text">元类的属性不会被类实例继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于元类的扩展，扩展类行为类方法"><span class="toc-number">1.2.6.</span> <span class="toc-text">基于元类的扩展，扩展类行为类方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-C-源码"><span class="toc-number">1.3.</span> <span class="toc-text">python C 源码</span></a></li></ol></li></ol>
 </div>
 
                   
 
                   -->
-        <h2 id="Python-格式化-format-输出字符串-详解-及-代码"><a href="#Python-格式化-format-输出字符串-详解-及-代码" class="headerlink" title="Python - 格式化(format())输出字符串 详解 及 代码"></a>Python - 格式化(format())输出字符串 详解 及 代码</h2><p>出处：<a href="http://blog.csdn.net/caroline_wendy/article/details/17111451" target="_blank" rel="external">Python - 格式化(format())输出字符串 详解 及 代码</a></p>
-<p>Python中格式化输出字符串使用<code>format()</code>函数, 字符串即类, 可以使用方法;</p>
-<p>Python是完全面向对象的语言, 任何东西都是对象;</p>
-<p>字符串的参数使用<code>{NUM}</code>进行表示,</p>
-<p>0, 表示第一个参数,1, 表示第二个参数, 以后顺次递加;</p>
-<p>使用”:”, 指定代表元素需要的操作, 如”<code>:.3</code>“小数点三位, “<code>:8</code>“占8个字符空间等;<br>还可以添加特定的字母, 如:</p>
-<ul>
-<li>‘b’ - 二进制. 将数字以2为基数进行输出.</li>
-<li>‘c’ - 字符. 在打印之前将整数转换成对应的Unicode字符串.</li>
-<li>‘d’ - 十进制整数. 将数字以10为基数进行输出.</li>
-<li>‘o’ - 八进制. 将数字以8为基数进行输出. </li>
-<li>‘x’ - 十六进制. 将数字以16为基数进行输出, 9以上的位数用小写字母.</li>
-<li>‘e’ - 幂符号. 用科学计数法打印数字, 用’e’表示幂. </li>
-<li>‘g’ - 一般格式. 将数值以fixed-point格式输出. 当数值特别大的时候, 用幂形式打印. </li>
-<li>‘n’ - 数字. 当值为整数时和’d’相同, 值为浮点数时和’g’相同. 不同的是它会根据区域设置插入数字分隔符. </li>
-<li>‘%’ - 百分数. 将数值乘以100然后以fixed-point(‘f’)格式打印, 值后面会有一个百分号. </li>
+        <p>[Toc]</p>
+<h2 id="python中的type与object"><a href="#python中的type与object" class="headerlink" title="python中的type与object"></a>python中的type与object</h2><h3 id="Python中为什么要继承object类"><a href="#Python中为什么要继承object类" class="headerlink" title="Python中为什么要继承object类"></a>Python中为什么要继承object类</h3><ul>
+<li><a href="https://www.zhihu.com/question/19754936" target="_blank" rel="external">python中为什么要继承object类</a></li>
+<li><a href="http://www.kaka-ace.com/python2_new-style-and-classic-classes/" target="_blank" rel="external">Python 新式类介绍 (包含 new-style-and-classic-classes 文档翻译)</a></li>
+<li><a href="http://python-history.blogspot.com/2010/06/inside-story-on-new-style-classes.html" target="_blank" rel="external">根据 stackoverflow 答案引出的语言发明者 Guido 写的一篇文章</a></li>
 </ul>
-<p>数字(0, 1, …)即代表format()里面的元素, 所以可以使用”.”调用元素的方法;</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-  </span></div><div class="line"><span class="comment">#====================  </span></div><div class="line"><span class="comment">#File: abop.py  </span></div><div class="line"><span class="comment">#Author: Wendy  </span></div><div class="line"><span class="comment">#Date: 2013-12-03  </span></div><div class="line"><span class="comment">#====================  </span></div><div class="line"><span class="comment">#eclipse pydev, python3.3  </span></div><div class="line">age = <span class="number">25</span>  </div><div class="line">name = <span class="string">'Caroline'</span>  </div><div class="line">  </div><div class="line">print(<span class="string">'&#123;0&#125; is &#123;1&#125; years old. '</span>.format(name, age)) <span class="comment">#输出参数  </span></div><div class="line">print(<span class="string">'&#123;0&#125; is a girl. '</span>.format(name))  </div><div class="line">print(<span class="string">'&#123;0:.3&#125; is a decimal. '</span>.format(<span class="number">1</span>/<span class="number">3</span>)) <span class="comment">#小数点后三位  </span></div><div class="line">print(<span class="string">'&#123;0:_^11&#125; is a 11 length. '</span>.format(name)) <span class="comment">#使用_补齐空位  </span></div><div class="line">print(<span class="string">'&#123;first&#125; is as &#123;second&#125;. '</span>.format(first=name, second=<span class="string">'Wendy'</span>)) <span class="comment">#别名替换  </span></div><div class="line">print(<span class="string">'My name is &#123;0.name&#125;'</span>.format(open(<span class="string">'out.txt'</span>, <span class="string">'w'</span>))) <span class="comment">#调用方法  </span></div><div class="line">print(<span class="string">'My name is &#123;0:8&#125;.'</span>.format(<span class="string">'Fred'</span>)) <span class="comment">#指定宽度</span></div></pre></td></tr></table></figure>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Caroline is 25 years old.   </div><div class="line">Caroline is a girl.   </div><div class="line">0.333 is a decimal.   </div><div class="line">_Caroline__ is a 11 length.   </div><div class="line">Caroline is as Wendy.   </div><div class="line">My name is out.txt  </div><div class="line">My name is Fred    .</div></pre></td></tr></table></figure></p>
-<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#会话对象-Session"><span class="toc-number">1.</span> <span class="toc-text">会话对象 Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保持活动状态（持久连接）"><span class="toc-number">2.</span> <span class="toc-text">保持活动状态（持久连接）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求与响应对象-header"><span class="toc-number">3.</span> <span class="toc-text">请求与响应对象 header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#响应内容的编码方式"><span class="toc-number">4.</span> <span class="toc-text">响应内容的编码方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理"><span class="toc-number">5.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP动词"><span class="toc-number">6.</span> <span class="toc-text">HTTP动词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">7.</span> <span class="toc-text">Reference Link</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-01-17T07:41:37.000Z"><a href="/hexo_blog/2016/01/17/Python-2016-01-17-python-requests-高级用法/">2016-01-17</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/01/17/Python-2016-01-17-python-requests-高级用法/">python-requests-高级用法</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#会话对象-Session"><span class="toc-number">1.</span> <span class="toc-text">会话对象 Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保持活动状态（持久连接）"><span class="toc-number">2.</span> <span class="toc-text">保持活动状态（持久连接）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求与响应对象-header"><span class="toc-number">3.</span> <span class="toc-text">请求与响应对象 header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#响应内容的编码方式"><span class="toc-number">4.</span> <span class="toc-text">响应内容的编码方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理"><span class="toc-number">5.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP动词"><span class="toc-number">6.</span> <span class="toc-text">HTTP动词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">7.</span> <span class="toc-text">Reference Link</span></a></li></ol>
-</div>
-
-                  
-
-                  -->
-        <h2 id="会话对象-Session"><a href="#会话对象-Session" class="headerlink" title="会话对象 Session"></a>会话对象 Session</h2><p>会话对象让你能够跨请求保持某些参数。它也<strong>会在同一个Session实例发出的所有请求之间保持cookies</strong>。</p>
-<p>会话对象具有主要的Requests API的所有方法。</p>
-<p>我们来跨请求保持一些cookies:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">s = requests.Session()</div><div class="line"></div><div class="line">s.get(&apos;http://httpbin.org/cookies/set/sessioncookie/123456789&apos;)</div><div class="line">r = s.get(&quot;http://httpbin.org/cookies&quot;)</div><div class="line"></div><div class="line">print(r.text)</div><div class="line"># &apos;&#123;&quot;cookies&quot;: &#123;&quot;sessioncookie&quot;: &quot;123456789&quot;&#125;&#125;&apos;</div></pre></td></tr></table></figure>
-<p>会话也可用来为请求方法提供缺省数据。这是通过为会话对象的属性提供数据来实现的:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">s = requests.Session()</div><div class="line">s.auth = (&apos;user&apos;, &apos;pass&apos;)</div><div class="line">s.headers.update(&#123;&apos;x-test&apos;: &apos;true&apos;&#125;)</div><div class="line"></div><div class="line"># both &apos;x-test&apos; and &apos;x-test2&apos; are sent</div><div class="line">s.get(&apos;http://httpbin.org/headers&apos;, headers=&#123;&apos;x-test2&apos;: &apos;true&apos;&#125;)</div></pre></td></tr></table></figure>
-<p>任何你传递给请求方法的字典都会与已设置会话层数据合并。方法层的参数覆盖会话的参数。</p>
-<p>从字典参数中移除一个值<br>有时你会想省略字典参数中一些会话层的键。要做到这一点，你只需简单地在方法层参数中将那个键的值设置为 None ，那个键就会被自动省略掉。</p>
-<p>包含在一个会话中的所有数据你都可以直接使用。</p>
-<h2 id="保持活动状态（持久连接）"><a href="#保持活动状态（持久连接）" class="headerlink" title="保持活动状态（持久连接）"></a>保持活动状态（持久连接）</h2><p>归功于<code>urllib3</code>，同一会话内的持久连接是完全自动处理的！同一会话内你发出的任何请求都会自动复用恰当的连接！</p>
-<p>注意：只有所有的响应体数据被读取完毕连接才会被释放为连接池；所以确保将 stream 设置为 False 或读取 Response 对象的 content 属性。</p>
-<h2 id="请求与响应对象-header"><a href="#请求与响应对象-header" class="headerlink" title="请求与响应对象 header"></a>请求与响应对象 header</h2><p>任何时候调用<code>requests.*()</code>你都在做两件主要的事情。其一，你在构建一个 Request 对象， 该对象将被发送到某个服务器请求或查询一些资源。其二，一旦 requests 得到一个从 服务器返回的响应就会产生一个 Response 对象。该响应对象包含服务器返回的所有信息， 也包含你原来创建的 Request 对象。如下是一个简单的请求，从Wikipedia的服务器得到 一些非常重要的信息:</p>
-<pre><code>&gt;&gt;&gt; r = requests.get(&apos;http://en.wikipedia.org/wiki/Monty_Python&apos;)
-</code></pre><p>如果想访问服务器返回给我们的响应头部信息，可以这样做:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r.headers</div><div class="line">&#123;&apos;content-length&apos;: &apos;56170&apos;, &apos;x-content-type-options&apos;: &apos;nosniff&apos;, &apos;x-cache&apos;:</div><div class="line">&apos;HIT from cp1006.eqiad.wmnet, MISS from cp1010.eqiad.wmnet&apos;, &apos;content-encoding&apos;:</div><div class="line">&apos;gzip&apos;, &apos;age&apos;: &apos;3080&apos;, &apos;content-language&apos;: &apos;en&apos;, &apos;vary&apos;: &apos;Accept-Encoding,Cookie&apos;,</div><div class="line">&apos;server&apos;: &apos;Apache&apos;, &apos;last-modified&apos;: &apos;Wed, 13 Jun 2012 01:33:50 GMT&apos;,</div><div class="line">&apos;connection&apos;: &apos;close&apos;, &apos;cache-control&apos;: &apos;private, s-maxage=0, max-age=0,</div><div class="line">must-revalidate&apos;, &apos;date&apos;: &apos;Thu, 14 Jun 2012 12:59:39 GMT&apos;, &apos;content-type&apos;:</div><div class="line">&apos;text/html; charset=UTF-8&apos;, &apos;x-cache-lookup&apos;: &apos;HIT from cp1006.eqiad.wmnet:3128,</div><div class="line">MISS from cp1010.eqiad.wmnet:80&apos;&#125;</div></pre></td></tr></table></figure>
-<p>然而，如果想得到发送到服务器的请求的头部，我们可以简单地访问该请求，然后是该请求的头部:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r.request.headers</div><div class="line">&#123;&apos;Accept-Encoding&apos;: &apos;identity, deflate, compress, gzip&apos;,</div><div class="line">&apos;Accept&apos;: &apos;*/*&apos;, &apos;User-Agent&apos;: &apos;python-requests/0.13.1&apos;&#125;</div></pre></td></tr></table></figure>
-<h2 id="响应内容的编码方式"><a href="#响应内容的编码方式" class="headerlink" title="响应内容的编码方式"></a>响应内容的编码方式</h2><p>当你收到一个响应时，Requests会猜测响应的编码方式，<strong>用于在你调用 Response.text 方法时对响应进行解码</strong>。</p>
-<p>Requests首先在HTTP头部检测是否存在指定的编码方式，如果不存在，则会使用 charade 来尝试猜测编码方式。</p>
-<p>只有当HTTP头部不存在明确指定的字符集，并且 Content-Type 头部字段包含 text 值之时， Requests才不去猜测编码方式。</p>
-<p>在这种情况下， RFC 2616 指定默认字符集 必须是 <code>ISO-8859-1</code> 。Requests遵从这一规范。<br><strong>如果你需要一种不同的编码方式，你可以手动设置 Response.encoding 属性，或使用原始的 Response.content</strong> 。</p>
-<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>如果需要使用代理，你可以通过为任意请求方法提供 proxies 参数来配置单个请求:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">    import requests</div><div class="line">    </div><div class="line">    proxies = &#123;</div><div class="line">      &quot;http&quot;: &quot;http://10.10.1.10:3128&quot;,</div><div class="line">      &quot;https&quot;: &quot;http://10.10.1.10:1080&quot;,</div><div class="line">    &#125;</div><div class="line">requests.get(&quot;http://example.org&quot;, proxies=proxies)</div></pre></td></tr></table></figure></p>
-<p>你也可以通过环境变量 <code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code> 来配置代理。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ export HTTP_PROXY=&quot;http://10.10.1.10:3128&quot;</div><div class="line">$ export HTTPS_PROXY=&quot;http://10.10.1.10:1080&quot;</div><div class="line">$ python</div><div class="line">&gt;&gt;&gt; import requests</div><div class="line">&gt;&gt;&gt; requests.get(&quot;http://example.org&quot;)</div></pre></td></tr></table></figure></p>
-<p>若你的代理需要使用HTTP Basic Auth，可以使用 <code>http://user:password@host/</code> 语法:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">proxies = &#123;</div><div class="line">    &quot;http&quot;: &quot;http://user:pass@10.10.1.10:3128/&quot;,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h2><p>Requests提供了几乎所有HTTP动词的功能：GET，OPTIONS， HEAD，POST，PUT，PATCH和DELETE。 以下内容为使用Requests中的这些动词以及Github API提供了详细示例。</p>
-<p>我将从最常使用的动词GET开始。HTTP GET是一个幂等的方法，从给定的URL返回一个资源。因而， 当你试图从一个web位置获取数据之时，你应该使用这个动词。<strong>一个使用示例是尝试从Github上获取关于一个特定commit的信息</strong>。</p>
-<p>假设我们想获取Requests的commit a050faf 的信息。我们可以 这样去做:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; import requests</div><div class="line">&gt;&gt;&gt; r = requests.get(&apos;https://api.github.com/repos/kennethreitz/requests/git/commits/a050faf084662f3a352dd1a941f2c7c9f886d4ad&apos;)</div></pre></td></tr></table></figure></p>
-<p>我们应该确认Github是否正确响应。如果正确响应，我们想弄清响应内容是什么类型的。像这样去做:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; if (r.status_code == requests.codes.ok):</div><div class="line">...     print r.headers[&apos;content-type&apos;]</div><div class="line">...</div><div class="line">application/json; charset=utf-8</div></pre></td></tr></table></figure></p>
-<p>可见，<strong>GitHub返回了JSON数据</strong>，非常好，这样就可以使用 <code>r.json</code> 方法把这个返回的数据解析成Python对象。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; commit_data = r.json()</div><div class="line">&gt;&gt;&gt; print commit_data.keys()</div><div class="line">[u&apos;committer&apos;, u&apos;author&apos;, u&apos;url&apos;, u&apos;tree&apos;, u&apos;sha&apos;, u&apos;parents&apos;, u&apos;message&apos;]</div><div class="line">&gt;&gt;&gt; print commit_data[u&apos;committer&apos;]</div><div class="line">&#123;u&apos;date&apos;: u&apos;2012-05-10T11:10:50-07:00&apos;, u&apos;email&apos;: u&apos;me@kennethreitz.com&apos;, u&apos;name&apos;: u&apos;Kenneth Reitz&apos;&#125;</div><div class="line">&gt;&gt;&gt; print commit_data[u&apos;message&apos;]</div><div class="line">makin&apos; history</div></pre></td></tr></table></figure></p>
-<p>到目前为止，一切都非常简单。嗯，我们来研究一下GitHub的API。我们可以去看看文档， 但如果使用Requests来研究也许会更有意思一点。我们可以借助Requests的OPTIONS动词来看看我们刚使用过的url 支持哪些HTTP方法。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; verbs = requests.options(r.url)</div><div class="line">&gt;&gt;&gt; verbs.status_code</div><div class="line">500</div></pre></td></tr></table></figure></p>
-<p>额，这是怎么回事？毫无帮助嘛！原来GitHub，与许多API提供方一样，实际上并未实现OPTIONS方法。 这是一个恼人的疏忽，但没关系，那我们可以使用枯燥的文档。然而，<strong>如果GitHub正确实现了OPTIONS， 那么服务器应该在响应头中返回允许用户使用的HTTP方法</strong>，例如<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; verbs = requests.options(&apos;http://a-good-website.com/api/cats&apos;)</div><div class="line">&gt;&gt;&gt; print verbs.headers[&apos;allow&apos;]</div><div class="line">GET,HEAD,POST,OPTIONS</div></pre></td></tr></table></figure></p>
-<p>转而去查看文档，我们看到对于提交信息，另一个允许的方法是POST，它会创建一个新的提交。<br>由于我们正在使用Requests代码库，我们应尽可能避免对它发送笨拙的POST。作为替代，我们来 玩玩GitHub的Issue特性。</p>
-<p>本篇文档是回应Issue #482而添加的。鉴于该问题已经存在，我们就以它为例。先获取它。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.get(&apos;https://api.github.com/repos/kennethreitz/requests/issues/482&apos;)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">200</div><div class="line">&gt;&gt;&gt; issue = json.loads(r.text)</div><div class="line">&gt;&gt;&gt; print issue[u&apos;title&apos;]</div><div class="line">Feature any http verb in docs</div><div class="line">&gt;&gt;&gt; print issue[u&apos;comments&apos;]</div><div class="line">3</div></pre></td></tr></table></figure></p>
-<p>Cool，有3个评论。我们来看一下最后一个评论。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.get(r.url + u&apos;/comments&apos;)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">200</div><div class="line">&gt;&gt;&gt; comments = r.json()</div><div class="line">&gt;&gt;&gt; print comments[0].keys()</div><div class="line">[u&apos;body&apos;, u&apos;url&apos;, u&apos;created_at&apos;, u&apos;updated_at&apos;, u&apos;user&apos;, u&apos;id&apos;]</div><div class="line">&gt;&gt;&gt; print comments[2][u&apos;body&apos;]</div><div class="line">Probably in the &quot;advanced&quot; section</div></pre></td></tr></table></figure></p>
-<p>嗯，那看起来似乎是个愚蠢之处。我们发表个评论来告诉这个评论者他自己的愚蠢。那么，这个评论者是谁呢？<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; print comments[2][u&apos;user&apos;][u&apos;login&apos;]</div><div class="line">kennethreitz</div></pre></td></tr></table></figure></p>
-<p>好，我们来告诉这个叫肯尼思的家伙，这个例子应该放在快速上手指南中。根据GitHub API文档， 其方法是POST到该话题。我们来试试看。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; body = json.dumps(&#123;u&quot;body&quot;: u&quot;Sounds great! I&apos;ll get right on it!&quot;&#125;)</div><div class="line">&gt;&gt;&gt; url = u&quot;https://api.github.com/repos/kennethreitz/requests/issues/482/comments&quot;</div><div class="line">&gt;&gt;&gt; r = requests.post(url=url, data=body)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">404</div></pre></td></tr></table></figure></p>
-<p>额，这有点古怪哈。可能我们需要验证身份。那就有点纠结了，对吧？不对。Requests简化了多种身份验证形式的使用， 包括非常常见的Basic Auth。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; from requests.auth import HTTPBasicAuth</div><div class="line">&gt;&gt;&gt; auth = HTTPBasicAuth(&apos;fake@example.com&apos;, &apos;not_a_real_password&apos;)</div><div class="line">&gt;&gt;&gt; r = requests.post(url=url, data=body, auth=auth)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">201</div><div class="line">&gt;&gt;&gt; content = r.json()</div><div class="line">&gt;&gt;&gt; print(content[u&apos;body&apos;])</div><div class="line">Sounds great! I&apos;ll get right on it.</div></pre></td></tr></table></figure></p>
-<p>精彩！噢，不！我原本是想说等我一会，因为我得去喂一下我的猫。如果我能够编辑这条评论那就好了！ 幸运的是，GitHub允许我们使用另一个HTTP动词，PATCH，来编辑评论。我们来试试。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; print(content[u&quot;id&quot;])</div><div class="line">5804413</div><div class="line">&gt;&gt;&gt; body = json.dumps(&#123;u&quot;body&quot;: u&quot;Sounds great! I&apos;ll get right on it once I feed my cat.&quot;&#125;)</div><div class="line">&gt;&gt;&gt; url = u&quot;https://api.github.com/repos/kennethreitz/requests/issues/comments/5804413&quot;</div><div class="line">&gt;&gt;&gt; r = requests.patch(url=url, data=body, auth=auth)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">200</div></pre></td></tr></table></figure></p>
-<p>非常好。现在，我们来折磨一下这个叫肯尼思的家伙，我决定要让他急得团团转，也不告诉他是我在捣蛋。 这意味着我想删除这条评论。GitHub允许我们使用完全名副其实的DELETE方法来删除评论。我们来清除该评论。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.delete(url=url, auth=auth)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">204</div><div class="line">&gt;&gt;&gt; r.headers[&apos;status&apos;]</div><div class="line">&apos;204 No Content&apos;</div></pre></td></tr></table></figure></p>
-<p>很好。不见了。最后一件我想知道的事情是我已经使用了多少限额（ratelimit）。查查看，GitHub在响应头部发送这个信息， 因此不必下载整个网页，我将使用一个HEAD请求来获取响应头。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.head(url=url, auth=auth)</div><div class="line">&gt;&gt;&gt; print r.headers</div><div class="line">...</div><div class="line">&apos;x-ratelimit-remaining&apos;: &apos;4995&apos;</div><div class="line">&apos;x-ratelimit-limit&apos;: &apos;5000&apos;</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>很好。是时候写个Python程序以各种刺激的方式滥用GitHub的API，还可以使用4995次呢。</p>
-<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2><ol>
-<li><a href="http://docs.python-requests.org/zh_CN/latest/user/advanced.html#advanced" target="_blank" rel="external">高级用法-官方文档</a></li>
-<li><a href="http://docs.python-requests.org/zh_CN/latest/api.html#sessionapi" target="_blank" rel="external">会话API文档</a></li>
+<p>py 2.2 后继承 object 的目的是使这个类成为 new style class, </p>
+<p>没有继承 object 的为传统 classic class,</p>
+<p>在3.x里object已经做为所有东西的基类了</p>
+<p><img src="/hexo_blog/images/python/python-object-type.png" alt="img python object and type"></p>
+<ul>
+<li>在Python 3.0中，用户定义的类对象是名为type的对象的实例，type本身是一个类</li>
+<li>在Python 2.6中，<ul>
+<li>新式类object是type的一个子类； <code>class A(object): pass</code> </li>
+<li>传统类是type的一个实例，并且并不创建于一个类</li>
+</ul>
+</li>
+</ul>
+<h4 id="python-3-x与Python-2-x中的新式类"><a href="#python-3-x与Python-2-x中的新式类" class="headerlink" title="python 3.x与Python 2.x中的新式类"></a>python 3.x与Python 2.x中的新式类</h4><p><code>type()</code>内置函数返回任何对象的类型（类型本身也是一个对象）</p>
+<p>在Python 3.0 中，</p>
+<ul>
+<li><p>step 1 : 对于一个列表，它的类型是一个内置类型，一个内置的列表类型 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>([])</div><div class="line">&lt;class <span class="string">'list'</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>step 2 :  列表类型的类型是type本身，顶层的type对象创建了<strong>具体的类型</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(<span class="built_in">type</span>([]))</div><div class="line">&lt;class <span class="string">'type'</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>step 3 : type是一种独特的内置对象，它位于类型层级的顶层，type的类型是它本身</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(<span class="built_in">type</span>)</div><div class="line">&lt;class <span class="string">'type'</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>对于Python 2.x，也有同样的逻辑。</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(<span class="built_in">type</span>)</div><div class="line">&lt;<span class="built_in">type</span> <span class="string">'type'</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>哲学来了，<strong>实例创建自类，而类创建自类型</strong>；<br>在Python 3中，类型的概念和类的概念合并了，这两者基本上是同义词，即</p>
+<ul>
+<li>类型由派生自type的类定义</li>
+<li>用户定义的类 是 类型类 的实例。</li>
+<li>用户定义的类是产生它们自己的实例的类型</li>
+</ul>
+<p>python 3.0中的类（以及Python 2.6中的新式类object）是type类的实例，</p>
+<ul>
+<li>类连接到type的属性 <code>__class__</code></li>
+<li>实例连接到类的属性，<code>__class__</code><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; class C: pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; X=C()</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(X)</div><div class="line">&lt;class <span class="string">'__main__.C'</span>&gt;</div><div class="line"><span class="comment"># 实例连接到创建它的类 X.__class__</span></div><div class="line">&gt;&gt;&gt; X.__class__</div><div class="line">&lt;class <span class="string">'__main__.C'</span>&gt;</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(C)</div><div class="line">&lt;class <span class="string">'type'</span>&gt;</div><div class="line"><span class="comment"># 类本身是type类的实例，通过 C.__class__ 连接到type</span></div><div class="line">&gt;&gt;&gt; C.__class__</div><div class="line">&lt;class <span class="string">'type'</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="python-2-x-中的传统类"><a href="#python-2-x-中的传统类" class="headerlink" title="python 2.x 中的传统类"></a>python 2.x 中的传统类</h4><p>对于Python 2.x中的传统类，它们没有<code>__class__</code>的属性链接<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; class C:pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; X = C()</div><div class="line"><span class="comment"># X 是 实例类型，instance type</span></div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(X)</div><div class="line">&lt;<span class="built_in">type</span> <span class="string">'instance'</span>&gt;</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(<span class="built_in">type</span>(X))</div><div class="line">&lt;<span class="built_in">type</span> <span class="string">'type'</span>&gt;</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(C)</div><div class="line"><span class="comment"># C 是 class类型</span></div><div class="line">&lt;<span class="built_in">type</span> <span class="string">'classobj'</span>&gt;</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(<span class="built_in">type</span>(C))</div><div class="line">&lt;<span class="built_in">type</span> <span class="string">'type'</span>&gt;</div><div class="line"><span class="comment"># 实例通过__class__ 连接到创建它的类</span></div><div class="line">&gt;&gt;&gt; X.__class__</div><div class="line">&lt;class __main__.C at 0x7<span class="built_in">fc</span>22<span class="built_in">fc</span>7c530&gt;</div><div class="line">&gt;&gt;&gt; C.__class__</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">AttributeError: class C has no attribute <span class="string">'__class__'</span></div></pre></td></tr></table></figure></p>
+<h3 id="Python-3-x与Python-2-x新式类的继续深入"><a href="#Python-3-x与Python-2-x新式类的继续深入" class="headerlink" title="Python 3.x与Python 2.x新式类的继续深入"></a>Python 3.x与Python 2.x新式类的继续深入</h3><blockquote>
+<p>python学习手册</p>
+</blockquote>
+<p><strong>python遵循一个标准的协议：</strong></p>
+<p>在一条class语句的末尾，并且在运行了一个命名空间词典中的所有嵌套代码之后，会调用type对象来创建class对象<br><figure class="highlight"><table><tr><td class="code"><pre><div class="line">class = type(classname, superclasses, attributedict)</div></pre></td></tr></table></figure></p>
+<p>type 对象反过来定义了一个<code>__call__</code>运算符重载方法，当调用type对象时，该方法运行两个其他方法：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">type.__new__(typeclass, classname, superclasses, attributedict)</div><div class="line">type.__init__(typeclass, classname, superclasses, attributedict)</div></pre></td></tr></table></figure></p>
+<p><code>__new__</code>方法创建并返回了新的<code>class</code>对象，而随后<code>__init__</code>方法初始化新创建的对象。</p>
+<p>这里可以看出，普通类是type的一个实例(类型对象)</p>
+<p>而元类是type类的子类，也是实例</p>
+<h4 id="编写元类定制type"><a href="#编写元类定制type" class="headerlink" title="编写元类定制type"></a>编写元类定制type</h4><p>在Python 3.0的元类声明扩展（Python 2.x 有不同的声明方式）<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment"># inherite of Eggs, instance of Meta</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Spam</span> <span class="params">(Eggs, metaclass = Meta)</span>:</span>  <span class="comment"># python 3.0 or later</span></div><div class="line"><span class="comment"># class Spam (object):        # python 2.x (1)</span></div><div class="line">    <span class="comment"># __metaclass__ = Meta    # python 2.x (2)</span></div><div class="line">    data = <span class="number">1</span>    <span class="comment"># class data attribute</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">meth</span><span class="params">(self, arg)</span>:</span>    <span class="comment"># Class method attribute</span></div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<p>这条class语句的末尾，Python内部运行如下代码来创建class对象：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">Spam = Meta(<span class="string">'Spam'</span>, (Eggs,), &#123;<span class="string">'data'</span>: <span class="number">1</span>, <span class="string">'meth'</span>:meth, <span class="string">'__module__'</span>:<span class="string">'__main__'</span>&#125;)</div></pre></td></tr></table></figure></p>
+<p>如果元类<code>meta</code>定义了<code>__new__</code>和<code>__init__</code>的自己版本，在此类的调用期间，它们将一次有其继承的type类的<code>__call</code>方法调用，以创建并初始化新类对象</p>
+<h4 id="一个什么也不干的元类"><a href="#一个什么也不干的元类" class="headerlink" title="一个什么也不干的元类"></a>一个什么也不干的元类</h4><p>一个只是带有<code>__new__</code>方法的type子类<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Meta</span><span class="params">(type)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(meta, classname, supders, classdict)</span>:</span></div><div class="line">        <span class="keyword">return</span> type.__new__(meta, classname, supers, classdict)</div></pre></td></tr></table></figure></p>
+<h4 id="一个什么也不干的工厂函数（元函数？）"><a href="#一个什么也不干的工厂函数（元函数？）" class="headerlink" title="一个什么也不干的工厂函数（元函数？）"></a>一个什么也不干的工厂函数（元函数？）</h4><p><strong>实际上，任何可调用的对象都可以作为一个元类</strong></p>
+<p>只要它接收传递的参数并且返回与目标类兼容的对象即可。</p>
+<p>一个简单的对象工厂函数<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">MetaFunc</span><span class="params">(classname, supers, attributedict)</span>:</span></div><div class="line">    print(<span class="string">"In MetaFunc: "</span>, classname, supers, attributedict, sep=<span class="string">'\n...'</span>)</div><div class="line">    <span class="keyword">return</span> type(classname, supers, attributedict)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Eggs</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Spam</span><span class="params">(Eggs, metaclass=MetaFunc)</span>:</span></div><div class="line">    data = <span class="number">1</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">meth</span><span class="params">(self, args)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> (<span class="string">"making instance"</span>)</div><div class="line">X = Spam()</div><div class="line"><span class="keyword">print</span> (<span class="string">"data: "</span>, X.data)</div></pre></td></tr></table></figure></p>
+<h4 id="元类-gt-类对象的定制构建和初始化"><a href="#元类-gt-类对象的定制构建和初始化" class="headerlink" title="元类-&gt;类对象的定制构建和初始化"></a>元类-&gt;类对象的定制构建和初始化</h4><p>单纯的类方法<code>__new__</code>与<code>__init__</code>可以用在创建<strong>类实例</strong>时管理实例的钩子，</p>
+<p>而元类的<code>__new__</code>与<code>__init__</code>可以用做在创建<strong>类对象</strong>时管理类的钩子</p>
+<ul>
+<li>类的构建方法在class语句之后运行，类的初始化方法在类构建方法之后运行</li>
+<li>两者都在创建任何实例之前运行</li>
+</ul>
+<h4 id="元类的属性不会被类实例继承"><a href="#元类的属性不会被类实例继承" class="headerlink" title="元类的属性不会被类实例继承"></a>元类的属性不会被类实例继承</h4><ol>
+<li>类是元类的实例。所以，元类中定义的行为应用于类，而不是类随后的实例继承</li>
+<li>实例从它们的类和超类中获取行为，但是不从任何元类中获取行为</li>
+<li>实例的属性查找只是搜索实例及其所有类的<code>__dict__</code>字典；元类并不包含在实例查找中</li>
 </ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Metaone</span><span class="params">(type)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(meta, classname, supers, attributedict)</span>:</span></div><div class="line">        print(<span class="string">"In Metaone.new: "</span>, classname)</div><div class="line">        <span class="comment"># return type(classname, supers, attributedict)</span></div><div class="line">        <span class="keyword">return</span> type.__new__(meta,  classname, supers, attributedict)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toast</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"toast"</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span><span class="params">(metaclass = Metaone)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spam</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> (<span class="string">"spam"</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(Super)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eggs</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"eggs"</span>)</div><div class="line"></div><div class="line"></div><div class="line">X = C()</div><div class="line">X.eggs()</div><div class="line">X.spam()</div><div class="line">X.toast()</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">In Metaone.new:  Super</div><div class="line">In Metaone.new:  C</div><div class="line">eggs</div><div class="line">spam</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"metacls.py"</span>, line 25, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    X.toast()</div><div class="line">AttributeError: <span class="string">'C'</span> object has no attribute <span class="string">'toast'</span></div></pre></td></tr></table></figure></p>
+<h4 id="基于元类的扩展，扩展类行为类方法"><a href="#基于元类的扩展，扩展类行为类方法" class="headerlink" title="基于元类的扩展，扩展类行为类方法"></a>基于元类的扩展，扩展类行为类方法</h4><blockquote>
+<p>metapcls.py<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">eggsfunc</span><span class="params">(obj)</span>:</span></div><div class="line">    <span class="keyword">return</span> obj.value * <span class="number">4</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hamfunc</span><span class="params">(obj, value)</span>:</span></div><div class="line">    <span class="keyword">return</span> value + obj.value</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Extender</span><span class="params">(type)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span> <span class="params">(meta, classname, supers, attributedict)</span>:</span></div><div class="line">        attributedict[<span class="string">'eggs'</span>] = eggsfunc</div><div class="line">        attributedict[<span class="string">'ham'</span>] = hamfunc</div><div class="line">        <span class="keyword">return</span> type.__new__(meta, classname, supers, attributedict)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client1</span><span class="params">(metaclass = Extender)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span> <span class="params">(self, value)</span>:</span></div><div class="line">        self.value = value</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spam</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.value * <span class="number">2</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client2</span><span class="params">(metaclass = Extender)</span>:</span></div><div class="line">    value = <span class="string">"test"</span></div><div class="line">    <span class="comment"># def __init__ (self, value):</span></div><div class="line">        <span class="comment"># self.value = value</span></div><div class="line"></div><div class="line"></div><div class="line">X = Client1(<span class="string">"Apple"</span>)</div><div class="line">print(X.eggs())</div><div class="line">print(X.spam())</div><div class="line">print(X.ham(<span class="string">"bacon "</span>))</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>输出<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">AppleAppleAppleApple</div><div class="line">AppleApple</div><div class="line">bacon Apple</div></pre></td></tr></table></figure></p>
+<h3 id="python-C-源码"><a href="#python-C-源码" class="headerlink" title="python C 源码"></a>python C 源码</h3><p>在Python的C源码中，用结构体表示Python的类；</p>
+<p>每个表示类的结构体的第二个字段都是一个指向PyTypeObject对象的指针；</p>
+<p>这个PyTypeObject就是类型对象（type得到的东西），</p>
+<p>每一个类的对象共用一个PyTypeObject对象（所以用的指针）。</p>
+<p>在python中只要有引用计数（一个long的整型），指向PyTypeObject的指针就可以成为类。</p>
 
       
     </div>
@@ -1002,7 +521,7 @@ OK
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单介绍"><span class="toc-number">1.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送请求"><span class="toc-number">2.</span> <span class="toc-text">发送请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url参数传递"><span class="toc-number">3.</span> <span class="toc-text">url参数传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应内容"><span class="toc-number">4.</span> <span class="toc-text">响应内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制响应内容"><span class="toc-number">4.1.</span> <span class="toc-text">二进制响应内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSON响应内容"><span class="toc-number">4.2.</span> <span class="toc-text">JSON响应内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原始响应内容"><span class="toc-number">4.3.</span> <span class="toc-text">原始响应内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定制请求头add-header"><span class="toc-number">5.</span> <span class="toc-text">定制请求头add header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更加复杂的POST请求"><span class="toc-number">6.</span> <span class="toc-text">更加复杂的POST请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应状态码"><span class="toc-number">7.</span> <span class="toc-text">响应状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应头-response-header"><span class="toc-number">8.</span> <span class="toc-text">响应头 response header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookies"><span class="toc-number">9.</span> <span class="toc-text">Cookies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重定向与请求历史"><span class="toc-number">10.</span> <span class="toc-text">重定向与请求历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超时"><span class="toc-number">11.</span> <span class="toc-text">超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误与异常"><span class="toc-number">12.</span> <span class="toc-text">错误与异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-Link"><span class="toc-number">13.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#这就当做最新的感悟吧"><span class="toc-number">1.</span> <span class="toc-text">这就当做最新的感悟吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于自身性格的养成"><span class="toc-number">1.1.</span> <span class="toc-text">关于自身性格的养成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#意志力那些事儿"><span class="toc-number">1.2.</span> <span class="toc-text">意志力那些事儿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#身体"><span class="toc-number">1.3.</span> <span class="toc-text">身体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作"><span class="toc-number">1.4.</span> <span class="toc-text">工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#感受不同的世界不同的生活，码农"><span class="toc-number">1.5.</span> <span class="toc-text">感受不同的世界不同的生活，码农</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Plan"><span class="toc-number">1.5.1.</span> <span class="toc-text">Plan</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写作；表达；厚积薄发；"><span class="toc-number">1.6.</span> <span class="toc-text">写作；表达；厚积薄发；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#英语"><span class="toc-number">1.7.</span> <span class="toc-text">英语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下次回家需要完成的计划"><span class="toc-number">2.</span> <span class="toc-text">下次回家需要完成的计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#年后南京出差第15天-2017-02-21"><span class="toc-number">3.</span> <span class="toc-text">年后南京出差第15天 @2017.02.21</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plan-Detail-Update-anytime"><span class="toc-number">4.</span> <span class="toc-text">Plan Detail (Update anytime)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#个人wiki-python-待安排"><span class="toc-number">4.1.</span> <span class="toc-text">个人wiki-python 待安排</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plan-Detail-2017-04-05"><span class="toc-number">5.</span> <span class="toc-text">Plan Detail @ 2017-04-05</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工作日，每天早9点至晚6点半"><span class="toc-number">5.1.</span> <span class="toc-text">工作日，每天早9点至晚6点半</span></a></li></ol></li></ol>
 </div>
 
       
@@ -1015,10 +534,10 @@ OK
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-01-17T07:04:32.000Z"><a href="/hexo_blog/2016/01/17/Python-2016-01-17-python-requests-基本用法/">2016-01-17</a></time>
+        <time datetime="2016-12-06T16:33:43.000Z"><a href="/hexo_blog/2016/12/07/diary-静静ing/">2016-12-07</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/01/17/Python-2016-01-17-python-requests-基本用法/">python requests的基本用法</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2016/12/07/diary-静静ing/">diary~未完成的静静ing</a></h1>
   
 
     </header>
@@ -1031,157 +550,416 @@ OK
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单介绍"><span class="toc-number">1.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送请求"><span class="toc-number">2.</span> <span class="toc-text">发送请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url参数传递"><span class="toc-number">3.</span> <span class="toc-text">url参数传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应内容"><span class="toc-number">4.</span> <span class="toc-text">响应内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制响应内容"><span class="toc-number">4.1.</span> <span class="toc-text">二进制响应内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSON响应内容"><span class="toc-number">4.2.</span> <span class="toc-text">JSON响应内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原始响应内容"><span class="toc-number">4.3.</span> <span class="toc-text">原始响应内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定制请求头add-header"><span class="toc-number">5.</span> <span class="toc-text">定制请求头add header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更加复杂的POST请求"><span class="toc-number">6.</span> <span class="toc-text">更加复杂的POST请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应状态码"><span class="toc-number">7.</span> <span class="toc-text">响应状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应头-response-header"><span class="toc-number">8.</span> <span class="toc-text">响应头 response header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookies"><span class="toc-number">9.</span> <span class="toc-text">Cookies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重定向与请求历史"><span class="toc-number">10.</span> <span class="toc-text">重定向与请求历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超时"><span class="toc-number">11.</span> <span class="toc-text">超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误与异常"><span class="toc-number">12.</span> <span class="toc-text">错误与异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-Link"><span class="toc-number">13.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#这就当做最新的感悟吧"><span class="toc-number">1.</span> <span class="toc-text">这就当做最新的感悟吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于自身性格的养成"><span class="toc-number">1.1.</span> <span class="toc-text">关于自身性格的养成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#意志力那些事儿"><span class="toc-number">1.2.</span> <span class="toc-text">意志力那些事儿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#身体"><span class="toc-number">1.3.</span> <span class="toc-text">身体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作"><span class="toc-number">1.4.</span> <span class="toc-text">工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#感受不同的世界不同的生活，码农"><span class="toc-number">1.5.</span> <span class="toc-text">感受不同的世界不同的生活，码农</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Plan"><span class="toc-number">1.5.1.</span> <span class="toc-text">Plan</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写作；表达；厚积薄发；"><span class="toc-number">1.6.</span> <span class="toc-text">写作；表达；厚积薄发；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#英语"><span class="toc-number">1.7.</span> <span class="toc-text">英语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下次回家需要完成的计划"><span class="toc-number">2.</span> <span class="toc-text">下次回家需要完成的计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#年后南京出差第15天-2017-02-21"><span class="toc-number">3.</span> <span class="toc-text">年后南京出差第15天 @2017.02.21</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plan-Detail-Update-anytime"><span class="toc-number">4.</span> <span class="toc-text">Plan Detail (Update anytime)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#个人wiki-python-待安排"><span class="toc-number">4.1.</span> <span class="toc-text">个人wiki-python 待安排</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plan-Detail-2017-04-05"><span class="toc-number">5.</span> <span class="toc-text">Plan Detail @ 2017-04-05</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工作日，每天早9点至晚6点半"><span class="toc-number">5.1.</span> <span class="toc-text">工作日，每天早9点至晚6点半</span></a></li></ol></li></ol>
 </div>
 
                   
 
                   -->
-        <h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p>Python 标准库中的 <strong>urllib2</strong> 模块提供了你所需要的大多数 HTTP 功能，但是它的 API 太渣了。它是为另一个时代、另一个互联网所创建的。它需要巨量的工作，甚至包括各种方法覆盖，来完成最简单的任务。</p>
-<p>Requests 使用的是 <strong>urllib3</strong>，因此继承了它的所有特性。</p>
-<p>Requests 支持 HTTP 连接保持和连接池，支持使用 cookie 保持会话，支持文件上传，支持自动确定响应内容的编码，支持国际化的 URL 和 POST 数据自动编码。现代、国际化、人性化。</p>
-<h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><p>使用Requests发送网络请求非常简单。</p>
-<p>一开始要导入Requests模块:</p>
-<pre><code>&gt;&gt;&gt; import requests
-</code></pre><p>然后，尝试获取某个网页。本例子中，我们来获取Github的公共时间线</p>
-<pre><code>&gt;&gt;&gt; r = requests.get(&apos;https://github.com/timeline.json&apos;)
-</code></pre><p>现在，我们有一个名为 r 的 Response 对象。可以从这个对象中获取所有我们想要的信息。</p>
-<p>Requests简便的API意味着所有HTTP请求类型都是显而易见的。例如，你可以这样发送一个HTTP POST请求:</p>
-<pre><code>&gt;&gt;&gt; r = requests.post(&quot;http://httpbin.org/post&quot;)
-</code></pre><p>漂亮，对吧？那么其他HTTP请求类型：<strong>PUT， DELETE， HEAD以及OPTIONS</strong>又是如何的呢？都是一样的简单:</p>
-<pre><code>&gt;&gt;&gt; r = requests.put(&quot;http://httpbin.org/put&quot;)
-&gt;&gt;&gt; r = requests.delete(&quot;http://httpbin.org/delete&quot;)
-&gt;&gt;&gt; r = requests.head(&quot;http://httpbin.org/get&quot;)
-&gt;&gt;&gt; r = requests.options(&quot;http://httpbin.org/get&quot;)
-</code></pre><h3 id="url参数传递"><a href="#url参数传递" class="headerlink" title="url参数传递"></a>url参数传递</h3><p>你也许经常想为URL的查询字符串(query string)传递某种数据。如果你是手工构建URL，那么数据会以键/值 对的形式置于URL中，跟在一个问号的后面。例如， httpbin.org/get?key=val 。 </p>
-<p>Requests允许你使用 params 关键字参数，以一个字典来提供这些参数。举例来说，如果你想传递 key1=value1 和 key2=value2 到 httpbin.org/get ，那么你可以使用如下代码:</p>
-<pre><code>&gt;&gt;&gt; payload = {&apos;key1&apos;: &apos;value1&apos;, &apos;key2&apos;: &apos;value2&apos;}
-&gt;&gt;&gt; r = requests.get(&quot;http://httpbin.org/get&quot;, params=payload)
-</code></pre><p>通过打印输出该URL，你能看到URL已被正确编码:</p>
-<pre><code>&gt;&gt;&gt; print(r.url)
-http://httpbin.org/get?key2=value2&amp;key1=value1
-</code></pre><p>注意字典里值为 None 的键都不会被添加到 URL 的查询字符串里。</p>
-<h3 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h3><p>我们能读取服务器响应的内容。再次以Github时间线为例:</p>
-<pre><code>&gt;&gt;&gt; import requests
-&gt;&gt;&gt; r = requests.get(&apos;https://github.com/timeline.json&apos;)
-&gt;&gt;&gt; r.text
-u&apos;[{&quot;repository&quot;:{&quot;open_issues&quot;:0,&quot;url&quot;:&quot;https://github.com/...
-</code></pre><p>Requests会自动解码来自服务器的内容。大多数unicode字符集都能被无缝地解码。</p>
-<p>请求发出后，Requests会基于HTTP头部对响应的编码作出有根据的推测。当你访问 r.text 之时，Requests会使用其推测的文本编码。你可以找出Requests使用了什么编码，并且能够使用 r.encoding 属性来改变它:</p>
-<pre><code>&gt;&gt;&gt; r.encoding
-&apos;utf-8&apos;
-&gt;&gt;&gt; r.encoding = &apos;ISO-8859-1&apos;
-</code></pre><p><strong>如果你改变了编码，每当你访问 r.text ，Request都将会使用 r.encoding 的新值</strong>。你可能希望在使用特殊逻辑计算出文本的编码的情况下来修改编码。<br>比如 HTTP 和 XML 自身可以指定编码。这样的话，<strong>你应该使用 r.content 来找到编码，然后设置 r.encoding 为相应的编码。这样就能使用正确的编码解析 r.text 了。</strong></p>
-<p>在你需要的情况下，Requests也可以使用定制的编码。如果你创建了自己的编码，并使用 codecs 模块进行注册，你就可以轻松地使用这个解码器名称作为 r.encoding 的值， 然后由Requests来为你处理编码。</p>
-<h4 id="二进制响应内容"><a href="#二进制响应内容" class="headerlink" title="二进制响应内容"></a>二进制响应内容</h4><p>你也能以字节的方式访问请求响应体，对于非文本请求:</p>
-<pre><code>&gt;&gt;&gt; r.content
-b&apos;[{&quot;repository&quot;:{&quot;open_issues&quot;:0,&quot;url&quot;:&quot;https://github.com/...
-</code></pre><p>Requests会自动为你解码 gzip 和 deflate 传输编码的响应数据。</p>
-<p>例如，以请求返回的二进制数据创建一张图片，你可以使用如下代码:</p>
-<pre><code>&gt;&gt;&gt; from PIL import Image
-&gt;&gt;&gt; from StringIO import StringIO
-&gt;&gt;&gt; i = Image.open(StringIO(r.content))
-</code></pre><h4 id="JSON响应内容"><a href="#JSON响应内容" class="headerlink" title="JSON响应内容"></a>JSON响应内容</h4><p>Requests中也有一个内置的JSON解码器，助你处理JSON数据:</p>
-<pre><code>&gt;&gt;&gt; import requests
-&gt;&gt;&gt; r = requests.get(&apos;https://github.com/timeline.json&apos;)
-&gt;&gt;&gt; r.json()
-[{u&apos;repository&apos;: {u&apos;open_issues&apos;: 0, u&apos;url&apos;: &apos;https://github.com/...
-</code></pre><p>如果JSON解码失败， r.json 就会抛出一个异常。例如，相应内容是 401 (Unauthorized) ，尝试访问 r.json 将会抛出 <code>ValueError: No JSON object could be decoded</code>异常。</p>
-<h4 id="原始响应内容"><a href="#原始响应内容" class="headerlink" title="原始响应内容"></a>原始响应内容</h4><p>在罕见的情况下你可能想获取来自服务器的原始套接字响应，那么你可以访问 r.raw 。 如果你确实想这么干，那请你确保在初始请求中设置了 stream=True 。具体的你可以这么做:</p>
-<pre><code>&gt;&gt;&gt; r = requests.get(&apos;https://github.com/timeline.json&apos;, stream=True)
-&gt;&gt;&gt; r.raw
-&lt;requests.packages.urllib3.response.HTTPResponse object at 0x101194810&gt;
-&gt;&gt;&gt; r.raw.read(10)
-&apos;\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\x03&apos;
-</code></pre><p>但一般情况下，你应该下面的模式将文本流保存到文件:</p>
-<pre><code>with open(filename, &apos;wb&apos;) as fd:
-    for chunk in r.iter_content(chunk_size):
-        fd.write(chunk)
-</code></pre><p>使用 <code>Response.iter_content</code> 将会处理大量你直接使用 Response.raw 不得不处理的。 当流下载时，上面是优先推荐的获取内容方式。</p>
-<h3 id="定制请求头add-header"><a href="#定制请求头add-header" class="headerlink" title="定制请求头add header"></a>定制请求头add header</h3><p>如果你想为请求添加HTTP头部，只要简单地传递一个 dict 给 headers 参数就可以了。</p>
-<p>例如，在前一个示例中我们没有指定content-type:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> json</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>url = <span class="string">'https://api.github.com/some/endpoint'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>payload = &#123;<span class="string">'some'</span>: <span class="string">'data'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>headers = &#123;<span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.post(url, data=json.dumps(payload), headers=headers)</div></pre></td></tr></table></figure>
-<h3 id="更加复杂的POST请求"><a href="#更加复杂的POST请求" class="headerlink" title="更加复杂的POST请求"></a>更加复杂的POST请求</h3><p>通常，你想要发送一些编码为表单形式的数据—非常像一个HTML表单。 要实现这个，<strong>只需简单地传递一个字典给 data 参数</strong>。你的数据字典 在发出请求时会自动编码为表单形式:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; payload = &#123;&apos;key1&apos;: &apos;value1&apos;, &apos;key2&apos;: &apos;value2&apos;&#125;</div><div class="line">&gt;&gt;&gt; r = requests.post(&quot;http://httpbin.org/post&quot;, data=payload)</div><div class="line">&gt;&gt;&gt; print r.text</div><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  &quot;form&quot;: &#123;</div><div class="line">    &quot;key2&quot;: &quot;value2&quot;,</div><div class="line">    &quot;key1&quot;: &quot;value1&quot;</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>很多时候你想要发送的数据并非编码为表单形式的。如果你传递一个 string 而不是一个 dict ，那么数据会被直接发布出去。</p>
-<p>例如，<em>Github API v3接受编码为JSON的POST/PATCH数据</em>:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; import json</div><div class="line">&gt;&gt;&gt; url = &apos;https://api.github.com/some/endpoint&apos;</div><div class="line">&gt;&gt;&gt; payload = &#123;&apos;some&apos;: &apos;data&apos;&#125;</div><div class="line"></div><div class="line">&gt;&gt;&gt; r = requests.post(url, data=json.dumps(payload))</div></pre></td></tr></table></figure>
-<h3 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h3><p>我们可以检测响应状态码:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r = requests.get(&apos;http://httpbin.org/get&apos;)</div><div class="line">&gt;&gt;&gt; r.status_code</div><div class="line">200</div></pre></td></tr></table></figure>
-<p>为方便引用，Requests还附带了一个内置的状态码查询对象:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r.status_code == requests.codes.ok</div><div class="line">True</div></pre></td></tr></table></figure>
-<p>如果发送了一个失败请求(非200响应)，我们可以通过 Response.raise_for_status() 来抛出异常:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; bad_r = requests.get(&apos;http://httpbin.org/status/404&apos;)</div><div class="line">&gt;&gt;&gt; bad_r.status_code</div><div class="line">404</div><div class="line"></div><div class="line">&gt;&gt;&gt; bad_r.raise_for_status()</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;requests/models.py&quot;, line 832, in raise_for_status</div><div class="line">    raise http_error</div><div class="line">requests.exceptions.HTTPError: 404 Client Error</div></pre></td></tr></table></figure>
-<p>但是，由于我们的例子中 r 的 status_code 是 200 ，当我们调用 raise_for_status() 时，得到的是:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; r.raise_for_status()</div><div class="line">None</div></pre></td></tr></table></figure></p>
-<h3 id="响应头-response-header"><a href="#响应头-response-header" class="headerlink" title="响应头 response header"></a>响应头 response header</h3><p>我们可以查看以一个Python字典形式展示的服务器响应头:</p>
-<pre><code>&gt;&gt;&gt; r.headers
-{
-    &apos;content-encoding&apos;: &apos;gzip&apos;,
-    &apos;transfer-encoding&apos;: &apos;chunked&apos;,
-    &apos;connection&apos;: &apos;close&apos;,
-    &apos;server&apos;: &apos;nginx/1.0.4&apos;,
-    &apos;x-runtime&apos;: &apos;148ms&apos;,
-    &apos;etag&apos;: &apos;&quot;e1ca502697e5c9317743dc078f67693f&quot;&apos;,
-    &apos;content-type&apos;: &apos;application/json&apos;
-}
-</code></pre><p>但是这个字典比较特殊：它是仅为HTTP头部而生的。根据 RFC 2616 ， HTTP头部是大小写不敏感的。</p>
-<p>因此，我们可以使用任意大写形式来访问这些响应头字段:</p>
-<pre><code>&gt;&gt;&gt; r.headers[&apos;Content-Type&apos;]
-&apos;application/json&apos;
-
-&gt;&gt;&gt; r.headers.get(&apos;content-type&apos;)
-&apos;application/json&apos;
-</code></pre><h3 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h3><p>如果某个响应中包含一些Cookie，你可以快速访问它们:</p>
-<pre><code>&gt;&gt;&gt; url = &apos;http://example.com/some/cookie/setting/url&apos;
-&gt;&gt;&gt; r = requests.get(url)
-
-&gt;&gt;&gt; r.cookies[&apos;example_cookie_name&apos;]
-&apos;example_cookie_value&apos;
-</code></pre><p>要想发送你的cookies到服务器，可以使用 cookies 参数:</p>
-<pre><code>&gt;&gt;&gt; url = &apos;http://httpbin.org/cookies&apos;
-&gt;&gt;&gt; cookies = dict(cookies_are=&apos;working&apos;)
-
-&gt;&gt;&gt; r = requests.get(url, cookies=cookies)
-&gt;&gt;&gt; r.text
-&apos;{&quot;cookies&quot;: {&quot;cookies_are&quot;: &quot;working&quot;}}&apos;
-</code></pre><h3 id="重定向与请求历史"><a href="#重定向与请求历史" class="headerlink" title="重定向与请求历史"></a>重定向与请求历史</h3><p>默认情况下，除了 HEAD, Requests会自动处理所有重定向。</p>
-<p>可以使用响应对象的 history 方法来追踪重定向。</p>
-<p><code>Response.history</code> 是一个<code>:class:Response &lt;requests.Response&gt;</code> 对象的列表，为了完成请求而创建了这些对象。这个对象列表按照从最老到最近的请求进行排序。</p>
-<p>例如，Github将所有的HTTP请求重定向到HTTPS。:</p>
-<pre><code>&gt;&gt;&gt; r = requests.get(&apos;http://github.com&apos;)
-&gt;&gt;&gt; r.url
-&apos;https://github.com/&apos;
-&gt;&gt;&gt; r.status_code
-200
-&gt;&gt;&gt; r.history
-[&lt;Response [301]&gt;]
-</code></pre><p>如果你使用的是<em>GET, OPTIONS, POST, PUT, PATCH 或者 DELETE</em>,，那么你可以通过 allow_redirects 参数禁用重定向处理:</p>
-<pre><code>&gt;&gt;&gt; r = requests.get(&apos;http://github.com&apos;, allow_redirects=False)
-&gt;&gt;&gt; r.status_code
-301
-&gt;&gt;&gt; r.history
-[]
-</code></pre><p>如果你使用的是HEAD，你也可以启用重定向:</p>
-<pre><code>&gt;&gt;&gt; r = requests.head(&apos;http://github.com&apos;, allow_redirects=True)
-&gt;&gt;&gt; r.url
-&apos;https://github.com/&apos;
-&gt;&gt;&gt; r.history
-[&lt;Response [301]&gt;]
-</code></pre><h3 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h3><p>你可以告诉requests在经过以 timeout 参数设定的秒数时间之后停止等待响应:</p>
-<pre><code>&gt;&gt;&gt; requests.get(&apos;http://github.com&apos;, timeout=0.001)
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-requests.exceptions.Timeout: HTTPConnectionPool(host=&apos;github.com&apos;, port=80): Request timed out. (timeout=0.001)
-</code></pre><h3 id="错误与异常"><a href="#错误与异常" class="headerlink" title="错误与异常"></a>错误与异常</h3><p>遇到网络问题（如：DNS查询失败、拒绝连接等）时，Requests会抛出一个 <code>ConnectionError</code> 异常。</p>
-<p>遇到罕见的无效HTTP响应时，Requests则会抛出一个 <code>HTTPError</code> 异常。</p>
-<p>若请求超时，则抛出一个 Timeout 异常。</p>
-<p>若请求超过了设定的最大重定向次数，则会抛出一个 <code>TooManyRedirects</code> 异常。</p>
-<p>所有Requests显式抛出的异常都继承自 <code>requests.exceptions.RequestException</code> 。</p>
-<h3 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h3><ol>
-<li><a href="http://docs.python-requests.org/zh_CN/latest/index.html#" target="_blank" rel="external">requests:HTTP for humans-官方文档</a></li>
-<li><a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html#id8" target="_blank" rel="external">快速上手-官方文档</a></li>
+        <p>[Toc]</p>
+<h2 id="这就当做最新的感悟吧"><a href="#这就当做最新的感悟吧" class="headerlink" title="这就当做最新的感悟吧"></a>这就当做最新的感悟吧</h2><h3 id="关于自身性格的养成"><a href="#关于自身性格的养成" class="headerlink" title="关于自身性格的养成"></a>关于自身性格的养成</h3><p>突然的发现，现在性格的养成，是先天与后天客观条件的综合作用。</p>
+<p>先天不必说，本身就属于逻辑性思维，本身就不屑于世俗的框框条条。</p>
+<p>后天的作用，深究下去，竟是长期生活在与自身阶级不相符的环境中。<br>如同他人所说的凤凰男，同时残留的清高与自傲。</p>
+<p>未完待续</p>
+<h3 id="意志力那些事儿"><a href="#意志力那些事儿" class="headerlink" title="意志力那些事儿"></a>意志力那些事儿</h3><p>意志力那些事儿，需要执行力，需要顺其自然。</p>
+<p>最理想的坚持，应该是感觉不到行动的阻力。</p>
+<p>我应该做到的是，给自己创造顺其自然的客观条件，同时用自己的意志力，处理计划之外的事件。</p>
+<h3 id="身体"><a href="#身体" class="headerlink" title="身体"></a>身体</h3><p>身体是革命的本钱。</p>
+<p>老人的话总是伴随着岁月感悟越来越深。<br>最近这一年，身体上的毛病越来越多，颈椎、腰、膝盖、脚掌。。。</p>
+<p>如果说对于年轻的我，目前身体上的毛病还是可逆的。<br>但是如果我再放纵自己，只怕积劳成疾，造成永久性的顽疾。</p>
+<ul>
+<li>坚持作息，规律的作息，是努力的态度，是革命的本钱。</li>
+</ul>
+<p>每天起床后半小时内：</p>
+<ol>
+<li>颈椎运动</li>
+<li>俯卧撑</li>
 </ol>
+<p>每天洗澡前四十五分钟：</p>
+<ol>
+<li>五点支撑，拱桥式：<ul>
+<li>每次持续3～5秒，然后缓慢放下，休息3～5秒，为一个周期</li>
+<li>一次锻炼20～40次， 约5分钟左右</li>
+</ul>
+</li>
+<li>飞燕式 <ul>
+<li>俯卧床上，去枕；双手背后，用力挺胸抬头，使头胸离开床面；膝关节伸直，两腿向后用力</li>
+<li>每次持续3～5秒，然后缓慢放下，休息3～5秒，为一个周期</li>
+<li>一次锻炼20～40次， 约5分钟左右</li>
+</ul>
+</li>
+<li>骑自行车，同腹肌撕裂者，共三组，顺时针，逆时针，同时，每组25个。</li>
+<li>卷腹<ul>
+<li>手虚搭着头，调整呼吸，感觉整个世界都清净了，只有腹部在发力。</li>
+</ul>
+</li>
+<li>俯卧撑</li>
+<li>每组3~4分钟，共三组，靠墙静蹲，十五分钟</li>
+</ol>
+<p>跑步的量另算，如果有了跑步，注意跑前与跑后的拉伸，跑步当天可以不静蹲了。</p>
+<h3 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h3><p>工作时间，就应该做份内的事情。三心二意，只会降低效率，浪费时间，顾此失彼</p>
+<p>接下来的时间，我会掌握学习Cadence，射频全栈，高通文档，通信。</p>
+<h3 id="感受不同的世界不同的生活，码农"><a href="#感受不同的世界不同的生活，码农" class="headerlink" title="感受不同的世界不同的生活，码农"></a>感受不同的世界不同的生活，码农</h3><p>工作日能平均每天抽出3小时的时间学习(不包括上班阅读的时间)。</p>
+<p>没有计划的节假日，每天有6个小时的时间学习。</p>
+<h4 id="Plan"><a href="#Plan" class="headerlink" title="Plan"></a>Plan</h4><ol>
+<li>从3月份开始，到4月底，完成Python爬虫部分，随心随意爬取数据。将重心放在数据的提取而不是模拟登录上。</li>
+<li>5月初至6月份底，依葫芦画瓢，实践Flasky实践</li>
+<li>理论过机器学习,深度学习的内容，用Python实践并呈现。</li>
+</ol>
+<p>And Then Cpp 刷Leetcode<br>And then verilog从入门到精通。精通！</p>
+<h3 id="写作；表达；厚积薄发；"><a href="#写作；表达；厚积薄发；" class="headerlink" title="写作；表达；厚积薄发；"></a>写作；表达；厚积薄发；</h3><h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3><p>有空听Englishpod</p>
+<h2 id="下次回家需要完成的计划"><a href="#下次回家需要完成的计划" class="headerlink" title="下次回家需要完成的计划"></a>下次回家需要完成的计划</h2><ol>
+<li>回家之前做好每天的基本计划，自律</li>
+<li>回家之后，先去看外婆外公和奶奶。</li>
+<li>只要是在家吃饭，帮老爸老妈做家务，收拾碗筷。</li>
+<li>做好详尽攻略，带老爸老妈出去玩两到三天，包括考虑老妈的卫生担忧。</li>
+</ol>
+<h2 id="年后南京出差第15天-2017-02-21"><a href="#年后南京出差第15天-2017-02-21" class="headerlink" title="年后南京出差第15天 @2017.02.21"></a>年后南京出差第15天 @2017.02.21</h2><p>以后的感悟就跟着这后面写吧，方便整理与查阅。</p>
+<p>长期外派在外，感觉自己的存在可有可无。<br>呆在南京这么长时间，并不是因为EMC的活实在紧急或者难搞。<br>仅仅只是春哥个人的谨慎与自己的可有可无，我只不过恰好是那个保障的人次罢了。</p>
+<p>话糙理不糙，假如生活QJ了你，如果你无力反抗，那就闭上眼睛去享受。<br>后面加上自己的一句，然后厚积薄发，狠狠的怼回去。</p>
+<p>于此同时，华为员工34岁以上强制退休，又一次血淋淋的事实证明了，大家都是利益导向的。<br>谈情怀，画大饼，别逗了，大家都是成年人了。</p>
+<p>感谢任总，感谢华为，让我在27岁之际，有了十足的危机感。不算早，但还来得及。</p>
+<p>公司的事情谁都说不准，保持个人的核心竞争力才是最靠谱的。</p>
+<p>细想现在我的工作，依靠着一个大平台。<br>下有PCB Layout接口，原理图有高通，协议有高通，上有BSP对接。<br>每一层，每一个人，少了谁公司都正常运转，少了谁都不会影响项目进度。<br>细细想来，只有对于亲人和伴侣，自己才真正是那个独一无二不可或缺的。哈哈哈哈～<br>而我的工作，便是微小的螺丝钉工作。</p>
+<p>无意管理，无意如春哥般工作狂，为工作牺牲了太多太多。<br>生活生活，今天看来，能够平衡工作，面包，家庭都需要竭尽全力。</p>
+<p>年后南京出差第15天，调整心态，重整旗鼓，重新出发。</p>
+<p>人生路漫漫，不忘初心。</p>
+<h2 id="Plan-Detail-Update-anytime"><a href="#Plan-Detail-Update-anytime" class="headerlink" title="Plan Detail (Update anytime)"></a>Plan Detail (Update anytime)</h2><p>From the very beginning</p>
+<p>首先，一定要修好内功</p>
+<p>其次，一定要抓紧时间，把战线拖得太长容易精神疲倦和迷茫</p>
+<p>再次，在学习的过程中，一定要清楚自己想要的是什么。</p>
+<ol>
+<li><a href="https://docs.python.org/3/library" target="_blank" rel="external">The Python Standard Library</a></li>
+<li><a href="https://docs.python.org/3.5/howto/index.html" target="_blank" rel="external">Python 3.x HOWTOs</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8 – Style Guide for Python Code</a></li>
+</ol>
+<p><strong>flask web 开发 Util 端午</strong></p>
+<p>Python 学习手册, HOWTo，系统学习，爬虫</p>
+<p>快速扫一遍后，</p>
+<p>然后过一遍 learn Python the Hard way</p>
+<p>空闲时间扫一遍 python cookbook , effecit python (电子书)</p>
+<h3 id="个人wiki-python-待安排"><a href="#个人wiki-python-待安排" class="headerlink" title="个人wiki-python 待安排"></a>个人wiki-python 待安排</h3><ol>
+<li>首先完成task的基本功能<ul>
+<li>无限子任务</li>
+<li>邮件至日历提醒</li>
+</ul>
+</li>
+<li>markdown个人数据的迁移cp代码</li>
+</ol>
+<h2 id="Plan-Detail-2017-04-05"><a href="#Plan-Detail-2017-04-05" class="headerlink" title="Plan Detail @ 2017-04-05"></a>Plan Detail @ 2017-04-05</h2><p>我需要一个个人的精细化安排。</p>
+<p>目的：具体到工作日与假期的每一天，我需要每天5个小时的自习时间。</p>
+<h3 id="工作日，每天早9点至晚6点半"><a href="#工作日，每天早9点至晚6点半" class="headerlink" title="工作日，每天早9点至晚6点半"></a>工作日，每天早9点至晚6点半</h3><p>早上6点15起床，7点前完成洗漱+晨运+早餐</p>
+<p>7点至9点，两小时自习时间</p>
 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#结合使用-setattr-和-slots"><span class="toc-number">1.</span> <span class="toc-text">结合使用 .setattr 和 .slots</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-12-06T00:21:20.000Z"><a href="/hexo_blog/2016/12/06/Python-Basic-2016-12-06-python-basic-slots-与-getattr/">2016-12-06</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/12/06/Python-Basic-2016-12-06-python-basic-slots-与-getattr/">python-basic~__slots__与__getattr__</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#结合使用-setattr-和-slots"><span class="toc-number">1.</span> <span class="toc-text">结合使用 .setattr 和 .slots</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h3 id="结合使用-setattr-和-slots"><a href="#结合使用-setattr-和-slots" class="headerlink" title="结合使用 .setattr 和 .slots"></a>结合使用 .<strong>setattr</strong> 和 .<strong>slots</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Foo3</span><span class="params">(object)</span>:</span></div><div class="line"><span class="meta">... </span>    __slots__ = (<span class="string">'x'</span>)</div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, name, val)</span>:</span></div><div class="line"><span class="meta">... </span>        <span class="keyword">if</span> name <span class="keyword">in</span> Foo.__slots__:</div><div class="line"><span class="meta">... </span>            object.__setattr__(self, name, val)</div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, name)</span>:</span></div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">"Value of %s"</span> % name</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo3 = Foo3()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo3.x</div><div class="line"><span class="string">'Value of x'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo3.x = <span class="string">'x'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo3.x</div><div class="line"><span class="string">'x'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo3.y</div><div class="line"><span class="string">'Value of y'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo3.y = <span class="string">'y'</span>   <span class="comment"># Doesn't do anything, but doesn't raise exception</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo3.y</div><div class="line"><span class="string">'Value of y'</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在内存中操作测试sqlite3"><span class="toc-number">1.</span> <span class="toc-text">在内存中操作测试sqlite3</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-12-04T02:32:33.000Z"><a href="/hexo_blog/2016/12/04/SQL-2016-12-04-sql-sqlite3-python与sqlite3/">2016-12-04</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/12/04/SQL-2016-12-04-sql-sqlite3-python与sqlite3/">sql-sqlite3~python与sqlite3</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在内存中操作测试sqlite3"><span class="toc-number">1.</span> <span class="toc-text">在内存中操作测试sqlite3</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<p>参考</p>
+<ol>
+<li><p><a href="https://docs.python.org/3.5/library/sqlite3.html" target="_blank" rel="external">python_library_reference sqlite3</a></p>
+</li>
+<li><p><a href="http://www.sqlite.org/syntaxdiagrams.html" target="_blank" rel="external">Syntax Diagrams For SQLite</a></p>
+</li>
+</ol>
+<h3 id="在内存中操作测试sqlite3"><a href="#在内存中操作测试sqlite3" class="headerlink" title="在内存中操作测试sqlite3"></a>在内存中操作测试sqlite3</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> sqlite3</div><div class="line">conn = sqlite3.connect(<span class="string">":memory:"</span>)</div><div class="line"></div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sqlite3不支持关键字AUTO-INCREMENT"><span class="toc-number">1.</span> <span class="toc-text">Sqlite3不支持关键字AUTO_INCREMENT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sqlite3自增关键字INTEGER-PRIMAY-KEY"><span class="toc-number">2.</span> <span class="toc-text">Sqlite3自增关键字INTEGER PRIMAY KEY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字AUTOINCREMENT与内部表sqlite-sequence"><span class="toc-number">3.</span> <span class="toc-text">关键字AUTOINCREMENT与内部表sqlite_sequence</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-12-04T02:13:48.000Z"><a href="/hexo_blog/2016/12/04/SQL-2016-12-04-sql-sqlite3-自增关键字INCREMENT/">2016-12-04</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/12/04/SQL-2016-12-04-sql-sqlite3-自增关键字INCREMENT/">sql-sqlite3~自增关键字INCREMENT</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sqlite3不支持关键字AUTO-INCREMENT"><span class="toc-number">1.</span> <span class="toc-text">Sqlite3不支持关键字AUTO_INCREMENT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sqlite3自增关键字INTEGER-PRIMAY-KEY"><span class="toc-number">2.</span> <span class="toc-text">Sqlite3自增关键字INTEGER PRIMAY KEY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字AUTOINCREMENT与内部表sqlite-sequence"><span class="toc-number">3.</span> <span class="toc-text">关键字AUTOINCREMENT与内部表sqlite_sequence</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<ol>
+<li><a href="http://blog.csdn.net/zjy_hll/article/details/38319837" target="_blank" rel="external">SQLite中的自增关键字：AUTO_INCREMENT、INTEGER PRIMARY KEY与AUTOINCREMENT</a></li>
+<li><a href="http://www.sqlite.org/autoinc.html" target="_blank" rel="external">offical -sqlite - AUTOINCREMENT</a></li>
+</ol>
+<h3 id="Sqlite3不支持关键字AUTO-INCREMENT"><a href="#Sqlite3不支持关键字AUTO-INCREMENT" class="headerlink" title="Sqlite3不支持关键字AUTO_INCREMENT"></a>Sqlite3不支持关键字AUTO_INCREMENT</h3><h3 id="Sqlite3自增关键字INTEGER-PRIMAY-KEY"><a href="#Sqlite3自增关键字INTEGER-PRIMAY-KEY" class="headerlink" title="Sqlite3自增关键字INTEGER PRIMAY KEY"></a>Sqlite3自增关键字INTEGER PRIMAY KEY</h3><p>sqlite3 语句<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> todo (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">INTEGER</span> PRIMARY <span class="keyword">KEY</span> ,</div><div class="line">    title <span class="built_in">TEXT</span></div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> todo (</div><div class="line">    <span class="keyword">id</span> <span class="built_in">INTEGER</span> PRIMARY <span class="keyword">KEY</span> <span class="keyword">not</span> <span class="literal">null</span> ,</div><div class="line">    title <span class="built_in">TEXT</span></div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>插入语句INSERT</p>
+<ol>
+<li><code>INSERT INTO todo (title) VALUES (&quot;shopping&quot;);</code></li>
+<li><code>INSERT INTO todo (id, title) VALUES (&quot;null&quot;, &quot;shopping&quot;);</code></li>
+<li><code>INSERT INTO todo VALUES (&quot;null&quot;, &quot;shopping&quot;);</code></li>
+</ol>
+<h3 id="关键字AUTOINCREMENT与内部表sqlite-sequence"><a href="#关键字AUTOINCREMENT与内部表sqlite-sequence" class="headerlink" title="关键字AUTOINCREMENT与内部表sqlite_sequence"></a>关键字AUTOINCREMENT与内部表sqlite_sequence</h3><p>SQLite中，在<code>INTEGER PRIMARY KEY</code>的基础上添加<code>AUTOINCREMENT</code>后（即INTEGER PRIMARY KEY AUTOINCREMENT），可以在表的整个生命周期内保证”自增字段”的唯一性（create keys that are unique over the lifetime of the table）。</p>
+<p>SQLite内部用一个叫作<code>sqlite_sequence</code>的表来保存所有表的自增字段的取值基准（the largest ROWID），如果清空<code>sqlite_sequence</code>的记录(<code>clr(&quot;sqlite_sequence&quot;)</code>)，可以实现将所有表的自增字段的取值归零的效果（这种行为具有破坏性，请谨慎使用）。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH登录-Windows下Git-SSH-Key-生成步骤"><span class="toc-number">1.</span> <span class="toc-text">[SSH登录]Windows下Git SSH Key 生成步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置git的user-name和email："><span class="toc-number">1.1.</span> <span class="toc-text">设置git的user name和email：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成SSH密钥过程："><span class="toc-number">1.2.</span> <span class="toc-text">生成SSH密钥过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加密钥到ssh-agent"><span class="toc-number">1.3.</span> <span class="toc-text">添加密钥到ssh-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在github上添加ssh密钥"><span class="toc-number">1.4.</span> <span class="toc-text">在github上添加ssh密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试SSH是否生效"><span class="toc-number">1.5.</span> <span class="toc-text">测试SSH是否生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将远程仓库的url从Http修改至SSH"><span class="toc-number">1.6.</span> <span class="toc-text">将远程仓库的url从Http修改至SSH</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh-无密码登录设置"><span class="toc-number">2.</span> <span class="toc-text">ssh 无密码登录设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在A机下生成公钥-私钥对。"><span class="toc-number">2.1.</span> <span class="toc-text">在A机下生成公钥/私钥对。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#把A机下的id-rsa-pub复制到B机下"><span class="toc-number">2.2.</span> <span class="toc-text">把A机下的id_rsa.pub复制到B机下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。"><span class="toc-number">2.3.</span> <span class="toc-text">B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A机登录B机。"><span class="toc-number">2.4.</span> <span class="toc-text">A机登录B机。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可通过别名alias快捷登录B机"><span class="toc-number">2.5.</span> <span class="toc-text">可通过别名alias快捷登录B机</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-12-03T03:00:19.000Z"><a href="/hexo_blog/2016/12/03/Git-2016-12-03-git-Git-SSH-Key生成与SSH无密码登录/">2016-12-03</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/12/03/Git-2016-12-03-git-Git-SSH-Key生成与SSH无密码登录/">Git~Git_SSH_Key生成与SSH无密码登录</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH登录-Windows下Git-SSH-Key-生成步骤"><span class="toc-number">1.</span> <span class="toc-text">[SSH登录]Windows下Git SSH Key 生成步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置git的user-name和email："><span class="toc-number">1.1.</span> <span class="toc-text">设置git的user name和email：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成SSH密钥过程："><span class="toc-number">1.2.</span> <span class="toc-text">生成SSH密钥过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加密钥到ssh-agent"><span class="toc-number">1.3.</span> <span class="toc-text">添加密钥到ssh-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在github上添加ssh密钥"><span class="toc-number">1.4.</span> <span class="toc-text">在github上添加ssh密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试SSH是否生效"><span class="toc-number">1.5.</span> <span class="toc-text">测试SSH是否生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将远程仓库的url从Http修改至SSH"><span class="toc-number">1.6.</span> <span class="toc-text">将远程仓库的url从Http修改至SSH</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh-无密码登录设置"><span class="toc-number">2.</span> <span class="toc-text">ssh 无密码登录设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在A机下生成公钥-私钥对。"><span class="toc-number">2.1.</span> <span class="toc-text">在A机下生成公钥/私钥对。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#把A机下的id-rsa-pub复制到B机下"><span class="toc-number">2.2.</span> <span class="toc-text">把A机下的id_rsa.pub复制到B机下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。"><span class="toc-number">2.3.</span> <span class="toc-text">B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A机登录B机。"><span class="toc-number">2.4.</span> <span class="toc-text">A机登录B机。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可通过别名alias快捷登录B机"><span class="toc-number">2.5.</span> <span class="toc-text">可通过别名alias快捷登录B机</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="SSH登录-Windows下Git-SSH-Key-生成步骤"><a href="#SSH登录-Windows下Git-SSH-Key-生成步骤" class="headerlink" title="[SSH登录]Windows下Git SSH Key 生成步骤"></a>[SSH登录]Windows下Git SSH Key 生成步骤</h2><ul>
+<li><a href="https://help.github.com/articles/generating-an-ssh-key/" target="_blank" rel="external">git官方指导</a></li>
+</ul>
+<p>git是<em>分布式的代码管理</em>工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。</p>
+<p>github的ssh配置如下：</p>
+<h3 id="设置git的user-name和email："><a href="#设置git的user-name和email：" class="headerlink" title="设置git的user name和email："></a>设置git的<code>user name</code>和<code>email</code>：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ git config --global user.name &quot;ywl&quot;</div><div class="line">$ git config --global user.email &quot;ywlbupt@163.com&quot;</div></pre></td></tr></table></figure>
+<h3 id="生成SSH密钥过程："><a href="#生成SSH密钥过程：" class="headerlink" title="生成SSH密钥过程："></a>生成SSH密钥过程：</h3><p>查看是否已经有了ssh密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls -al ~/.ssh </div><div class="line"><span class="comment"># Lists the files in your .ssh directory, if they exist</span></div><div class="line">```    </div><div class="line"></div><div class="line">如果没有密钥则不会有此文件夹，有则备份删除 </div><div class="line"></div><div class="line"><span class="comment">###  生成密钥：</span></div><div class="line">``` bash</div><div class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"ywlbupt163.com"</span></div></pre></td></tr></table></figure>
+<p>按3个回车，密码为空。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"ywlbupt163.com"</span></div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/m/.ssh/id_rsa):</div><div class="line">Created directory <span class="string">'/c/Users/m/.ssh'</span>.</div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again:</div><div class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/m/.ssh/id_rsa.</div><div class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/m/.ssh/id_rsa.pub.</div><div class="line">The key fingerprint is:</div><div class="line">SHA256:jJ6we2YsHSKOswtM4ahWHb+t0giqPZfcp/f6NdCZQdI ywlbupt163.com</div><div class="line">The key<span class="string">'s randomart image is:</span></div><div class="line">+---[RSA 4096]----+</div><div class="line">|          ...    |</div><div class="line">|           oE    |</div><div class="line">| .   .      .    |</div><div class="line">|o . . oo   . +   |</div><div class="line">|.o .....S . +    |</div><div class="line">|+ o..+..o  .     |</div><div class="line">|o=.oo*=o .  o    |</div><div class="line">|=oo =+B.+  . .   |</div><div class="line">|=+.o.=o=.+o      |</div><div class="line">+----[SHA256]-----+</div></pre></td></tr></table></figure>
+<p>最后得到了两个文件：id_rsa和id_rsa.pub</p>
+<h3 id="添加密钥到ssh-agent"><a href="#添加密钥到ssh-agent" class="headerlink" title="添加密钥到ssh-agent"></a>添加密钥到<code>ssh-agent</code></h3><p>ssh-add 文件名需要之前输入密码。</p>
+<p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#adding-your-ssh-key-to-the-ssh-agent" target="_blank" rel="external">全面-官方指导</a></p>
+<ul>
+<li><p>Ensure ssh-agent is enabled:</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line"><span class="comment"># start the ssh-agent in the background</span></div><div class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></div><div class="line">Agent pid 5228</div></pre></td></tr></table></figure>
+</li>
+<li><p>Add your SSH key to the ssh-agent.</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="在github上添加ssh密钥"><a href="#在github上添加ssh密钥" class="headerlink" title="在github上添加ssh密钥"></a>在github上添加ssh密钥</h3><p>这要添加的是“id_rsa.pub”里面的公钥。 打开<code>https://github.com/</code> 登录，然后添加ssh。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line"><span class="comment"># 复制id_rsa.pub的内容至剪切板</span></div><div class="line">$ clip &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ssh git@github.com</div><div class="line">The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.</div><div class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</div><div class="line">Are you sure you want to <span class="built_in">continue</span> connecting (yes/no)? yes</div><div class="line">Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts.</div><div class="line">ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access</div><div class="line">Connection to github.com closed.</div></pre></td></tr></table></figure>
+<h3 id="测试SSH是否生效"><a href="#测试SSH是否生效" class="headerlink" title="测试SSH是否生效"></a>测试SSH是否生效</h3><p><strong><code>ssh -T git@github.com</code></strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ ssh -T git@github.com</div><div class="line">Hi ywlbupt! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell</span></div><div class="line">access.</div></pre></td></tr></table></figure>
+<h3 id="将远程仓库的url从Http修改至SSH"><a href="#将远程仓库的url从Http修改至SSH" class="headerlink" title="将远程仓库的url从Http修改至SSH"></a>将远程仓库的url从Http修改至SSH</h3><p>The <code>git remote set-url</code> command changes an existing remote repository URL.</p>
+<ul>
+<li>HTTP url’s Format<br>  <code>https://github.com/USERNAME/OTHERREPOSITORY.git</code></li>
+<li>SSH url’s Format<br>  <code>git@github.com:USERNAME/OTHERREPOSITORY.git</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git remote -v</div><div class="line">origin  https://github.com/ywlbupt/Vim_ywl.git (fetch)</div><div class="line">origin  https://github.com/ywlbupt/Vim_ywl.git (push)</div><div class="line"> </div><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git remote <span class="built_in">set</span>-url origin git@github.com:ywlbupt/Vim_ywl.git</div><div class="line"> </div><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git remote -v</div><div class="line">origin  git@github.com:ywlbupt/Vim_ywl.git (fetch)</div><div class="line">origin  git@github.com:ywlbupt/Vim_ywl.git (push)</div><div class="line"> </div><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git push origin master</div></pre></td></tr></table></figure>
+<h2 id="ssh-无密码登录设置"><a href="#ssh-无密码登录设置" class="headerlink" title="ssh 无密码登录设置"></a>ssh 无密码登录设置</h2><p>ssh 无密码登录要使用公钥与私钥。linux下可以用用ssh-keygen生成公钥/私钥对，下面我以CentOS为例。</p>
+<p>有机器A(192.168.1.155)，B(192.168.1.181)。现想A通过ssh免密码登录到B。</p>
+<h3 id="在A机下生成公钥-私钥对。"><a href="#在A机下生成公钥-私钥对。" class="headerlink" title="在A机下生成公钥/私钥对。"></a>在A机下生成公钥/私钥对。</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@A ~]$ ssh-keygen -t rsa -P <span class="string">''</span></div></pre></td></tr></table></figure>
+<p>-P表示密码，-P ‘’ 就表示空密码，也可以不用-P参数，这样就要三车回车，用-P就一次回车。<br>它在/home/chenlb下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。</p>
+<h3 id="把A机下的id-rsa-pub复制到B机下"><a href="#把A机下的id-rsa-pub复制到B机下" class="headerlink" title="把A机下的id_rsa.pub复制到B机下"></a>把A机下的<code>id_rsa.pub</code>复制到B机下</h3><p>在B机的.ssh/authorized_keys文件里，我用scp复制。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@A ~]$ scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub </div><div class="line">chenlb@192.168.1.181<span class="string">'s password:</span></div><div class="line">id_rsa.pub                                    100%  223     0.2KB/s   00:00</div></pre></td></tr></table></figure></p>
+<p>由于还没有免密码登录的，所以要输入密码。</p>
+<h3 id="B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。"><a href="#B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。" class="headerlink" title="B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。"></a>B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@B ~]$ cat id_rsa.pub &gt;&gt; .ssh/authorized_keys</div><div class="line">[chenlb@B ~]$ chmod 600 .ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p><code>authorized_keys</code>的权限要是600。</p>
+<h3 id="A机登录B机。"><a href="#A机登录B机。" class="headerlink" title="A机登录B机。"></a>A机登录B机。</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@A ~]$ ssh 192.168.1.181</div><div class="line">The authenticity of host <span class="string">'192.168.1.181 (192.168.1.181)'</span> can<span class="string">'t be established.</span></div><div class="line">RSA key fingerprint is 00:a6:a8:87:eb:c7:40:10:39:cc:a0:eb:50:d9:6a:5b.</div><div class="line">Are you sure you want to continue connecting (yes/no)? yes</div><div class="line">Warning: Permanently added '192.168.1.181<span class="string">' (RSA) to the list of known hosts.</span></div><div class="line">Last login: Thu Jul  3 09:53:18 2008 from chenlb</div><div class="line">[chenlb@B ~]$</div></pre></td></tr></table></figure>
+<p>第一次登录是时要你输入yes。</p>
+<p>现在A机可以无密码登录B机了。</p>
+<p>小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub)</p>
+<p>想让A，B机无密码互登录，那B机以上面同样的方式配置即可。</p>
+<h3 id="可通过别名alias快捷登录B机"><a href="#可通过别名alias快捷登录B机" class="headerlink" title="可通过别名alias快捷登录B机"></a>可通过别名alias快捷登录B机</h3>
       
     </div>
     <footer>
@@ -1223,19 +1001,31 @@ requests.exceptions.Timeout: HTTPConnectionPool(host=&apos;github.com&apos;, por
   <h3 class="title" id="categories">分类</h3>
 <!--   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
 	
   
 	
-		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
 	
   
 	
@@ -1243,11 +1033,15 @@ requests.exceptions.Timeout: HTTPConnectionPool(host=&apos;github.com&apos;, por
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
      
   
 	
@@ -1255,28 +1049,64 @@ requests.exceptions.Timeout: HTTPConnectionPool(host=&apos;github.com&apos;, por
 	
   
 	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
 		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
 	
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
 	
   
 	
 		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
 	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -1291,7 +1121,7 @@ requests.exceptions.Timeout: HTTPConnectionPool(host=&apos;github.com&apos;, por
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 
@@ -1304,7 +1134,7 @@ requests.exceptions.Timeout: HTTPConnectionPool(host=&apos;github.com&apos;, por
   <footer id="footer"><div class="footer-content inner">
   <div class="alignleft">
   
-    &copy; 2016 Wlin
+    &copy; 2017 Wlin
     
   </div>
   <div class="alignright">

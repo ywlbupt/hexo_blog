@@ -87,7 +87,7 @@ python3 中，使用 imp.reload(module) : Reloa">
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> post </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python2和python3的共存"><span class="toc-number">1.</span> <span class="toc-text">python2和python3的共存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reload"><span class="toc-number">1.0.1.</span> <span class="toc-text">reload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File-I-O"><span class="toc-number">1.0.2.</span> <span class="toc-text">File I/O</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exception"><span class="toc-number">1.0.3.</span> <span class="toc-text">exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-返回迭代对象；python-2返回列表"><span class="toc-number">1.0.4.</span> <span class="toc-text">python 3 返回迭代对象；python 2返回列表</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python2和python3的共存"><span class="toc-number">1.</span> <span class="toc-text">python2和python3的共存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reload"><span class="toc-number">1.0.1.</span> <span class="toc-text">reload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exception"><span class="toc-number">1.0.2.</span> <span class="toc-text">exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-返回迭代对象；python-2返回列表"><span class="toc-number">1.0.3.</span> <span class="toc-text">python 3 返回迭代对象；python 2返回列表</span></a></li></ol></li></ol></li></ol>
 </div>
 
       
@@ -116,7 +116,7 @@ python3 中，使用 imp.reload(module) : Reloa">
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> post </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python2和python3的共存"><span class="toc-number">1.</span> <span class="toc-text">python2和python3的共存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reload"><span class="toc-number">1.0.1.</span> <span class="toc-text">reload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File-I-O"><span class="toc-number">1.0.2.</span> <span class="toc-text">File I/O</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exception"><span class="toc-number">1.0.3.</span> <span class="toc-text">exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-返回迭代对象；python-2返回列表"><span class="toc-number">1.0.4.</span> <span class="toc-text">python 3 返回迭代对象；python 2返回列表</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python2和python3的共存"><span class="toc-number">1.</span> <span class="toc-text">python2和python3的共存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reload"><span class="toc-number">1.0.1.</span> <span class="toc-text">reload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exception"><span class="toc-number">1.0.2.</span> <span class="toc-text">exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-返回迭代对象；python-2返回列表"><span class="toc-number">1.0.3.</span> <span class="toc-text">python 3 返回迭代对象；python 2返回列表</span></a></li></ol></li></ol></li></ol>
 </div>
 
                   
@@ -132,29 +132,7 @@ python3 中，使用 imp.reload(module) : Reloa">
 <ul>
 <li><strong>python3</strong> 中，使用 <code>imp.reload(module)</code> : Reload a previously imported module. <ul>
 <li>替代python2中的reload()函数</li>
-</ul>
-</li>
-</ul>
-<h4 id="File-I-O"><a href="#File-I-O" class="headerlink" title="File I/O"></a>File I/O</h4><p>具体细节可参考笔记内链 TODO : </p>
-<p>考虑到<strong>共存</strong>问题，可以使用<code>codecs</code>库来兼容</p>
-<h5 id="codecs-open"><a href="#codecs-open" class="headerlink" title="codecs.open()"></a>codecs.open()</h5><ul>
-<li><p>对于python 2 </p>
-<ul>
-<li><p>使用<code>open()</code>打开文件会有一些问题，open打开文件只能写入<code>str</code>类型，不管字符串是什么编码方式的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">fr = open(<span class="string">"test.txt"</span>, <span class="string">'a'</span>)</div><div class="line">line1=<span class="string">"我爱祖国"</span></div><div class="line">fr.write(line1)</div></pre></td></tr></table></figure>
-<p>这样是完全可以的，因为 line1 在python2中是字符串类型。</p>
-</li>
-<li><p>但有时我们会遇到写入文件时编码不统一的情况(utf-8, gbk)，一般会转换成unicode，此时写入文件就有问题了：  </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">line2=<span class="string">u"我爱祖国"</span></div><div class="line">fr.write()</div></pre></td></tr></table></figure>
-<p>会报错，抛出<code>UnicodeEncodeError</code>的错误</p>
-</li>
-<li>对于上面的错误，可以采用先将<code>line2</code>编码成str类型，过程如下：<br><code>input(utf-8) -&gt; decode -&gt; unicode -&gt; encode -&gt; output(gbk)</code></li>
-<li><p>代替这个繁琐的操作的方法是采用<code>codecs.open()</code>，</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span>  codecs </div><div class="line">fw = codecs.open(<span class="string">'test.txt'</span>, <span class="string">'a'</span>, encoding = <span class="string">'utf-8'</span>)</div><div class="line">fw.write(line2)  <span class="comment"># line2为unicode类型</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>这种方法可以指定一个编码打开文件，使用这个方法打开的文件读取返回的将是unicode。写入时，如果参数 是unicode，则使用open()时指定的编码进行编码后写入；<br>如果是str，则先根据源代码文件声明的字符编码，解码成unicode后再进行前述操作。<br>相对内置的open()来说，这个方法比较不容易在编码上出现问题。</p>
-</blockquote>
-</li>
+<li><code>from imp import reload</code></li>
 </ul>
 </li>
 </ul>
@@ -240,19 +218,31 @@ python3 中，使用 imp.reload(module) : Reloa">
   <h3 class="title" id="categories">分类</h3>
 <!--   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
 	
   
 	
-		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
 	
   
 	
@@ -260,11 +250,15 @@ python3 中，使用 imp.reload(module) : Reloa">
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
      
   
 	
@@ -272,28 +266,64 @@ python3 中，使用 imp.reload(module) : Reloa">
 	
   
 	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
 		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
 	
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
 	
   
 	
 		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
 	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -308,7 +338,7 @@ python3 中，使用 imp.reload(module) : Reloa">
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 
@@ -321,7 +351,7 @@ python3 中，使用 imp.reload(module) : Reloa">
   <footer id="footer"><div class="footer-content inner">
   <div class="alignleft">
   
-    &copy; 2016 Wlin
+    &copy; 2017 Wlin
     
   </div>
   <div class="alignright">

@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ubuntu-IDE~vim与Terminal的solarized配色 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="[Toc]
+参考文档：Using Solarized colors with vim, Eclipse, and Ubuntu
+终端与Vim的配色问题思考注意 vim 的终端配色与 GUI 配色是完全不同的，一款 GUI 的配色方案有可能根本不含有终端配色方案。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="ubuntu-IDE~vim与Terminal的solarized配色"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#终端与Vim的配色问题思考"><span class="toc-number">1.</span> <span class="toc-text">终端与Vim的配色问题思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim-Vundle安装-Solarized"><span class="toc-number">2.</span> <span class="toc-text">Vim Vundle安装 Solarized</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#终端使用Solaried-16-配色"><span class="toc-number">3.</span> <span class="toc-text">终端使用Solaried 16 配色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录A"><span class="toc-number">4.</span> <span class="toc-text">附录A</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-11-17T18:19:07.000Z"><a href="/hexo_blog/2016/11/18/Ubuntu-Cmd-2016-11-18-ubuntu-IDE-vim与Terminal的solarized配色/">2016-11-18</a></time>
+        
+  
+    <h1 class="title">ubuntu-IDE~vim与Terminal的solarized配色</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#终端与Vim的配色问题思考"><span class="toc-number">1.</span> <span class="toc-text">终端与Vim的配色问题思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim-Vundle安装-Solarized"><span class="toc-number">2.</span> <span class="toc-text">Vim Vundle安装 Solarized</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#终端使用Solaried-16-配色"><span class="toc-number">3.</span> <span class="toc-text">终端使用Solaried 16 配色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录A"><span class="toc-number">4.</span> <span class="toc-text">附录A</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<p>参考文档：<a href="http://www.xorcode.com/2011/04/11/solarized-vim-eclipse-ubuntu/" target="_blank" rel="external">Using Solarized colors with vim, Eclipse, and Ubuntu</a></p>
+<h2 id="终端与Vim的配色问题思考"><a href="#终端与Vim的配色问题思考" class="headerlink" title="终端与Vim的配色问题思考"></a>终端与Vim的配色问题思考</h2><p>注意 vim 的终端配色与 GUI 配色是完全不同的，一款 GUI 的配色方案有可能根本不含有终端配色方案。</p>
+<a id="more"></a>
+<p>这类问题可以试着这样考虑：</p>
+<p>首先，它是否支持终端配色，如果支持，支持什么形式的终端配色？<br>如果是支持 256 色的终端配色，通常来说要求终端被手动配置为 256 色模式。<br>如果是支持 16 色的终端配色，通常要求终端仿真软件本身载入一款针对该终端的调色板。我看到他的官方文档只支持 XTerm， putty ，iTerm2，苹果终端这四种终端的预置调色板。所以如果你使用其他的终端软件，要么使用 256 色终端模式，要么就需要在终端软件内自定义配色方案。</p>
+<p>解决了上面一个问题之后，再来考虑底色问题。<br>底色问题，要看这个配色方案是强制指定终端底色否将终端底色设定为 NONE，这种情况下是透明底色，也就是说，底色取决于你终端本身设定的底色，你需要到终端的背景色设定中直接设定底色。</p>
+<p>如果你希望进入 vim 之后是另外一种底色，退出 vim 之后是终端背景，那么就必须选择有终端底色设定的配色方案。从目前 solarized 公布的信息上看，我看不出他含有哪些方案。所以你可能需要自己研究一下它的代码。</p>
+<p><a href="https://www.zhihu.com/question/51713545/answer/130671176" target="_blank" rel="external">链接-作者：pansz</a></p>
+<h2 id="Vim-Vundle安装-Solarized"><a href="#Vim-Vundle安装-Solarized" class="headerlink" title="Vim Vundle安装 Solarized"></a>Vim Vundle安装 Solarized</h2><p><a href="https://github.com/altercation/vim-colors-solarized" target="_blank" rel="external">Github 库地址</a></p>
+<p>vimrc中的配置如下，供参考：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">syntax enable</div><div class="line">set background=dark</div><div class="line">set t_Co=16</div><div class="line">let g:solarized_termcolors=16'</div><div class="line">let g:solarized_termtrans = 1</div><div class="line">colorscheme solarized</div></pre></td></tr></table></figure>
+<p><code>~/.bashrc</code>中添加下行<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">export</span> TERM=xterm-256color</div></pre></td></tr></table></figure></p>
+<h2 id="终端使用Solaried-16-配色"><a href="#终端使用Solaried-16-配色" class="headerlink" title="终端使用Solaried 16 配色"></a>终端使用Solaried 16 配色</h2><ol>
+<li>在主用户目录下，新建一个文件<code>solarize.sh</code>，见附录A <a href="#solarizedsh">附录A</a></li>
+<li>赋予<code>solarize.sh</code>执行的权限，<code>chmod +x solarize.sh</code></li>
+<li>执行命令<code>./solarize.sh dark</code>配置终端颜色为16色solaried</li>
+</ol>
+<h2 id="附录A"><a href="#附录A" class="headerlink" title="附录A"></a>附录A</h2><p><span id="solarizedsh">附录A</span></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Shell script that configures gnome-terminal to use solarized theme</span></div><div class="line"><span class="comment"># colors. Written for Ubuntu 11.10, untested on anything else.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Solarized theme: http://ethanschoonover.com/solarized</span></div><div class="line"><span class="comment"># </span></div><div class="line"><span class="comment"># Adapted from these sources:</span></div><div class="line"><span class="comment"># https://gist.github.com/1280177</span></div><div class="line"><span class="comment"># http://xorcode.com/guides/solarized-vim-eclipse-ubuntu/</span></div><div class="line"> </div><div class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span> </div><div class="line">    <span class="string">"dark"</span>)</div><div class="line">        PALETTE=<span class="string">"#070736364242:#D3D301010202:#858599990000:#B5B589890000:#26268B8BD2D2:#D3D336368282:#2A2AA1A19898:#EEEEE8E8D5D5:#00002B2B3636:#CBCB4B4B1616:#58586E6E7575:#65657B7B8383:#838394949696:#6C6C7171C4C4:#9393A1A1A1A1:#FDFDF6F6E3E3"</span></div><div class="line">        BG_COLOR=<span class="string">"#00002B2B3636"</span></div><div class="line">        FG_COLOR=<span class="string">"#65657B7B8383"</span></div><div class="line">        ;;</div><div class="line">    <span class="string">"light"</span>)</div><div class="line">        PALETTE=<span class="string">"#EEEEE8E8D5D5:#D3D301010202:#858599990000:#B5B589890000:#26268B8BD2D2:#D3D336368282:#2A2AA1A19898:#070736364242:#FDFDF6F6E3E3:#CBCB4B4B1616:#9393A1A1A1A1:#838394949696:#65657B7B8383:#6C6C7171C4C4:#58586E6E7575:#00002B2B3636"</span></div><div class="line">        BG_COLOR=<span class="string">"#FDFDF6F6E3E3"</span></div><div class="line">        FG_COLOR=<span class="string">"#838394949696"</span></div><div class="line">        ;;</div><div class="line">    *)</div><div class="line">    <span class="built_in">echo</span> <span class="string">"Usage: solarize [light | dark]"</span></div><div class="line">    <span class="built_in">exit</span></div><div class="line">    ;;</div><div class="line"><span class="keyword">esac</span></div><div class="line"> </div><div class="line">gconftool-2 --set <span class="string">"/apps/gnome-terminal/profiles/Default/use_theme_background"</span> --type bool <span class="literal">false</span></div><div class="line">gconftool-2 --set <span class="string">"/apps/gnome-terminal/profiles/Default/use_theme_colors"</span> --type bool <span class="literal">false</span></div><div class="line">gconftool-2 --set <span class="string">"/apps/gnome-terminal/profiles/Default/palette"</span> --type string <span class="string">"<span class="variable">$PALETTE</span>"</span></div><div class="line">gconftool-2 --set <span class="string">"/apps/gnome-terminal/profiles/Default/background_color"</span> --type string <span class="string">"<span class="variable">$BG_COLOR</span>"</span></div><div class="line">gconftool-2 --set <span class="string">"/apps/gnome-terminal/profiles/Default/foreground_color"</span> --type string <span class="string">"<span class="variable">$FG_COLOR</span>"</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

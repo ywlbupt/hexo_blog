@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python-common-issue | WiZero</title>
+  <title>python~common-issue常见问题 | WiZero</title>
   <meta name="author" content="Wlin">
   
   <meta name="description" content="python常见问题与方法">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="python-common-issue"/>
+  <meta property="og:title" content="python~common-issue常见问题"/>
   <meta property="og:site_name" content="WiZero"/>
 
   
@@ -79,7 +79,7 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> post </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python调用cmd命令"><span class="toc-number">1.</span> <span class="toc-text">python调用cmd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串前缀"><span class="toc-number">2.</span> <span class="toc-text">字符串前缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-Link"><span class="toc-number">3.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python调用cmd命令"><span class="toc-number">1.</span> <span class="toc-text">python调用cmd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变参数-args与-kwargs的应用"><span class="toc-number">2.</span> <span class="toc-text">可变参数*args与**kwargs的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BeautifulSoup通过find-all-方法实现注释的提取"><span class="toc-number">3.</span> <span class="toc-text">BeautifulSoup通过find_all()方法实现注释的提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中版本号的判断"><span class="toc-number">4.</span> <span class="toc-text">python中版本号的判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python的依赖安装requirements-txt"><span class="toc-number">5.</span> <span class="toc-text">Python的依赖安装requirements.txt</span></a></li></ol>
 </div>
 
       
@@ -95,7 +95,7 @@
         <time datetime="2016-01-15T16:54:11.000Z"><a href="/hexo_blog/2016/01/16/Python-2016-01-16-python-common-issue/">2016-01-16</a></time>
         
   
-    <h1 class="title">python-common-issue</h1>
+    <h1 class="title">python~common-issue常见问题</h1>
   
 
     </header>
@@ -108,13 +108,16 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> post </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python调用cmd命令"><span class="toc-number">1.</span> <span class="toc-text">python调用cmd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串前缀"><span class="toc-number">2.</span> <span class="toc-text">字符串前缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-Link"><span class="toc-number">3.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python调用cmd命令"><span class="toc-number">1.</span> <span class="toc-text">python调用cmd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变参数-args与-kwargs的应用"><span class="toc-number">2.</span> <span class="toc-text">可变参数*args与**kwargs的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BeautifulSoup通过find-all-方法实现注释的提取"><span class="toc-number">3.</span> <span class="toc-text">BeautifulSoup通过find_all()方法实现注释的提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中版本号的判断"><span class="toc-number">4.</span> <span class="toc-text">python中版本号的判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python的依赖安装requirements-txt"><span class="toc-number">5.</span> <span class="toc-text">Python的依赖安装requirements.txt</span></a></li></ol>
 </div>
 
                   
 
                   -->
-        <h3 id="python调用cmd命令"><a href="#python调用cmd命令" class="headerlink" title="python调用cmd命令"></a>python调用cmd命令</h3><p>Python调用cmd命令，比较常见的有两种方法：</p>
+        <h3 id="python调用cmd命令"><a href="#python调用cmd命令" class="headerlink" title="python调用cmd命令"></a>python调用cmd命令</h3><ul>
+<li><a href="http://www.lining0806.com/python%E8%B0%83%E7%94%A8cmd%E5%91%BD%E4%BB%A4/" target="_blank" rel="external">fireling的数据空间|宁哥的小站 » Python调用cmd命令</a></li>
+</ul>
+<p>Python调用cmd命令，比较常见的有两种方法：</p>
 <p>第一种可以使用os.system(“cmd”)，如</p>
 <pre><code>import os
 os.system(&quot;ipconfig /all&quot;)
@@ -123,21 +126,35 @@ os.system(&quot;ipconfig /all&quot;)
 proc = subprocess.Popen(&quot;ipconfig /all&quot;, shell = True)
 proc.wait() # 等待子进程结束
 </code></pre><p>但是我们要注意的是，Popen使用时shell参数的设置。一般情况下，需要加上<code>shell = True</code>。</p>
-<h3 id="字符串前缀"><a href="#字符串前缀" class="headerlink" title="字符串前缀"></a>字符串前缀</h3><ul>
-<li>r<ul>
-<li>在Python的string前面加上‘r’， 是为了告诉编译器这个string是个raw string，不要转意backslash ‘\’ </li>
-</ul>
+<h3 id="可变参数-args与-kwargs的应用"><a href="#可变参数-args与-kwargs的应用" class="headerlink" title="可变参数*args与**kwargs的应用"></a>可变参数<code>*args</code>与<code>**kwargs</code>的应用</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line">    <span class="keyword">print</span> (<span class="string">"list has &#123;args_len&#125; params, and dict has &#123;dict_len&#125; params"</span>.format(args_len=len(args), dict_len=len(kwargs)))</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    f(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,a=<span class="number">4</span>,b=<span class="number">5</span>)</div><div class="line">    <span class="comment"># 下面这种方式 list 有 2 个参数，dict有0个参数</span></div><div class="line">    <span class="comment"># f([1,2,3],&#123;"fa":"nohg"&#125;)</span></div><div class="line"></div><div class="line"><span class="comment"># output :</span></div><div class="line"><span class="comment"># list has 3 params, and dict has 2 params</span></div></pre></td></tr></table></figure>
+<h3 id="BeautifulSoup通过find-all-方法实现注释的提取"><a href="#BeautifulSoup通过find-all-方法实现注释的提取" class="headerlink" title="BeautifulSoup通过find_all()方法实现注释的提取"></a>BeautifulSoup通过find_all()方法实现注释的提取</h3><ol>
+<li><a href="http://stackoverflow.com/questions/6062210/how-to-find-the-comment-tag-with-beautifulsoup" target="_blank" rel="external">ref-to stackoverflow</a></li>
+<li><p><a href="https://my.oschina.net/ioslighter/blog/423166" target="_blank" rel="external">用Python提取HTML源码中的注释与去掉注释</a></p>
 </li>
-</ul>
-<h3 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h3><ul>
-<li><a href="http://www.lining0806.com/python%E8%B0%83%E7%94%A8cmd%E5%91%BD%E4%BB%A4/" target="_blank" rel="external">fireling的数据空间|宁哥的小站 » Python调用cmd命令</a></li>
-</ul>
-
+<li><p><a href="https://www.crummy.com/software/BeautifulSoup/bs3/documentation.html#Removing%20elements" target="_blank" rel="external">Removing element - elementref.extract()</a></p>
+</li>
+</ol>
+<blockquote>
+<p>Q : How to find the comment tag <!--…--> with BeautifulSoup?</p>
+</blockquote>
+<p>You can find all the comments in a document with via the <code>find_all</code> method. </p>
+<p>See this example showing how to do exactly what you’re trying to do Removing elements:</p>
+<p>In brief, you want this:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">comments = soup.find_all(text=<span class="keyword">lambda</span> text:isinstance(text, Comment))</div></pre></td></tr></table></figure>
+<p>Edit: If you’re trying to search within the columns, you can try:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup, Comment</div><div class="line"><span class="keyword">import</span> re</div><div class="line">comments = soup.find_all(text=<span class="keyword">lambda</span> text:isinstance(text, Comment))</div><div class="line"><span class="keyword">for</span> comment <span class="keyword">in</span> comments:</div><div class="line">  e = re.match(<span class="string">r'&lt;i&gt;([^&lt;]*)&lt;/i&gt;'</span>, comment.string).group(<span class="number">1</span>)</div><div class="line">    print(e)</div></pre></td></tr></table></figure>
+<h3 id="python中版本号的判断"><a href="#python中版本号的判断" class="headerlink" title="python中版本号的判断"></a>python中版本号的判断</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">import sys</div><div class="line">print(sys.version_info)</div></pre></td></tr></table></figure>
+<h3 id="Python的依赖安装requirements-txt"><a href="#Python的依赖安装requirements-txt" class="headerlink" title="Python的依赖安装requirements.txt"></a>Python的依赖安装requirements.txt</h3>
       
     </div>
     <footer>
       
         
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Python/">Python</a>
+  </div>
+
         
   
   <div class="tags">
@@ -190,19 +207,31 @@ proc.wait() # 等待子进程结束
   <h3 class="title" id="categories">分类</h3>
 <!--   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
 	
   
 	
-		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
 	
   
 	
@@ -210,11 +239,15 @@ proc.wait() # 等待子进程结束
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
      
   
 	
@@ -222,28 +255,64 @@ proc.wait() # 等待子进程结束
 	
   
 	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
 		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
 	
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
 	
   
 	
 		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
 	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -258,7 +327,7 @@ proc.wait() # 等待子进程结束
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 
@@ -271,7 +340,7 @@ proc.wait() # 等待子进程结束
   <footer id="footer"><div class="footer-content inner">
   <div class="alignleft">
   
-    &copy; 2016 Wlin
+    &copy; 2017 Wlin
     
   </div>
   <div class="alignright">

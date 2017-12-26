@@ -1,0 +1,481 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git~Git_SSH_Key生成与SSH无密码登录 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="[Toc]
+[SSH登录]Windows下Git SSH Key 生成步骤
+git官方指导
+
+git是分布式的代码管理工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。
+github的ssh配置如下：
+设置git的user name和email：$ git config ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Git~Git_SSH_Key生成与SSH无密码登录"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH登录-Windows下Git-SSH-Key-生成步骤"><span class="toc-number">1.</span> <span class="toc-text">[SSH登录]Windows下Git SSH Key 生成步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置git的user-name和email："><span class="toc-number">1.1.</span> <span class="toc-text">设置git的user name和email：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成SSH密钥过程："><span class="toc-number">1.2.</span> <span class="toc-text">生成SSH密钥过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加密钥到ssh-agent"><span class="toc-number">1.3.</span> <span class="toc-text">添加密钥到ssh-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在github上添加ssh密钥"><span class="toc-number">1.4.</span> <span class="toc-text">在github上添加ssh密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试SSH是否生效"><span class="toc-number">1.5.</span> <span class="toc-text">测试SSH是否生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将远程仓库的url从Http修改至SSH"><span class="toc-number">1.6.</span> <span class="toc-text">将远程仓库的url从Http修改至SSH</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh-无密码登录设置"><span class="toc-number">2.</span> <span class="toc-text">ssh 无密码登录设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在A机下生成公钥-私钥对。"><span class="toc-number">2.1.</span> <span class="toc-text">在A机下生成公钥/私钥对。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#把A机下的id-rsa-pub复制到B机下"><span class="toc-number">2.2.</span> <span class="toc-text">把A机下的id_rsa.pub复制到B机下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。"><span class="toc-number">2.3.</span> <span class="toc-text">B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A机登录B机。"><span class="toc-number">2.4.</span> <span class="toc-text">A机登录B机。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可通过别名alias快捷登录B机"><span class="toc-number">2.5.</span> <span class="toc-text">可通过别名alias快捷登录B机</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-12-03T03:00:19.000Z"><a href="/hexo_blog/2016/12/03/Git-2016-12-03-git-Git-SSH-Key生成与SSH无密码登录/">2016-12-03</a></time>
+        
+  
+    <h1 class="title">Git~Git_SSH_Key生成与SSH无密码登录</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH登录-Windows下Git-SSH-Key-生成步骤"><span class="toc-number">1.</span> <span class="toc-text">[SSH登录]Windows下Git SSH Key 生成步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置git的user-name和email："><span class="toc-number">1.1.</span> <span class="toc-text">设置git的user name和email：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成SSH密钥过程："><span class="toc-number">1.2.</span> <span class="toc-text">生成SSH密钥过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加密钥到ssh-agent"><span class="toc-number">1.3.</span> <span class="toc-text">添加密钥到ssh-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在github上添加ssh密钥"><span class="toc-number">1.4.</span> <span class="toc-text">在github上添加ssh密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试SSH是否生效"><span class="toc-number">1.5.</span> <span class="toc-text">测试SSH是否生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将远程仓库的url从Http修改至SSH"><span class="toc-number">1.6.</span> <span class="toc-text">将远程仓库的url从Http修改至SSH</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh-无密码登录设置"><span class="toc-number">2.</span> <span class="toc-text">ssh 无密码登录设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在A机下生成公钥-私钥对。"><span class="toc-number">2.1.</span> <span class="toc-text">在A机下生成公钥/私钥对。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#把A机下的id-rsa-pub复制到B机下"><span class="toc-number">2.2.</span> <span class="toc-text">把A机下的id_rsa.pub复制到B机下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。"><span class="toc-number">2.3.</span> <span class="toc-text">B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A机登录B机。"><span class="toc-number">2.4.</span> <span class="toc-text">A机登录B机。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可通过别名alias快捷登录B机"><span class="toc-number">2.5.</span> <span class="toc-text">可通过别名alias快捷登录B机</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="SSH登录-Windows下Git-SSH-Key-生成步骤"><a href="#SSH登录-Windows下Git-SSH-Key-生成步骤" class="headerlink" title="[SSH登录]Windows下Git SSH Key 生成步骤"></a>[SSH登录]Windows下Git SSH Key 生成步骤</h2><ul>
+<li><a href="https://help.github.com/articles/generating-an-ssh-key/" target="_blank" rel="external">git官方指导</a></li>
+</ul>
+<p>git是<em>分布式的代码管理</em>工具，远程的代码管理是基于ssh的，所以要使用远程的git则需要ssh的配置。</p>
+<p>github的ssh配置如下：</p>
+<h3 id="设置git的user-name和email："><a href="#设置git的user-name和email：" class="headerlink" title="设置git的user name和email："></a>设置git的<code>user name</code>和<code>email</code>：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ git config --global user.name &quot;ywl&quot;</div><div class="line">$ git config --global user.email &quot;ywlbupt@163.com&quot;</div></pre></td></tr></table></figure>
+<h3 id="生成SSH密钥过程："><a href="#生成SSH密钥过程：" class="headerlink" title="生成SSH密钥过程："></a>生成SSH密钥过程：</h3><p>查看是否已经有了ssh密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls -al ~/.ssh </div><div class="line"><span class="comment"># Lists the files in your .ssh directory, if they exist</span></div><div class="line">```    </div><div class="line"></div><div class="line">如果没有密钥则不会有此文件夹，有则备份删除 </div><div class="line"></div><div class="line"><span class="comment">###  生成密钥：</span></div><div class="line">``` bash</div><div class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"ywlbupt163.com"</span></div></pre></td></tr></table></figure>
+<p>按3个回车，密码为空。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"ywlbupt163.com"</span></div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/m/.ssh/id_rsa):</div><div class="line">Created directory <span class="string">'/c/Users/m/.ssh'</span>.</div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again:</div><div class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/m/.ssh/id_rsa.</div><div class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/m/.ssh/id_rsa.pub.</div><div class="line">The key fingerprint is:</div><div class="line">SHA256:jJ6we2YsHSKOswtM4ahWHb+t0giqPZfcp/f6NdCZQdI ywlbupt163.com</div><div class="line">The key<span class="string">'s randomart image is:</span></div><div class="line">+---[RSA 4096]----+</div><div class="line">|          ...    |</div><div class="line">|           oE    |</div><div class="line">| .   .      .    |</div><div class="line">|o . . oo   . +   |</div><div class="line">|.o .....S . +    |</div><div class="line">|+ o..+..o  .     |</div><div class="line">|o=.oo*=o .  o    |</div><div class="line">|=oo =+B.+  . .   |</div><div class="line">|=+.o.=o=.+o      |</div><div class="line">+----[SHA256]-----+</div></pre></td></tr></table></figure>
+<p>最后得到了两个文件：id_rsa和id_rsa.pub</p>
+<h3 id="添加密钥到ssh-agent"><a href="#添加密钥到ssh-agent" class="headerlink" title="添加密钥到ssh-agent"></a>添加密钥到<code>ssh-agent</code></h3><p>ssh-add 文件名需要之前输入密码。</p>
+<p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#adding-your-ssh-key-to-the-ssh-agent" target="_blank" rel="external">全面-官方指导</a></p>
+<ul>
+<li><p>Ensure ssh-agent is enabled:</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line"><span class="comment"># start the ssh-agent in the background</span></div><div class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></div><div class="line">Agent pid 5228</div></pre></td></tr></table></figure>
+</li>
+<li><p>Add your SSH key to the ssh-agent.</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="在github上添加ssh密钥"><a href="#在github上添加ssh密钥" class="headerlink" title="在github上添加ssh密钥"></a>在github上添加ssh密钥</h3><p>这要添加的是“id_rsa.pub”里面的公钥。 打开<code>https://github.com/</code> 登录，然后添加ssh。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line"><span class="comment"># 复制id_rsa.pub的内容至剪切板</span></div><div class="line">$ clip &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ssh git@github.com</div><div class="line">The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.</div><div class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</div><div class="line">Are you sure you want to <span class="built_in">continue</span> connecting (yes/no)? yes</div><div class="line">Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts.</div><div class="line">ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access</div><div class="line">Connection to github.com closed.</div></pre></td></tr></table></figure>
+<h3 id="测试SSH是否生效"><a href="#测试SSH是否生效" class="headerlink" title="测试SSH是否生效"></a>测试SSH是否生效</h3><p><strong><code>ssh -T git@github.com</code></strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ ssh -T git@github.com</div><div class="line">Hi ywlbupt! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell</span></div><div class="line">access.</div></pre></td></tr></table></figure>
+<h3 id="将远程仓库的url从Http修改至SSH"><a href="#将远程仓库的url从Http修改至SSH" class="headerlink" title="将远程仓库的url从Http修改至SSH"></a>将远程仓库的url从Http修改至SSH</h3><p>The <code>git remote set-url</code> command changes an existing remote repository URL.</p>
+<ul>
+<li>HTTP url’s Format<br>  <code>https://github.com/USERNAME/OTHERREPOSITORY.git</code></li>
+<li>SSH url’s Format<br>  <code>git@github.com:USERNAME/OTHERREPOSITORY.git</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git remote -v</div><div class="line">origin  https://github.com/ywlbupt/Vim_ywl.git (fetch)</div><div class="line">origin  https://github.com/ywlbupt/Vim_ywl.git (push)</div><div class="line"> </div><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git remote <span class="built_in">set</span>-url origin git@github.com:ywlbupt/Vim_ywl.git</div><div class="line"> </div><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git remote -v</div><div class="line">origin  git@github.com:ywlbupt/Vim_ywl.git (fetch)</div><div class="line">origin  git@github.com:ywlbupt/Vim_ywl.git (push)</div><div class="line"> </div><div class="line">m@m-PC MINGW64 /c/Vim_ywl (master)</div><div class="line">$ git push origin master</div></pre></td></tr></table></figure>
+<h2 id="ssh-无密码登录设置"><a href="#ssh-无密码登录设置" class="headerlink" title="ssh 无密码登录设置"></a>ssh 无密码登录设置</h2><p>ssh 无密码登录要使用公钥与私钥。linux下可以用用ssh-keygen生成公钥/私钥对，下面我以CentOS为例。</p>
+<p>有机器A(192.168.1.155)，B(192.168.1.181)。现想A通过ssh免密码登录到B。</p>
+<h3 id="在A机下生成公钥-私钥对。"><a href="#在A机下生成公钥-私钥对。" class="headerlink" title="在A机下生成公钥/私钥对。"></a>在A机下生成公钥/私钥对。</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@A ~]$ ssh-keygen -t rsa -P <span class="string">''</span></div></pre></td></tr></table></figure>
+<p>-P表示密码，-P ‘’ 就表示空密码，也可以不用-P参数，这样就要三车回车，用-P就一次回车。<br>它在/home/chenlb下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。</p>
+<h3 id="把A机下的id-rsa-pub复制到B机下"><a href="#把A机下的id-rsa-pub复制到B机下" class="headerlink" title="把A机下的id_rsa.pub复制到B机下"></a>把A机下的<code>id_rsa.pub</code>复制到B机下</h3><p>在B机的.ssh/authorized_keys文件里，我用scp复制。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@A ~]$ scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub </div><div class="line">chenlb@192.168.1.181<span class="string">'s password:</span></div><div class="line">id_rsa.pub                                    100%  223     0.2KB/s   00:00</div></pre></td></tr></table></figure></p>
+<p>由于还没有免密码登录的，所以要输入密码。</p>
+<h3 id="B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。"><a href="#B机把从A机复制的id-rsa-pub添加到-ssh-authorized-keys文件里。" class="headerlink" title="B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。"></a>B机把从A机复制的id_rsa.pub添加到.ssh/authorized_keys文件里。</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@B ~]$ cat id_rsa.pub &gt;&gt; .ssh/authorized_keys</div><div class="line">[chenlb@B ~]$ chmod 600 .ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p><code>authorized_keys</code>的权限要是600。</p>
+<h3 id="A机登录B机。"><a href="#A机登录B机。" class="headerlink" title="A机登录B机。"></a>A机登录B机。</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[chenlb@A ~]$ ssh 192.168.1.181</div><div class="line">The authenticity of host <span class="string">'192.168.1.181 (192.168.1.181)'</span> can<span class="string">'t be established.</span></div><div class="line">RSA key fingerprint is 00:a6:a8:87:eb:c7:40:10:39:cc:a0:eb:50:d9:6a:5b.</div><div class="line">Are you sure you want to continue connecting (yes/no)? yes</div><div class="line">Warning: Permanently added '192.168.1.181<span class="string">' (RSA) to the list of known hosts.</span></div><div class="line">Last login: Thu Jul  3 09:53:18 2008 from chenlb</div><div class="line">[chenlb@B ~]$</div></pre></td></tr></table></figure>
+<p>第一次登录是时要你输入yes。</p>
+<p>现在A机可以无密码登录B机了。</p>
+<p>小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub)</p>
+<p>想让A，B机无密码互登录，那B机以上面同样的方式配置即可。</p>
+<h3 id="可通过别名alias快捷登录B机"><a href="#可通过别名alias快捷登录B机" class="headerlink" title="可通过别名alias快捷登录B机"></a>可通过别名alias快捷登录B机</h3>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Git/">Git</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/ssh/">ssh</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

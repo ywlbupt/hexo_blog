@@ -1,0 +1,1132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 5 页 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接字符串"><span class="toc-number">1.</span> <span class="toc-text">连接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readline-from-a-string"><span class="toc-number">2.</span> <span class="toc-text">readline() from a string</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1：StringIO"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：StringIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2：string-split-‘-n’"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：string.split(‘\n’)</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-19T03:42:51.000Z"><a href="/hexo_blog/2016/10/19/Python-Basic-2016-10-19-python-basic-string/">2016-10-19</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/19/Python-Basic-2016-10-19-python-basic-string/">python-basic~string</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接字符串"><span class="toc-number">1.</span> <span class="toc-text">连接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readline-from-a-string"><span class="toc-number">2.</span> <span class="toc-text">readline() from a string</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1：StringIO"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：StringIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2：string-split-‘-n’"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：string.split(‘\n’)</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><ol>
+<li><code>stra + strb</code></li>
+<li><code>stra,strb</code> ： 用空格连接两个字符串</li>
+<li><code>%</code> : <code>&#39;name is %s, %s&#39; % (stra, strb)</code>  多用于字符串的格式化</li>
+<li><code>&#39;,&#39;.join([stra, strb])</code> : 示例，使用<code>,</code>连接字符串列表</li>
+</ol>
+<h3 id="readline-from-a-string"><a href="#readline-from-a-string" class="headerlink" title="readline() from a string"></a>readline() from a string</h3><p>【参考链接】</p>
+<ol>
+<li><a href="http://stackoverflow.com/questions/7472839/python-readline-from-a-string" target="_blank" rel="external">Python readline() from a string - stackflow</a></li>
+</ol>
+<h4 id="方法1：StringIO"><a href="#方法1：StringIO" class="headerlink" title="方法1：StringIO"></a>方法1：<code>StringIO</code></h4><ul>
+<li><p>Python 2<br>You can use <code>StringIO</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; msg = <span class="string">"Bob Smith\nJane Doe\nJane,\nPlease order more widgets\nThanks,\nBob\n"</span></div><div class="line">&gt;&gt;&gt; msg</div><div class="line"><span class="string">'Bob Smith\nJane Doe\nJane,\nPlease order more widgets\nThanks,\nBob\n'</span></div><div class="line">&gt;&gt;&gt; import StringIO</div><div class="line">&gt;&gt;&gt; buf = StringIO.StringIO(msg)</div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Bob Smith\n'</span></div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Jane Doe\n'</span></div></pre></td></tr></table></figure>
+<p>Be sure to use cStringIO if performance is important.</p>
+</li>
+<li><p>Python 3<br>You can use <code>io.StringIO</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; import io</div><div class="line">&gt;&gt;&gt; buf = io.StringIO(msg)</div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Bob Smith\n'</span></div><div class="line">&gt;&gt;&gt; buf.readline()</div><div class="line"><span class="string">'Jane Doe\n'</span></div><div class="line">&gt;&gt;&gt; len(buf.read())</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="方法2：string-split-‘-n’"><a href="#方法2：string-split-‘-n’" class="headerlink" title="方法2：string.split(‘\n’)"></a>方法2：string.split(‘\n’)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; foo = <span class="string">"ABC\nDEF\nGHI\nJKL"</span></div><div class="line">&gt;&gt;&gt; foo.split(<span class="string">"\n"</span>, 1)</div><div class="line">[<span class="string">'ABC'</span>, <span class="string">'DEF\nGHI\nJKL'</span>]</div><div class="line">&gt;&gt;&gt; foo.split(<span class="string">"\n"</span>, 2)</div><div class="line">[<span class="string">'ABC'</span>, <span class="string">'DEF'</span>, <span class="string">'GHI\nJKL'</span>]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【python】【file】文件的读写基本操作"><span class="toc-number">1.</span> <span class="toc-text">【python】【file】文件的读写基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#【读写模式】字符创直接读取"><span class="toc-number">1.0.1.</span> <span class="toc-text">【读写模式】字符创直接读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【编码模式】：二进制模式-文本模式"><span class="toc-number">1.0.2.</span> <span class="toc-text">【编码模式】：二进制模式/文本模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-open-amp-write-amp-read"><span class="toc-number">1.1.</span> <span class="toc-text">File open() & ｗrite() & read()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#open-获取一个文件对象；"><span class="toc-number">1.1.1.</span> <span class="toc-text">open(), 获取一个文件对象；</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python对不同平台换行符的处理"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">python对不同平台换行符的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python打开文件的编码方式"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">python打开文件的编码方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-seek-方法移动文件指针"><span class="toc-number">1.1.2.</span> <span class="toc-text">f.seek()方法移动文件指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-write-方法写入文件"><span class="toc-number">1.1.3.</span> <span class="toc-text">f.write()方法写入文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改特定行"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">修改特定行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-read-方法"><span class="toc-number">1.1.4.</span> <span class="toc-text">f.read()方法</span></a></li></ol></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-18T00:34:17.000Z"><a href="/hexo_blog/2016/10/18/Python-Basic-2016-10-18-python-basic-fileIO文件基本读写/">2016-10-18</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/18/Python-Basic-2016-10-18-python-basic-fileIO文件基本读写/">python-basic~fileIO文件基本读写操作</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        <p>[Toc]</p>
+<h1 id="【python】【file】文件的读写基本操作"><a href="#【python】【file】文件的读写基本操作" class="headerlink" title="【python】【file】文件的读写基本操作"></a>【python】【file】文件的读写基本操作</h1><h3 id="【读写模式】字符创直接读取"><a href="#【读写模式】字符创直接读取" class="headerlink" title="【读写模式】字符创直接读取"></a>【读写模式】字符创直接读取</h3><ul>
+<li>‘r’ open for reading (<strong>default</strong>) (只读模式)</li>
+<li>‘r+’  ‘r+’ opens the file for both reading and writing. (可读可写)</li>
+<li>‘w’ open for writing, truncating the file first (只写模式，若文件存在，则会覆盖前文件)</li>
+<li>‘w+’ open for writing and reading, truncating the file first </li>
+<li>‘x’ open for exclusive creation, failing if the file already exists (如果文件存在，打开失败，抛出Error)</li>
+<li>‘a’ open for writing, appending to the end of the file if it exists(若文件存在，则将新行加在文件的末尾)</li>
+</ul>
+<h3 id="【编码模式】：二进制模式-文本模式"><a href="#【编码模式】：二进制模式-文本模式" class="headerlink" title="【编码模式】：二进制模式/文本模式"></a>【编码模式】：二进制模式/文本模式</h3><ul>
+<li>‘b’ binary mode</li>
+<li>‘t’ text mode (default)</li>
+<li>‘+’ open a disk file for updating (reading and writing)</li>
+<li>‘U’ universal newlines mode (deprecated, 不赞成)</li>
+<li>For binary read-write access, <ul>
+<li>the mode ‘w+b’ opens and truncates the file to 0 bytes. </li>
+<li>‘r+b’ opens the file without truncation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="File-open-amp-write-amp-read"><a href="#File-open-amp-write-amp-read" class="headerlink" title="File open() &amp; ｗrite() &amp; read()"></a>File open() &amp; ｗrite() &amp; read()</h2><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'./file_example.txt'</span>,<span class="string">'a'</span>) <span class="keyword">as</span> f :</div><div class="line">    f.write(<span class="string">"hello world!\r"</span>)</div><div class="line"><span class="keyword">with</span> open(<span class="string">'./file_example.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f :</div><div class="line">    print(f.read())</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/hexo_blog/2016/10/18/Python-Basic-2016-10-18-python-basic-fileIO文件基本读写/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中的转义字符"><span class="toc-number">1.</span> <span class="toc-text">python中的转义字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#反转义"><span class="toc-number">1.1.</span> <span class="toc-text">反转义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#escape-与-unescape"><span class="toc-number">1.2.</span> <span class="toc-text">escape() 与 unescape()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#str-与repr-的区别"><span class="toc-number">1.3.</span> <span class="toc-text">str()与repr()的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">1.4.</span> <span class="toc-text">参考文档</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-14T08:50:42.000Z"><a href="/hexo_blog/2016/10/14/Python-Basic-2016-10-14-python-basic-escape转义字符/">2016-10-14</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/14/Python-Basic-2016-10-14-python-basic-escape转义字符/">python-basic~escape转义字符的处理</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中的转义字符"><span class="toc-number">1.</span> <span class="toc-text">python中的转义字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#反转义"><span class="toc-number">1.1.</span> <span class="toc-text">反转义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#escape-与-unescape"><span class="toc-number">1.2.</span> <span class="toc-text">escape() 与 unescape()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#str-与repr-的区别"><span class="toc-number">1.3.</span> <span class="toc-text">str()与repr()的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">1.4.</span> <span class="toc-text">参考文档</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="python中的转义字符"><a href="#python中的转义字符" class="headerlink" title="python中的转义字符"></a>python中的转义字符</h2><p>\         Backslash ()  反斜杠<br>\’         Single-quote (‘)  单引号<br>\”         Double-quote (“)  双引号<br>\a         ASCII bell (BEL)  响铃符<br>\b         ASCII backspace (BS)  退格符<br>\f         ASCII formfeed (FF) 进纸符<br>\n         ASCII linefeed (LF) 换行符<br>\N{name}   Character named name in the Unicode database (Unicode only) Unicode数据库中的字符名；name就是它的名字<br>\r         ASCII  Carriage Return (CR)  回车符<br>\t         ASCII  Horizontal Tab (TAB)  水平制表符<br>\uxxxx     Character with 16-bit hex value xxxx (Unicode only) 值为16位十六进制xxxx的字符<br>\Uxxxxxxxx Character with 32-bit hex value xxxxxxxx (Unicode only) 值为32位十六进制xxxx的字符<br>\v         ASCII vertical tab (VT) 垂直制表符<br>\ooo       Character with octal value ooo  值为八进制ooo的字符<br>\xhh       Character with hex value hh 值为十六进制数hh的字符”)’)</p>
+<p>看了文档后才意识到，Python 正则表达式模块的转义是独立的。例如匹配一个反斜杠字符需要将参数写成：’\\‘：<br>Python 将字符串转义：\\ 被转义为 \<br>re 模块获得传入的 \ 将其解释为正则表达式，按照正则表达式的转义规则将其转义为 \<br>如此麻烦的前提下，Raw String 就大有作为了，顾名思义就是（除了结尾的反斜杠）不会被转义的字符串。于是匹配一个反斜杠字符就可以写作 r’\‘。</p>
+<h3 id="反转义"><a href="#反转义" class="headerlink" title="反转义"></a>反转义</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">s = <span class="string">"e:\test test.txt"</span></div><div class="line"></div><div class="line">print(s.encode(<span class="string">"unicode_escape"</span>))</div><div class="line"><span class="comment"># Python 3 , s 为unicode,string类型</span></div><div class="line"><span class="comment"># output : b'e:\\test test.txt'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>repr(s)</div><div class="line"><span class="comment"># output : "'e:\\test test.txt'"</span></div><div class="line"></div><div class="line">print(s.encode(<span class="string">"string_escape"</span>))</div><div class="line"><span class="comment"># Python 2 , s 为utf-8 类型</span></div></pre></td></tr></table></figure>
+<h3 id="escape-与-unescape"><a href="#escape-与-unescape" class="headerlink" title="escape() 与 unescape()"></a>escape() 与 unescape()</h3><p>有一种简单粗暴可行的方式<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; a = <span class="string">"ab\\ncd"</span></div><div class="line">&gt;&gt;&gt; <span class="built_in">eval</span>(<span class="string">'"'</span>+a+<span class="string">'"'</span>)</div><div class="line"><span class="string">'ab\ncd'</span></div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(<span class="built_in">eval</span>(<span class="string">'"'</span>+a+<span class="string">'"'</span>))</div><div class="line">ab</div><div class="line"><span class="built_in">cd</span></div></pre></td></tr></table></figure></p>
+<p>其他可参考python code文件 <code>lib_y.py</code></p>
+<h3 id="str-与repr-的区别"><a href="#str-与repr-的区别" class="headerlink" title="str()与repr()的区别"></a>str()与repr()的区别</h3><ul>
+<li>repr()<br>  Return a string containing a printable representation of an object.<br>  This is the same value yielded by conversions (reverse quotes)</li>
+</ul>
+<p>举例说明：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; s = <span class="string">"ab\\ncd"</span></div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(s)</div><div class="line"><span class="comment"># output: ab\ncd</span></div><div class="line">&gt;&gt;&gt; str(a)</div><div class="line"><span class="comment"># output: 'ab\\ncd'</span></div><div class="line">&gt;&gt;&gt; repr(a)</div><div class="line"><span class="comment"># output "'ab\\\\ncd'"</span></div><div class="line"><span class="comment"># ps: here print(repr(a)) == str(a)</span></div><div class="line"><span class="comment"># ps: here eval(repr(a)) == str(a)</span></div></pre></td></tr></table></figure></p>
+<p>str()函数 ，它会把值转换为合理形式的字符串，以例用户可以理解；</p>
+<p>repr()函数，它会创建一个字符串，它以合法的python表达式的形式来表示值。</p>
+<p>请看下面例子<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> str(<span class="string">"hello,world!"</span>)</div><div class="line">hello,world!</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> str(<span class="number">10000L</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> repr(<span class="string">"hello,world!"</span>)</div><div class="line"><span class="string">'hello,world!'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> repr(<span class="number">10000L</span>)</div><div class="line"><span class="number">10000L</span></div></pre></td></tr></table></figure></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ol>
+<li><a href="http://www.cnblogs.com/dreamer-fish/p/3818443.html" target="_blank" rel="external">python中的字符串处理</a></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#paramiko-模块"><span class="toc-number">1.</span> <span class="toc-text">paramiko 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Installation"><span class="toc-number">1.1.</span> <span class="toc-text">Installation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">2.</span> <span class="toc-text">参考文档</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-14T06:54:07.000Z"><a href="/hexo_blog/2016/10/14/Python-2016-10-14-python-lib-paramiko-ssh-wrapper/">2016-10-14</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/14/Python-2016-10-14-python-lib-paramiko-ssh-wrapper/">python-lib~paramiko-ssh_wrapper</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        <p>[Toc]</p>
+<h3 id="paramiko-模块"><a href="#paramiko-模块" class="headerlink" title="paramiko 模块"></a>paramiko 模块</h3><p>paramiko支持python 2和python 3<br>Paramiko itself is a pure Python interface around SSH networking concepts.</p>
+<p>paramiko是用python语言写的一个模块，遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接。<br>paramiko支持Linux, Solaris, BSD, MacOS X, Windows等平台通过SSH从一个平台连接到另外一个平台。<br>利用该模块，可以方便的进行ssh连接和sftp协议进行sftp文件传输。</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/hexo_blog/2016/10/14/Python-2016-10-14-python-lib-paramiko-ssh-wrapper/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【tmux】多终端操作"><span class="toc-number">1.</span> <span class="toc-text">【tmux】多终端操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Common-Usage"><span class="toc-number">1.2.</span> <span class="toc-text">Common Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Installation"><span class="toc-number">1.2.1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Session-Operation"><span class="toc-number">1.2.2.</span> <span class="toc-text">Session Operation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Prefix-key前缀"><span class="toc-number">1.2.3.</span> <span class="toc-text">Prefix key前缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Panes-Operation"><span class="toc-number">1.2.4.</span> <span class="toc-text">Panes Operation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-Operation"><span class="toc-number">1.2.5.</span> <span class="toc-text">Windows Operation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Copy-mode"><span class="toc-number">1.2.6.</span> <span class="toc-text">Copy mode</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#系统剪贴板操作-shift"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">系统剪贴板操作 shift</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#xclip"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">xclip</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Close-Panes关闭panes"><span class="toc-number">1.2.7.</span> <span class="toc-text">Close Panes关闭panes</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进阶应用"><span class="toc-number">1.3.</span> <span class="toc-text">进阶应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Common-Issues"><span class="toc-number">1.4.</span> <span class="toc-text">Common Issues</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ssh远程登录，vim中颜色显示不正常的解决方法"><span class="toc-number">1.4.1.</span> <span class="toc-text">ssh远程登录，vim中颜色显示不正常的解决方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录-tmux-conf"><span class="toc-number">1.5.</span> <span class="toc-text">附录-tmux.conf</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-12T23:42:31.000Z"><a href="/hexo_blog/2016/10/13/Ubuntu-Cmd-2016-10-13-ubuntu-cmd-tmux/">2016-10-13</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/13/Ubuntu-Cmd-2016-10-13-ubuntu-cmd-tmux/">ubuntu-cmd~tmux</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        <p>[Toc]</p>
+<h2 id="【tmux】多终端操作"><a href="#【tmux】多终端操作" class="headerlink" title="【tmux】多终端操作"></a>【tmux】多终端操作</h2><p>@(tmux)</p>
+<ul>
+<li>A user-specific configuration file should be located at <code>~/.tmux.conf</code>,</li>
+<li>while a global configuration file should be located at <code>/etc/tmux.conf</code>.</li>
+</ul>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/hexo_blog/2016/10/13/Ubuntu-Cmd-2016-10-13-ubuntu-cmd-tmux/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#源码安装，以vim-为例"><span class="toc-number">1.</span> <span class="toc-text">源码安装，以vim 为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deb软件包的安装"><span class="toc-number">2.</span> <span class="toc-text">deb软件包的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPA-安装"><span class="toc-number">3.</span> <span class="toc-text">PPA 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载"><span class="toc-number">4.</span> <span class="toc-text">卸载</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-03T15:19:34.000Z"><a href="/hexo_blog/2016/10/03/Ubuntu-IDE-2016-10-03-ubuntu-IDE-软件管理与安装/">2016-10-03</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/03/Ubuntu-IDE-2016-10-03-ubuntu-IDE-软件管理与安装/">ubuntu-IDE_Config~软件管理</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#源码安装，以vim-为例"><span class="toc-number">1.</span> <span class="toc-text">源码安装，以vim 为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deb软件包的安装"><span class="toc-number">2.</span> <span class="toc-text">deb软件包的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPA-安装"><span class="toc-number">3.</span> <span class="toc-text">PPA 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载"><span class="toc-number">4.</span> <span class="toc-text">卸载</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h3 id="源码安装，以vim-为例"><a href="#源码安装，以vim-为例" class="headerlink" title="源码安装，以vim 为例"></a>源码安装，以vim 为例</h3><p>If you want to be able to easily uninstall vim use checkinstall.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get install checkinstall</div><div class="line"><span class="built_in">cd</span> ~/vim</div><div class="line">sudo checkinstall</div></pre></td></tr></table></figure>
+<p>Otherwise, you can use make to install.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/vim</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<p>通过checkinstall安装的软件，可以通过<code>dpkg -r packagename</code>来删除软件</p>
+<h3 id="deb软件包的安装"><a href="#deb软件包的安装" class="headerlink" title="deb软件包的安装"></a>deb软件包的安装</h3><p>针对本地软件包，不解决依赖关系 </p>
+<ul>
+<li>deb 是 ubuntu 、debian 的格式。</li>
+<li>rpm 是 redhat 、fedora 、suse 的格式</li>
+</ul>
+<blockquote>
+<p>  deb是debian发行版的软件包<br>  ubuntu是基于debian 发行的 所有可以用</p>
+</blockquote>
+<p>进入<code>.deb</code>软件包的文件路径</p>
+<p>You need to use <code>dpkg</code> package manager from shell/command prompt. </p>
+<p><strong><code>dpkg</code></strong> is a tool to install, build, remove and manage packages. dpkg itself is controlled entirely via command line parameters. <strong>For example -i use to install .deb file.</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo dpkg -i packagename.deb</div></pre></td></tr></table></figure>
+<p>使用dpkg安装的软件包，，可以通过<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo dpkg -r packagename</div></pre></td></tr></table></figure></p>
+<h3 id="PPA-安装"><a href="#PPA-安装" class="headerlink" title="PPA 安装"></a>PPA 安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo add-apt-repository ppa:tualatrix/ppa</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install ubuntu-tweak</div></pre></td></tr></table></figure>
+<p>安装完之后在Dash面板搜索Ubuntu Tweak即可启动。</p>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>要卸载该软件请执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get remove ubuntu-tweak</div></pre></td></tr></table></figure>
+<p>使用下面的命令去除PPA：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get install ppa-purge</div><div class="line">sudo ppa-purge ppa:tualatrix/ppa</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【fugitive】git-Wrapper-in-vim"><span class="toc-number">1.</span> <span class="toc-text">【fugitive】git Wrapper in vim</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#与git命令的一一对应"><span class="toc-number">1.1.</span> <span class="toc-text">与git命令的一一对应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对当前文件的操作"><span class="toc-number">1.1.1.</span> <span class="toc-text">对当前文件的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对仓库的操作"><span class="toc-number">1.1.2.</span> <span class="toc-text">对仓库的操作</span></a></li></ol></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-03T15:12:14.000Z"><a href="/hexo_blog/2016/10/03/Vim-Plugin-2016-10-03-vim-plugin-fugitive/">2016-10-03</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/03/Vim-Plugin-2016-10-03-vim-plugin-fugitive/">vim-plugin~fugitive</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【fugitive】git-Wrapper-in-vim"><span class="toc-number">1.</span> <span class="toc-text">【fugitive】git Wrapper in vim</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#与git命令的一一对应"><span class="toc-number">1.1.</span> <span class="toc-text">与git命令的一一对应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对当前文件的操作"><span class="toc-number">1.1.1.</span> <span class="toc-text">对当前文件的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对仓库的操作"><span class="toc-number">1.1.2.</span> <span class="toc-text">对仓库的操作</span></a></li></ol></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="【fugitive】git-Wrapper-in-vim"><a href="#【fugitive】git-Wrapper-in-vim" class="headerlink" title="【fugitive】git Wrapper in vim"></a>【fugitive】git Wrapper in vim</h2><h3 id="与git命令的一一对应"><a href="#与git命令的一一对应" class="headerlink" title="与git命令的一一对应"></a>与git命令的一一对应</h3><h4 id="对当前文件的操作"><a href="#对当前文件的操作" class="headerlink" title="对当前文件的操作"></a>对当前文件的操作</h4><ul>
+<li><code>Gedit</code> git编辑文件<ul>
+<li><code>Gsplit</code>, <code>Gvsplit</code>, <code>Gtabedit</code></li>
+</ul>
+</li>
+<li><code>Gwrite</code> -&gt; <code>git add %</code> : stage current file into the index</li>
+<li><code>Gread</code> -&gt; <code>git checkout %</code> : Revert current file to laste checked in version，将当前文件恢复至上一版本 <ul>
+<li>unstaged current file，与Gwrite相对</li>
+</ul>
+</li>
+<li><code>Glog</code> -&gt; <code>git log</code> <ul>
+<li>loads all previous revisions of a file into the quickfix list( <code>:cw 10</code> 打开quickfix窗口) so you can iterate over them and watch the file evolve!</li>
+<li>针对文件，可在<code>quickfix</code>窗口中直接 <code>o</code>打开，查看历史文件！</li>
+</ul>
+</li>
+<li><code>Gdiff</code> -&gt; <code>git diff</code> : 文件的比较 , resolve a git merge conflict</li>
+<li><code>Gremove</code> -&gt; <code>git rm %</code> : Delete current file and corresponding Vim buffer</li>
+</ul>
+<h4 id="对仓库的操作"><a href="#对仓库的操作" class="headerlink" title="对仓库的操作"></a>对仓库的操作</h4><ul>
+<li><code>Gstatus</code> -&gt; <code>git status</code>  在git status preview的窗口，可进行以下操作：<ul>
+<li><code>-</code>   -&gt; <code>add</code> : add a file’s changes</li>
+<li><code>-</code>   -&gt; <code>reset</code> (staged file) </li>
+<li><code>p</code>   -&gt; <code>add/reset -- patch</code>, toggle operation ,as <code>-</code></li>
+<li><code>cc</code>  -&gt; <code>Gcommit</code></li>
+<li><code>ca</code>  -&gt; <code>Gcommit --amend</code></li>
+<li><code>cA</code>  -&gt; <code>Gcommit --amend --reuse-message=HEAD</code></li>
+<li><code>cva</code> -&gt; <code>Gcommit --amend --verbose</code></li>
+<li><code>cvc</code> -&gt; <code>Gcommit --verbose</code></li>
+<li><code>D</code>   -&gt; <code>Gdiff</code></li>
+<li><code>ds</code>  -&gt; <code>Gsdiff</code></li>
+<li><code>O</code>   -&gt; <code>Gtabedit</code></li>
+<li><code>o</code>   -&gt; <code>Gsplit</code></li>
+<li><code>S</code>   -&gt; <code>Gvsplit</code></li>
+<li><code>dv</code>  -&gt; <code>Gvdiff</code></li>
+<li><code>U</code>   -&gt; <code>checkout</code></li>
+<li><code>U</code>   -&gt; <code>checkout HEAD</code> (staged files)</li>
+<li><code>U</code>   -&gt; <code>clean</code> (untracked files)</li>
+<li><code>U</code>   -&gt; <code>rm</code> (unmerged files)</li>
+<li><code>q</code>   -&gt; close status</li>
+<li><code>r</code>   -&gt; reload status</li>
+</ul>
+</li>
+<li><code>Gcommit</code> -&gt; <code>git commit</code></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Alias-in-ubuntu"><span class="toc-number">1.</span> <span class="toc-text">Alias in ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置永久别名-bashrc"><span class="toc-number">1.1.</span> <span class="toc-text">设置永久别名 ~/.bashrc</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-03T15:09:47.000Z"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-alias/">2016-10-03</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-alias/">ubuntu-cmd~alias</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Alias-in-ubuntu"><span class="toc-number">1.</span> <span class="toc-text">Alias in ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置永久别名-bashrc"><span class="toc-number">1.1.</span> <span class="toc-text">设置永久别名 ~/.bashrc</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="Alias-in-ubuntu"><a href="#Alias-in-ubuntu" class="headerlink" title="Alias in ubuntu"></a>Alias in ubuntu</h2><p>@(Ubuntu/Shell)[ubuntu|alias]</p>
+<ul>
+<li>使用<code>alias</code>查看当前系统使用了哪些别名</li>
+<li>h=</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ywl@ywl-ThinkPad-E420:~$ <span class="built_in">alias</span></div><div class="line"><span class="built_in">alias</span> alert=<span class="string">'notify-send --urgency=low -i "$([ $? = 0 ] &amp;&amp; echo terminal || echo error)" "$(history|tail -n1|sed -e '</span>\<span class="string">''</span>s/^\s*[0-9]\+\s*//;s/[;&amp;|]\s*alert$//<span class="string">'\'</span><span class="string">')"'</span></div><div class="line"><span class="built_in">alias</span> egrep=<span class="string">'egrep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> fgrep=<span class="string">'fgrep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> grep=<span class="string">'grep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> l=<span class="string">'ls -CF'</span></div><div class="line"><span class="built_in">alias</span> la=<span class="string">'ls -A'</span></div><div class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -alF'</span></div><div class="line"><span class="built_in">alias</span> ls=<span class="string">'ls --color=auto'</span></div><div class="line"><span class="built_in">alias</span> rvm-restart=<span class="string">'rvm_reload_flag=1 source '</span>\<span class="string">''</span>/home/ywl/.rvm/scripts/rvm<span class="string">'\'</span><span class="string">''</span></div></pre></td></tr></table></figure>
+<h3 id="设置永久别名-bashrc"><a href="#设置永久别名-bashrc" class="headerlink" title="设置永久别名 ~/.bashrc"></a>设置永久别名 <code>~/.bashrc</code></h3><ul>
+<li>编辑根目录下的<code>$ vim ~/.bashrc</code>文件  <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">alias</span> vimmkd=<span class="string">"vim -c \"cd ~/Documents/markdown_note\""</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#查找多个关键词"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">查找多个关键词</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-03T10:37:18.000Z"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-grep-find/">2016-10-03</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-grep-find/">ubuntu-cmd~grep_find</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#查找多个关键词"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">查找多个关键词</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="【grep-find】查找字符串"><a href="#【grep-find】查找字符串" class="headerlink" title="【grep|find】查找字符串"></a>【grep|find】查找字符串</h2><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>参考链接</p>
+<ul>
+<li><a href="https://www.gnu.org/software/grep/manual/grep.html" target="_blank" rel="external">grep-查找字符串-GNU官方指导</a></li>
+<li><a href="https://www.gnu.org/software/findutils/manual/html_mono/find.html" target="_blank" rel="external">find-查找文件-GNU官方指导</a></li>
+<li><a href="https://sourceforge.net/projects/gnuwin32/files/" target="_blank" rel="external">官方GNUWIN32下载地址-sourceforge</a></li>
+<li><code>$ man grep</code></li>
+</ul>
+<h3 id="Command-Line"><a href="#Command-Line" class="headerlink" title="Command Line"></a>Command Line</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ grep options pattern input_file_names</div></pre></td></tr></table></figure>
+<h4 id="Matching-options"><a href="#Matching-options" class="headerlink" title="Matching options"></a>Matching options</h4><ul>
+<li><code>-e pattern</code>, <code>--regex=pattern</code><ul>
+<li>使用正则表达式</li>
+</ul>
+</li>
+<li><code>-f file</code>, <code>--file=file</code><ul>
+<li>查找文件，如果<code>-e pattern -f file</code>表示使用正则表达式查找文件</li>
+</ul>
+</li>
+<li><code>-i</code>, <code>--ignore-case</code> 忽略大小写</li>
+<li><code>-w</code>, <code>--word-regexp</code> 单词查找</li>
+<li><code>-x</code>, <code>--line-regexp</code> 行查找</li>
+</ul>
+<h4 id="Ouput-Control"><a href="#Ouput-Control" class="headerlink" title="Ouput Control"></a>Ouput Control</h4><ul>
+<li><code>-n</code> 输出行号</li>
+<li><code>-c</code> 计算找到匹配字符串次数</li>
+<li><code>-v</code> 反向选择,显示没有出现pattern的行</li>
+<li><code>--color=auto</code> 高亮关键字</li>
+<li><code>-l</code> 输出包含满足匹配字符串的文件名</li>
+</ul>
+<p>.etc</p>
+<ul>
+<li>使用<code>alias</code>简化命令行, 高亮搜索关键字<br>在关键字的显示方面，<code>grep</code> 可以使用 <code>--color=auto</code> 来将关键字部分使用颜色显示。 这可是个很不错的功能啊！但是如果每次使用 grep 都得要自行加上 <code>--color=auto</code> 又显的很麻烦～ 此时那个好用的 alias 就得来处理一下啦！你可以在 <code>~/.bashrc</code> 内加上这行：<code>alias grep=&#39;grep --color=auto&#39;</code>再以 <code>source ~/.bashrc</code> 来立即生效即可喔！ 这样每次运行 <code>grep</code> 他都会自动帮你加上颜色显示啦<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> [ -x /usr/bin/dircolors ]; <span class="keyword">then</span></div><div class="line"><span class="built_in">test</span> -r ~/.dircolors &amp;&amp; <span class="built_in">eval</span> <span class="string">"<span class="variable">$(dircolors -b ~/.dircolors)</span>"</span> || <span class="built_in">eval</span> <span class="string">"<span class="variable">$(dircolors -b)</span>"</span></div><div class="line"><span class="built_in">alias</span> ls=<span class="string">'ls --color=auto'</span></div><div class="line"><span class="comment">#alias dir='dir --color=auto'</span></div><div class="line"><span class="comment">#alias vdir='vdir --color=auto'</span></div><div class="line"></div><div class="line"><span class="built_in">alias</span> grep=<span class="string">'grep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> fgrep=<span class="string">'fgrep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> egrep=<span class="string">'egrep --color=auto'</span></div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>一些简单明了的例子</p>
+<ul>
+<li>明确要求搜索子目录：<code>grep -r</code></li>
+<li>或忽略子目录：<code>grep -d skip</code></li>
+<li><p>如果有很多 输出时，您可以通过管道将其转到’less’上阅读：</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ grep magic /usr/src/Linux/Documentation/* | less</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>grep -i pattern files</code> :不区分大小写地搜索。默认情况区分大小写，</p>
+</li>
+<li><code>grep -l pattern files</code> :只列出匹配的文件名，</li>
+<li><code>grep -L pattern files</code> :列出不匹配的文件名，</li>
+<li><code>grep -w pattern files</code> :只匹配整个单词，而不是字符串的一部分(如匹配’magic’，而不是’magical’)，</li>
+<li><code>grep -C number pattern files</code>  :匹配的上下文分别显示[number]行，</li>
+<li><code>grep pattern1 | pattern2 files</code>  :显示匹配 pattern1 或 pattern2 的行，</li>
+<li><code>grep pattern1 files | grep pattern2</code> :显示既匹配 pattern1 又匹配 pattern2 的行。</li>
+<li><code>grep -n pattern files</code>  即可显示行号信息</li>
+<li><code>grep -c pattern files</code>  即可查找总行数</li>
+<li><code>grep man *</code> 会匹配’Batman’、’manic’、’man’等，</li>
+<li><code>grep &#39;\&lt;man&#39; *</code> 匹配’manic’和’man’，但不是’Batman’，</li>
+<li><code>grep &#39;\&lt;man\&gt;&#39;</code> 只匹配’man’，而不是’Batman’或’manic’等其他的字符串。</li>
+<li><code>^</code>：指匹配的字符串在行首，</li>
+<li><code>$</code>：指匹配的字符串在行尾，</li>
+</ul>
+<h3 id="Exmaple"><a href="#Exmaple" class="headerlink" title="Exmaple"></a>Exmaple</h3><h4 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 将/etc/passwd，有出现 root 的行取出</span></div><div class="line">$ grep root /etc/passwd</div><div class="line"><span class="comment"># 或</span></div><div class="line">$ cat /etc/passwd | grep root</div><div class="line"><span class="comment"># 同时显示行号</span></div><div class="line">$ grep -n root /etc/passwd</div><div class="line"><span class="comment"># 将/etc/passwd，将没有出现 root 和nologin的行取出来</span></div><div class="line">$ grep -v root /etc/passwd | grep -v nologin</div><div class="line"><span class="comment"># 用 dmesg 列出核心信息，再以 grep 找出内含 eth 那行,要将捉到的关键字显色，且加上行号来表示：</span></div><div class="line">$ dmesg | grep -n --color=auto <span class="string">'eth'</span></div><div class="line"><span class="comment"># 同上,把关键字所在行的前两行和后三行也一起显示出来</span></div><div class="line">$ dmesg | grep -n -A3 -B2 --color=auto <span class="string">'eth'</span></div></pre></td></tr></table></figure>
+<h5 id="查找多个关键词"><a href="#查找多个关键词" class="headerlink" title="查找多个关键词"></a>查找多个关键词</h5><ol>
+<li><p>或操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">grep -E <span class="string">'123|abc'</span> filename  // 找出文件（filename）中包含123或者包含abc的行</div><div class="line">egrep <span class="string">'123|abc'</span> filename    // 用egrep同样可以实现</div><div class="line">awk <span class="string">'/123|abc/'</span> filename   // awk 的实现方式</div></pre></td></tr></table></figure>
+</li>
+<li><p>与操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">grep pattern1 files | grep pattern2 //显示既匹配 pattern1 又匹配 pattern2 的行</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="目录递归查找"><a href="#目录递归查找" class="headerlink" title="目录递归查找"></a>目录递归查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ grep <span class="string">'energywise'</span> *           <span class="comment">#在当前目录搜索带'energywise'行的文件</span></div><div class="line">$ grep -r <span class="string">'energywise'</span> *        <span class="comment">#在当前目录及其子目录下搜索'energywise'行的文件</span></div><div class="line">$ grep <span class="_">-l</span> -r <span class="string">'energywis'</span> *     <span class="comment">#在当前目录及其子目录下搜索'energywise'行的文件，但是不显示匹配的行，只显示匹配的文件</span></div></pre></td></tr></table></figure>
+<h4 id="正则表达式查找"><a href="#正则表达式查找" class="headerlink" title="正则表达式查找"></a>正则表达式查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 查找 test 或 taste 这两个单字</span></div><div class="line">$ grep -n <span class="string">'t[ae]st'</span> regular_express.txt</div><div class="line"><span class="comment"># 反向查找,查找有 oo 的行，但 oo 前面不能有 g</span></div><div class="line">$ grep -n <span class="string">'[^g]oo'</span> regular_express.txt</div><div class="line">$ grep -n <span class="string">'[^a-z]oo'</span> regular_express.txt <span class="comment"># 非小写字母开头的字符串oo</span></div><div class="line">$ grep -n <span class="string">'^[a-z]'</span> regular_express.txt <span class="comment"># 小写字符为行首的行</span></div><div class="line">$ grep -n <span class="string">'^the'</span> regular_express.txt</div><div class="line">$ grep -n <span class="string">'^$'</span> regular_express.txt <span class="comment"># 找出空白行 </span></div><div class="line">$ grep -n <span class="string">'go\&#123;2,5\&#125;g'</span> regular_express.txt <span class="comment"># 找到g和g中间有2个到5个o的行,因&#123;&#125;在shell中有特殊意义,需转义</span></div></pre></td></tr></table></figure>
+<ul>
+<li>egrep (grep -e pattern)<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 打印包含1个或多个3的行,下面三个表达式等效</span></div><div class="line">$ egrep <span class="string">'3+'</span> testfile</div><div class="line">$ grep -E <span class="string">'3+'</span> testfile</div><div class="line">$ grep <span class="string">'3\+'</span> testfile      </div><div class="line"><span class="comment"># 首先含有字符2，其后紧跟着0个或1个点，后面再是0和9之间的数字</span></div><div class="line">$ egrep <span class="string">'2\.?[0-9]'</span> testfile</div><div class="line">$ grep -E <span class="string">'2\.?[0-9]'</span> testfile</div><div class="line">$ grep <span class="string">'2\.\?[0-9]'</span> testfile</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows下安装"><span class="toc-number">1.</span> <span class="toc-text">Windows下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-clone克隆Hexo的主题Next"><span class="toc-number">1.1.</span> <span class="toc-text">git clone克隆Hexo的主题Next</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-站点部署"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo 站点部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Issue-Local-hexo-not-found-in-D-hexo-blog"><span class="toc-number">1.3.</span> <span class="toc-text">Issue: Local hexo not found in D:\hexo_blog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Usage"><span class="toc-number">2.</span> <span class="toc-text">Basic Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板-Scaffold"><span class="toc-number">2.1.</span> <span class="toc-text">模板(Scaffold)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局-Layout"><span class="toc-number">2.2.</span> <span class="toc-text">布局(Layout)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义-IP"><span class="toc-number">2.3.</span> <span class="toc-text">自定义 IP</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-02T07:18:23.000Z"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-Basic-Usage/">2016-10-02</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-Basic-Usage/">markdown-hexo~Basic-Usage</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows下安装"><span class="toc-number">1.</span> <span class="toc-text">Windows下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-clone克隆Hexo的主题Next"><span class="toc-number">1.1.</span> <span class="toc-text">git clone克隆Hexo的主题Next</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-站点部署"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo 站点部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Issue-Local-hexo-not-found-in-D-hexo-blog"><span class="toc-number">1.3.</span> <span class="toc-text">Issue: Local hexo not found in D:\hexo_blog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Usage"><span class="toc-number">2.</span> <span class="toc-text">Basic Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板-Scaffold"><span class="toc-number">2.1.</span> <span class="toc-text">模板(Scaffold)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局-Layout"><span class="toc-number">2.2.</span> <span class="toc-text">布局(Layout)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义-IP"><span class="toc-number">2.3.</span> <span class="toc-text">自定义 IP</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<ol>
+<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">hexo官网</a></li>
+</ol>
+<h2 id="Windows下安装"><a href="#Windows下安装" class="headerlink" title="Windows下安装"></a>Windows下安装</h2><p>参考<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">官网</a>，在安装好<a href="wiz://open_document?guid=191fd422-472f-47cf-81c5-5d16e5b1a900&amp;kbguid=&amp;private_kbguid=26cdc8d6-8c7b-46e1-858b-50f63a1c8d67" target="_blank" rel="external">node.js</a>与<code>git</code>之后，在命令行，一键配置即可：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure></p>
+<h3 id="git-clone克隆Hexo的主题Next"><a href="#git-clone克隆Hexo的主题Next" class="headerlink" title="git clone克隆Hexo的主题Next"></a>git clone克隆Hexo的主题Next</h3><p>在终端窗口下，定位到 Hexo 站点目录下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div><div class="line">$ git <span class="built_in">clone</span> git@github.com:ywlbupt/Hexo-theme-light_cn.git themes/light_cn</div></pre></td></tr></table></figure></p>
+<h3 id="Hexo-站点部署"><a href="#Hexo-站点部署" class="headerlink" title="Hexo 站点部署"></a>Hexo 站点部署</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo g <span class="comment">#生成静态页面</span></div><div class="line">$ hexo s <span class="comment">#开启本地站点Server，（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">$ hexo d <span class="comment">#在_config.yml中配置push至github远程仓库gh-pages分支</span></div></pre></td></tr></table></figure>
+<h3 id="Issue-Local-hexo-not-found-in-D-hexo-blog"><a href="#Issue-Local-hexo-not-found-in-D-hexo-blog" class="headerlink" title="Issue: Local hexo not found in D:\hexo_blog"></a>Issue: <code>Local hexo not found in D:\hexo_blog</code></h3><ol>
+<li><p>背景：<br>Hexo搭建博客之后用git已经将所有的source都同步到了git上，在另一台电脑上将源代码clone下来之后，直接执行 hexo server,出现错误</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ERROR Local hexo not found in D:\hexo_blog</div><div class="line">ERROR Try running: &apos;npm install hexo --save&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>解决方案：</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd D:\hexo_blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure>
+</li>
+<li><p>原因 ：<br><code>.gitignore</code>文件里面忽略了<code>node_modules</code>文件夹，所以这个文件夹没有更新上去。所以用<code>npm</code>重新安装即可。</p>
+</li>
+</ol>
+<h2 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h2><h3 id="模板-Scaffold"><a href="#模板-Scaffold" class="headerlink" title="模板(Scaffold)"></a>模板(Scaffold)</h3><p>在新建文章时，Hexo 会根据 scaffolds 文件夹内相对应的文件来建立文件，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo new photo <span class="string">"My Gallery"</span></div></pre></td></tr></table></figure>
+<p>在执行这行指令时，Hexo 会尝试在 scaffolds 文件夹中寻找 <code>photo.md</code>，并根据其内容建立文章，以下是您可以在模版中使用的变量：</p>
+<ul>
+<li>layout  布局</li>
+<li>title   标题</li>
+<li>date  文件建立日期</li>
+</ul>
+<h3 id="布局-Layout"><a href="#布局-Layout" class="headerlink" title="布局(Layout)"></a>布局(Layout)</h3><p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和 <code>draft</code>，它们分别对应不同的路径，而您自定义的其他布局和 <code>post</code> 相同，都将储存到 <code>source/_posts</code> 文件夹。<br>布局     路径<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">post   source/_posts</div><div class="line">page   source</div><div class="line">draft   source/_drafts</div></pre></td></tr></table></figure></p>
+<p>新建草稿<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">:!hexo n[ew] draft title</div></pre></td></tr></table></figure></p>
+<h3 id="自定义-IP"><a href="#自定义-IP" class="headerlink" title="自定义 IP"></a>自定义 IP</h3><p>服务器默认运行在 <code>0.0.0.0</code>，您可以覆盖默认的 IP 设置，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo server -i 192.168.1.1</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+ 
+<nav id="pagination">
+  
+    <a href="/hexo_blog/page/4/" class="alignleft prev">上一页</a>
+  
+  
+    <a href="/hexo_blog/page/6/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+        <aside id="sidebar" class="alignright">
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+</body>
+</html>
+
+

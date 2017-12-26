@@ -79,7 +79,7 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#deb软件包的安装"><span class="toc-number">1.</span> <span class="toc-text">deb软件包的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPA-安装"><span class="toc-number">2.</span> <span class="toc-text">PPA 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载"><span class="toc-number">3.</span> <span class="toc-text">卸载</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python变量"><span class="toc-number">1.</span> <span class="toc-text">python变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字global"><span class="toc-number">1.1.</span> <span class="toc-text">关键字global</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字nonlocal"><span class="toc-number">1.2.</span> <span class="toc-text">关键字nonlocal</span></a></li></ol></li></ol>
 </div>
 
       
@@ -92,10 +92,10 @@
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-10-03T15:19:34.000Z"><a href="/hexo_blog/2016/10/03/Ubuntu-IDE-Config-2016-10-03-ubuntu-IDE-Config-软件管理与安装/">2016-10-03</a></time>
+        <time datetime="2017-06-23T03:17:20.000Z"><a href="/hexo_blog/2017/06/23/python-basic-nonlocal与global/">2017-06-23</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/10/03/Ubuntu-IDE-Config-2016-10-03-ubuntu-IDE-Config-软件管理与安装/">ubuntu-IDE_Config~软件管理</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2017/06/23/python-basic-nonlocal与global/">python-basic~nonlocal与global</a></h1>
   
 
     </header>
@@ -108,30 +108,29 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#deb软件包的安装"><span class="toc-number">1.</span> <span class="toc-text">deb软件包的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPA-安装"><span class="toc-number">2.</span> <span class="toc-text">PPA 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载"><span class="toc-number">3.</span> <span class="toc-text">卸载</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python变量"><span class="toc-number">1.</span> <span class="toc-text">python变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字global"><span class="toc-number">1.1.</span> <span class="toc-text">关键字global</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字nonlocal"><span class="toc-number">1.2.</span> <span class="toc-text">关键字nonlocal</span></a></li></ol></li></ol>
 </div>
 
                   
 
                   -->
         <p>[Toc]</p>
-<h3 id="deb软件包的安装"><a href="#deb软件包的安装" class="headerlink" title="deb软件包的安装"></a>deb软件包的安装</h3><ul>
-<li>deb 是 ubuntu 、debian 的格式。</li>
-<li>rpm 是 redhat 、fedora 、suse 的格式</li>
+<h2 id="python变量"><a href="#python变量" class="headerlink" title="python变量"></a>python变量</h2><ol>
+<li>当前作用域局部变量</li>
+<li>外层作用域变量</li>
+<li>全局变量</li>
+<li>python内置变量</li>
+</ol>
+<h3 id="关键字global"><a href="#关键字global" class="headerlink" title="关键字global"></a>关键字global</h3><ul>
+<li>global关键字用来在<strong>函数</strong>或其他<strong>局部作用域</strong>中使用全局变量。</li>
+<li><strong>如果不修改全局变量也可以不使用global关键字</strong></li>
 </ul>
-<blockquote>
-<p>  deb是debian发行版的软件包<br>  ubuntu是基于debian 发行的 所有可以用</p>
-</blockquote>
-<p>进入<code>.deb</code>软件包的文件路径</p>
-<p>You need to use <code>dpkg</code> package manager from shell/command prompt. </p>
-<p><strong><code>dpkg</code></strong> is a tool to install, build, remove and manage packages. dpkg itself is controlled entirely via command line parameters. <strong>For example -i use to install .deb file.</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo dpkg -i package.deb</div></pre></td></tr></table></figure>
-<h3 id="PPA-安装"><a href="#PPA-安装" class="headerlink" title="PPA 安装"></a>PPA 安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo add-apt-repository ppa:tualatrix/ppa</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install ubuntu-tweak</div></pre></td></tr></table></figure>
-<p>安装完之后在Dash面板搜索Ubuntu Tweak即可启动。</p>
-<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>要卸载该软件请执行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get remove ubuntu-tweak</div></pre></td></tr></table></figure>
-<p>使用下面的命令去除PPA：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get install ppa-purge</div><div class="line">sudo ppa-purge ppa:tualatrix/ppa</div></pre></td></tr></table></figure>
+<h3 id="关键字nonlocal"><a href="#关键字nonlocal" class="headerlink" title="关键字nonlocal"></a>关键字nonlocal</h3><p>注：python2中没有<code>nonlocal</code>关键字，如需实现类似功能，只能通过<code>global</code>实现<br>python 3.x中，引入了新的关键字<code>nonlocal</code></p>
+<p>使得可以在函数闭包中通过nonlocal，引用与修改外层函数的变量</p>
+<ul>
+<li>nonlocal用于在<strong>函数</strong>或其他<strong>局部作用域</strong>中使用外层(非全局)作用域变量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_counter</span><span class="params">()</span>:</span></div><div class="line">    count = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">counter</span><span class="params">()</span>:</span></div><div class="line">        <span class="keyword">nonlocal</span> count</div><div class="line">        count += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> count</div><div class="line">    <span class="keyword">return</span> counter</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_counter_test</span><span class="params">()</span>:</span></div><div class="line">  mc = make_counter()</div><div class="line">  print(mc())</div><div class="line">  print(mc())</div><div class="line">  print(mc())</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -156,7 +155,7 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【fugitive】git-Wrapper-in-vim"><span class="toc-number">1.</span> <span class="toc-text">【fugitive】git Wrapper in vim</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#与git命令的一一对应"><span class="toc-number">1.1.</span> <span class="toc-text">与git命令的一一对应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对当前文件的操作"><span class="toc-number">1.1.1.</span> <span class="toc-text">对当前文件的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对仓库的操作"><span class="toc-number">1.1.2.</span> <span class="toc-text">对仓库的操作</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Driver安装"><span class="toc-number">1.</span> <span class="toc-text">Driver安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一份官方示例代码"><span class="toc-number">2.</span> <span class="toc-text">一份官方示例代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Locating-Elements"><span class="toc-number">3.</span> <span class="toc-text">Locating Elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#selenium-webdriver-common-keys"><span class="toc-number">4.</span> <span class="toc-text">selenium.webdriver.common.keys</span></a></li></ol>
 </div>
 
       
@@ -169,10 +168,10 @@
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-10-03T15:12:14.000Z"><a href="/hexo_blog/2016/10/03/vim-plugin~fugitive/">2016-10-03</a></time>
+        <time datetime="2017-06-22T01:55:03.000Z"><a href="/hexo_blog/2017/06/22/python-lib-selenium/">2017-06-22</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/10/03/vim-plugin~fugitive/">vim-plugin~fugitive</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2017/06/22/python-lib-selenium/">python-lib~selenium</a></h1>
   
 
     </header>
@@ -185,56 +184,561 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【fugitive】git-Wrapper-in-vim"><span class="toc-number">1.</span> <span class="toc-text">【fugitive】git Wrapper in vim</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#与git命令的一一对应"><span class="toc-number">1.1.</span> <span class="toc-text">与git命令的一一对应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对当前文件的操作"><span class="toc-number">1.1.1.</span> <span class="toc-text">对当前文件的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对仓库的操作"><span class="toc-number">1.1.2.</span> <span class="toc-text">对仓库的操作</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Driver安装"><span class="toc-number">1.</span> <span class="toc-text">Driver安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一份官方示例代码"><span class="toc-number">2.</span> <span class="toc-text">一份官方示例代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Locating-Elements"><span class="toc-number">3.</span> <span class="toc-text">Locating Elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#selenium-webdriver-common-keys"><span class="toc-number">4.</span> <span class="toc-text">selenium.webdriver.common.keys</span></a></li></ol>
 </div>
 
                   
 
                   -->
         <p>[Toc]</p>
-<h2 id="【fugitive】git-Wrapper-in-vim"><a href="#【fugitive】git-Wrapper-in-vim" class="headerlink" title="【fugitive】git Wrapper in vim"></a>【fugitive】git Wrapper in vim</h2><h3 id="与git命令的一一对应"><a href="#与git命令的一一对应" class="headerlink" title="与git命令的一一对应"></a>与git命令的一一对应</h3><h4 id="对当前文件的操作"><a href="#对当前文件的操作" class="headerlink" title="对当前文件的操作"></a>对当前文件的操作</h4><ul>
-<li><code>Gedit</code> git编辑文件<ul>
-<li><code>Gsplit</code>, <code>Gvsplit</code>, <code>Gtabedit</code></li>
+<h3 id="Driver安装"><a href="#Driver安装" class="headerlink" title="Driver安装"></a>Driver安装</h3><p><a href="https://selenium-python.readthedocs.io/installation.html#drivers" target="_blank" rel="external">Driver link</a></p>
+<h3 id="一份官方示例代码"><a href="#一份官方示例代码" class="headerlink" title="一份官方示例代码"></a>一份官方示例代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</div><div class="line"></div><div class="line">driver = webdriver.Firefox()</div><div class="line"><span class="comment"># driver = webdriver.Chrome()</span></div><div class="line">driver.get(<span class="string">"http://www.python.org"</span>)</div><div class="line"><span class="keyword">assert</span> <span class="string">"Python"</span> <span class="keyword">in</span> driver.title</div><div class="line">elem = driver.find_element_by_name(<span class="string">"q"</span>)</div><div class="line">elem.clear()</div><div class="line">elem.send_keys(<span class="string">"pycon"</span>)</div><div class="line">elem.send_keys(Keys.RETURN)</div><div class="line"><span class="keyword">assert</span> <span class="string">"No results found."</span> <span class="keyword">not</span> <span class="keyword">in</span> driver.page_source</div><div class="line">driver.close()</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://selenium-python.readthedocs.io/getting-started.html#" target="_blank" rel="external">官方解释，就是牛</a></li>
+</ul>
+<h3 id="Locating-Elements"><a href="#Locating-Elements" class="headerlink" title="Locating Elements"></a>Locating Elements</h3><p><a href="https://selenium-python.readthedocs.io/locating-elements.html#locating-elements" target="_blank" rel="external">官方文档，就是牛</a></p>
+<p>There are various strategies to locate elements in a page. You can use the most appropriate one for your case. Selenium provides the following methods to locate elements in a page:</p>
+<ul>
+<li>find_element_by_id</li>
+<li>find_element_by_name</li>
+<li>find_element_by_xpath</li>
+<li>find_element_by_link_text</li>
+<li>find_element_by_partial_link_text</li>
+<li>find_element_by_tag_name</li>
+<li>find_element_by_class_name</li>
+<li>find_element_by_css_selector</li>
+</ul>
+<p>To find multiple elements (these methods will return a list):</p>
+<ul>
+<li>find_elements_by_name</li>
+<li>find_elements_by_xpath</li>
+<li>find_elements_by_link_text</li>
+<li>find_elements_by_partial_link_text</li>
+<li>find_elements_by_tag_name</li>
+<li>find_elements_by_class_name</li>
+<li>find_elements_by_css_selector</li>
+</ul>
+<h3 id="selenium-webdriver-common-keys"><a href="#selenium-webdriver-common-keys" class="headerlink" title="selenium.webdriver.common.keys"></a>selenium.webdriver.common.keys</h3><p>pass</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xpath"><span class="toc-number">1.</span> <span class="toc-text">xpath</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">1.1.</span> <span class="toc-text">参考文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-lxml解析xpath"><span class="toc-number">2.</span> <span class="toc-text">python-lxml解析xpath</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#附录：XPATH的简单语法介绍"><span class="toc-number">2.1.</span> <span class="toc-text">附录：XPATH的简单语法介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">3.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2017-06-15T07:12:17.000Z"><a href="/hexo_blog/2017/06/15/python-lib-lxml/">2017-06-15</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2017/06/15/python-lib-lxml/">python-lib~lxml解析HTML,xpath</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xpath"><span class="toc-number">1.</span> <span class="toc-text">xpath</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-number">1.1.</span> <span class="toc-text">参考文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-lxml解析xpath"><span class="toc-number">2.</span> <span class="toc-text">python-lxml解析xpath</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#附录：XPATH的简单语法介绍"><span class="toc-number">2.1.</span> <span class="toc-text">附录：XPATH的简单语法介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Link"><span class="toc-number">3.</span> <span class="toc-text">Reference Link</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h2><h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ol>
+<li><a href="http://www.w3schools.com/xsl/xpath_intro.asp" target="_blank" rel="external">W3Schools XPath Tutorial</a></li>
+<li><a href="https://www.w3.org/TR/xpath/" target="_blank" rel="external">XML Path Language (XPath) Recommemdation</a></li>
+<li><a href="http://www.zvon.org/comp/r/tut-XPath_1.html" target="_blank" rel="external">XPath Tutorial - with interactive examples.</a></li>
+</ol>
+<h2 id="python-lxml解析xpath"><a href="#python-lxml解析xpath" class="headerlink" title="python-lxml解析xpath"></a>python-lxml解析xpath</h2><p>现在来看如何直接使用lxml（即前文说过的libxml2的一个python binding）处理那个样本页</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">import codecs</div><div class="line">from lxml import etree</div><div class="line"></div><div class="line">f=codecs.open(&quot;raptor.htm&quot;,&quot;r&quot;,&quot;utf-8&quot;)</div><div class="line">content=f.read()</div><div class="line">f.close()</div><div class="line">tree=etree.HTML(content)</div></pre></td></tr></table></figure>
+<p>Bingo！果然成功。关键就在于etree提供了HTML这个解析函数。之后的事情就好办多了，因为可以直接对HTML使用xpath。<br>不过这个样本页面中要解析的部分有一个问题就是：那个ul节点没有id，所以只好麻烦一点了。<br>完整的xpath应该是这样写的（注意，原文件中的TAG有大小写的情况，但是在XPATH里只能用小写）：</p>
+<pre><code>nodes=tree.xpath(u&quot;/html/body/form/div[@id=&apos;leftmenu&apos;]/h3[text()=&apos;档案&apos;]/following-sibling::ul[1]&quot;)
+</code></pre><p>这句xpath的意思是寻找这样一个东东。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;form&gt;</div><div class="line">      &lt;div id=&apos;leftmenu&apos;&gt;</div><div class="line">        &lt;h3&gt;档案&lt;/h3&gt;</div><div class="line">        &lt;ul&gt;&lt;!-- 找到这里 --&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>当然更简单的方法就是直接根据id定位：</p>
+<pre><code>nodes=tree.xpath(u&quot;//div[@id=&apos;leftmenu&apos;]/h3[text()=&apos;档案&apos;]/following-sibling::ul[1]&quot;)
+</code></pre><p>这两种方法返回的结果中，nodes[0]就是那个”档案”的h3节点后面紧跟的第一个ul节点。<br>之后就可以把每个月份的文本列出（注意，是以上面取得的ul节点为起点）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">nodes=nodes[0].xpath(&quot;li/a&quot;)</div><div class="line">for n in nodes:</div><div class="line">    print n.text</div></pre></td></tr></table></figure>
+<p>这段的意思是取得这个ul节点下的所有<code>&lt;li&gt;&lt;a&gt;</code>节点。之后的循环就是把这些节点的文本内容列出。</p>
+<h3 id="附录：XPATH的简单语法介绍"><a href="#附录：XPATH的简单语法介绍" class="headerlink" title="附录：XPATH的简单语法介绍"></a>附录：XPATH的简单语法介绍</h3><p>XPATH基本上是用一种类似目录树的方法来描述在XML文档中的路径。比如用”/“来作为上下层级间的分隔。第一个”/“表示文档的根节点（注意，不是指文档最外层的tag节点，而是指文档本身）。比如对于一个HTML文件来说，最外层的节点应该是”/html”。</p>
+<p>同样的，<code>..</code>和<code>.</code>分别被用来表示父节点和本节点。</p>
+<p>XPATH返回的不一定就是唯一的节点，而是符合条件的所有节点。比如在HTML文档里使用<code>/html/head/scrpt</code>就会把head里的所有script节点都取出来。</p>
+<p>为了缩小定位范围，往往还需要增加过滤条件。过滤的方法就是用”[“”]”把过滤条件加上。比如在HTML文档里使用<code>/html/body/div[@id=&#39;main&#39;]</code>，即可取出body里id为main的div节点。</p>
+<p>其中@id表示属性id，类似的还可以使用如@name, @value, @href, @src, @class….</p>
+<p>而函数text()的意思则是取得节点包含的文本。比如：<code>&lt;div&gt;hello&lt;p&gt;world&lt;/p&gt;&lt; /div&gt;</code>中，用<code>div[text()=&#39;hello&#39;]</code>即可取得这个div，而world则是p的text()。</p>
+<p>函数position()的意思是取得节点的位置。比如<code>li[position()=2]</code>表示取得第二个li节点，它也可以被省略为<code>li[2]</code>。</p>
+<p>不过要注意的是数字定位和过滤 条件的顺序。比如<code>ul/li[5][@name=&#39;hello&#39;]</code>表示取ul下第五项li，并且其name必须是hello，否则返回空。而如果用 <code>ul/li[@name=&#39;hello&#39;][5]</code>的意思就不同，它表示寻找ul下第五个name为”hello”的li节点。</p>
+<p>此外，<code>*</code>可以代替所有的节点名，比如用<code>/html/body/*/span</code>可以取出body下第二级的所有span，而不管它上一级是div还是p或是其它什么东东。</p>
+<p>而 <code>descendant::</code>前缀可以指代任意多层的中间节点，它也可以被省略成一个<code>/</code>。比如在整个HTML文档中查找id为”leftmenu”的 div，可以用<code>/descendant::div[@id=&#39;leftmenu&#39;]</code>，也可以简单地使用<code>//div[@id=&#39;leftmenu&#39;]</code>。</p>
+<p>至于<code>following-sibling::</code>前缀就如其名所说，表示同一层的下一个节点。<code>following-sibling::*</code>就是任意下一个节点，而<code>following-sibling::ul</code>就是下一个ul节点。</p>
+<h2 id="Reference-Link"><a href="#Reference-Link" class="headerlink" title="Reference Link"></a>Reference Link</h2>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#py2exe"><span class="toc-number">1.</span> <span class="toc-text">py2exe</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成exe"><span class="toc-number">1.2.</span> <span class="toc-text">生成exe</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2017-06-14T08:10:28.000Z"><a href="/hexo_blog/2017/06/14/python-使用py2exe发布exe文件/">2017-06-14</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2017/06/14/python-使用py2exe发布exe文件/">python~使用py2exe发布exe文件</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#py2exe"><span class="toc-number">1.</span> <span class="toc-text">py2exe</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成exe"><span class="toc-number">1.2.</span> <span class="toc-text">生成exe</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="py2exe"><a href="#py2exe" class="headerlink" title="py2exe"></a>py2exe</h2><p>参考：<a href="http://www.py2exe.org/index.cgi/Tutorial" target="_blank" rel="external">offical Tutorial</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>通过pip直接安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pip install py2exe</div></pre></td></tr></table></figure></p>
+<h3 id="生成exe"><a href="#生成exe" class="headerlink" title="生成exe"></a>生成exe</h3><ol>
+<li><p>进入python程序所在文件夹，在该目录下新建<code>setup.py</code>文件，内容如下，假设待转化的python程序为example.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</div><div class="line"><span class="keyword">import</span> py2exe</div><div class="line"></div><div class="line">setup(windows=[<span class="string">"example.py"</span>])</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过命令行，执行<code>python setup.py py2exe</code>，等候时间有点长。。。</p>
+</li>
+<li>执行成功后，会在该文件夹下生成dist文件夹，里面的exe文件即为所求。</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#类属性的延迟计算-LazyProperty"><span class="toc-number">1.</span> <span class="toc-text">类属性的延迟计算 LazyProperty</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">1.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-number">1.3.</span> <span class="toc-text">说明</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2017-06-14T07:53:10.000Z"><a href="/hexo_blog/2017/06/14/python-类属性的延迟计算-zt/">2017-06-14</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2017/06/14/python-类属性的延迟计算-zt/">python~类属性的延迟计算_zt</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#类属性的延迟计算-LazyProperty"><span class="toc-number">1.</span> <span class="toc-text">类属性的延迟计算 LazyProperty</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">1.2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-number">1.3.</span> <span class="toc-text">说明</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="类属性的延迟计算-LazyProperty"><a href="#类属性的延迟计算-LazyProperty" class="headerlink" title="类属性的延迟计算 LazyProperty"></a>类属性的延迟计算 LazyProperty</h2><p>参考: <a href="http://www.spiderpy.cn/blog/detail/7" target="_blank" rel="external">类属性的延迟计算-JHao</a></p>
+<p>所谓类属性的延迟计算就是将类的属性定义成一个property，只在访问的时候才会计算，而且一旦被访问后，结果将会被缓存起来，不用每次都计算。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>构造一个延迟计算属性的主要目的是为了提升性能</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyProperty</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func)</span>:</span></div><div class="line">        self.func = func</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></div><div class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">            <span class="keyword">return</span> self</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            value = self.func(instance)</div><div class="line">            setattr(instance, self.func.__name__, value)</div><div class="line">            <span class="keyword">return</span> value</div><div class="line"></div><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, radius)</span>:</span></div><div class="line">        self.radius = radius</div><div class="line"></div><div class="line"><span class="meta">    @LazyProperty</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">area</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'Computing area'</span></div><div class="line">        <span class="keyword">return</span> math.pi * self.radius ** <span class="number">2</span></div><div class="line"></div><div class="line"><span class="meta">    @LazyProperty</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">perimeter</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'Computing perimeter'</span></div><div class="line">        <span class="keyword">return</span> <span class="number">2</span> * math.pi * self.radius</div></pre></td></tr></table></figure>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>定义了一个延迟计算的装饰器类<code>LazyProperty</code>。Circle是用于测试的类，Circle类有是三个属性半径(radius)、面积(area)、周长(perimeter)。面积和周长的属性被LazyProperty装饰，下面来试试LazyProperty的魔法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; c = Circle(2)</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span> c.area</div><div class="line">Computing area</div><div class="line">12.5663706144</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span> c.area</div><div class="line">12.5663706144</div></pre></td></tr></table></figure>
+<p>在area()中每计算一次就会打印一次“Computing area”，而连续调用两次c.area后“Computing area”只被打印了一次。这得益于LazyProperty,只要调用一次后，无论后续调用多少次都不会重复计算。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-06-15"><span class="toc-number">1.</span> <span class="toc-text">2017-06-15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-06-14"><span class="toc-number">2.</span> <span class="toc-text">2017-06-14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">3.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫的参考资料"><span class="toc-number">3.1.</span> <span class="toc-text">爬虫的参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫的代理池"><span class="toc-number">3.2.</span> <span class="toc-text">爬虫的代理池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ToBeUnderstand"><span class="toc-number">3.3.</span> <span class="toc-text">ToBeUnderstand</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2017-06-13T15:05:34.000Z"><a href="/hexo_blog/2017/06/13/PCPlan-2017-06-13-PCPlan-Study-progress/">2017-06-13</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2017/06/13/PCPlan-2017-06-13-PCPlan-Study-progress/">PCPlan~Study_progress</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-06-15"><span class="toc-number">1.</span> <span class="toc-text">2017-06-15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-06-14"><span class="toc-number">2.</span> <span class="toc-text">2017-06-14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">3.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫的参考资料"><span class="toc-number">3.1.</span> <span class="toc-text">爬虫的参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫的代理池"><span class="toc-number">3.2.</span> <span class="toc-text">爬虫的代理池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ToBeUnderstand"><span class="toc-number">3.3.</span> <span class="toc-text">ToBeUnderstand</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<h2 id="2017-06-15"><a href="#2017-06-15" class="headerlink" title="2017-06-15"></a>2017-06-15</h2><h2 id="2017-06-14"><a href="#2017-06-14" class="headerlink" title="2017-06-14"></a>2017-06-14</h2><p>在XM处理IP代理爬虫池ing，然后就之前遗留的坑一顿猛填</p>
+<pre><code>- windows下tagbar的markdown目录，通过py2.7的py2exe实现。
+- vim snippet 的 py snippet，代码规范
+</code></pre><p>目前在外流放的PRJ</p>
+<ul>
+<li>HEXO的markdown自动导出（导入）。</li>
+<li>byr、知乎网页的爬虫与信息的处理。<ul>
+<li>这个可以留到XM处理</li>
+<li>知乎可以无登录爬取</li>
 </ul>
 </li>
-<li><code>Gwrite</code> -&gt; <code>git add %</code> : stage current file into the index</li>
-<li><code>Gread</code> -&gt; <code>git checkout %</code> : Revert current file to laste checked in version，将当前文件恢复至上一版本 <ul>
-<li>unstaged current file，与Gwrite相对</li>
+<li>Selenium + phantomJS 的爬虫学习<ul>
+<li>知乎登录的极限验证</li>
 </ul>
 </li>
-<li><code>Glog</code> -&gt; <code>git log</code> <ul>
-<li>loads all previous revisions of a file into the quickfix list( <code>:cw 10</code> 打开quickfix窗口) so you can iterate over them and watch the file evolve!</li>
-<li>针对文件，可在<code>quickfix</code>窗口中直接 <code>o</code>打开，查看历史文件！</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="爬虫的参考资料"><a href="#爬虫的参考资料" class="headerlink" title="爬虫的参考资料"></a>爬虫的参考资料</h3><ol>
+<li>爬去知乎，源代码通读<a href="http://zhihu-py3.readthedocs.io/zh_CN/latest/index.html_" target="_blank" rel="external">Welcome to zhihu-py3’s documentation!</a></li>
+<li>github模拟登录知名网站<a href="https://github.com/xchaoinfo/fuck-login" target="_blank" rel="external">fuck-login</a></li>
+<li><a href="http://cuiqingcai.com/category/technique/python" target="_blank" rel="external">静觅-python-崔庆才</a></li>
+</ol>
+<h3 id="爬虫的代理池"><a href="#爬虫的代理池" class="headerlink" title="爬虫的代理池"></a>爬虫的代理池</h3><ol>
+<li><a href="https://github.com/jhao104/proxy_pool" target="_blank" rel="external">Python爬虫代理IP池实现方法-flask,python</a></li>
+</ol>
+<h3 id="ToBeUnderstand"><a href="#ToBeUnderstand" class="headerlink" title="ToBeUnderstand"></a>ToBeUnderstand</h3><ol>
+<li>[ ] python类属性的延迟计算，类装饰器的原理</li>
+<li>[ ] import sys; reload(sys)作用？</li>
+<li>[ ] python 2/3 包的相对导入，以及import，from的区别</li>
+<li>[ ] attempted relative import beyond top-level packag</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+    	
+
+	
+    		
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-09-Sun"><span class="toc-number">1.</span> <span class="toc-text">2017-07-09 Sun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-08-Sat"><span class="toc-number">2.</span> <span class="toc-text">2017-07-08 Sat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-07-Fri"><span class="toc-number">3.</span> <span class="toc-text">2017-07-07 Fri</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-06-Tue"><span class="toc-number">4.</span> <span class="toc-text">2017-07-06 Tue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-27-Tue-PC第14天"><span class="toc-number">5.</span> <span class="toc-text">2017-06-27 Tue PC第14天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-26-Mon-PC第13天"><span class="toc-number">6.</span> <span class="toc-text">2017-06-26 Mon PC第13天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-23-Fri-PC第10天"><span class="toc-number">7.</span> <span class="toc-text">2017-06-23 Fri PC第10天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-21-Wed-PC第8天"><span class="toc-number">8.</span> <span class="toc-text">2017-06-21 Wed PC第8天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-20-Tue-PC第7天"><span class="toc-number">9.</span> <span class="toc-text">2017-06-20 Tue PC第7天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-19-Mon-PC第6天"><span class="toc-number">10.</span> <span class="toc-text">2017-06-19 Mon PC第6天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-18-Sun-PC第5天"><span class="toc-number">11.</span> <span class="toc-text">2017-06-18 Sun PC第5天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-17-Sat-PC第4天"><span class="toc-number">12.</span> <span class="toc-text">2017-06-17 Sat PC第4天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-16-Fri-PC第3天"><span class="toc-number">13.</span> <span class="toc-text">2017-06-16 Fri PC第3天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-15-Thu-PC第2天"><span class="toc-number">14.</span> <span class="toc-text">2017-06-15 Thu PC第2天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-14-Wed-PC第1天"><span class="toc-number">15.</span> <span class="toc-text">2017-06-14 Wed PC第1天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-13-Tue-PC第0天"><span class="toc-number">16.</span> <span class="toc-text">2017-06-13 Tue PC第0天</span></a></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2017-06-13T15:05:04.000Z"><a href="/hexo_blog/2017/06/13/PCPlan-2017-06-13-PCPlan-Checklist/">2017-06-13</a></time>
+        
+  
+    <h1 class="title"><a href="/hexo_blog/2017/06/13/PCPlan-2017-06-13-PCPlan-Checklist/">PCPlan~Checklist</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> undefined </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-09-Sun"><span class="toc-number">1.</span> <span class="toc-text">2017-07-09 Sun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-08-Sat"><span class="toc-number">2.</span> <span class="toc-text">2017-07-08 Sat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-07-Fri"><span class="toc-number">3.</span> <span class="toc-text">2017-07-07 Fri</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-07-06-Tue"><span class="toc-number">4.</span> <span class="toc-text">2017-07-06 Tue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-27-Tue-PC第14天"><span class="toc-number">5.</span> <span class="toc-text">2017-06-27 Tue PC第14天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-26-Mon-PC第13天"><span class="toc-number">6.</span> <span class="toc-text">2017-06-26 Mon PC第13天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-23-Fri-PC第10天"><span class="toc-number">7.</span> <span class="toc-text">2017-06-23 Fri PC第10天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-21-Wed-PC第8天"><span class="toc-number">8.</span> <span class="toc-text">2017-06-21 Wed PC第8天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-20-Tue-PC第7天"><span class="toc-number">9.</span> <span class="toc-text">2017-06-20 Tue PC第7天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-19-Mon-PC第6天"><span class="toc-number">10.</span> <span class="toc-text">2017-06-19 Mon PC第6天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-18-Sun-PC第5天"><span class="toc-number">11.</span> <span class="toc-text">2017-06-18 Sun PC第5天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-17-Sat-PC第4天"><span class="toc-number">12.</span> <span class="toc-text">2017-06-17 Sat PC第4天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-16-Fri-PC第3天"><span class="toc-number">13.</span> <span class="toc-text">2017-06-16 Fri PC第3天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-15-Thu-PC第2天"><span class="toc-number">14.</span> <span class="toc-text">2017-06-15 Thu PC第2天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-14-Wed-PC第1天"><span class="toc-number">15.</span> <span class="toc-text">2017-06-14 Wed PC第1天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2017-06-13-Tue-PC第0天"><span class="toc-number">16.</span> <span class="toc-text">2017-06-13 Tue PC第0天</span></a></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<ul>
+<li>[ ] <del>攻克seleium + phantomJS</del></li>
+<li>[ ] 迪卡侬，运动毛巾，防滑手套，助握带，拉力带，10KG弹力带，泡沫轴</li>
+</ul>
+<h3 id="2017-07-09-Sun"><a href="#2017-07-09-Sun" class="headerlink" title="2017-07-09 Sun"></a>2017-07-09 Sun</h3><h3 id="2017-07-08-Sat"><a href="#2017-07-08-Sat" class="headerlink" title="2017-07-08 Sat"></a>2017-07-08 Sat</h3><ul>
+<li>[ ] 去农行把钱转账到招商银行，然后注销</li>
+</ul>
+<h3 id="2017-07-07-Fri"><a href="#2017-07-07-Fri" class="headerlink" title="2017-07-07 Fri"></a>2017-07-07 Fri</h3><h3 id="2017-07-06-Tue"><a href="#2017-07-06-Tue" class="headerlink" title="2017-07-06 Tue"></a>2017-07-06 Tue</h3><ul>
+<li>[ ] 晚上11:30关灯睡觉</li>
+</ul>
+<h3 id="2017-06-27-Tue-PC第14天"><a href="#2017-06-27-Tue-PC第14天" class="headerlink" title="2017-06-27 Tue PC第14天"></a>2017-06-27 Tue PC第14天</h3><ul>
+<li>[x] 114账号变更手机号<h3 id="2017-06-26-Mon-PC第13天"><a href="#2017-06-26-Mon-PC第13天" class="headerlink" title="2017-06-26 Mon PC第13天"></a>2017-06-26 Mon PC第13天</h3></li>
+<li>[x] 安贞医院，心内科，早8点<h3 id="2017-06-23-Fri-PC第10天"><a href="#2017-06-23-Fri-PC第10天" class="headerlink" title="2017-06-23 Fri PC第10天"></a>2017-06-23 Fri PC第10天</h3></li>
+<li><p>[x] 邮箱查询114账号申述结果</p>
+<h3 id="2017-06-21-Wed-PC第8天"><a href="#2017-06-21-Wed-PC第8天" class="headerlink" title="2017-06-21 Wed PC第8天"></a>2017-06-21 Wed PC第8天</h3></li>
+<li><p>[x] 预约挂号，阜外医院，下周三心内科</p>
+<ul>
+<li>昨天已经预约了下周一安贞医院的心内科</li>
+<li>周四健身照常，有氧照常，不挑战极限</li>
 </ul>
 </li>
-<li><code>Gdiff</code> -&gt; <code>git diff</code> : 文件的比较 , resolve a git merge conflict</li>
-<li><code>Gremove</code> -&gt; <code>git rm %</code> : Delete current file and corresponding Vim buffer</li>
 </ul>
-<h4 id="对仓库的操作"><a href="#对仓库的操作" class="headerlink" title="对仓库的操作"></a>对仓库的操作</h4><ul>
-<li><code>Gstatus</code> -&gt; <code>git status</code>  在git status preview的窗口，可进行以下操作：<ul>
-<li><code>-</code>   -&gt; <code>add</code> : add a file’s changes</li>
-<li><code>-</code>   -&gt; <code>reset</code> (staged file) </li>
-<li><code>p</code>   -&gt; <code>add/reset -- patch</code>, toggle operation ,as <code>-</code></li>
-<li><code>cc</code>  -&gt; <code>Gcommit</code></li>
-<li><code>ca</code>  -&gt; <code>Gcommit --amend</code></li>
-<li><code>cA</code>  -&gt; <code>Gcommit --amend --reuse-message=HEAD</code></li>
-<li><code>cva</code> -&gt; <code>Gcommit --amend --verbose</code></li>
-<li><code>cvc</code> -&gt; <code>Gcommit --verbose</code></li>
-<li><code>D</code>   -&gt; <code>Gdiff</code></li>
-<li><code>ds</code>  -&gt; <code>Gsdiff</code></li>
-<li><code>O</code>   -&gt; <code>Gtabedit</code></li>
-<li><code>o</code>   -&gt; <code>Gsplit</code></li>
-<li><code>S</code>   -&gt; <code>Gvsplit</code></li>
-<li><code>dv</code>  -&gt; <code>Gvdiff</code></li>
-<li><code>U</code>   -&gt; <code>checkout</code></li>
-<li><code>U</code>   -&gt; <code>checkout HEAD</code> (staged files)</li>
-<li><code>U</code>   -&gt; <code>clean</code> (untracked files)</li>
-<li><code>U</code>   -&gt; <code>rm</code> (unmerged files)</li>
-<li><code>q</code>   -&gt; close status</li>
-<li><code>r</code>   -&gt; reload status</li>
+<h3 id="2017-06-20-Tue-PC第7天"><a href="#2017-06-20-Tue-PC第7天" class="headerlink" title="2017-06-20 Tue PC第7天"></a>2017-06-20 Tue PC第7天</h3><ul>
+<li>[x] 早上6点半起床，不拖延</li>
+<li>[x] 早上的颈部拉伸，米字运动 </li>
+<li><p>[x] 晚上11:30关灯睡觉</p>
+</li>
+<li><p>[x] 中午健身。</p>
+</li>
+<li>[x] <del>晚上9点前回到家扫地拖地，并整理书桌</del><ul>
+<li>搞定了扫地拖地，没有整理书桌</li>
 </ul>
 </li>
-<li><code>Gcommit</code> -&gt; <code>git commit</code></li>
+<li>[x] 晚上的颈部运动：弹力带，小鸡啄米，九点十五至十点十分，循环三组</li>
+</ul>
+<h3 id="2017-06-19-Mon-PC第6天"><a href="#2017-06-19-Mon-PC第6天" class="headerlink" title="2017-06-19 Mon PC第6天"></a>2017-06-19 Mon PC第6天</h3><ul>
+<li>[x] 晚上11:30关灯睡觉</li>
+<li>[x] 早上6点半起床，不拖延</li>
+<li>[x] 早上8点到，慈铭体检，知春路，空腹</li>
+</ul>
+<h3 id="2017-06-18-Sun-PC第5天"><a href="#2017-06-18-Sun-PC第5天" class="headerlink" title="2017-06-18 Sun PC第5天"></a>2017-06-18 Sun PC第5天</h3><ul>
+<li>[x] 早上7点起床，不拖延<ul>
+<li>起床没拖延，起床后拖延了。</li>
+</ul>
+</li>
+<li><p>[x] <del>晚上11:30关灯睡觉</del></p>
+<ul>
+<li>被欢欢成功又一次在11点10分洗澡了。</li>
+</ul>
+</li>
+<li><p>[x] 9点交通银行注销储蓄卡，激活信用卡</p>
+</li>
+<li>[x] 建设银行理财风险评估</li>
+<li><p>[x] 11点吃饭前健身，和教练约的11点半</p>
+</li>
+<li><p>[x] <del>早上或者晚上的时间扫地拖地，并整理书桌</del></p>
+<ul>
+<li>晚上回去太晚了</li>
+</ul>
+</li>
+</ul>
+<h3 id="2017-06-17-Sat-PC第4天"><a href="#2017-06-17-Sat-PC第4天" class="headerlink" title="2017-06-17 Sat PC第4天"></a>2017-06-17 Sat PC第4天</h3><ul>
+<li>[x] <del>晚上11:30关灯睡觉</del><ul>
+<li>计划是这样的，虽然有点赶。</li>
+<li>拖延到了11点10分，欢欢进去了。。。。</li>
+<li><strong>12点关灯睡觉</strong></li>
+</ul>
+</li>
+<li><p>[x] 早上8点起床</p>
+<ul>
+<li>虽然8点醒了，但是在床上赖了一个小时。</li>
+<li>拖延的主要原因是没有计划。</li>
+</ul>
+</li>
+<li><p>[x] 学校游泳一波</p>
+<ul>
+<li>打完排球打篮球，打完篮球去游泳。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2017-06-16-Fri-PC第3天"><a href="#2017-06-16-Fri-PC第3天" class="headerlink" title="2017-06-16 Fri PC第3天"></a>2017-06-16 Fri PC第3天</h3><ul>
+<li>[x] <del>晚上11:30关灯睡觉</del><ul>
+<li>踢球+嘉裕回来，已经12点了，最后是1点前睡的觉</li>
+</ul>
+</li>
+<li>[x] 早上6点起床<ul>
+<li>但是赖床赖到了7点</li>
+</ul>
+</li>
+<li>[x] <del>还有气力的话，晚上完成俯卧撑和腹部的运动</del><ul>
+<li>回到家已经很晚了，没有气力了</li>
+</ul>
+</li>
+</ul>
+<h3 id="2017-06-15-Thu-PC第2天"><a href="#2017-06-15-Thu-PC第2天" class="headerlink" title="2017-06-15 Thu PC第2天"></a>2017-06-15 Thu PC第2天</h3><ul>
+<li>[x] 晚上11:30关灯睡觉</li>
+<li><p>[x] <del>早上6点起床</del></p>
+<ul>
+<li>早上7点起的，考虑到昨晚没按时睡，中午要健身，多休息会。</li>
+</ul>
+</li>
+<li><p>[x] 早上起床后完成轻度的颈部的拉伸与运动。</p>
+</li>
+<li>[x] 中午健身</li>
+<li><p>[x] 下午问Max2现货</p>
+<ul>
+<li>下周找春哥要两部max2，一部寄给老莫，一部给阿团</li>
+</ul>
+</li>
+<li><p>[x] <del>晚上开始学习flask</del></p>
+<ul>
+<li>还未启动便夭折，计划早上和晚上功课seleium和phantomJS</li>
+</ul>
+</li>
+<li>[x] <del>攻克seleium + phantomJS</del><ul>
+<li>计划往后延</li>
+</ul>
+</li>
+</ul>
+<h3 id="2017-06-14-Wed-PC第1天"><a href="#2017-06-14-Wed-PC第1天" class="headerlink" title="2017-06-14 Wed PC第1天"></a>2017-06-14 Wed PC第1天</h3><ul>
+<li>[x] <del>晚上11:30关灯睡觉</del><ul>
+<li>捣鼓了下win下的cygwin，因手抖删了头字母导致ssh无密码登录失败。12点睡</li>
+</ul>
+</li>
+<li><p>[x] 早上6点起床</p>
+</li>
+<li><p>[x] 早上起床后完成轻度的颈部的拉伸与运动。</p>
+</li>
+<li><p>[x] 中午游泳。</p>
+</li>
+<li><p>[x] <del>上午的时间完成Wiz笔记的整理</del></p>
+<ul>
+<li>这个不着急，以后再瞎整</li>
+</ul>
+</li>
+<li>[x] 购买米兔定时器(每一个小时学习起身活动10分钟)。<ul>
+<li>在京东选择选了一个机械定时器，番茄工作法</li>
+</ul>
+</li>
+<li>[x] 购买弹力带（脖子的阻力运动）<ul>
+<li>晚上嘉裕带过来</li>
+</ul>
+</li>
+</ul>
+<h3 id="2017-06-13-Tue-PC第0天"><a href="#2017-06-13-Tue-PC第0天" class="headerlink" title="2017-06-13 Tue PC第0天"></a>2017-06-13 Tue PC第0天</h3><ul>
+<li>[x] 晚上11:30关灯睡觉</li>
 </ul>
 
       
@@ -260,7 +764,7 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Alias-in-ubuntu"><span class="toc-number">1.</span> <span class="toc-text">Alias in ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置永久别名-bashrc"><span class="toc-number">1.1.</span> <span class="toc-text">设置永久别名 ~/.bashrc</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-07-07-解决焦虑最好的办法就是即刻行动"><span class="toc-number">1.</span> <span class="toc-text">2017-07-07 解决焦虑最好的办法就是即刻行动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#健康"><span class="toc-number">1.1.</span> <span class="toc-text">健康</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习"><span class="toc-number">1.2.</span> <span class="toc-text">学习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-06-13-重启PC-Plan的第0天"><span class="toc-number">2.</span> <span class="toc-text">2017-06-13 重启PC Plan的第0天</span></a></li></ol>
 </div>
 
       
@@ -273,10 +777,10 @@
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-10-03T15:09:47.000Z"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-alias/">2016-10-03</a></time>
+        <time datetime="2017-06-13T15:02:46.000Z"><a href="/hexo_blog/2017/06/13/PCPlan-2017-06-13-PCPlan-Index/">2017-06-13</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-alias/">ubuntu-cmd~alias</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2017/06/13/PCPlan-2017-06-13-PCPlan-Index/">PCPlan~Index</a></h1>
   
 
     </header>
@@ -289,509 +793,46 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Alias-in-ubuntu"><span class="toc-number">1.</span> <span class="toc-text">Alias in ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置永久别名-bashrc"><span class="toc-number">1.1.</span> <span class="toc-text">设置永久别名 ~/.bashrc</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-07-07-解决焦虑最好的办法就是即刻行动"><span class="toc-number">1.</span> <span class="toc-text">2017-07-07 解决焦虑最好的办法就是即刻行动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#健康"><span class="toc-number">1.1.</span> <span class="toc-text">健康</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习"><span class="toc-number">1.2.</span> <span class="toc-text">学习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-06-13-重启PC-Plan的第0天"><span class="toc-number">2.</span> <span class="toc-text">2017-06-13 重启PC Plan的第0天</span></a></li></ol>
 </div>
 
                   
 
                   -->
         <p>[Toc]</p>
-<h2 id="Alias-in-ubuntu"><a href="#Alias-in-ubuntu" class="headerlink" title="Alias in ubuntu"></a>Alias in ubuntu</h2><p>@(Ubuntu/Shell)[ubuntu|alias]</p>
+<h2 id="2017-07-07-解决焦虑最好的办法就是即刻行动"><a href="#2017-07-07-解决焦虑最好的办法就是即刻行动" class="headerlink" title="2017-07-07 解决焦虑最好的办法就是即刻行动"></a>2017-07-07 解决焦虑最好的办法就是即刻行动</h2><p>鸡汤的话不必多说，小人物也有大梦想。</p>
+<p>直接约法三章吧：</p>
+<h3 id="健康"><a href="#健康" class="headerlink" title="健康"></a>健康</h3><p>健康是革命的本钱，无论什么时候都应该放在第一位。</p>
 <ul>
-<li>使用<code>alias</code>查看当前系统使用了哪些别名</li>
-<li>h=</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ywl@ywl-ThinkPad-E420:~$ <span class="built_in">alias</span></div><div class="line"><span class="built_in">alias</span> alert=<span class="string">'notify-send --urgency=low -i "$([ $? = 0 ] &amp;&amp; echo terminal || echo error)" "$(history|tail -n1|sed -e '</span>\<span class="string">''</span>s/^\s*[0-9]\+\s*//;s/[;&amp;|]\s*alert$//<span class="string">'\'</span><span class="string">')"'</span></div><div class="line"><span class="built_in">alias</span> egrep=<span class="string">'egrep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> fgrep=<span class="string">'fgrep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> grep=<span class="string">'grep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> l=<span class="string">'ls -CF'</span></div><div class="line"><span class="built_in">alias</span> la=<span class="string">'ls -A'</span></div><div class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -alF'</span></div><div class="line"><span class="built_in">alias</span> ls=<span class="string">'ls --color=auto'</span></div><div class="line"><span class="built_in">alias</span> rvm-restart=<span class="string">'rvm_reload_flag=1 source '</span>\<span class="string">''</span>/home/ywl/.rvm/scripts/rvm<span class="string">'\'</span><span class="string">''</span></div></pre></td></tr></table></figure>
-<h3 id="设置永久别名-bashrc"><a href="#设置永久别名-bashrc" class="headerlink" title="设置永久别名 ~/.bashrc"></a>设置永久别名 <code>~/.bashrc</code></h3><ul>
-<li>编辑根目录下的<code>$ vim ~/.bashrc</code>文件  <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">alias</span> vimmkd=<span class="string">"vim -c \"cd ~/Documents/markdown_note\""</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-10-03T10:37:18.000Z"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-grep-find/">2016-10-03</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/10/03/Ubuntu-Cmd-2016-10-03-ubuntu-cmd-grep-find/">ubuntu-cmd~grep_find</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#【grep-find】查找字符串"><span class="toc-number">1.</span> <span class="toc-text">【grep|find】查找字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考链接"><span class="toc-number">1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Command-Line"><span class="toc-number">1.2.</span> <span class="toc-text">Command Line</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Matching-options"><span class="toc-number">1.2.1.</span> <span class="toc-text">Matching options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ouput-Control"><span class="toc-number">1.2.2.</span> <span class="toc-text">Ouput Control</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exmaple"><span class="toc-number">1.3.</span> <span class="toc-text">Exmaple</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查找字符串"><span class="toc-number">1.3.1.</span> <span class="toc-text">查找字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录递归查找"><span class="toc-number">1.3.2.</span> <span class="toc-text">目录递归查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式查找"><span class="toc-number">1.3.3.</span> <span class="toc-text">正则表达式查找</span></a></li></ol></li></ol></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<h2 id="【grep-find】查找字符串"><a href="#【grep-find】查找字符串" class="headerlink" title="【grep|find】查找字符串"></a>【grep|find】查找字符串</h2><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>参考链接</p>
-<ul>
-<li><a href="https://www.gnu.org/software/grep/manual/grep.html" target="_blank" rel="external">grep-查找字符串-GNU官方指导</a></li>
-<li><a href="https://www.gnu.org/software/findutils/manual/html_mono/find.html" target="_blank" rel="external">find-查找文件-GNU官方指导</a></li>
-<li><code>$ man grep</code></li>
-</ul>
-<h3 id="Command-Line"><a href="#Command-Line" class="headerlink" title="Command Line"></a>Command Line</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ grep options pattern input_file_names</div></pre></td></tr></table></figure>
-<h4 id="Matching-options"><a href="#Matching-options" class="headerlink" title="Matching options"></a>Matching options</h4><ul>
-<li><code>-e pattern</code>, <code>--regex=pattern</code><ul>
-<li>使用正则表达式</li>
+<li>作息时间（11点半熄灯水煎，6点半起床）</li>
+<li>每天晚上10点开始，做一些简单的动作健身。30~40分钟（肩部九十点、弹力带、俯卧撑、腹部、静蹲、二头三头）<ul>
+<li>keep中有很多动作可以参考并制定计划</li>
 </ul>
 </li>
-<li><code>-f file</code>, <code>--file=file</code><ul>
-<li>查找文件，如果<code>-e pattern -f file</code>表示使用正则表达式查找文件</li>
 </ul>
-</li>
-<li><code>-i</code>, <code>--ignore-case</code> 忽略大小写</li>
-<li><code>-w</code>, <code>--word-regexp</code> 单词查找</li>
-<li><code>-x</code>, <code>--line-regexp</code> 行查找</li>
-</ul>
-<h4 id="Ouput-Control"><a href="#Ouput-Control" class="headerlink" title="Ouput Control"></a>Ouput Control</h4><ul>
-<li><code>-n</code> 输出行号</li>
-<li><code>-c</code> 计算找到匹配字符串次数</li>
-<li><code>-v</code> 反向选择,显示没有出现pattern的行</li>
-<li><code>--color=auto</code> 高亮关键字</li>
-<li><code>-l</code> 输出包含满足匹配字符串的文件名</li>
-</ul>
-<p>.etc</p>
-<ul>
-<li>使用<code>alias</code>简化命令行, 高亮搜索关键字<br>在关键字的显示方面，<code>grep</code> 可以使用 <code>--color=auto</code> 来将关键字部分使用颜色显示。 这可是个很不错的功能啊！但是如果每次使用 grep 都得要自行加上 <code>--color=auto</code> 又显的很麻烦～ 此时那个好用的 alias 就得来处理一下啦！你可以在 <code>~/.bashrc</code> 内加上这行：<code>alias grep=&#39;grep --color=auto&#39;</code>再以 <code>source ~/.bashrc</code> 来立即生效即可喔！ 这样每次运行 <code>grep</code> 他都会自动帮你加上颜色显示啦<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> [ -x /usr/bin/dircolors ]; <span class="keyword">then</span></div><div class="line"><span class="built_in">test</span> -r ~/.dircolors &amp;&amp; <span class="built_in">eval</span> <span class="string">"<span class="variable">$(dircolors -b ~/.dircolors)</span>"</span> || <span class="built_in">eval</span> <span class="string">"<span class="variable">$(dircolors -b)</span>"</span></div><div class="line"><span class="built_in">alias</span> ls=<span class="string">'ls --color=auto'</span></div><div class="line"><span class="comment">#alias dir='dir --color=auto'</span></div><div class="line"><span class="comment">#alias vdir='vdir --color=auto'</span></div><div class="line"></div><div class="line"><span class="built_in">alias</span> grep=<span class="string">'grep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> fgrep=<span class="string">'fgrep --color=auto'</span></div><div class="line"><span class="built_in">alias</span> egrep=<span class="string">'egrep --color=auto'</span></div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>一些简单明了的例子</p>
-<ul>
-<li>明确要求搜索子目录：<code>grep -r</code></li>
-<li>或忽略子目录：<code>grep -d skip</code></li>
-<li><p>如果有很多 输出时，您可以通过管道将其转到’less’上阅读：</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ grep magic /usr/src/Linux/Documentation/* | less</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>grep -i pattern files</code> :不区分大小写地搜索。默认情况区分大小写，</p>
-</li>
-<li><code>grep -l pattern files</code> :只列出匹配的文件名，</li>
-<li><code>grep -L pattern files</code> :列出不匹配的文件名，</li>
-<li><code>grep -w pattern files</code> :只匹配整个单词，而不是字符串的一部分(如匹配’magic’，而不是’magical’)，</li>
-<li><code>grep -C number pattern files</code>  :匹配的上下文分别显示[number]行，</li>
-<li><code>grep pattern1 | pattern2 files</code>  :显示匹配 pattern1 或 pattern2 的行，</li>
-<li><code>grep pattern1 files | grep pattern2</code> :显示既匹配 pattern1 又匹配 pattern2 的行。</li>
-<li><code>grep -n pattern files</code>  即可显示行号信息</li>
-<li><code>grep -c pattern files</code>  即可查找总行数</li>
-<li><code>grep man *</code> 会匹配’Batman’、’manic’、’man’等，</li>
-<li><code>grep &#39;\&lt;man&#39; *</code> 匹配’manic’和’man’，但不是’Batman’，</li>
-<li><code>grep &#39;\&lt;man\&gt;&#39;</code> 只匹配’man’，而不是’Batman’或’manic’等其他的字符串。</li>
-<li><code>^</code>：指匹配的字符串在行首，</li>
-<li><code>$</code>：指匹配的字符串在行尾，</li>
-</ul>
-<h3 id="Exmaple"><a href="#Exmaple" class="headerlink" title="Exmaple"></a>Exmaple</h3><h4 id="查找字符串"><a href="#查找字符串" class="headerlink" title="查找字符串"></a>查找字符串</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 将/etc/passwd，有出现 root 的行取出</span></div><div class="line">$ grep root /etc/passwd</div><div class="line"><span class="comment"># 或</span></div><div class="line">$ cat /etc/passwd | grep root</div><div class="line"><span class="comment"># 同时显示行号</span></div><div class="line">$ grep -n root /etc/passwd</div><div class="line"><span class="comment"># 将/etc/passwd，将没有出现 root 和nologin的行取出来</span></div><div class="line">$ grep -v root /etc/passwd | grep -v nologin</div><div class="line"><span class="comment"># 用 dmesg 列出核心信息，再以 grep 找出内含 eth 那行,要将捉到的关键字显色，且加上行号来表示：</span></div><div class="line">$ dmesg | grep -n --color=auto <span class="string">'eth'</span></div><div class="line"><span class="comment"># 同上,把关键字所在行的前两行和后三行也一起显示出来</span></div><div class="line">$ dmesg | grep -n -A3 -B2 --color=auto <span class="string">'eth'</span></div></pre></td></tr></table></figure>
-<h4 id="目录递归查找"><a href="#目录递归查找" class="headerlink" title="目录递归查找"></a>目录递归查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ grep <span class="string">'energywise'</span> *           <span class="comment">#在当前目录搜索带'energywise'行的文件</span></div><div class="line">$ grep -r <span class="string">'energywise'</span> *        <span class="comment">#在当前目录及其子目录下搜索'energywise'行的文件</span></div><div class="line">$ grep <span class="_">-l</span> -r <span class="string">'energywis'</span> *     <span class="comment">#在当前目录及其子目录下搜索'energywise'行的文件，但是不显示匹配的行，只显示匹配的文件</span></div></pre></td></tr></table></figure>
-<h4 id="正则表达式查找"><a href="#正则表达式查找" class="headerlink" title="正则表达式查找"></a>正则表达式查找</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 查找 test 或 taste 这两个单字</span></div><div class="line">$ grep -n <span class="string">'t[ae]st'</span> regular_express.txt</div><div class="line"><span class="comment"># 反向查找,查找有 oo 的行，但 oo 前面不能有 g</span></div><div class="line">$ grep -n <span class="string">'[^g]oo'</span> regular_express.txt</div><div class="line">$ grep -n <span class="string">'[^a-z]oo'</span> regular_express.txt <span class="comment"># 非小写字母开头的字符串oo</span></div><div class="line">$ grep -n <span class="string">'^[a-z]'</span> regular_express.txt <span class="comment"># 小写字符为行首的行</span></div><div class="line">$ grep -n <span class="string">'^the'</span> regular_express.txt</div><div class="line">$ grep -n <span class="string">'^$'</span> regular_express.txt <span class="comment"># 找出空白行 </span></div><div class="line">$ grep -n <span class="string">'go\&#123;2,5\&#125;g'</span> regular_express.txt <span class="comment"># 找到g和g中间有2个到5个o的行,因&#123;&#125;在shell中有特殊意义,需转义</span></div></pre></td></tr></table></figure>
-<ul>
-<li>egrep (grep -e pattern)<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 打印包含1个或多个3的行,下面三个表达式等效</span></div><div class="line">$ egrep <span class="string">'3+'</span> testfile</div><div class="line">$ grep -E <span class="string">'3+'</span> testfile</div><div class="line">$ grep <span class="string">'3\+'</span> testfile      </div><div class="line"><span class="comment"># 首先含有字符2，其后紧跟着0个或1个点，后面再是0和9之间的数字</span></div><div class="line">$ egrep <span class="string">'2\.?[0-9]'</span> testfile</div><div class="line">$ grep -E <span class="string">'2\.?[0-9]'</span> testfile</div><div class="line">$ grep <span class="string">'2\.\?[0-9]'</span> testfile</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows下安装"><span class="toc-number">1.</span> <span class="toc-text">Windows下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-clone克隆Hexo的主题Next"><span class="toc-number">1.1.</span> <span class="toc-text">git clone克隆Hexo的主题Next</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-站点部署"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo 站点部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Issue-Local-hexo-not-found-in-D-hexo-blog"><span class="toc-number">1.3.</span> <span class="toc-text">Issue: Local hexo not found in D:\hexo_blog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Usage"><span class="toc-number">2.</span> <span class="toc-text">Basic Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板-Scaffold"><span class="toc-number">2.1.</span> <span class="toc-text">模板(Scaffold)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局-Layout"><span class="toc-number">2.2.</span> <span class="toc-text">布局(Layout)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义-IP"><span class="toc-number">2.3.</span> <span class="toc-text">自定义 IP</span></a></li></ol></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-10-02T07:18:23.000Z"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-Basic-Usage/">2016-10-02</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/10/02/Markdown-Hexo-2016-10-02-markdown-hexo-Basic-Usage/">markdown-hexo~Basic-Usage</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows下安装"><span class="toc-number">1.</span> <span class="toc-text">Windows下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-clone克隆Hexo的主题Next"><span class="toc-number">1.1.</span> <span class="toc-text">git clone克隆Hexo的主题Next</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-站点部署"><span class="toc-number">1.2.</span> <span class="toc-text">Hexo 站点部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Issue-Local-hexo-not-found-in-D-hexo-blog"><span class="toc-number">1.3.</span> <span class="toc-text">Issue: Local hexo not found in D:\hexo_blog</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Usage"><span class="toc-number">2.</span> <span class="toc-text">Basic Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板-Scaffold"><span class="toc-number">2.1.</span> <span class="toc-text">模板(Scaffold)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局-Layout"><span class="toc-number">2.2.</span> <span class="toc-text">布局(Layout)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义-IP"><span class="toc-number">2.3.</span> <span class="toc-text">自定义 IP</span></a></li></ol></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
+<h3 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h3><p>不拖延，有方向，有计划的看书。</p>
+<p>把有限的颈椎投入到无限的学习中。</p>
+<p>莫道君行早，更有早行人。</p>
+<p>不拖延，不拖延，不拖延，不拖延，不拖延，不拖延，不拖延，不拖延，不拖延。</p>
+<h2 id="2017-06-13-重启PC-Plan的第0天"><a href="#2017-06-13-重启PC-Plan的第0天" class="headerlink" title="2017-06-13 重启PC Plan的第0天"></a>2017-06-13 重启PC Plan的第0天</h2><p>首先强调一点，无论嘉裕是否过来，我都会按照计划坚持下去</p>
+<p>计划从今天开始到明年的4月7日，完成转行的职业规划。</p>
+<p>转行方向：</p>
 <ol>
-<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">hexo官网</a></li>
+<li>以Python为载体，了解Python流行的领域，同时机器学习的初步入门与理论知识的掌握。</li>
+<li>目标嵌入式，ARM的应用，Linux内核的学习</li>
 </ol>
-<h2 id="Windows下安装"><a href="#Windows下安装" class="headerlink" title="Windows下安装"></a>Windows下安装</h2><p>参考<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">官网</a>，在安装好<a href="wiz://open_document?guid=191fd422-472f-47cf-81c5-5d16e5b1a900&amp;kbguid=&amp;private_kbguid=26cdc8d6-8c7b-46e1-858b-50f63a1c8d67" target="_blank" rel="external">node.js</a>与<code>git</code>之后，在命令行，一键配置即可：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure></p>
-<h3 id="git-clone克隆Hexo的主题Next"><a href="#git-clone克隆Hexo的主题Next" class="headerlink" title="git clone克隆Hexo的主题Next"></a>git clone克隆Hexo的主题Next</h3><p>在终端窗口下，定位到 Hexo 站点目录下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div><div class="line">$ git <span class="built_in">clone</span> git@github.com:ywlbupt/Hexo-theme-light_cn.git themes/light_cn</div></pre></td></tr></table></figure></p>
-<h3 id="Hexo-站点部署"><a href="#Hexo-站点部署" class="headerlink" title="Hexo 站点部署"></a>Hexo 站点部署</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo g <span class="comment">#生成静态页面</span></div><div class="line">$ hexo s <span class="comment">#开启本地站点Server，（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">$ hexo d <span class="comment">#在_config.yml中配置push至github远程仓库gh-pages分支</span></div></pre></td></tr></table></figure>
-<h3 id="Issue-Local-hexo-not-found-in-D-hexo-blog"><a href="#Issue-Local-hexo-not-found-in-D-hexo-blog" class="headerlink" title="Issue: Local hexo not found in D:\hexo_blog"></a>Issue: <code>Local hexo not found in D:\hexo_blog</code></h3><ol>
-<li><p>背景：<br>Hexo搭建博客之后用git已经将所有的source都同步到了git上，在另一台电脑上将源代码clone下来之后，直接执行 hexo server,出现错误</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ERROR Local hexo not found in D:\hexo_blog</div><div class="line">ERROR Try running: &apos;npm install hexo --save&apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>解决方案：</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd D:\hexo_blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure>
-</li>
-<li><p>原因 ：<br><code>.gitignore</code>文件里面忽略了<code>node_modules</code>文件夹，所以这个文件夹没有更新上去。所以用<code>npm</code>重新安装即可。</p>
-</li>
-</ol>
-<h2 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h2><h3 id="模板-Scaffold"><a href="#模板-Scaffold" class="headerlink" title="模板(Scaffold)"></a>模板(Scaffold)</h3><p>在新建文章时，Hexo 会根据 scaffolds 文件夹内相对应的文件来建立文件，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo new photo <span class="string">"My Gallery"</span></div></pre></td></tr></table></figure>
-<p>在执行这行指令时，Hexo 会尝试在 scaffolds 文件夹中寻找 <code>photo.md</code>，并根据其内容建立文章，以下是您可以在模版中使用的变量：</p>
-<ul>
-<li>layout  布局</li>
-<li>title   标题</li>
-<li>date  文件建立日期</li>
-</ul>
-<h3 id="布局-Layout"><a href="#布局-Layout" class="headerlink" title="布局(Layout)"></a>布局(Layout)</h3><p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和 <code>draft</code>，它们分别对应不同的路径，而您自定义的其他布局和 <code>post</code> 相同，都将储存到 <code>source/_posts</code> 文件夹。<br>布局     路径<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">post   source/_posts</div><div class="line">page   source</div><div class="line">draft   source/_drafts</div></pre></td></tr></table></figure></p>
-<p>新建草稿<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">:!hexo n[ew] draft title</div></pre></td></tr></table></figure></p>
-<h3 id="自定义-IP"><a href="#自定义-IP" class="headerlink" title="自定义 IP"></a>自定义 IP</h3><p>服务器默认运行在 <code>0.0.0.0</code>，您可以覆盖默认的 IP 设置，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo server -i 192.168.1.1</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#function-root-for-path"><span class="toc-number">1.</span> <span class="toc-text">function root_for(path)</span></a></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-10-02T07:08:06.000Z"><a href="/hexo_blog/2016/10/02/Markdown-2016-10-02-markdown-hexo-jacman-script/">2016-10-02</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/10/02/Markdown-2016-10-02-markdown-hexo-jacman-script/">markdown-hexo~jacman-script</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#function-root-for-path"><span class="toc-number">1.</span> <span class="toc-text">function root_for(path)</span></a></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<h3 id="function-root-for-path"><a href="#function-root-for-path" class="headerlink" title="function root_for(path)"></a>function root_for(path)</h3><p>如果path为空，赋值根目录符号<code>/</code><br>判断path是否为包含root的完整路径，<br>如果是，返回path<br>如果否，判断path的首字符是否为根目录符号<code>/</code>，再与root拼接(前提：root结尾为路径符号<code>/</code>)</p>
-<p>Locate：<code>theme/jacman/_partial/header.ejs</code><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">root_for</span>(<span class="params">path</span>)</span>&#123;</div><div class="line">    path = path || <span class="string">'/'</span></div><div class="line">    <span class="keyword">var</span> root = config.root;</div><div class="line">    <span class="keyword">if</span> (path.substring(<span class="number">0</span>, root.length) !== root)&#123;</div><div class="line">    <span class="keyword">if</span> (path.substring(<span class="number">0</span>, <span class="number">1</span>) === <span class="string">'/'</span>)&#123;</div><div class="line">      path = root.substring(<span class="number">0</span>, root.length - <span class="number">1</span>) + path;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      path = root + path;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> path;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>Javascript语言</li>
-<li>path为theme中定义的menu (List Item)，且视为字符串</li>
-<li>path.substring(0,{num}),从0的位置截取{num}个字符，返回{num}个字符组成的字符串</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-09-27T06:12:30.000Z"><a href="/hexo_blog/2016/09/27/vim-plugin~源码安装vim添加python3的支持/">2016-09-27</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/09/27/vim-plugin~源码安装vim添加python3的支持/">vim-plugin~源码安装vim添加python3的支持</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<p>www.github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-    	
-
-	
-    		
-    
-      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下，Gvim支持Python的配置"><span class="toc-number">1.</span> <span class="toc-text">Windows下，Gvim支持Python的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中获取python版本号的方法"><span class="toc-number">2.</span> <span class="toc-text">python中获取python版本号的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim中调用Python命令"><span class="toc-number">3.</span> <span class="toc-text">Vim中调用Python命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#执行多行命令"><span class="toc-number">3.1.</span> <span class="toc-text">执行多行命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim脚本中插入Python-脚本"><span class="toc-number">3.2.</span> <span class="toc-text">在Vim脚本中插入Python 脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim中调用Python文件"><span class="toc-number">3.3.</span> <span class="toc-text">在Vim中调用Python文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Python中调用vim模块"><span class="toc-number">4.</span> <span class="toc-text">在Python中调用vim模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参数的传递，python获取vim中的对象与变量"><span class="toc-number">4.1.</span> <span class="toc-text">参数的传递，python获取vim中的对象与变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双向接口"><span class="toc-number">4.2.</span> <span class="toc-text">双向接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行vim中的command"><span class="toc-number">4.3.</span> <span class="toc-text">执行vim中的command</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取vim设置option"><span class="toc-number">4.4.</span> <span class="toc-text">获取vim设置option</span></a></li></ol></li></ol>
-</div>
-
-      
-  
-
-      
-<article class="post">
-  
-  <div class="post-content">
-    <header>
-        <div class="icon"></div>
-        
-        <time datetime="2016-09-25T05:58:21.000Z"><a href="/hexo_blog/2016/09/25/python-lib~vim-python与vim的交互/">2016-09-25</a></time>
-        
-  
-    <h1 class="title"><a href="/hexo_blog/2016/09/25/python-lib~vim-python与vim的交互/">python-lib~vim-python与vim的交互</a></h1>
-  
-
-    </header>
-
-    <div class="entry">
-      
-          <!--
-       
-              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
-<div id="toc" class="toc-aside">
-  <strong class="toc-title"> 目录 </strong>
-  <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下，Gvim支持Python的配置"><span class="toc-number">1.</span> <span class="toc-text">Windows下，Gvim支持Python的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中获取python版本号的方法"><span class="toc-number">2.</span> <span class="toc-text">python中获取python版本号的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim中调用Python命令"><span class="toc-number">3.</span> <span class="toc-text">Vim中调用Python命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#执行多行命令"><span class="toc-number">3.1.</span> <span class="toc-text">执行多行命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim脚本中插入Python-脚本"><span class="toc-number">3.2.</span> <span class="toc-text">在Vim脚本中插入Python 脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim中调用Python文件"><span class="toc-number">3.3.</span> <span class="toc-text">在Vim中调用Python文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Python中调用vim模块"><span class="toc-number">4.</span> <span class="toc-text">在Python中调用vim模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参数的传递，python获取vim中的对象与变量"><span class="toc-number">4.1.</span> <span class="toc-text">参数的传递，python获取vim中的对象与变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双向接口"><span class="toc-number">4.2.</span> <span class="toc-text">双向接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行vim中的command"><span class="toc-number">4.3.</span> <span class="toc-text">执行vim中的command</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取vim设置option"><span class="toc-number">4.4.</span> <span class="toc-text">获取vim设置option</span></a></li></ol></li></ol>
-</div>
-
-                  
-
-                  -->
-        <p>[Toc]</p>
-<p>参考文档：</p>
+<p>每天维护的List/record</p>
 <ol>
-<li><a href="http://selfboot.cn/2014/11/03/vim_plugin_with_python/" target="_blank" rel="external">使用python写vim插件</a></li>
-<li>Vim中使用命令行<code>:h python</code>——使用手册</li>
-<li><a href="http://xwsoul.com/posts/857" target="_blank" rel="external">如何使用 PYTHON 编写 VIM 插件: VIM 的 PYTHON 接口 – 入门篇</a></li>
-</ol>
-<h3 id="Windows下，Gvim支持Python的配置"><a href="#Windows下，Gvim支持Python的配置" class="headerlink" title="Windows下，Gvim支持Python的配置"></a>Windows下，Gvim支持Python的配置</h3><p>在Gvim下，执行命令<code>:version | grep python</code><br><img src="./images/python-vim-versioninfo.png" alt="pic alt"></p>
-<p>里面有<code>+python/dyn +python3/dyn</code>，说明其本身是支持python的</p>
-<p>在Gvim下，执行以下命令行</p>
-<pre><code>:echo has(&quot;python3&quot;)
-:echo has(&quot;python&quot;)
-</code></pre><p>如果返回1，表示当前环境支持Python的调用。</p>
-<p>如果返回0，请确认一下几步：</p>
-<ol>
-<li>确认安装的Gvim和Python是配套的，即<ul>
-<li>如果Gvim是32位的，那么Python也需要是32位的；同理，也可以都是64位的。</li>
-<li>在Gvim中随意执行一条Python/Python3命令，如果返回错误，无法加载<code>pythonxx.dll</code>，确认安装的Python版本与pythonxx对应。</li>
-<li>在确认安装的python版本与<code>pythonxx.dll</code>对应之后，<code>pythonxx.dll</code>通常情况下放在<code>&quot;C:\Windows\SysWOW64&quot;</code>路径下（而不是<code>system32</code>目录下），需要将该路径添加到环境变量<strong>PATH</strong>中。</li>
+<li>2017-06-13-PCPlan-Checklist<ul>
+<li>每天需要坚持的生活与作息习惯。</li>
+<li>人生路漫漫，踏实而鉴定的往下走。</li>
 </ul>
 </li>
-<li>【公司电脑在这步骤下还是不行，Gvim中执行<code>:echo has(&quot;python3&quot;)</code>OK，但是最后调用时出现错误 】</li>
-<li>PS:更换了Vim-64Bit之后，调用python35.DLL，安装了Anaconda3 64bit后，能够成功调用了！<br><img src="./images/python-vim-1.png" alt=""><br><img src="./images/python-vim-2.png" alt=""><ul>
-<li>调用<code>py print(&quot;Hello&quot;)</code>，会报错<br><code>Sorry, this command is disabled, the Python&#39;s site module could not be loaded</code><br>查找了一下，貌似是说这是python2.7.11版本的Bug，回退成python2.7.10就OK了。具体不再细究，说不定以后就修复了。</li>
+<li>2017-06-13-PCPlan-Study-progress<ul>
+<li>近期的学习计划，最好有每一个小目标的完成时间与完成情况。</li>
 </ul>
 </li>
 </ol>
-<h3 id="python中获取python版本号的方法"><a href="#python中获取python版本号的方法" class="headerlink" title="python中获取python版本号的方法"></a>python中获取python版本号的方法</h3><p>三种方法：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Python 3.5.0 |Anaconda 2.4.0 (64-bit)| (default, Oct 19 2015, 21:57:25) </div><div class="line">[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line">&gt;&gt;&gt; import platform</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(platform.python_version())</div><div class="line">3.5.0</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(sys.version)</div><div class="line">3.5.0 |Anaconda 2.4.0 (64-bit)| (default, Oct 19 2015, 21:57:25) </div><div class="line">[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(sys.version_info)</div><div class="line">sys.version_info(major=3, minor=5, micro=0, releaselevel=<span class="string">'final'</span>, serial=0)</div></pre></td></tr></table></figure></p>
-<p>可用正则表达式将版本号提取出来</p>
-<p>在python中<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> vim</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">initPythonModule</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> sys.version_info[:<span class="number">2</span>] &lt; (<span class="number">2</span>, <span class="number">4</span>):</div><div class="line">        vim.command(<span class="string">'let s:has_supported_python = 0'</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="Vim中调用Python命令"><a href="#Vim中调用Python命令" class="headerlink" title="Vim中调用Python命令"></a>Vim中调用Python命令</h3><p>在vim中可以使用<code>py[thon] {stmt}</code>来执行<code>python</code>语句<code>{stmt}</code>，你可以用<code>:python print &quot;Hello World!&quot;</code>来验证</p>
-<p>以下方法可在Vim中用来测试哪个 Python 版本可用: &gt;<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">'python'</span>)</div><div class="line">  <span class="keyword">echo</span> <span class="string">'有 Python 2.x'</span></div><div class="line"><span class="keyword">elseif</span> <span class="built_in">has</span>(<span class="string">'python3'</span>)</div><div class="line">  <span class="keyword">echo</span> <span class="string">'有 Python 3.x'</span></div><div class="line"><span class="keyword">endif</span></div></pre></td></tr></table></figure></p>
-<p>返回Vim中调用的Python的版本号：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">py</span> import platform</div><div class="line"><span class="keyword">py</span> <span class="keyword">print</span>(platform.python_version())</div></pre></td></tr></table></figure></p>
-<p>经验证，Ubuntu 14.04环境下，使用pyenv将python配置为<code>pyenv global Anaconda3-2.4.0</code>，而系统默认版本为2.7.6<br>此时，在Vim的命令行下调用python返回版本号为<code>2.7.6</code>，即实际调用的还是<strong>系统默认的版本</strong></p>
-<h4 id="执行多行命令"><a href="#执行多行命令" class="headerlink" title="执行多行命令"></a>执行多行命令</h4><p>语法如下：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">py</span>[thon] &lt;&lt; &#123;endmarker&#125; </div><div class="line">&#123;script&#125; </div><div class="line">&#123;endmarker&#125;</div></pre></td></tr></table></figure></p>
-<p>这样我们就可以执行python脚本{script}中的内容了。<code>{endmarker}</code>是一个标记符号，可以是任何内容，不过<strong><code>{endmarker}</code>后面不能有任何的空白字符。</strong></p>
-<h4 id="在Vim脚本中插入Python-脚本"><a href="#在Vim脚本中插入Python-脚本" class="headerlink" title="在Vim脚本中插入Python 脚本"></a>在Vim脚本中插入Python 脚本</h4><p>看一个简单的例子，假设下面代码保存为<code>script_demo.vim</code>：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>! <span class="title">Foo</span><span class="params">()</span> </span></div><div class="line"><span class="keyword">python</span> &lt;&lt; EOF</div><div class="line">class Foo_demo:</div><div class="line">    def __init__(self):</div><div class="line">        <span class="keyword">print</span> <span class="string">'Foo_demo init'</span> </div><div class="line">Foo_demo() </div><div class="line">EOF</div><div class="line"><span class="keyword">endfunction</span></div></pre></td></tr></table></figure></p>
-<p>那么在vim中我们先用<code>:source script_demo.vim</code>来加载脚本，然后就可以用<code>:call Foo()</code>来运行python脚本了</p>
-<h4 id="在Vim中调用Python文件"><a href="#在Vim中调用Python文件" class="headerlink" title="在Vim中调用Python文件"></a>在Vim中调用Python文件</h4><p>此外，我们还可以将python脚本放到一个单独的.py文件中，然后用<code>:pyf[ile] {file}</code>来运行python文件中的程序，要注意这里pyf[ile]后面的所有参数被看做是一个文件的名字。</p>
-<h3 id="在Python中调用vim模块"><a href="#在Python中调用vim模块" class="headerlink" title="在Python中调用vim模块"></a>在Python中调用vim模块</h3><p>vim提供了一个python模块，有趣的是模块名字就叫做vim，我们可以用它来获取vim编辑器里面的所有信息。<br>ps：该模块非python内置模块，只能在vim中调用python命令来<code>import</code>，如<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> import <span class="keyword">vim</span></div><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span>(<span class="keyword">vim</span>.<span class="built_in">eval</span>(<span class="string">"12+12"</span>))</div><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span>(<span class="keyword">vim</span>.<span class="built_in">eval</span>(<span class="string">"b:var"</span>))</div></pre></td></tr></table></figure></p>
-<p>或者：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>! <span class="title">Bar</span><span class="params">()</span> </span></div><div class="line">  <span class="keyword">python</span> &lt;&lt; EOF</div><div class="line">  import <span class="keyword">vim</span></div><div class="line">  cur_buf = <span class="keyword">vim</span>.current.<span class="keyword">buffer</span></div><div class="line">  <span class="keyword">print</span> <span class="string">"Lines: &#123;0&#125;"</span>.format(<span class="built_in">len</span>(cur_buf))</div><div class="line">  <span class="keyword">print</span> <span class="string">"Contents: &#123;0&#125;"</span>.format(cur_buf[-<span class="number">1</span>])</div><div class="line">  EOF</div><div class="line"><span class="keyword">endfunction</span></div></pre></td></tr></table></figure></p>
-<p>参考文档[2]</p>
-<h4 id="参数的传递，python获取vim中的对象与变量"><a href="#参数的传递，python获取vim中的对象与变量" class="headerlink" title="参数的传递，python获取vim中的对象与变量"></a>参数的传递，python获取vim中的对象与变量</h4><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:h <span class="keyword">python</span>-<span class="built_in">eval</span></div></pre></td></tr></table></figure>
-<ul>
-<li><code>vim.eval(str)</code><ul>
-<li>如果 Vim 表达式计算结果是字符串或者数值，那么返回一个字符串。</li>
-<li>如果 Vim 表达式计算结果是 Vim 列表，那么返回一个列表</li>
-<li>如果 Vim 表达式计算结果是 Vim 字典，那么返回一个字典</li>
-</ul>
-</li>
-<li><code>vim.bindeval(str)</code><ul>
-<li>可用于修改或调用vim对象与变量(包括b:var的读取与修改(List或dict))<br>:let b:a = “ywl”<br>:python print(vim.bindeval(“b:a”))</li>
-</ul>
-</li>
-<li><code>vim.vars</code>, <code>vim.vvars</code><ul>
-<li>分别对应全局(g:)和vim(v:)变量，通过字典的方式读取，等价于<code>vim.bindeval(&quot;g:&quot;)</code>，但更快</li>
-<li>ex: <code>:python print(vim.vars[&#39;ywl_path&#39;])</code> 等价于 <code>:python print(vim.bindeval(&quot;g:ywl_path&quot;))</code></li>
-</ul>
-</li>
-</ul>
-<p>查看下面简单的例子:<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>! <span class="title">Del</span><span class="params">(number)</span></span></div><div class="line"><span class="keyword">python</span> &lt;&lt; EOF</div><div class="line">import <span class="keyword">vim</span></div><div class="line">num = <span class="keyword">vim</span>.<span class="built_in">eval</span>(<span class="string">"a:number"</span>)</div><div class="line"><span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"normal gg&#123;0&#125;dd"</span>.format(num))</div><div class="line"><span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"w"</span>)</div><div class="line">EOF</div><div class="line"><span class="keyword">endfunction</span></div></pre></td></tr></table></figure></p>
-<p>在python代码中，可以通过<code>vim.eval(&quot;a:number&quot;)</code>来传递vim变量，等价于<code>let</code>语句<code>let num=a:number</code><br>在vim函数中，同样可以通过参数位置来访问，<br>比如<code>let arg=a:0</code>或者是<code>vim.eval(&quot;a:0&quot;)</code>。我们可以使用<code>&quot;...&quot;</code>来代替命名参数来定义一个能接收任意数量参数的函数，不过这样只能通过位置来访问。</p>
-<h4 id="双向接口"><a href="#双向接口" class="headerlink" title="双向接口"></a>双向接口</h4><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:h <span class="built_in">pyeval</span>()</div></pre></td></tr></table></figure>
-<ul>
-<li><code>pyeval()</code> &amp; <code>pyeval3()</code><br>  计算 Python 表达式 {expr} 并返回计算结果，转换为 Vim 本身的数据结构。</li>
-</ul>
-<h4 id="执行vim中的command"><a href="#执行vim中的command" class="headerlink" title="执行vim中的command"></a>执行vim中的command</h4><ul>
-<li><p>vim.command(str): 执行vim中的命令str(ex-mode，命令模式下的命令)，返回值为None，比如：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"%s/aaa/bbb/g"</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li>也可以用<code>vim.command(&quot;normal &quot;+str)</code>来执行normal模式下的命令，比如说用以下命令删除当前行的内容：<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"normal "</span>+<span class="string">'dd'</span>)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="获取vim设置option"><a href="#获取vim设置option" class="headerlink" title="获取vim设置option"></a>获取vim设置option</h4><p>这个示例将由多个指令完成, 主角是 options 但是是各个 vim 对象的 options .</p>
-<p>分别执行如下指令:</p>
-<ul>
-<li><p>从全局配置获取是否高亮:</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">vim</span>.<span class="keyword">options</span>[<span class="string">"hls"</span>]</div></pre></td></tr></table></figure>
-</li>
-<li><p>从当前窗口配置获取是否显示行号:</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span> <span class="keyword">vim</span>.current.window.<span class="keyword">options</span>[<span class="string">"nu"</span>]</div></pre></td></tr></table></figure>
-</li>
-<li><p>从当前buffer配置获取tab长度</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span> <span class="keyword">vim</span>.current.<span class="keyword">buffer</span>.<span class="keyword">options</span>[<span class="string">"ts"</span>]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>尽管可能所有选项都是在 _vimrc 文件配置的, 但是获取的方式可能还是会根据其生效区块不同而采用了不同的获取方式</p>
 
       
     </div>
@@ -816,7 +857,7 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#os"><span class="toc-number">1.</span> <span class="toc-text">os</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件目录操作"><span class="toc-number">1.1.</span> <span class="toc-text">文件目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#New-in-python-3"><span class="toc-number">1.1.1.</span> <span class="toc-text">New in python 3</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os-path-路径操作"><span class="toc-number">1.2.</span> <span class="toc-text">os.path 路径操作</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实例方法，类方法，静态方法，类变量"><span class="toc-number">1.</span> <span class="toc-text">实例方法，类方法，静态方法，类变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类变量"><span class="toc-number">2.</span> <span class="toc-text">类变量</span></a></li></ol>
 </div>
 
       
@@ -829,10 +870,10 @@
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-09-24T01:53:44.000Z"><a href="/hexo_blog/2016/09/24/Python-Lib-2016-09-24-python-lib-os/">2016-09-24</a></time>
+        <time datetime="2017-05-18T15:22:46.000Z"><a href="/hexo_blog/2017/05/18/python-basic-类变量类方法静态方法/">2017-05-18</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/09/24/Python-Lib-2016-09-24-python-lib-os/">python-lib~os</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2017/05/18/python-basic-类变量类方法静态方法/">python-basic~类变量类方法静态方法</a></h1>
   
 
     </header>
@@ -845,49 +886,29 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#os"><span class="toc-number">1.</span> <span class="toc-text">os</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件目录操作"><span class="toc-number">1.1.</span> <span class="toc-text">文件目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#New-in-python-3"><span class="toc-number">1.1.1.</span> <span class="toc-text">New in python 3</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os-path-路径操作"><span class="toc-number">1.2.</span> <span class="toc-text">os.path 路径操作</span></a></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实例方法，类方法，静态方法，类变量"><span class="toc-number">1.</span> <span class="toc-text">实例方法，类方法，静态方法，类变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类变量"><span class="toc-number">2.</span> <span class="toc-text">类变量</span></a></li></ol>
 </div>
 
                   
 
                   -->
         <p>[Toc]</p>
-<h2 id="os"><a href="#os" class="headerlink" title="os"></a>os</h2><p>os负责程序与操作系统的交互，sys负责程序与python解释器的交互。</p>
-<h3 id="文件目录操作"><a href="#文件目录操作" class="headerlink" title="文件目录操作"></a>文件目录操作</h3><blockquote>
-<p>python 3.5.2<br>On Unix, path can be of type of <code>str</code> or <code>bytes</code> (use <code>fsencode()</code> and <code>fsdecode()</code> to encode bytes paths)<br>On Windows, path must be of type <code>str</code><br>On Unix-based systems, scandir() uses the system’s <code>opendir()</code> and <code>readdir()</code> functions. On Windows, it uses the Win32 <code>FindFirstFileW</code> and <code>FindNextFileW</code> functions.</p>
-</blockquote>
+<h2 id="实例方法，类方法，静态方法，类变量"><a href="#实例方法，类方法，静态方法，类变量" class="headerlink" title="实例方法，类方法，静态方法，类变量"></a>实例方法，类方法，静态方法，类变量</h2><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClassMethod</span><span class="params">(object)</span>:</span> METHOD = <span class="string">'method hoho'</span> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.name = <span class="string">'leon'</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test1</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'test1'</span>)</div><div class="line">        print(self)</div><div class="line"></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test2</span><span class="params">(cls)</span>:</span></div><div class="line">        <span class="keyword">print</span> (<span class="string">'test2'</span>)</div><div class="line">        <span class="keyword">print</span> (cls)</div><div class="line">        <span class="keyword">print</span> (TestClassMethod.METHOD)</div><div class="line">        <span class="keyword">print</span> (<span class="string">'----------------'</span>)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test3</span><span class="params">()</span>:</span></div><div class="line">        <span class="keyword">print</span> (<span class="string">'test3'</span>)</div><div class="line">        <span class="keyword">print</span> (TestClassMethod.METHOD)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    a = TestClassMethod()</div><div class="line">    a.test1()</div><div class="line">    a.test2()</div><div class="line">    a.test3()</div><div class="line">    TestClassMethod.test3()</div></pre></td></tr></table></figure>
+<p>输出<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">test</span>1</div><div class="line">&lt;__main__.TestClassMethod object at 0x7f9c65b2c6a0&gt;</div><div class="line"><span class="built_in">test</span>2</div><div class="line">&lt;class <span class="string">'__main__.TestClassMethod'</span>&gt;</div><div class="line">method hoho</div><div class="line">----------------</div><div class="line"><span class="built_in">test</span>3</div><div class="line">method hoho</div><div class="line"><span class="built_in">test</span>3</div><div class="line">method hoho</div></pre></td></tr></table></figure></p>
 <ul>
-<li><code>os.listdir(path=&#39;.&#39;)</code> 返回指定路径下的目录与文件<ul>
-<li>在ver3.5后，使用<code>os.scandir()</code>会更加灵活可操作<a href="#scan">os.scandir</a></li>
-<li><em>Avaliable : Unix, Windows</em></li>
+<li>test1为实例方法</li>
+<li>test2为类方法，第一个参数为类本身</li>
+<li>test3为静态方法，可以不接收参数</li>
+<li>类方法和静态方法皆可以访问类的静态变量(类变量)，但不能访问实例变量，test2、test3是不能访问self.name的,而test1则可以</li>
 </ul>
-</li>
-<li><code>os.walk(top, ...)</code> 递归遍历path路径下的文件<ul>
-<li>返回一个三元数组，[(root ,dirs, files),…] 其中，<code>dirs</code>和<code>files</code>为list</li>
-</ul>
-</li>
-<li><code>os.path.split(name)</code>  分割文件名与目录（事实上，如果你完全使用目录，它也会将最后一个目录作为文件名而分离，同时它不会判断文件或目录是否存在）</li>
-</ul>
-<h4 id="New-in-python-3"><a href="#New-in-python-3" class="headerlink" title="New in python 3"></a>New in python 3</h4><p><span id="scan"></span> </p>
-<ul>
-<li><code>os.scandir(path=&#39;.&#39;)</code>，返回可迭代的对象<code>DirEntry</code><ul>
-<li>note: New in ver 3.5</li>
-</ul>
-<ul>
-<li><code>DirEntry</code><ul>
-<li>name, path, inode, is_dir, is_file, is_symlink, stat</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="os-path-路径操作"><a href="#os-path-路径操作" class="headerlink" title="os.path 路径操作"></a>os.path 路径操作</h3><ul>
-<li><code>os.sep</code> 返回当前系统的路径分隔符，Unix下为<code>/</code></li>
-<li><code>os.path.isfile()</code> 判断path是否为文件</li>
-<li><code>os.path.exists(path)</code> 判断path是否存在</li>
-<li><code>os.path.join(path, *paths)</code> 连接路径，会自动加上系统路径分隔符 <code>os.sep</code></li>
-<li><code>os.path.relpath(path[, start])</code> 返回path相对与start的相对路径</li>
-</ul>
+<h2 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h2><ol>
+<li>类变量的定义在类的定义之后</li>
+<li>在类代码之外，实例能够访问类变量，也可以通过类名访问</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">()</span>:</span></div><div class="line">    val = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    a = A()</div><div class="line"></div><div class="line">    print(a.val)</div><div class="line">    <span class="comment"># 0</span></div><div class="line">    print(A.val)</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>在类的代码内，可以通过<code>self.__class__.val</code>的方式访问</strong></li>
+</ol>
 
       
     </div>
@@ -912,7 +933,7 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python2和python3的共存"><span class="toc-number">1.</span> <span class="toc-text">python2和python3的共存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reload"><span class="toc-number">1.0.1.</span> <span class="toc-text">reload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File-I-O"><span class="toc-number">1.0.2.</span> <span class="toc-text">File I/O</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exception"><span class="toc-number">1.0.3.</span> <span class="toc-text">exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-返回迭代对象；python-2返回列表"><span class="toc-number">1.0.4.</span> <span class="toc-text">python 3 返回迭代对象；python 2返回列表</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#REF"><span class="toc-number">1.</span> <span class="toc-text">REF</span></a></li></ol>
 </div>
 
       
@@ -925,10 +946,10 @@
     <header>
         <div class="icon"></div>
         
-        <time datetime="2016-09-21T15:04:50.000Z"><a href="/hexo_blog/2016/09/21/Python-Basic-2016-09-21-python-basic-python2to3/">2016-09-21</a></time>
+        <time datetime="2017-05-17T15:14:46.000Z"><a href="/hexo_blog/2017/05/17/python-basic-isinstance与type数据类型检查/">2017-05-17</a></time>
         
   
-    <h1 class="title"><a href="/hexo_blog/2016/09/21/Python-Basic-2016-09-21-python-basic-python2to3/">python-basic~python2to3</a></h1>
+    <h1 class="title"><a href="/hexo_blog/2017/05/17/python-basic-isinstance与type数据类型检查/">python-basic~isinstance与type数据类型检查</a></h1>
   
 
     </header>
@@ -941,72 +962,28 @@
 <div id="toc" class="toc-aside">
   <strong class="toc-title"> 目录 </strong>
   <strong class="toc-title"> undefined </strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python2和python3的共存"><span class="toc-number">1.</span> <span class="toc-text">python2和python3的共存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#reload"><span class="toc-number">1.0.1.</span> <span class="toc-text">reload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#File-I-O"><span class="toc-number">1.0.2.</span> <span class="toc-text">File I/O</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#codecs-open"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">codecs.open()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exception"><span class="toc-number">1.0.3.</span> <span class="toc-text">exception</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-3-返回迭代对象；python-2返回列表"><span class="toc-number">1.0.4.</span> <span class="toc-text">python 3 返回迭代对象；python 2返回列表</span></a></li></ol></li></ol></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#REF"><span class="toc-number">1.</span> <span class="toc-text">REF</span></a></li></ol>
 </div>
 
                   
 
                   -->
         <p>[Toc]</p>
-<p>【参考文档】</p>
-<ol>
-<li><a href="https://my.oschina.net/soarwilldo/blog/510752" target="_blank" rel="external">Supporting Python3 – 常见迁移问题</a></li>
-<li><a href="http://lucumr.pocoo.org/2011/1/22/forwards-compatible-python/" target="_blank" rel="external">Writing Forwards Compatible Python Code</a></li>
+<ul>
+<li><p>使用isinstance进行数据类型检查，而不是Type</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">0.1</span></div><div class="line">isinstance(a, (int, float))</div><div class="line"><span class="comment"># True</span></div><div class="line">isinstance(b, (int, float))</div><div class="line"><span class="comment"># True</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">c = C()</div><div class="line">isinstance(c, (int,C))</div><div class="line"><span class="comment"># True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>type对于subclass之类的就不行了</p>
+</li>
+</ul>
+<p>在python 3中，<code>isinstance</code>可以处理子类的类型检查，而Type不行<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>摆事实讲证据<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(a)</div><div class="line">&lt;class <span class="string">'__main__.A'</span>&gt;</div><div class="line"><span class="comment"># a 是类A的实例</span></div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(A)</div><div class="line">&lt;class <span class="string">'type'</span>&gt;</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(C)</div><div class="line">&lt;class <span class="string">'type'</span>&gt;</div><div class="line"><span class="comment"># 任意类本身是type的实例</span></div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(a) == A</div><div class="line">True</div><div class="line">&gt;&gt;&gt; <span class="built_in">type</span>(C) == A</div><div class="line">False</div><div class="line">&gt;&gt;&gt; isinstance(a, C)</div><div class="line">False</div><div class="line">&gt;&gt;&gt; isinstance(a, A)</div><div class="line">True</div><div class="line">&gt;&gt;&gt; isinstance(c, A)</div><div class="line">True</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h2><ol>
+<li><a href="https://en.wikipedia.org/wiki/Duck_typing" target="_blank" rel="external">Duck typing</a></li>
 </ol>
-<h2 id="python2和python3的共存"><a href="#python2和python3的共存" class="headerlink" title="python2和python3的共存"></a>python2和python3的共存</h2><h4 id="reload"><a href="#reload" class="headerlink" title="reload"></a>reload</h4><p><strong>共存</strong></p>
-<ul>
-<li><strong>python3</strong> 中，使用 <code>imp.reload(module)</code> : Reload a previously imported module. <ul>
-<li>替代python2中的reload()函数</li>
-</ul>
-</li>
-</ul>
-<h4 id="File-I-O"><a href="#File-I-O" class="headerlink" title="File I/O"></a>File I/O</h4><p>具体细节可参考笔记内链 TODO : </p>
-<p>考虑到<strong>共存</strong>问题，可以使用<code>codecs</code>库来兼容</p>
-<h5 id="codecs-open"><a href="#codecs-open" class="headerlink" title="codecs.open()"></a>codecs.open()</h5><ul>
-<li><p>对于python 2 </p>
-<ul>
-<li><p>使用<code>open()</code>打开文件会有一些问题，open打开文件只能写入<code>str</code>类型，不管字符串是什么编码方式的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">fr = open(<span class="string">"test.txt"</span>, <span class="string">'a'</span>)</div><div class="line">line1=<span class="string">"我爱祖国"</span></div><div class="line">fr.write(line1)</div></pre></td></tr></table></figure>
-<p>这样是完全可以的，因为 line1 在python2中是字符串类型。</p>
-</li>
-<li><p>但有时我们会遇到写入文件时编码不统一的情况(utf-8, gbk)，一般会转换成unicode，此时写入文件就有问题了：  </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">line2=<span class="string">u"我爱祖国"</span></div><div class="line">fr.write()</div></pre></td></tr></table></figure>
-<p>会报错，抛出<code>UnicodeEncodeError</code>的错误</p>
-</li>
-<li>对于上面的错误，可以采用先将<code>line2</code>编码成str类型，过程如下：<br><code>input(utf-8) -&gt; decode -&gt; unicode -&gt; encode -&gt; output(gbk)</code></li>
-<li><p>代替这个繁琐的操作的方法是采用<code>codecs.open()</code>，</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span>  codecs </div><div class="line">fw = codecs.open(<span class="string">'test.txt'</span>, <span class="string">'a'</span>, encoding = <span class="string">'utf-8'</span>)</div><div class="line">fw.write(line2)  <span class="comment"># line2为unicode类型</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>这种方法可以指定一个编码打开文件，使用这个方法打开的文件读取返回的将是unicode。写入时，如果参数 是unicode，则使用open()时指定的编码进行编码后写入；<br>如果是str，则先根据源代码文件声明的字符编码，解码成unicode后再进行前述操作。<br>相对内置的open()来说，这个方法比较不容易在编码上出现问题。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="exception"><a href="#exception" class="headerlink" title="exception"></a>exception</h4><p>基本语法格式都是<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">Try... <span class="keyword">except</span>... <span class="keyword">finally</span>...</div></pre></td></tr></table></figure></p>
-<p>不同的地方在于<code>exception</code>的语法</p>
-<ul>
-<li>python3:  <code>except ERRORTYPE as e:</code></li>
-<li>python2: <code>except ERRORTYPE , e:</code></li>
-</ul>
-<p>TODO :</p>
-<p>如果你需要同时支持Python 2和Python 3，你很可能需要根据Python版本使用条件语句。在这本书里，我一贯使用sys.version_info元组和(3,)元组比较。但是还有一些其他的方式来做相同的测试，像sys.version_info[0] !=3或者使用sys.version字符串。使用哪 一个主要是个人爱好。如果你最终做了很多测试，设定一个常量是个好主意：</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>import sys<br>PY3 = sys.version_info &gt; (3,)<br>然后你可以在软件的剩余部分仅使用PY3常量。</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h4 id="python-3-返回迭代对象；python-2返回列表"><a href="#python-3-返回迭代对象；python-2返回列表" class="headerlink" title="python 3 返回迭代对象；python 2返回列表"></a>python 3 返回迭代对象；python 2返回列表</h4><p>python 3 中返回的是可迭代的对象，而不像 python 3 中返回的是列表</p>
-<ul>
-<li>对于迭代的对象，可以通过<code>list()</code>简单的将迭代对象转换成列表<ul>
-<li>map/filter</li>
-<li>zip()</li>
-<li>dict.key(), dict.value(), dict.item() 方法</li>
-</ul>
-</li>
-</ul>
 
       
     </div>
@@ -1047,19 +1024,31 @@
   <h3 class="title" id="categories">分类</h3>
 <!--   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>2</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>0</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
 	
   
 	
-		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>0</small></li>
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
 	
   
 	
@@ -1067,11 +1056,15 @@
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><small>1</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
      
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
      
   
 	
@@ -1079,28 +1072,64 @@
 	
   
 	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
 		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Python/">Python</a><small>7</small></li>
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
 	
   
 	
-		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>3</small></li>
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
      
   
 	
-		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>3</small></li>
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
 	
   
 	
 		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
 	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
    -->
 
 
-     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE-Config/">IDE_Config</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li></ul> 
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
 </div>
  
 
@@ -1115,7 +1144,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a>
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
   </div>
 </div>
 
@@ -1128,7 +1157,7 @@
   <footer id="footer"><div class="footer-content inner">
   <div class="alignleft">
   
-    &copy; 2016 Wlin
+    &copy; 2017 Wlin
     
   </div>
   <div class="alignright">

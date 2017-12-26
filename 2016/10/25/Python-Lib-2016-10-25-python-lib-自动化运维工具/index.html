@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-lib~自动化运维工具 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="[Toc]
+目前市场上主流的开源自动化配置管理工具有puppet、chef、ansible、saltstack。到底选择哪一个好？我为什么选择Saltstack，考虑方式很简单，主要基于如下两个方面：第一、语言的选择（puppet/chef vs ansible/saltstack）开源技术，不看官">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python-lib~自动化运维工具"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install"><span class="toc-number">1.</span> <span class="toc-text">Install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rsync文件同步模块"><span class="toc-number">2.</span> <span class="toc-text">rsync文件同步模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-Install-rsync"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu Install rsync</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#语法"><span class="toc-number">3.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Section-Name"><span class="toc-number">3.2.</span> <span class="toc-text">Section Name</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-10-25T02:48:19.000Z"><a href="/hexo_blog/2016/10/25/Python-Lib-2016-10-25-python-lib-自动化运维工具/">2016-10-25</a></time>
+        
+  
+    <h1 class="title">python-lib~自动化运维工具</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install"><span class="toc-number">1.</span> <span class="toc-text">Install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rsync文件同步模块"><span class="toc-number">2.</span> <span class="toc-text">rsync文件同步模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-Install-rsync"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu Install rsync</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#语法"><span class="toc-number">3.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Section-Name"><span class="toc-number">3.2.</span> <span class="toc-text">Section Name</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<p>目前市场上主流的开源自动化配置管理工具有puppet、chef、ansible、saltstack。到底选择哪一个好？<br>我为什么选择Saltstack，考虑方式很简单，主要基于如下两个方面：<br>第一、语言的选择（puppet/chef vs ansible/saltstack）<br>开源技术，不看官网不足以熟练，不懂源码不足以精通<br>Puppet、Chef基于Ruby开发，ansible、saltstack基于python开发的<br>本人热衷于python（后期可做二次开发），排除Puppet、Chef<br>第二、速度的选择 (ansible vs saltstack)<br>管理配置讲究的是更快更稳<br>ansible基于SSH协议传输数据，Saltstack使用消息队列zeroMQ传输数据</p>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">pip install ansible</div></pre></td></tr></table></figure>
+<h3 id="rsync文件同步模块"><a href="#rsync文件同步模块" class="headerlink" title="rsync文件同步模块"></a>rsync文件同步模块</h3><p><a href="http://taohui.org.cn/rsync_algorithm.html" target="_blank" rel="external">详解rsync算法–如何减少同步文件时的网络传输量</a></p>
+<ul>
+<li>md5，哈希算法，把任意长度额字符串转化为固定的128字符，<ul>
+<li>相同的字符串不可能计算出不同的MD5值</li>
+<li>MD5碰撞是有可能的：两个不同的字符串有可能计算出相同的MD5值，但几率非常小，可以忽略不计</li>
+<li>rsync中，同一个文件按1k分割成多块，计算每一个块的MD5值。</li>
+</ul>
+</li>
+<li>alder32校验和，把1K块数据映射成32位整型数字<ul>
+<li>相同的字符串不可能计算出不同的Alder32</li>
+<li>计算速度较MD5快得多，成本小；</li>
+<li>当有了从0-1024长度的校验和后，计算出1-1025或者2-1026等其他校验和非常方便，只要少量运算即可</li>
+<li>碰撞率比MD5高多了</li>
+</ul>
+</li>
+</ul>
+<h3 id="Ubuntu-Install-rsync"><a href="#Ubuntu-Install-rsync" class="headerlink" title="Ubuntu Install rsync"></a>Ubuntu Install rsync</h3><p><a href="http://man.linuxde.net/rsync" target="_blank" rel="external">Linux命令大全-rsync命令</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get install rsync</div></pre></td></tr></table></figure>
+<p>但是需要注意的是必须在服务器A和B上都安装rsync，<br>其中A服务器上是以服务器模式运行rsync，<br>而B上则以客户端方式运行rsync。<br>这样在web服务器A上运行rsync守护进程，在B上定时运行客户程序来备份web服务器A上需要备份的内容。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">rsync [OPTION]... SRC DEST </div><div class="line">rsync [OPTION]... SRC [USER@]host:DEST </div><div class="line">rsync [OPTION]... [USER@]HOST:SRC DEST </div><div class="line">rsync [OPTION]... [USER@]HOST::SRC DEST </div><div class="line">rsync [OPTION]... SRC [USER@]HOST::DEST </div><div class="line">rsync [OPTION]...  rsync://[USER@]HOST[:PORT]/SRC [DEST]</div></pre></td></tr></table></figure>
+<p>对应于以上六种命令格式，rsync有六种不同的工作模式：</p>
+<ol>
+<li>拷贝本地文件。当<code>SRC</code>和<code>DES</code>路径信息都不包含有单个冒号”:”分隔符时就启动这种工作模式。如：<code>rsync -a /data /backup</code> </li>
+<li>使用一个远程shell程序(如<code>rsh</code>、<code>ssh</code>)来实现将本地机器的内容拷贝到远程机器。当DST路径地址包含单个冒号<code>&quot;:&quot;</code>分隔符时启动该模式。如：<code>rsync -avz *.c foo:src</code> </li>
+<li>使用一个远程shell程序(如<code>rsh</code>、<code>ssh</code>)来实现将远程机器的内容拷贝到本地机器。当SRC地址路径包含单个冒号<code>&quot;:&quot;</code>分隔符时启动该模式。如：<code>rsync -avz foo:src/bar /data</code> </li>
+<li>从远程rsync服务器中拷贝文件到本地机。当<code>SRC</code>路径信息包含<code>&quot;::&quot;</code>分隔符时启动该模式。如：<code>rsync -av root@192.168.78.192::www /databack</code> 从本地机器拷贝文件到远程rsync服务器中。</li>
+<li>当<code>DST</code>路径信息包含<code>&quot;::&quot;</code>分隔符时启动该模式。如：<code>rsync -av /databack root@192.168.78.192::www</code> </li>
+<li>列远程机的文件列表。这类似于rsync传输，不过只要在命令中省略掉本地机信息即可。如：<code>rsync -v rsync://192.168.78.192/www</code></li>
+</ol>
+<ul>
+<li><code>-a</code> 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD</li>
+<li><code>-z</code> 在传输文件时做压缩处理</li>
+<li><code>-v</code> 详细模式输出，信息回显</li>
+</ul>
+<h4 id="Section-Name"><a href="#Section-Name" class="headerlink" title="Section Name"></a>Section Name</h4><p>-v, –verbose 详细模式输出<br>-q, –quiet 精简输出模式<br>-c, –checksum 打开校验开关，强制对文件传输进行校验<br><strong>-a, –archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD</strong><br>-r, –recursive 对子目录以递归模式处理<br>-R, –relative 使用相对路径信息<br>-b, –backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为~filename<br>可以使用–suffix选项来指定不同的备份文件前缀<br>–backup-dir 将备份文件(如~filename)存放在在目录下<br>-suffix=SUFFIX 定义备份文件前缀<br><strong>-u, –update 仅仅进行更新，也就是跳过所有已经存在于DST，并且文件时间晚于要备份的文件，不覆盖更新的文件</strong><br>-l, –links 保留软链结<br>-L, –copy-links 想对待常规文件一样处理软链结<br>–copy-unsafe-links 仅仅拷贝指向SRC路径目录树以外的链结<br>–safe-links 忽略指向SRC路径目录树以外的链结<br>-H, –hard-links 保留硬链结<br>-p, –perms 保持文件权限<br>-o, –owner 保持文件属主信息<br>-g, –group 保持文件属组信息<br>-D, –devices 保持设备文件信息<br>-t, –times 保持文件时间信息<br>-S, –sparse 对稀疏文件进行特殊处理以节省DST的空间<br>-n, –dry-run现实哪些文件将被传输<br>-w, –whole-file 拷贝文件，不进行增量检测<br>-x, –one-file-system 不要跨越文件系统边界<br>-B, –block-size=SIZE 检验算法使用的块尺寸，默认是700字节<br><strong>-e, –rsh=command 指定使用rsh、ssh方式进行数据同步<code>-e ssh</code></strong><br>–rsync-path=PATH 指定远程服务器上的rsync命令所在路径信息<br>-C, –cvs-exclude 使用和CVS一样的方法自动忽略文件，用来排除那些不希望传输的文件<br><strong>–existing 仅仅更新那些已经存在于DST的文件，而不备份那些新创建的文件</strong><br><strong>–delete 删除那些DST中SRC没有的文件</strong><br>–delete-excluded 同样删除接收端那些被该选项指定排除的文件<br>–delete-after 传输结束以后再删除<br>–ignore-errors 及时出现IO错误也进行删除<br>–max-delete=NUM 最多删除NUM个文件<br>–partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输<br>–force 强制删除目录，即使不为空<br>–numeric-ids 不将数字的用户和组id匹配为用户名和组名<br>–timeout=time ip超时时间，单位为秒<br>-I, –ignore-times 不跳过那些有同样的时间和长度的文件<br>–size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间<br>–modify-window=NUM 决定文件是否时间相同时使用的时间戳窗口，默认为0<br>-T –temp-dir=DIR 在DIR中创建临时文件<br>–compare-dest=DIR 同样比较DIR中的文件来决定是否需要备份<br>-P 等同于 –partial<br>–progress 显示备份过程<br><strong>-z, –compress 对备份的文件在传输时进行压缩处理</strong><br>–exclude=PATTERN 指定排除不需要传输的文件模式<br>–include=PATTERN 指定不排除而需要传输的文件模式<br>–exclude-from=FILE 排除FILE中指定模式的文件<br>–include-from=FILE 不排除FILE指定模式匹配的文件<br>–version 打印版本信息<br>–address 绑定到特定的地址<br>–config=FILE 指定其他的配置文件，不使用默认的rsyncd.conf文件<br>–port=PORT 指定其他的rsync服务端口<br>–blocking-io 对远程shell使用阻塞IO<br>-stats 给出某些文件的传输状态<br>–progress 在传输时现实传输过程<br>–log-format=formAT 指定日志文件格式<br>–password-file=FILE 从FILE中得到密码<br>–bwlimit=KBPS 限制I/O带宽，KBytes per second<br>-h, –help 显示帮助信息</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Python/">Python</a>, <a href="/hexo_blog/categories/Python/Lib/">Lib</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/ansible/">ansible</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+

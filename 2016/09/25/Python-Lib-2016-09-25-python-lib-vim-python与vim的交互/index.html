@@ -1,0 +1,540 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-lib~vim-python与vim的交互 | WiZero</title>
+  <meta name="author" content="Wlin">
+  
+  <meta name="description" content="[Toc]
+参考文档：
+
+使用python写vim插件
+Vim中使用命令行:h python——使用手册
+如何使用 PYTHON 编写 VIM 插件: VIM 的 PYTHON 接口 – 入门篇
+
+Linux 下，Vim源码安装支持pythonVim 中，执行命令 :version | grep p">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="python-lib~vim-python与vim的交互"/>
+  <meta property="og:site_name" content="WiZero"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  <link rel="alternate" href="/hexo_blog/atom.xml" title="WiZero" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo_blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+</head>
+
+<body>
+  <header id="header">
+<div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/hexo_blog/images/site/lufy-avatar.jpg">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/hexo_blog/">WiZero</a></h1>
+		    <h2><a href="/hexo_blog/">阅读，思考，实践，不忘初心</a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/hexo_blog/./">首页</a></li>
+		    		
+		    		  <li><a href="/hexo_blog/archives">归档</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/hexo_blog/atom.xml">订阅</a></li>
+		    
+		      <li><a href="/hexo_blog/customization">留言</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    
+      <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-下，Vim源码安装支持python"><span class="toc-number">1.</span> <span class="toc-text">Linux 下，Vim源码安装支持python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下，Gvim支持Python的配置"><span class="toc-number">2.</span> <span class="toc-text">Windows下，Gvim支持Python的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中获取python版本号的方法"><span class="toc-number">3.</span> <span class="toc-text">python中获取python版本号的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim中调用Python命令"><span class="toc-number">4.</span> <span class="toc-text">Vim中调用Python命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#执行多行命令"><span class="toc-number">4.1.</span> <span class="toc-text">执行多行命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim脚本中插入Python-脚本"><span class="toc-number">4.2.</span> <span class="toc-text">在Vim脚本中插入Python 脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim中调用Python文件"><span class="toc-number">4.3.</span> <span class="toc-text">在Vim中调用Python文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Python中调用vim模块"><span class="toc-number">5.</span> <span class="toc-text">在Python中调用vim模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参数的传递，python获取vim中的对象与变量"><span class="toc-number">5.1.</span> <span class="toc-text">参数的传递，python获取vim中的对象与变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双向接口"><span class="toc-number">5.2.</span> <span class="toc-text">双向接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行vim中的command"><span class="toc-number">5.3.</span> <span class="toc-text">执行vim中的command</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取vim设置option"><span class="toc-number">5.4.</span> <span class="toc-text">获取vim设置option</span></a></li></ol></li></ol>
+</div>
+
+      
+  
+
+      
+<article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-09-25T05:58:21.000Z"><a href="/hexo_blog/2016/09/25/Python-Lib-2016-09-25-python-lib-vim-python与vim的交互/">2016-09-25</a></time>
+        
+  
+    <h1 class="title">python-lib~vim-python与vim的交互</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+          <!--
+       
+              <div class="openaside"><a class="navbutton" href="#" title="显示目录"></a></div>
+<div id="toc" class="toc-aside">
+  <strong class="toc-title"> 目录 </strong>
+  <strong class="toc-title"> post </strong>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-下，Vim源码安装支持python"><span class="toc-number">1.</span> <span class="toc-text">Linux 下，Vim源码安装支持python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下，Gvim支持Python的配置"><span class="toc-number">2.</span> <span class="toc-text">Windows下，Gvim支持Python的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python中获取python版本号的方法"><span class="toc-number">3.</span> <span class="toc-text">python中获取python版本号的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vim中调用Python命令"><span class="toc-number">4.</span> <span class="toc-text">Vim中调用Python命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#执行多行命令"><span class="toc-number">4.1.</span> <span class="toc-text">执行多行命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim脚本中插入Python-脚本"><span class="toc-number">4.2.</span> <span class="toc-text">在Vim脚本中插入Python 脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Vim中调用Python文件"><span class="toc-number">4.3.</span> <span class="toc-text">在Vim中调用Python文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Python中调用vim模块"><span class="toc-number">5.</span> <span class="toc-text">在Python中调用vim模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参数的传递，python获取vim中的对象与变量"><span class="toc-number">5.1.</span> <span class="toc-text">参数的传递，python获取vim中的对象与变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#双向接口"><span class="toc-number">5.2.</span> <span class="toc-text">双向接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行vim中的command"><span class="toc-number">5.3.</span> <span class="toc-text">执行vim中的command</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取vim设置option"><span class="toc-number">5.4.</span> <span class="toc-text">获取vim设置option</span></a></li></ol></li></ol>
+</div>
+
+                  
+
+                  -->
+        <p>[Toc]</p>
+<p>参考文档：</p>
+<ol>
+<li><a href="http://selfboot.cn/2014/11/03/vim_plugin_with_python/" target="_blank" rel="external">使用python写vim插件</a></li>
+<li>Vim中使用命令行<code>:h python</code>——使用手册</li>
+<li><a href="http://xwsoul.com/posts/857" target="_blank" rel="external">如何使用 PYTHON 编写 VIM 插件: VIM 的 PYTHON 接口 – 入门篇</a></li>
+</ol>
+<h3 id="Linux-下，Vim源码安装支持python"><a href="#Linux-下，Vim源码安装支持python" class="headerlink" title="Linux 下，Vim源码安装支持python"></a>Linux 下，Vim源码安装支持python</h3><p>Vim 中，执行命令 <code>:version | grep python</code>查看是否支持python的调用 </p>
+<p>参考<a href="http://pandara.xyz/2016/06/06/raspberrypi_vim_python/" target="_blank" rel="external">Raspberry Pi 打造 vim + Python 的最佳实践</a></p>
+<ol>
+<li><p>先将默认源安装的vim 删除</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get remove vim vim-runtime gvim</div></pre></td></tr></table></figure>
+<ul>
+<li>如果在ubuntu 12.04，可能还需要remove <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt-get remove vim-tiny vim-common vim-gui-common vim-nox</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>安装<code>vim-nox</code>版本，亲测在树莓派上可支持python2(<code>:echo has(&quot;python&quot;)</code>)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt-get install vim-nox</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果想源码安装vim，参考YCM的文档，<a href="https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source" target="_blank" rel="external">Building Vim from source</a></p>
+</li>
+</ol>
+<h3 id="Windows下，Gvim支持Python的配置"><a href="#Windows下，Gvim支持Python的配置" class="headerlink" title="Windows下，Gvim支持Python的配置"></a>Windows下，Gvim支持Python的配置</h3><p>在Gvim下，执行命令<code>:version | grep python</code><br><img src="/hexo_blog/images/python-vim-versioninfo.png" alt="pic alt"></p>
+<p>里面有<code>+python/dyn +python3/dyn</code>，说明其本身是支持python的</p>
+<p>在Gvim下，执行以下命令行</p>
+<pre><code>:echo has(&quot;python3&quot;)
+:echo has(&quot;python&quot;)
+</code></pre><p>如果返回1，表示当前环境支持Python的调用。</p>
+<p>如果返回0，请确认一下几步：</p>
+<ol>
+<li>确认安装的Gvim和Python是配套的，即<ul>
+<li>如果Gvim是32位的，那么Python也需要是32位的；同理，也可以都是64位的。</li>
+<li>在Gvim中随意执行一条Python/Python3命令，如果返回错误，无法加载<code>pythonxx.dll</code>，确认安装的Python版本与pythonxx对应。</li>
+<li>在确认安装的python版本与<code>pythonxx.dll</code>对应之后，<code>pythonxx.dll</code>通常情况下放在<code>&quot;C:\Windows\SysWOW64&quot;</code>路径下（而不是<code>system32</code>目录下），需要将该路径添加到环境变量<strong>PATH</strong>中。</li>
+</ul>
+</li>
+<li>【公司电脑在这步骤下还是不行，Gvim中执行<code>:echo has(&quot;python3&quot;)</code>OK，但是最后调用时出现错误 】</li>
+<li>PS:更换了Vim-64Bit之后，调用python35.DLL，安装了Anaconda3 64bit后，能够成功调用了！<br><img src="/hexo_blog/images/python-vim-1.png" alt=""><br><img src="/hexo_blog/images/python-vim-2.png" alt=""><ul>
+<li>调用<code>py print(&quot;Hello&quot;)</code>，会报错<br><code>Sorry, this command is disabled, the Python&#39;s site module could not be loaded</code><br>查找了一下，貌似是说这是python2.7.11版本的Bug，回退成python2.7.10就OK了。具体不再细究，说不定以后就修复了。</li>
+</ul>
+</li>
+</ol>
+<h3 id="python中获取python版本号的方法"><a href="#python中获取python版本号的方法" class="headerlink" title="python中获取python版本号的方法"></a>python中获取python版本号的方法</h3><p>三种方法：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Python 3.5.0 |Anaconda 2.4.0 (64-bit)| (default, Oct 19 2015, 21:57:25) </div><div class="line">[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line">&gt;&gt;&gt; import platform</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(platform.python_version())</div><div class="line">3.5.0</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(sys.version)</div><div class="line">3.5.0 |Anaconda 2.4.0 (64-bit)| (default, Oct 19 2015, 21:57:25) </div><div class="line">[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(sys.version_info)</div><div class="line">sys.version_info(major=3, minor=5, micro=0, releaselevel=<span class="string">'final'</span>, serial=0)</div></pre></td></tr></table></figure></p>
+<p>可用正则表达式将版本号提取出来</p>
+<p>在python中<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> vim</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">initPythonModule</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> sys.version_info[:<span class="number">2</span>] &lt; (<span class="number">2</span>, <span class="number">4</span>):</div><div class="line">        vim.command(<span class="string">'let s:has_supported_python = 0'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="Vim中调用Python命令"><a href="#Vim中调用Python命令" class="headerlink" title="Vim中调用Python命令"></a>Vim中调用Python命令</h3><p>在vim中可以使用<code>py[thon] {stmt}</code>来执行<code>python</code>语句<code>{stmt}</code>，你可以用<code>:python print &quot;Hello World!&quot;</code>来验证</p>
+<p>以下方法可在Vim中用来测试哪个 Python 版本可用: &gt;<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="built_in">has</span>(<span class="string">'python'</span>)</div><div class="line">  <span class="keyword">echo</span> <span class="string">'有 Python 2.x'</span></div><div class="line"><span class="keyword">elseif</span> <span class="built_in">has</span>(<span class="string">'python3'</span>)</div><div class="line">  <span class="keyword">echo</span> <span class="string">'有 Python 3.x'</span></div><div class="line"><span class="keyword">endif</span></div></pre></td></tr></table></figure></p>
+<p>返回Vim中调用的Python的版本号：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">py</span> import platform</div><div class="line"><span class="keyword">py</span> <span class="keyword">print</span>(platform.python_version())</div></pre></td></tr></table></figure></p>
+<p>经验证，Ubuntu 14.04环境下，使用pyenv将python配置为<code>pyenv global Anaconda3-2.4.0</code>，而系统默认版本为2.7.6<br>此时，在Vim的命令行下调用python返回版本号为<code>2.7.6</code>，即实际调用的还是<strong>系统默认的版本</strong></p>
+<h4 id="执行多行命令"><a href="#执行多行命令" class="headerlink" title="执行多行命令"></a>执行多行命令</h4><p>语法如下：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="keyword">py</span>[thon] &lt;&lt; &#123;endmarker&#125; </div><div class="line">&#123;script&#125; </div><div class="line">&#123;endmarker&#125;</div></pre></td></tr></table></figure></p>
+<p>这样我们就可以执行python脚本{script}中的内容了。<code>{endmarker}</code>是一个标记符号，可以是任何内容，不过<strong><code>{endmarker}</code>后面不能有任何的空白字符。</strong></p>
+<h4 id="在Vim脚本中插入Python-脚本"><a href="#在Vim脚本中插入Python-脚本" class="headerlink" title="在Vim脚本中插入Python 脚本"></a>在Vim脚本中插入Python 脚本</h4><p>看一个简单的例子，假设下面代码保存为<code>script_demo.vim</code>：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>! <span class="title">Foo</span><span class="params">()</span> </span></div><div class="line"><span class="keyword">python</span> &lt;&lt; EOF</div><div class="line">class Foo_demo:</div><div class="line">    def __init__(self):</div><div class="line">        <span class="keyword">print</span> <span class="string">'Foo_demo init'</span> </div><div class="line">Foo_demo() </div><div class="line">EOF</div><div class="line"><span class="keyword">endfunction</span></div></pre></td></tr></table></figure></p>
+<p>那么在vim中我们先用<code>:source script_demo.vim</code>来加载脚本，然后就可以用<code>:call Foo()</code>来运行python脚本了</p>
+<h4 id="在Vim中调用Python文件"><a href="#在Vim中调用Python文件" class="headerlink" title="在Vim中调用Python文件"></a>在Vim中调用Python文件</h4><p>此外，我们还可以将python脚本放到一个单独的.py文件中，然后用<code>:pyf[ile] {file}</code>来运行python文件中的程序，要注意这里pyf[ile]后面的所有参数被看做是一个文件的名字。</p>
+<h3 id="在Python中调用vim模块"><a href="#在Python中调用vim模块" class="headerlink" title="在Python中调用vim模块"></a>在Python中调用vim模块</h3><p>vim提供了一个python模块，有趣的是模块名字就叫做vim，我们可以用它来获取vim编辑器里面的所有信息。<br>ps：该模块非python内置模块，只能在vim中调用python命令来<code>import</code>，如<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> import <span class="keyword">vim</span></div><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span>(<span class="keyword">vim</span>.<span class="built_in">eval</span>(<span class="string">"12+12"</span>))</div><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span>(<span class="keyword">vim</span>.<span class="built_in">eval</span>(<span class="string">"b:var"</span>))</div></pre></td></tr></table></figure></p>
+<p>或者：<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>! <span class="title">Bar</span><span class="params">()</span> </span></div><div class="line">  <span class="keyword">python</span> &lt;&lt; EOF</div><div class="line">  import <span class="keyword">vim</span></div><div class="line">  cur_buf = <span class="keyword">vim</span>.current.<span class="keyword">buffer</span></div><div class="line">  <span class="keyword">print</span> <span class="string">"Lines: &#123;0&#125;"</span>.format(<span class="built_in">len</span>(cur_buf))</div><div class="line">  <span class="keyword">print</span> <span class="string">"Contents: &#123;0&#125;"</span>.format(cur_buf[-<span class="number">1</span>])</div><div class="line">  EOF</div><div class="line"><span class="keyword">endfunction</span></div></pre></td></tr></table></figure></p>
+<p>参考文档[2]</p>
+<h4 id="参数的传递，python获取vim中的对象与变量"><a href="#参数的传递，python获取vim中的对象与变量" class="headerlink" title="参数的传递，python获取vim中的对象与变量"></a>参数的传递，python获取vim中的对象与变量</h4><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:h <span class="keyword">python</span>-<span class="built_in">eval</span></div></pre></td></tr></table></figure>
+<ul>
+<li><code>vim.eval(str)</code><ul>
+<li>如果 Vim 表达式计算结果是字符串或者数值，那么返回一个字符串。</li>
+<li>如果 Vim 表达式计算结果是 Vim 列表，那么返回一个列表</li>
+<li>如果 Vim 表达式计算结果是 Vim 字典，那么返回一个字典</li>
+</ul>
+</li>
+<li><code>vim.bindeval(str)</code><ul>
+<li>可用于修改或调用vim对象与变量(包括b:var的读取与修改(List或dict))<br>:let b:a = “ywl”<br>:python print(vim.bindeval(“b:a”))</li>
+</ul>
+</li>
+<li><code>vim.vars</code>, <code>vim.vvars</code><ul>
+<li>分别对应全局(g:)和vim(v:)变量，通过字典的方式读取，等价于<code>vim.bindeval(&quot;g:&quot;)</code>，但更快</li>
+<li>ex: <code>:python print(vim.vars[&#39;ywl_path&#39;])</code> 等价于 <code>:python print(vim.bindeval(&quot;g:ywl_path&quot;))</code></li>
+</ul>
+</li>
+</ul>
+<p>查看下面简单的例子:<br><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>! <span class="title">Del</span><span class="params">(number)</span></span></div><div class="line"><span class="keyword">python</span> &lt;&lt; EOF</div><div class="line">import <span class="keyword">vim</span></div><div class="line">num = <span class="keyword">vim</span>.<span class="built_in">eval</span>(<span class="string">"a:number"</span>)</div><div class="line"><span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"normal gg&#123;0&#125;dd"</span>.format(num))</div><div class="line"><span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"w"</span>)</div><div class="line">EOF</div><div class="line"><span class="keyword">endfunction</span></div></pre></td></tr></table></figure></p>
+<p>在python代码中，可以通过<code>vim.eval(&quot;a:number&quot;)</code>来传递vim变量，等价于<code>let</code>语句<code>let num=a:number</code><br>在vim函数中，同样可以通过参数位置来访问，<br>比如<code>let arg=a:0</code>或者是<code>vim.eval(&quot;a:0&quot;)</code>。我们可以使用<code>&quot;...&quot;</code>来代替命名参数来定义一个能接收任意数量参数的函数，不过这样只能通过位置来访问。</p>
+<h4 id="双向接口"><a href="#双向接口" class="headerlink" title="双向接口"></a>双向接口</h4><figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:h <span class="built_in">pyeval</span>()</div></pre></td></tr></table></figure>
+<ul>
+<li><code>pyeval()</code> &amp; <code>pyeval3()</code><br>  计算 Python 表达式 {expr} 并返回计算结果，转换为 Vim 本身的数据结构。</li>
+</ul>
+<h4 id="执行vim中的command"><a href="#执行vim中的command" class="headerlink" title="执行vim中的command"></a>执行vim中的command</h4><ul>
+<li><p>vim.command(str): 执行vim中的命令str(ex-mode，命令模式下的命令)，返回值为None，比如：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"%s/aaa/bbb/g"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>也可以用<code>vim.command(&quot;normal &quot;+str)</code>来执行normal模式下的命令，比如说用以下命令删除当前行的内容：<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">vim</span>.<span class="keyword">command</span>(<span class="string">"normal "</span>+<span class="string">'dd'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="获取vim设置option"><a href="#获取vim设置option" class="headerlink" title="获取vim设置option"></a>获取vim设置option</h4><p>这个示例将由多个指令完成, 主角是 options 但是是各个 vim 对象的 options .</p>
+<p>分别执行如下指令:</p>
+<ul>
+<li><p>从全局配置获取是否高亮:</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">vim</span>.<span class="keyword">options</span>[<span class="string">"hls"</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>从当前窗口配置获取是否显示行号:</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span> <span class="keyword">vim</span>.current.window.<span class="keyword">options</span>[<span class="string">"nu"</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>从当前buffer配置获取tab长度</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">:<span class="keyword">py</span> <span class="keyword">print</span> <span class="keyword">vim</span>.current.<span class="keyword">buffer</span>.<span class="keyword">options</span>[<span class="string">"ts"</span>]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>尽管可能所有选项都是在 _vimrc 文件配置的, 但是获取的方式可能还是会根据其生效区块不同而采用了不同的获取方式</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/hexo_blog/categories/Python/">Python</a>, <a href="/hexo_blog/categories/Python/Lib/">Lib</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/hexo_blog/tags/vim/">vim</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+    
+		
+</section>
+
+
+  
+    <section id="comment">
+    <!--   <h1 class="title">留言</h1> -->
+    
+    
+    </section>
+
+
+
+
+</div></div>
+        <aside id="sidebar" class="alignright">
+    <div class="closeaside"><a class="closebutton" href="#" title="显示分类"> </a></div>
+  
+
+   <div class="search">
+  <form action="//baidu.com/s" method="get" accept-charset="utf-8">
+    <input type="search" name="wd"results="0" placeholder="搜索">
+    <input type="hidden" name="wd" value="site:ywlbupt.github.com/hexo_blog">
+  </form>
+</div> 
+
+
+  
+<div class="widget tag">
+  <h3 class="title" id="categories">分类</h3>
+<!--   
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Basic/">Basic</a><small>10</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><small>8</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Diary/">Diary</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Gallery/">Gallery</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Iterator/Generator/">Generator</a><small>1</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Git/">Git</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><small>3</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><small>3</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Iterator/">Iterator</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Lib/">Lib</a><small>5</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Markdown/">Markdown</a><small>3</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Network/">Network</a><small>1</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Python/">Python</a><small>18</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Raspberry/">Raspberry</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/SQL/">SQL</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/Network/SSH/">SSH</a><small>1</small></li>
+     
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><small>13</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/Vim/">Vim</a><small>3</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/python/basic/">basic</a><small>2</small></li>
+     
+  
+	
+		<li><a href="/hexo_blog/categories/isinstance/">isinstance</a><small>1</small></li>
+	
+  
+	
+		<li><a href="/hexo_blog/categories/python/">python</a><small>2</small></li>
+	
+  
+	
+		<li><a class = "list-2"href="/hexo_blog/categories/isinstance/type/">type</a><small>1</small></li>
+     
+   -->
+
+
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Diary/">Diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Gallery/">Gallery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/">Iterator</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Iterator/Generator/">Generator</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/">Markdown</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Markdown/Hexo/">Hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/">Network</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Network/SSH/">SSH</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/">Python</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Lib/">Lib</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Python/Python-Basic/">Python_Basic</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Raspberry/">Raspberry</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/">SQL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/SQL/Sqlite3/">Sqlite3</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Basic/">Basic</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/Cmd/">Cmd</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Ubuntu/IDE/">IDE</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/">Vim</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/Vim/Plugin/">Plugin</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/">isinstance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/isinstance/type/">type</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/">python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/hexo_blog/categories/python/basic/">basic</a><span class="category-list-count">2</span></li></ul></li></ul> 
+</div>
+ 
+
+
+  <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/hexo_blog/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/hexo_blog/tags/Zhihu/" style="font-size: 10px;">Zhihu</a> <a href="/hexo_blog/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/hexo_blog/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/hexo_blog/tags/codecs/" style="font-size: 10px;">codecs</a> <a href="/hexo_blog/tags/const/" style="font-size: 10px;">const</a> <a href="/hexo_blog/tags/dd/" style="font-size: 10px;">dd</a> <a href="/hexo_blog/tags/deb/" style="font-size: 10px;">deb</a> <a href="/hexo_blog/tags/df/" style="font-size: 10px;">df</a> <a href="/hexo_blog/tags/ejs引擎/" style="font-size: 10px;">ejs引擎</a> <a href="/hexo_blog/tags/escape/" style="font-size: 10px;">escape</a> <a href="/hexo_blog/tags/fdisk/" style="font-size: 10px;">fdisk</a> <a href="/hexo_blog/tags/find/" style="font-size: 10px;">find</a> <a href="/hexo_blog/tags/git/" style="font-size: 16.67px;">git</a> <a href="/hexo_blog/tags/grep/" style="font-size: 10px;">grep</a> <a href="/hexo_blog/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/hexo_blog/tags/hosts/" style="font-size: 10px;">hosts</a> <a href="/hexo_blog/tags/jacman/" style="font-size: 13.33px;">jacman</a> <a href="/hexo_blog/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/hexo_blog/tags/json/" style="font-size: 10px;">json</a> <a href="/hexo_blog/tags/object/" style="font-size: 10px;">object</a> <a href="/hexo_blog/tags/os/" style="font-size: 10px;">os</a> <a href="/hexo_blog/tags/python/" style="font-size: 20px;">python</a> <a href="/hexo_blog/tags/shutdown/" style="font-size: 10px;">shutdown</a> <a href="/hexo_blog/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/hexo_blog/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/hexo_blog/tags/string/" style="font-size: 10px;">string</a> <a href="/hexo_blog/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/hexo_blog/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/hexo_blog/tags/type/" style="font-size: 10px;">type</a> <a href="/hexo_blog/tags/vim/" style="font-size: 13.33px;">vim</a> <a href="/hexo_blog/tags/wrapper/" style="font-size: 10px;">wrapper</a> <a href="/hexo_blog/tags/yaml/" style="font-size: 10px;">yaml</a> <a href="/hexo_blog/tags/zt/" style="font-size: 10px;">zt</a> <a href="/hexo_blog/tags/人工置顶/" style="font-size: 10px;">人工置顶</a> <a href="/hexo_blog/tags/科学上网/" style="font-size: 10px;">科学上网</a>
+  </div>
+</div>
+
+
+</aside>
+
+      <div class="clearfix"></div>
+    </div>
+  
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2017 Wlin
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/hexo_blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/hexo_blog/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+  <script src="/hexo_blog/js/calendar.js"></script>
+  <script src="/hexo_blog/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:undefined, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+
+<!-- 目录与分类的切换按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#sidebar'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+      t = $('#toc.toc-aside')
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    // t.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    t.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  // $(window).scroll(function(){
+    // ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  // });
+});
+</script>
+
+
+</body>
+</html>
+
+
