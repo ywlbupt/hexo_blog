@@ -1,6 +1,6 @@
 title: python-basic~__slots__与__getattr__
 date: 2016-12-06 08:21:20
-category: [python, basic]
+category: [Python, Basic]
 tags:
 description:
 ---

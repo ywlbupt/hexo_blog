@@ -1,6 +1,6 @@
 title: python-basic~nonlocal与global
 date: 2017-06-23 11:17:20
-category:
+category: [Python, Basic]
 tags:
 description:
 ---

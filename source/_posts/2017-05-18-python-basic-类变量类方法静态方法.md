@@ -1,6 +1,6 @@
 title: python-basic~类变量类方法静态方法
 date: 2017-05-18 23:22:46
-category: [python, basic]
+category: [Python, Basic]
 tags:
 description:
 ---

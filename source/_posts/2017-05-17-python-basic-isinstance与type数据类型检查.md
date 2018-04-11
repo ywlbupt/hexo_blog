@@ -1,6 +1,6 @@
 title: python-basic~isinstance与type数据类型检查
 date: 2017-05-17 23:14:46
-category: [isinstance, type]
+category: [Python, Basic]
 tags:
 description:
 ---

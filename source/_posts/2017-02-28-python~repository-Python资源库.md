@@ -1,6 +1,6 @@
 title: python~repository-Python资源库
 date: 2017-02-28 07:43:36
-category:
+category: [Python]
 tags:
 description:
 ---

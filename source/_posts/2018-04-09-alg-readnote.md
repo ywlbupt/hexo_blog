@@ -1,6 +1,6 @@
 title: alg-readnote
 date: 2018-04-09 10:37:02
-category: [alg, note]
+category: [Alg, Note]
 tags:
 description:
 ---

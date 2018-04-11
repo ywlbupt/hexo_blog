@@ -1,6 +1,6 @@
 title: git~branch分支
 date: 2018-04-10 20:57:18
-category: [git]
+category: [Git]
 tags: 
 description:
 ---
@@ -42,3 +42,16 @@ $ git branch -a
 * `git branch -m <oldchname> <newbranch>`
 
 如果需要重命名远程分支，正确的做法是删除远程分支，然后将本地分支push到服务器
+
+### git 切换分支的时候 是否需要提交当前修改
+
+官方文档有句话“切换分支的时候最好保持一个清洁的工作区域。
+![](/hexo_blog/images/Git/git-staged.png)
+
+有如下几种处理方式：
+1. add并且commit，再checkout，提交到当前分支
+2. add但不commit，可以stash，然后checkout回来之后stash apply，在commit，提交到当前分支
+
+其背后的原因：一个本地的git repo只有一个工作区和暂存区，但是有多个分支的提交区，而我们的checkout只是将HEAD指针从一个分支切换到另一个分支。
+
+具体参考 git-stashing
