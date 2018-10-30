@@ -37,6 +37,8 @@ $ git branch -a
 
 `-D`相当于强制删除
 
+* `git push origin test:test` 提交本地test分支作为远程的test分支
+
 ### 重命名分支
 
 * `git branch -m <oldchname> <newbranch>`

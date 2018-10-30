@@ -54,3 +54,10 @@ os负责程序与操作系统的交互，sys负责程序与python解释器的交
   * 对于Unix or Mac OS X ，返回 `path`  Unchanged
 * `os.path.normpath(path)`
   * 可格式化`path`字符串，如将`a/./b`转换为`a/b`等等
+
+#### os.system 系统操作
+
+* `os.name` windows下返回`nt`，linux下返回`posix` 用于判断系统类型
+* `os.environ`，环境变量字典，返回环境变量，`os.environ["HOME"]`
+* `os.system`，在win下和Linux下表现不同
+
